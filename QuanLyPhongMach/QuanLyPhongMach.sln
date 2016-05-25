@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyPhongMach", "QuanLyPhongMach\QuanLyPhongMach.csproj", "{7F559387-1DC2-4C75-BD68-49495DBDEBA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{4402F505-2B17-44E7-AD52-7DA7045E9BEB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7F559387-1DC2-4C75-BD68-49495DBDEBA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F559387-1DC2-4C75-BD68-49495DBDEBA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F559387-1DC2-4C75-BD68-49495DBDEBA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F559387-1DC2-4C75-BD68-49495DBDEBA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4402F505-2B17-44E7-AD52-7DA7045E9BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4402F505-2B17-44E7-AD52-7DA7045E9BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4402F505-2B17-44E7-AD52-7DA7045E9BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4402F505-2B17-44E7-AD52-7DA7045E9BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

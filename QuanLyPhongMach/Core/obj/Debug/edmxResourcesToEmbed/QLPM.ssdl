@@ -1,0 +1,314 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuanLyPhongMachModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="QuanLyPhongMachModelStoreContainer">
+    <EntitySet Name="KhachHang" EntityType="QuanLyPhongMachModel.Store.KhachHang" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KhachHangGroup" EntityType="QuanLyPhongMachModel.Store.KhachHangGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Pet" EntityType="QuanLyPhongMachModel.Store.Pet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PetGroup" EntityType="QuanLyPhongMachModel.Store.PetGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PhieuDieuTri" EntityType="QuanLyPhongMachModel.Store.PhieuDieuTri" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PhieuDieuTri_Thuoc" EntityType="QuanLyPhongMachModel.Store.PhieuDieuTri_Thuoc" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="QuanLyPhongMachModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Thuoc" EntityType="QuanLyPhongMachModel.Store.Thuoc" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ThuocGroup" EntityType="QuanLyPhongMachModel.Store.ThuocGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="QuanLyPhongMachModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserGroup" EntityType="QuanLyPhongMachModel.Store.UserGroup" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_KhachHang_KhachHangGroup" Association="QuanLyPhongMachModel.Store.FK_KhachHang_KhachHangGroup">
+      <End Role="KhachHangGroup" EntitySet="KhachHangGroup" />
+      <End Role="KhachHang" EntitySet="KhachHang" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pet_KhachHang" Association="QuanLyPhongMachModel.Store.FK_Pet_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHang" />
+      <End Role="Pet" EntitySet="Pet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pet_PetGroup" Association="QuanLyPhongMachModel.Store.FK_Pet_PetGroup">
+      <End Role="PetGroup" EntitySet="PetGroup" />
+      <End Role="Pet" EntitySet="Pet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuDieuTri_Pet" Association="QuanLyPhongMachModel.Store.FK_PhieuDieuTri_Pet">
+      <End Role="Pet" EntitySet="Pet" />
+      <End Role="PhieuDieuTri" EntitySet="PhieuDieuTri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuDieuTri_Thuoc_PhieuDieuTri" Association="QuanLyPhongMachModel.Store.FK_PhieuDieuTri_Thuoc_PhieuDieuTri">
+      <End Role="PhieuDieuTri" EntitySet="PhieuDieuTri" />
+      <End Role="PhieuDieuTri_Thuoc" EntitySet="PhieuDieuTri_Thuoc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuDieuTri_Thuoc_Thuoc" Association="QuanLyPhongMachModel.Store.FK_PhieuDieuTri_Thuoc_Thuoc">
+      <End Role="Thuoc" EntitySet="Thuoc" />
+      <End Role="PhieuDieuTri_Thuoc" EntitySet="PhieuDieuTri_Thuoc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuDieuTri_User" Association="QuanLyPhongMachModel.Store.FK_PhieuDieuTri_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="PhieuDieuTri" EntitySet="PhieuDieuTri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Thuoc_ThuocGroup" Association="QuanLyPhongMachModel.Store.FK_Thuoc_ThuocGroup">
+      <End Role="ThuocGroup" EntitySet="ThuocGroup" />
+      <End Role="Thuoc" EntitySet="Thuoc" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_UserGroup" Association="QuanLyPhongMachModel.Store.FK_User_UserGroup">
+      <End Role="UserGroup" EntitySet="UserGroup" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="IdGroup" Type="int" Nullable="false" />
+    <Property Name="Ma" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="Ten" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="GioiTinh" Type="nvarchar" Nullable="false" MaxLength="3" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="CMND" Type="nchar" MaxLength="10" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+    <Property Name="DienThoai" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateBy" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="DeleteFlag" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KhachHangGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Ma" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="Ten" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Pet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdGroup" Type="int" Nullable="false" />
+    <Property Name="IdKhachHang" Type="int" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="GioiTinh" Type="nvarchar" Nullable="false" MaxLength="3" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateBy" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="DeleteFlag" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PetGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Ma" Type="varchar" Nullable="false" MaxLength="6" />
+    <Property Name="Ten" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="PhieuDieuTri">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Ma" Type="char" Nullable="false" MaxLength="6" />
+    <Property Name="IdPet" Type="int" Nullable="false" />
+    <Property Name="IdUser" Type="int" Nullable="false" />
+    <Property Name="TrongLuong" Type="float" Nullable="false" />
+    <Property Name="NhietDo" Type="float" Nullable="false" />
+    <Property Name="IsKhamBenh" Type="bit" Nullable="false" />
+    <Property Name="IsChich_UongThuoc" Type="bit" Nullable="false" />
+    <Property Name="IsTruyenDichTinhMach" Type="bit" Nullable="false" />
+    <Property Name="Khac" Type="nvarchar" MaxLength="200" />
+    <Property Name="LoiDanDo" Type="nvarchar" MaxLength="200" />
+    <Property Name="TongTien" Type="bigint" Nullable="false" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateBy" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="DeleteFlag" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhieuDieuTri_Thuoc">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdPhieuDieuTri" Type="int" Nullable="false" />
+    <Property Name="IdThuoc" Type="int" Nullable="false" />
+    <Property Name="LieuLuong" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Thuoc">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdGroup" Type="int" Nullable="false" />
+    <Property Name="Ma" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="Ten" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="200" />
+    <Property Name="DonViTinh" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateBy" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="DeleteFlag" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ThuocGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Ma" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="Ten" Type="nvarchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdGroup" Type="int" Nullable="false" />
+    <Property Name="Ten" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GioiTinh" Type="nvarchar" Nullable="false" MaxLength="3" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="CMND" Type="nvarchar" MaxLength="10" />
+    <Property Name="NgayCap" Type="date" />
+    <Property Name="NoiCap" Type="nvarchar" MaxLength="50" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
+    <Property Name="DienThoai" Type="nvarchar" MaxLength="20" />
+    <Property Name="DTDD" Type="nvarchar" MaxLength="20" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="UpdateBy" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+    <Property Name="DeleteFlag" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Ten" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Mota" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <Association Name="FK_KhachHang_KhachHangGroup">
+    <End Role="KhachHangGroup" Type="QuanLyPhongMachModel.Store.KhachHangGroup" Multiplicity="1" />
+    <End Role="KhachHang" Type="QuanLyPhongMachModel.Store.KhachHang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHangGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KhachHang">
+        <PropertyRef Name="IdGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pet_KhachHang">
+    <End Role="KhachHang" Type="QuanLyPhongMachModel.Store.KhachHang" Multiplicity="1" />
+    <End Role="Pet" Type="QuanLyPhongMachModel.Store.Pet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pet">
+        <PropertyRef Name="IdKhachHang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pet_PetGroup">
+    <End Role="PetGroup" Type="QuanLyPhongMachModel.Store.PetGroup" Multiplicity="1" />
+    <End Role="Pet" Type="QuanLyPhongMachModel.Store.Pet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PetGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pet">
+        <PropertyRef Name="IdGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuDieuTri_Pet">
+    <End Role="Pet" Type="QuanLyPhongMachModel.Store.Pet" Multiplicity="1" />
+    <End Role="PhieuDieuTri" Type="QuanLyPhongMachModel.Store.PhieuDieuTri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhieuDieuTri">
+        <PropertyRef Name="IdPet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuDieuTri_Thuoc_PhieuDieuTri">
+    <End Role="PhieuDieuTri" Type="QuanLyPhongMachModel.Store.PhieuDieuTri" Multiplicity="1" />
+    <End Role="PhieuDieuTri_Thuoc" Type="QuanLyPhongMachModel.Store.PhieuDieuTri_Thuoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuDieuTri">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhieuDieuTri_Thuoc">
+        <PropertyRef Name="IdPhieuDieuTri" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuDieuTri_Thuoc_Thuoc">
+    <End Role="Thuoc" Type="QuanLyPhongMachModel.Store.Thuoc" Multiplicity="1" />
+    <End Role="PhieuDieuTri_Thuoc" Type="QuanLyPhongMachModel.Store.PhieuDieuTri_Thuoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Thuoc">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhieuDieuTri_Thuoc">
+        <PropertyRef Name="IdThuoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuDieuTri_User">
+    <End Role="User" Type="QuanLyPhongMachModel.Store.User" Multiplicity="1" />
+    <End Role="PhieuDieuTri" Type="QuanLyPhongMachModel.Store.PhieuDieuTri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhieuDieuTri">
+        <PropertyRef Name="IdUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Thuoc_ThuocGroup">
+    <End Role="ThuocGroup" Type="QuanLyPhongMachModel.Store.ThuocGroup" Multiplicity="1" />
+    <End Role="Thuoc" Type="QuanLyPhongMachModel.Store.Thuoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThuocGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Thuoc">
+        <PropertyRef Name="IdGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_UserGroup">
+    <End Role="UserGroup" Type="QuanLyPhongMachModel.Store.UserGroup" Multiplicity="1" />
+    <End Role="User" Type="QuanLyPhongMachModel.Store.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IdGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
