@@ -58,7 +58,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="IdGroup" Type="int" Nullable="false" />
           <Property Name="Ma" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="Ten" Type="nvarchar" Nullable="false" MaxLength="50" />
@@ -191,7 +191,6 @@
           <Property Name="NoiCap" Type="nvarchar" MaxLength="50" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="100" />
           <Property Name="DienThoai" Type="nvarchar" MaxLength="20" />
-          <Property Name="DTDD" Type="nvarchar" MaxLength="20" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
           <Property Name="CreateBy" Type="nvarchar" Nullable="false" MaxLength="50" />
@@ -206,7 +205,7 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Ten" Type="nvarchar" Nullable="false" MaxLength="20" />
-          <Property Name="Mota" Type="nvarchar" MaxLength="200" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <Association Name="FK_KhachHang_KhachHangGroup">
           <End Role="KhachHangGroup" Type="QuanLyPhongMachModel.Store.KhachHangGroup" Multiplicity="1" />
@@ -321,7 +320,6 @@
     <edmx:ConceptualModels>
       <Schema Namespace="QuanLyPhongMachModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="QuanLyPhongMachEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="KhachHangs" EntityType="QuanLyPhongMachModel.KhachHang" />
           <EntitySet Name="KhachHangGroups" EntityType="QuanLyPhongMachModel.KhachHangGroup" />
           <EntitySet Name="Pets" EntityType="QuanLyPhongMachModel.Pet" />
           <EntitySet Name="PetGroups" EntityType="QuanLyPhongMachModel.PetGroup" />
@@ -332,14 +330,6 @@
           <EntitySet Name="ThuocGroups" EntityType="QuanLyPhongMachModel.ThuocGroup" />
           <EntitySet Name="Users" EntityType="QuanLyPhongMachModel.User" />
           <EntitySet Name="UserGroups" EntityType="QuanLyPhongMachModel.UserGroup" />
-          <AssociationSet Name="FK_KhachHang_KhachHangGroup" Association="QuanLyPhongMachModel.FK_KhachHang_KhachHangGroup">
-            <End Role="KhachHangGroup" EntitySet="KhachHangGroups" />
-            <End Role="KhachHang" EntitySet="KhachHangs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Pet_KhachHang" Association="QuanLyPhongMachModel.FK_Pet_KhachHang">
-            <End Role="KhachHang" EntitySet="KhachHangs" />
-            <End Role="Pet" EntitySet="Pets" />
-          </AssociationSet>
           <AssociationSet Name="FK_Pet_PetGroup" Association="QuanLyPhongMachModel.FK_Pet_PetGroup">
             <End Role="PetGroup" EntitySet="PetGroups" />
             <End Role="Pet" EntitySet="Pets" />
@@ -368,30 +358,16 @@
             <End Role="UserGroup" EntitySet="UserGroups" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="KhachHangs" EntityType="QuanLyPhongMachModel.KhachHang" />
+          <AssociationSet Name="FK_KhachHang_KhachHangGroup" Association="QuanLyPhongMachModel.FK_KhachHang_KhachHangGroup">
+            <End Role="KhachHangGroup" EntitySet="KhachHangGroups" />
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pet_KhachHang" Association="QuanLyPhongMachModel.FK_Pet_KhachHang">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="Pet" EntitySet="Pets" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="KhachHang">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Ma" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
-          <Property Name="IdGroup" Type="Int32" Nullable="false" />
-          <Property Name="Ten" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="GioiTinh" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
-          <Property Name="DOB" Type="DateTime" Precision="0" />
-          <Property Name="CMND" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
-          <Property Name="DiaChi" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="DienThoai" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="GhiChu" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="CreateBy" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateBy" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DeleteFlag" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="KhachHangGroup" Relationship="QuanLyPhongMachModel.FK_KhachHang_KhachHangGroup" FromRole="KhachHang" ToRole="KhachHangGroup" />
-          <NavigationProperty Name="Pets" Relationship="QuanLyPhongMachModel.FK_Pet_KhachHang" FromRole="KhachHang" ToRole="Pet" />
-        </EntityType>
         <EntityType Name="KhachHangGroup">
           <Key>
             <PropertyRef Name="Id" />
@@ -418,9 +394,9 @@
           <Property Name="UpdateBy" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="DeleteFlag" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="KhachHang" Relationship="QuanLyPhongMachModel.FK_Pet_KhachHang" FromRole="Pet" ToRole="KhachHang" />
           <NavigationProperty Name="PetGroup" Relationship="QuanLyPhongMachModel.FK_Pet_PetGroup" FromRole="Pet" ToRole="PetGroup" />
           <NavigationProperty Name="PhieuDieuTris" Relationship="QuanLyPhongMachModel.FK_PhieuDieuTri_Pet" FromRole="Pet" ToRole="PhieuDieuTri" />
+          <NavigationProperty Name="KhachHang" Relationship="QuanLyPhongMachModel.FK_Pet_KhachHang" FromRole="Pet" ToRole="KhachHang" />
         </EntityType>
         <EntityType Name="PetGroup">
           <Key>
@@ -483,8 +459,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="Ma" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
           <Property Name="IdGroup" Type="Int32" Nullable="false" />
+          <Property Name="Ma" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
           <Property Name="Ten" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="MoTa" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="DonViTinh" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
@@ -521,7 +497,6 @@
           <Property Name="NoiCap" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="DiaChi" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="DienThoai" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="DTDD" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="GhiChu" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="CreateBy" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -538,33 +513,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Ten" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Mota" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="MoTa" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Users" Relationship="QuanLyPhongMachModel.FK_User_UserGroup" FromRole="UserGroup" ToRole="User" />
         </EntityType>
-        <Association Name="FK_KhachHang_KhachHangGroup">
-          <End Role="KhachHangGroup" Type="QuanLyPhongMachModel.KhachHangGroup" Multiplicity="1" />
-          <End Role="KhachHang" Type="QuanLyPhongMachModel.KhachHang" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KhachHangGroup">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="KhachHang">
-              <PropertyRef Name="IdGroup" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Pet_KhachHang">
-          <End Role="KhachHang" Type="QuanLyPhongMachModel.KhachHang" Multiplicity="1" />
-          <End Role="Pet" Type="QuanLyPhongMachModel.Pet" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KhachHang">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Pet">
-              <PropertyRef Name="IdKhachHang" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Pet_PetGroup">
           <End Role="PetGroup" Type="QuanLyPhongMachModel.PetGroup" Multiplicity="1" />
           <End Role="Pet" Type="QuanLyPhongMachModel.Pet" Multiplicity="*" />
@@ -649,34 +600,59 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="IdGroup" Nullable="false" />
+          <Property Type="String" Name="Ma" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Ten" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GioiTinh" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DOB" Precision="0" />
+          <Property Type="String" Name="CMND" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="DiaChi" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DienThoai" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GhiChu" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CreateBy" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="UpdateBy" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="UpdateDate" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="DeleteFlag" Nullable="false" />
+          <NavigationProperty Name="KhachHangGroup" Relationship="QuanLyPhongMachModel.FK_KhachHang_KhachHangGroup" FromRole="KhachHang" ToRole="KhachHangGroup" />
+          <NavigationProperty Name="Pets" Relationship="QuanLyPhongMachModel.FK_Pet_KhachHang" FromRole="KhachHang" ToRole="Pet" />
+        </EntityType>
+        <Association Name="FK_KhachHang_KhachHangGroup">
+          <End Type="QuanLyPhongMachModel.KhachHangGroup" Role="KhachHangGroup" Multiplicity="1" />
+          <End Type="QuanLyPhongMachModel.KhachHang" Role="KhachHang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHangGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KhachHang">
+              <PropertyRef Name="IdGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pet_KhachHang">
+          <End Type="QuanLyPhongMachModel.KhachHang" Role="KhachHang" Multiplicity="1" />
+          <End Type="QuanLyPhongMachModel.Pet" Role="Pet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Pet">
+              <PropertyRef Name="IdKhachHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="QuanLyPhongMachModelStoreContainer" CdmEntityContainer="QuanLyPhongMachEntities">
-          <EntitySetMapping Name="KhachHangs">
-            <EntityTypeMapping TypeName="QuanLyPhongMachModel.KhachHang">
-              <MappingFragment StoreEntitySet="KhachHang">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Ma" ColumnName="Ma" />
-                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
-                <ScalarProperty Name="Ten" ColumnName="Ten" />
-                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
-                <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="CMND" ColumnName="CMND" />
-                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-                <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-                <ScalarProperty Name="DeleteFlag" ColumnName="DeleteFlag" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="KhachHangGroups">
             <EntityTypeMapping TypeName="QuanLyPhongMachModel.KhachHangGroup">
               <MappingFragment StoreEntitySet="KhachHangGroup">
@@ -763,8 +739,8 @@
             <EntityTypeMapping TypeName="QuanLyPhongMachModel.Thuoc">
               <MappingFragment StoreEntitySet="Thuoc">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Ma" ColumnName="Ma" />
                 <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+                <ScalarProperty Name="Ma" ColumnName="Ma" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
                 <ScalarProperty Name="DonViTinh" ColumnName="DonViTinh" />
@@ -800,7 +776,6 @@
                 <ScalarProperty Name="NoiCap" ColumnName="NoiCap" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
-                <ScalarProperty Name="DTDD" ColumnName="DTDD" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
@@ -816,7 +791,29 @@
               <MappingFragment StoreEntitySet="UserGroup">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
-                <ScalarProperty Name="Mota" ColumnName="Mota" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhachHangs">
+            <EntityTypeMapping TypeName="QuanLyPhongMachModel.KhachHang">
+              <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="DeleteFlag" ColumnName="DeleteFlag" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateBy" ColumnName="UpdateBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="Ten" ColumnName="Ten" />
+                <ScalarProperty Name="Ma" ColumnName="Ma" />
+                <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

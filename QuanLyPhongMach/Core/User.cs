@@ -31,7 +31,6 @@ namespace Core
         public string NoiCap { get; set; }
         public string DiaChi { get; set; }
         public string DienThoai { get; set; }
-        public string DTDD { get; set; }
         public string Email { get; set; }
         public string GhiChu { get; set; }
         public string CreateBy { get; set; }

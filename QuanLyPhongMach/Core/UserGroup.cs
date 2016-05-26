@@ -21,7 +21,7 @@ namespace Core
     
         public int Id { get; set; }
         public string Ten { get; set; }
-        public string Mota { get; set; }
+        public string MoTa { get; set; }
     
         public virtual ICollection<User> Users { get; set; }
     }

@@ -27,7 +27,7 @@ namespace QuanLyPhongMach
 
         private void btHuy_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show(Constant.HUY_MESSAGE, Constant.CONFIRMATION_CAPTION, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show(Constant.MESSAGE_HUY, Constant.CAPTION_CONFIRM, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 var mainWD = (WdMain)Window.GetWindow(this);
                 mainWD.LoadUcPetMain();

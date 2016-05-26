@@ -8,13 +8,13 @@ using Controller.Common;
 
 namespace Core
 {
-    public class KhachHangImp : Connection
+    public class UserGroupImp : Connection
     {
-        private static IQueryable<KhachHang> GetQuery(string text)
+        private static IQueryable<UserGroup> GetQuery(string text)
         {
-            IQueryable<KhachHang> query;
-            query = dbContext.KhachHangs.Where(p => p.Ten.Contains(text) ||
-                p.GhiChu.Contains(text)
+            IQueryable<UserGroup> query;
+            query = dbContext.UserGroups.Where(p => p.Ten.Contains(text) ||
+                p.MoTa.Contains(text)
                 );
 
             return query;
@@ -25,7 +25,7 @@ namespace Core
             return GetQuery(text).Count();
         }
 
-        public static List<KhachHang> GetList(string text = "", int skip = 0, int take = 0)
+        public static List<UserGroup> GetList(string text = "", int skip = 0, int take = 0)
         {
             if ((skip <= 0 && take <= 0) || (skip < 0 && take > 0) || (skip > 0 && take < 0))
             {
@@ -35,21 +35,16 @@ namespace Core
             return GetQuery(text).Skip(skip).Take(take).ToList();
         }
 
-        public static KhachHang GetById(int id)
+        public static UserGroup GetById(int id)
         {
-            return dbContext.KhachHangs.Where(p => p.Id.Equals(id)).FirstOrDefault<KhachHang>();
+            return dbContext.UserGroups.Where(p => p.Id == id).FirstOrDefault<UserGroup>();
         }
 
-        public static KhachHang GetByMa(string ma)
-        {
-            return dbContext.KhachHangs.Where(p => p.Ma.Equals(ma)).FirstOrDefault<KhachHang>();
-        }
-
-        private static bool Insert(KhachHang data)
+        private static bool Insert(UserGroup data)
         {
             try
             {
-                dbContext.Entry(data).State = EntityState.Added;
+                dbContext.UserGroups.Add(data);
                 dbContext.SaveChanges();
                 return true;
             }
@@ -65,28 +60,15 @@ namespace Core
         /// <param name="ten"></param>
         /// <param name="ghiChu"></param>
         /// <returns>Return id of the new data if success</returns>
-        public static int? Insert(User user, int idGroup, string ma, string ten, string gioiTinh,
-            DateTime? DOB, string CMND = "", string diaChi = "", string dienThoai = "", string email = "", string ghiChu = "")
+        public static int? Insert(User user, string ma, string ten, string moTa)
         {
             int? res = null;
 
             try
             {
-                KhachHang data = new KhachHang();
-                data.Id = 1;
-                data.IdGroup = idGroup;
-                data.Ma = ma;
+                UserGroup data = new UserGroup();
                 data.Ten = ten;
-                data.GioiTinh = gioiTinh;
-                data.DOB = DOB;
-                data.CMND = CMND;
-                data.DiaChi = diaChi;
-                data.DienThoai = dienThoai;
-                data.Email = email;
-                data.GhiChu = ghiChu;
-
-                data.CreateBy = data.UpdateBy = user.UserName;
-                data.CreateDate = data.UpdateDate = DateTime.Now;
+                data.MoTa = moTa;
 
                 if (Insert(data))
                 {
@@ -101,20 +83,17 @@ namespace Core
             return res;
         }
 
-        public static bool Delete(KhachHang data, User user)
+        public static bool Delete(UserGroup data, User user)
         {
             try
             {
                 if (data != null)
                 {
-                    KhachHang objDb = GetById(data.Id);
+                    UserGroup objDb = GetById(data.Id);
 
                     if (objDb != null)
                     {
-                        data.UpdateBy = user.UserName;
-                        data.UpdateDate = DateTime.Now;
-
-                        objDb.DeleteFlag = true;
+                        dbContext.UserGroups.Remove(objDb);
                         dbContext.SaveChanges();
 
                         return true;
@@ -123,7 +102,7 @@ namespace Core
             }
             catch
             {
-                
+
             }
 
             //NewConnection();
@@ -147,7 +126,7 @@ namespace Core
                     {
                         if (int.TryParse(id, out result))
                         {
-                            KhachHang data = GetById(result);
+                            UserGroup data = GetById(result);
 
                             if (!Delete(data, user))
                             {
@@ -179,7 +158,7 @@ namespace Core
             return res;
         }
 
-        public static bool Update(KhachHang data, User user)
+        public static bool Update(UserGroup data, User user)
         {
             try
             {
@@ -197,45 +176,24 @@ namespace Core
             }
         }
 
-        public static bool Update(User user, int id, object idGroup, string ma, string ten, string gioiTinh,
-            DateTime? DOB, string CMND = "", string diaChi = "", string dienThoai = "", string email = "", string ghiChu = "")
+        public static bool Update(User user, int id, string ma, string ten, string moTa)
         {
             bool res = false;
 
             try
             {
-                KhachHang data = GetById(id);
+                UserGroup data = GetById(id);
 
                 if (data != null)
                 {
-                    if (idGroup is int)
-                    {
-                        data.KhachHangGroup = KhachHangGroupImp.GetById(ConvertUtil.ConvertToInt(idGroup));
-                    }
-                    else
-                    {
-                        data.KhachHangGroup = (KhachHangGroup)idGroup;
-                    }
-
-                    data.Ma = ma;
                     data.Ten = ten;
-                    data.GioiTinh = gioiTinh;
-                    data.DOB = DOB;
-                    data.CMND = CMND;
-                    data.DiaChi = diaChi;
-                    data.DienThoai = dienThoai;
-                    data.Email = email;
-                    data.GhiChu = ghiChu;
-
-                    data.UpdateBy = user.UserName;
-                    data.UpdateDate = DateTime.Now;
-
+                    data.MoTa = moTa;
                     res = Update(data, user);
                 }
             }
             catch
             {
-                
+
             }
 
             return res;

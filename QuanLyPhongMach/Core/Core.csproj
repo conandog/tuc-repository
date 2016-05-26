@@ -70,6 +70,7 @@
     <Compile Include="KhachHangGroup.cs">
       <DependentUpon>QLPM.tt</DependentUpon>
     </Compile>
+    <Compile Include="KhachHangGroupImp.cs" />
     <Compile Include="KhachHangImp.cs" />
     <Compile Include="Pet.cs">
       <DependentUpon>QLPM.tt</DependentUpon>
@@ -116,6 +117,8 @@
     <Compile Include="UserGroup.cs">
       <DependentUpon>QLPM.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserGroupImp.cs" />
+    <Compile Include="UserImp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

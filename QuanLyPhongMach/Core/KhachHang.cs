@@ -20,8 +20,8 @@ namespace Core
         }
     
         public int Id { get; set; }
-        public string Ma { get; set; }
         public int IdGroup { get; set; }
+        public string Ma { get; set; }
         public string Ten { get; set; }
         public string GioiTinh { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }

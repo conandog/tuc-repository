@@ -9,6 +9,23 @@ namespace Core
     public class Connection
     {
         protected static QuanLyPhongMachEntities dbContext;
+        public static int currentUserId;
+
+        private static User currentUser;
+
+        public static User CurrentUser
+        {
+            get 
+            {
+                if (currentUser == null)
+                {
+                    currentUser = UserImp.GetById(currentUserId);
+                }
+
+                return Connection.currentUser;
+            }
+            set { Connection.currentUser = value; }
+        }
 
         public Connection()
         {

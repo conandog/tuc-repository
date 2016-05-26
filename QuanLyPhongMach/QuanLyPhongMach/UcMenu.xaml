@@ -7,8 +7,8 @@
              d:DesignHeight="104" d:DesignWidth="1080" HorizontalAlignment="Stretch"  VerticalAlignment="Top" Height="104">
     <Border BorderBrush="Gray" Background="LightGray" BorderThickness="2" DockPanel.Dock="Top">
         <Grid>
-            <Button x:Name="btUser" Content="User" HorizontalAlignment="Left" Height="80" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="1"/>
-            <Button x:Name="btKhachHang" HorizontalAlignment="Left" Height="80" Margin="130,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="2" Click="ButtonDropdown_Click">
+            <Button x:Name="btUser" Content="User" HorizontalAlignment="Left" Height="80" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="101"/>
+            <Button x:Name="btKhachHang" HorizontalAlignment="Left" Height="80" Margin="130,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="102" Click="ButtonDropdown_Click">
                 <Button.Content>
                     <StackPanel Orientation="Vertical">
                         <!--<Image Source="Image/FileName"/>-->
@@ -23,8 +23,8 @@
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
-            <Button x:Name="btThuoc" Content="Thuốc" HorizontalAlignment="Left" Height="80" Margin="250,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="3" Click="btThuoc_Click"/>
-            <Button x:Name="btDieuTri" Content="Điều trị" HorizontalAlignment="Left" Height="80" Margin="370,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="4" Click="btDieuTri_Click"/>
+            <Button x:Name="btThuoc" Content="Thuốc" HorizontalAlignment="Left" Height="80" Margin="250,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="103" Click="btThuoc_Click"/>
+            <Button x:Name="btDieuTri" Content="Điều trị" HorizontalAlignment="Left" Height="80" Margin="370,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="104" Click="btDieuTri_Click"/>
         </Grid>
     </Border>
 </UserControl>

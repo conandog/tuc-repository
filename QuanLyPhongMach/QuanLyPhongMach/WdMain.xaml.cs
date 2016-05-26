@@ -30,6 +30,7 @@ namespace QuanLyPhongMach
         private void wdMain_Loaded(object sender, RoutedEventArgs e)
         {
             Connection.NewConnection();
+            Connection.currentUserId = 1;
             //menuUC = new MenuUC();
             //currentControl = menuUC;
             //spMenu.Children.Add(currentControl);

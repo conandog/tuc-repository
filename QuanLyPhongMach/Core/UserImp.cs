@@ -5,15 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using Controller.Common;
+using CryptoFunction;
 
 namespace Core
 {
-    public class KhachHangImp : Connection
+    public class UserImp : Connection
     {
-        private static IQueryable<KhachHang> GetQuery(string text)
+        private static IQueryable<User> GetQuery(string text)
         {
-            IQueryable<KhachHang> query;
-            query = dbContext.KhachHangs.Where(p => p.Ten.Contains(text) ||
+            IQueryable<User> query;
+            query = dbContext.Users.Where(p => p.Ten.Contains(text) ||
                 p.GhiChu.Contains(text)
                 );
 
@@ -25,7 +26,7 @@ namespace Core
             return GetQuery(text).Count();
         }
 
-        public static List<KhachHang> GetList(string text = "", int skip = 0, int take = 0)
+        public static List<User> GetList(string text = "", int skip = 0, int take = 0)
         {
             if ((skip <= 0 && take <= 0) || (skip < 0 && take > 0) || (skip > 0 && take < 0))
             {
@@ -35,21 +36,21 @@ namespace Core
             return GetQuery(text).Skip(skip).Take(take).ToList();
         }
 
-        public static KhachHang GetById(int id)
+        public static User GetById(int id)
         {
-            return dbContext.KhachHangs.Where(p => p.Id.Equals(id)).FirstOrDefault<KhachHang>();
+            return dbContext.Users.Where(p => p.Id.Equals(id)).FirstOrDefault<User>();
         }
 
-        public static KhachHang GetByMa(string ma)
+        public static User GetByUserName(string userName)
         {
-            return dbContext.KhachHangs.Where(p => p.Ma.Equals(ma)).FirstOrDefault<KhachHang>();
+            return dbContext.Users.Where(p => p.UserName.Equals(userName)).FirstOrDefault<User>();
         }
 
-        private static bool Insert(KhachHang data)
+        private static bool Insert(User data)
         {
             try
             {
-                dbContext.Entry(data).State = EntityState.Added;
+                dbContext.Users.Add(data);
                 dbContext.SaveChanges();
                 return true;
             }
@@ -65,21 +66,24 @@ namespace Core
         /// <param name="ten"></param>
         /// <param name="ghiChu"></param>
         /// <returns>Return id of the new data if success</returns>
-        public static int? Insert(User user, int idGroup, string ma, string ten, string gioiTinh,
-            DateTime? DOB, string CMND = "", string diaChi = "", string dienThoai = "", string email = "", string ghiChu = "")
+        public static int? Insert(User user, int idGroup, string ten, string userName, string password, string gioiTinh = "Nam",
+            DateTime? DOB = null, string CMND = "", DateTime? ngayCap = null, string noiCap = "",
+            string diaChi = "", string dienThoai = "", string email = "", string ghiChu = "")
         {
             int? res = null;
 
             try
             {
-                KhachHang data = new KhachHang();
-                data.Id = 1;
+                User data = new User();
                 data.IdGroup = idGroup;
-                data.Ma = ma;
                 data.Ten = ten;
+                data.UserName = userName;
+                data.Password = Crypto.EncryptText(password);
                 data.GioiTinh = gioiTinh;
                 data.DOB = DOB;
+                data.NgayCap = ngayCap;
                 data.CMND = CMND;
+                data.NoiCap = noiCap;
                 data.DiaChi = diaChi;
                 data.DienThoai = dienThoai;
                 data.Email = email;
@@ -101,13 +105,13 @@ namespace Core
             return res;
         }
 
-        public static bool Delete(KhachHang data, User user)
+        public static bool Delete(User data, User user)
         {
             try
             {
                 if (data != null)
                 {
-                    KhachHang objDb = GetById(data.Id);
+                    User objDb = GetById(data.Id);
 
                     if (objDb != null)
                     {
@@ -123,7 +127,7 @@ namespace Core
             }
             catch
             {
-                
+
             }
 
             //NewConnection();
@@ -147,7 +151,7 @@ namespace Core
                     {
                         if (int.TryParse(id, out result))
                         {
-                            KhachHang data = GetById(result);
+                            User data = GetById(result);
 
                             if (!Delete(data, user))
                             {
@@ -179,7 +183,7 @@ namespace Core
             return res;
         }
 
-        public static bool Update(KhachHang data, User user)
+        public static bool Update(User data, User user)
         {
             try
             {
@@ -197,31 +201,35 @@ namespace Core
             }
         }
 
-        public static bool Update(User user, int id, object idGroup, string ma, string ten, string gioiTinh,
-            DateTime? DOB, string CMND = "", string diaChi = "", string dienThoai = "", string email = "", string ghiChu = "")
+        public static bool Update(User user, int id, object idGroup, string ten, string userName, string password, string gioiTinh = "Nam",
+            DateTime? DOB = null, string CMND = "", DateTime? ngayCap = null, string noiCap = "",
+            string diaChi = "", string dienThoai = "", string email = "", string ghiChu = "")
         {
             bool res = false;
 
             try
             {
-                KhachHang data = GetById(id);
+                User data = GetById(id);
 
                 if (data != null)
                 {
                     if (idGroup is int)
                     {
-                        data.KhachHangGroup = KhachHangGroupImp.GetById(ConvertUtil.ConvertToInt(idGroup));
+                        data.UserGroup = UserGroupImp.GetById(ConvertUtil.ConvertToInt(idGroup));
                     }
                     else
                     {
-                        data.KhachHangGroup = (KhachHangGroup)idGroup;
+                        data.UserGroup = (UserGroup)idGroup;
                     }
 
-                    data.Ma = ma;
                     data.Ten = ten;
+                    data.UserName = userName;
+                    data.Password = Crypto.EncryptText(password);
                     data.GioiTinh = gioiTinh;
                     data.DOB = DOB;
+                    data.NgayCap = ngayCap;
                     data.CMND = CMND;
+                    data.NoiCap = noiCap;
                     data.DiaChi = diaChi;
                     data.DienThoai = dienThoai;
                     data.Email = email;
@@ -235,7 +243,7 @@ namespace Core
             }
             catch
             {
-                
+
             }
 
             return res;
