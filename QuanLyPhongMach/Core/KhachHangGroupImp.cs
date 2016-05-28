@@ -90,15 +90,10 @@ namespace Core
             {
                 if (data != null)
                 {
-                    KhachHangGroup objDb = GetById(data.Id);
+                    dbContext.KhachHangGroups.Remove(data);
+                    dbContext.SaveChanges();
 
-                    if (objDb != null)
-                    {
-                        dbContext.KhachHangGroups.Remove(objDb);
-                        dbContext.SaveChanges();
-
-                        return true;
-                    }
+                    return true;
                 }
             }
             catch

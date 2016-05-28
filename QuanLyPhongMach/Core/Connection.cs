@@ -59,7 +59,7 @@ namespace Core
 
                 if (dbContext.Database.CurrentTransaction == null || dbContext.Database.CurrentTransaction.UnderlyingTransaction.Connection == null)
                 {
-                    dbContext.Database.Connection.BeginTransaction();
+                    dbContext.Database.UseTransaction(dbContext.Database.Connection.BeginTransaction());
                 }
             }
             catch (Exception ex)
@@ -82,8 +82,6 @@ namespace Core
                     {
                         dbContext.Database.CurrentTransaction.Rollback();
                     }
-
-                    dbContext.Database.CurrentTransaction.Dispose();
                 }
             }
             catch (Exception ex)

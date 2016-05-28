@@ -19,7 +19,7 @@ namespace Core
 
             if (deleteFlag != null)
             {
-                query.Where(p => p.DeleteFlag == deleteFlag);
+                query = query.Where(p => p.DeleteFlag == deleteFlag);
             }
 
             return query;
@@ -103,18 +103,12 @@ namespace Core
             {
                 if (data != null)
                 {
-                    Pet objDb = GetById(data.Id);
+                    data.UpdateBy = CurrentUser.UserName;
+                    data.UpdateDate = DateTime.Now;
+                    data.DeleteFlag = true;
+                    dbContext.SaveChanges();
 
-                    if (objDb != null)
-                    {
-                        data.UpdateBy = CurrentUser.UserName;
-                        data.UpdateDate = DateTime.Now;
-
-                        objDb.DeleteFlag = true;
-                        dbContext.SaveChanges();
-
-                        return true;
-                    }
+                    return true;
                 }
             }
             catch

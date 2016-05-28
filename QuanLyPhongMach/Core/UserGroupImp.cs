@@ -89,15 +89,10 @@ namespace Core
             {
                 if (data != null)
                 {
-                    UserGroup objDb = GetById(data.Id);
+                    dbContext.UserGroups.Remove(data);
+                    dbContext.SaveChanges();
 
-                    if (objDb != null)
-                    {
-                        dbContext.UserGroups.Remove(objDb);
-                        dbContext.SaveChanges();
-
-                        return true;
-                    }
+                    return true;
                 }
             }
             catch

@@ -91,15 +91,10 @@ namespace Core
             {
                 if (data != null)
                 {
-                    PetGroup objDb = GetById(data.Id);
+                    dbContext.PetGroups.Remove(data);
+                    dbContext.SaveChanges();
 
-                    if (objDb != null)
-                    {
-                        dbContext.PetGroups.Remove(objDb);
-                        dbContext.SaveChanges();
-
-                        return true;
-                    }
+                    return true;
                 }
             }
             catch

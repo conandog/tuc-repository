@@ -24,6 +24,7 @@ namespace QuanLyPhongMach.Model
             DOB = data.DOB;
             TrongLuong = data.TrongLuong;
             GhiChu = data.GhiChu;
+            DeleteFlag = data.DeleteFlag;
 
             KhachHang = data.KhachHang;
             PetGroup = data.PetGroup;

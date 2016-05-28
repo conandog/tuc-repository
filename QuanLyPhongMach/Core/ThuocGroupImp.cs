@@ -89,15 +89,10 @@ namespace Core
             {
                 if (data != null)
                 {
-                    ThuocGroup objDb = GetById(data.Id);
+                    dbContext.ThuocGroups.Remove(data);
+                    dbContext.SaveChanges();
 
-                    if (objDb != null)
-                    {
-                        dbContext.ThuocGroups.Remove(objDb);
-                        dbContext.SaveChanges();
-
-                        return true;
-                    }
+                    return true;
                 }
             }
             catch

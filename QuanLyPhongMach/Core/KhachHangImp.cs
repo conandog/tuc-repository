@@ -19,7 +19,7 @@ namespace Core
 
             if (deleteFlag != null)
             {
-                query.Where(p => p.DeleteFlag == deleteFlag);
+                query = query.Where(p => p.DeleteFlag == deleteFlag);
             }
 
             return query;
@@ -112,18 +112,12 @@ namespace Core
             {
                 if (data != null)
                 {
-                    KhachHang objDb = GetById(data.Id);
-
-                    if (objDb != null)
-                    {
                         data.UpdateBy = CurrentUser.UserName;
                         data.UpdateDate = DateTime.Now;
-
-                        objDb.DeleteFlag = true;
+                        data.DeleteFlag = true;
                         dbContext.SaveChanges();
 
                         return true;
-                    }
                 }
             }
             catch
