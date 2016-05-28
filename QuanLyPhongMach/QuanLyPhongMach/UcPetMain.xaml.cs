@@ -120,7 +120,7 @@ namespace QuanLyPhongMach
         {
             CheckBox chb = sender as CheckBox;
 
-            if ((bool)chb.IsChecked)
+            if (chb.IsChecked.HasValue && chb.IsChecked.Value)
             {
                 SelectRowByIndex(0, dgShowInfo.Items.Count);
             }
@@ -132,7 +132,7 @@ namespace QuanLyPhongMach
 
         private void btAdd_Click(object sender, RoutedEventArgs e)
         {
-            var mainWD = (WdMain)Window.GetWindow(this);
+            var mainWD = Window.GetWindow(this) as WdMain;
             mainWD.LoadUcPetDetail();
         }
 
@@ -144,7 +144,6 @@ namespace QuanLyPhongMach
                 {
                     if (PetImp.DeleteList(listSelectedItem))
                     {
-                        //Thread.Sleep(100);
                         LoadDataGrid();
                     }
                     else

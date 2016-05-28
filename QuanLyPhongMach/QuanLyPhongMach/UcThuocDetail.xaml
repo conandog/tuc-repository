@@ -28,18 +28,18 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <TextBlock HorizontalAlignment="Left" Margin="20,13,0,0" TextWrapping="Wrap" Text="*Mã:" VerticalAlignment="Top"/>
-            <TextBlock HorizontalAlignment="Left" Margin="17,13,0,0" TextWrapping="Wrap" Text="*Tên:" VerticalAlignment="Top" Grid.Row="1"/>
-            <TextBlock HorizontalAlignment="Left" Margin="35,13,0,0" TextWrapping="Wrap" Text="Nhóm:" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
-            <ComboBox Name="cbGroup" HorizontalAlignment="Left" Margin="76,10,0,0" VerticalAlignment="Top" Width="100" Grid.Row="1" SelectedIndex="0" Grid.Column="1" DisplayMemberPath="Ten" ItemsSource="{Binding}"/>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="49,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="341" Grid.Row="1"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,13,0,0" TextWrapping="Wrap" Text="Mô tả:" VerticalAlignment="Top" Grid.Row="2"/>
-            <TextBox HorizontalAlignment="Left" Height="80" Margin="49,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="341" Grid.Row="2"/>
-            <Button x:Name="btHuy" Content="HỦY" Height="80" Margin="0,0,50,10" Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Click="btHuy_Click"/>
-            <Button Content="HOÀN TẤT" Height="80" Margin="50,0,0,10" Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="80" Grid.Column="1"/>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="49,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="341"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,13,0,0" TextWrapping="Wrap" Text="Đơn vị tính:" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1"/>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="76,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="100" Grid.Row="2" Grid.Column="1"/>
+            <TextBlock HorizontalAlignment="Left" Margin="47,13,0,0" TextWrapping="Wrap" Text="*Mã:" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="44,13,0,0" TextWrapping="Wrap" Text="*Tên:" VerticalAlignment="Top" Grid.Row="1"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,13,0,0" TextWrapping="Wrap" Text="Nhóm:" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
+            <ComboBox Name="cbGroup" HorizontalAlignment="Left" Margin="51,10,0,0" VerticalAlignment="Top" Width="100" Grid.Row="1" SelectedIndex="0" Grid.Column="1" DisplayMemberPath="Ten" ItemsSource="{Binding}" TabIndex="15"/>
+            <TextBox x:Name="tbTen" HorizontalAlignment="Left" Height="23" Margin="76,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="314" Grid.Row="1" TabIndex="13" MaxLength="50"/>
+            <TextBlock HorizontalAlignment="Left" Margin="12,13,0,0" TextWrapping="Wrap" Text="Mô tả:" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1"/>
+            <TextBox x:Name="tbMoTa" HorizontalAlignment="Left" Height="80" Margin="51,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="339" Grid.Row="2" Grid.Column="1" TabIndex="19" MaxLength="200"/>
+            <Button x:Name="btHuy" Content="HỦY" Height="80" Margin="0,0,50,10" Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Click="btHuy_Click" TabIndex="101"/>
+            <Button x:Name="btHoanTat" Content="HOÀN TẤT" Height="80" Margin="50,0,0,10" Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="80" Grid.Column="1" Click="btHoanTat_Click" TabIndex="103"/>
+            <TextBox x:Name="tbMa" HorizontalAlignment="Left" Height="23" Margin="76,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" TabIndex="11" MaxLength="10"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,13,0,0" TextWrapping="Wrap" Text="Đơn vị tính:" VerticalAlignment="Top" Grid.Row="2"/>
+            <TextBox x:Name="tbDonViTinh" HorizontalAlignment="Left" Height="23" Margin="76,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="70" Grid.Row="2" TabIndex="17" MaxLength="10"/>
         </Grid>
     </Grid>
 </UserControl>
