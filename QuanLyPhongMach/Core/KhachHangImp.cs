@@ -49,7 +49,7 @@ namespace Core
         {
             try
             {
-                dbContext.Entry(data).State = EntityState.Added;
+                dbContext.KhachHangs.Add(data);
                 dbContext.SaveChanges();
                 return true;
             }
@@ -65,8 +65,9 @@ namespace Core
         /// <param name="ten"></param>
         /// <param name="ghiChu"></param>
         /// <returns>Return id of the new data if success</returns>
-        public static int? Insert(User user, int idGroup, string ma, string ten, string gioiTinh,
-            DateTime? DOB, string CMND = "", string diaChi = "", string dienThoai = "", string email = "", string ghiChu = "")
+        public static int? Insert(User user, int idGroup, string ma, string ten, string gioiTinh = "Nam",
+            DateTime? DOB = null, string CMND = "", string diaChi = "",
+            string dienThoai = "",string email = "", string ghiChu = "")
         {
             int? res = null;
 
@@ -78,7 +79,7 @@ namespace Core
                 data.Ma = ma;
                 data.Ten = ten;
                 data.GioiTinh = gioiTinh;
-                data.DOB = DOB;
+                data.DOB = DOB == null ? DateTime.Now : DOB;
                 data.CMND = CMND;
                 data.DiaChi = diaChi;
                 data.DienThoai = dienThoai;
@@ -197,8 +198,9 @@ namespace Core
             }
         }
 
-        public static bool Update(User user, int id, object idGroup, string ma, string ten, string gioiTinh,
-            DateTime? DOB, string CMND = "", string diaChi = "", string dienThoai = "", string email = "", string ghiChu = "")
+        public static bool Update(User user, int id, object group, string ma, string ten, string gioiTinh = "Nam",
+            DateTime? DOB = null, string CMND = "", string diaChi = "",
+            string dienThoai = "", string email = "", string ghiChu = "")
         {
             bool res = false;
 
@@ -208,19 +210,19 @@ namespace Core
 
                 if (data != null)
                 {
-                    if (idGroup is int)
+                    if (group is int)
                     {
-                        data.KhachHangGroup = KhachHangGroupImp.GetById(ConvertUtil.ConvertToInt(idGroup));
+                        data.KhachHangGroup = KhachHangGroupImp.GetById(ConvertUtil.ConvertToInt(group));
                     }
                     else
                     {
-                        data.KhachHangGroup = (KhachHangGroup)idGroup;
+                        data.KhachHangGroup = (KhachHangGroup)group;
                     }
 
                     data.Ma = ma;
                     data.Ten = ten;
                     data.GioiTinh = gioiTinh;
-                    data.DOB = DOB;
+                    data.DOB = DOB == null ? DateTime.Now : DOB;
                     data.CMND = CMND;
                     data.DiaChi = diaChi;
                     data.DienThoai = dienThoai;

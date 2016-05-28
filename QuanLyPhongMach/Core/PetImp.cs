@@ -5,16 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using Controller.Common;
-using CryptoFunction;
 
 namespace Core
 {
-    public class UserImp : Connection
+    public class PetImp : Connection
     {
-        private static IQueryable<User> GetQuery(string text)
+        private static IQueryable<Pet> GetQuery(string text)
         {
-            IQueryable<User> query;
-            query = dbContext.Users.Where(p => p.Ten.Contains(text) ||
+            IQueryable<Pet> query;
+            query = dbContext.Pets.Where(p => p.Ten.Contains(text) ||
                 p.GhiChu.Contains(text)
                 );
 
@@ -26,7 +25,7 @@ namespace Core
             return GetQuery(text).Count();
         }
 
-        public static List<User> GetList(string text = "", int skip = 0, int take = 0)
+        public static List<Pet> GetList(string text = "", int skip = 0, int take = 0)
         {
             if ((skip <= 0 && take <= 0) || (skip < 0 && take > 0) || (skip > 0 && take < 0))
             {
@@ -36,21 +35,16 @@ namespace Core
             return GetQuery(text).Skip(skip).Take(take).ToList();
         }
 
-        public static User GetById(int id)
+        public static Pet GetById(int id)
         {
-            return dbContext.Users.Where(p => p.Id.Equals(id)).FirstOrDefault<User>();
+            return dbContext.Pets.Where(p => p.Id.Equals(id)).FirstOrDefault<Pet>();
         }
 
-        public static User GetByUserName(string userName)
-        {
-            return dbContext.Users.Where(p => p.UserName.Equals(userName)).FirstOrDefault<User>();
-        }
-
-        private static bool Insert(User data)
+        private static bool Insert(Pet data)
         {
             try
             {
-                dbContext.Users.Add(data);
+                dbContext.Pets.Add(data);
                 dbContext.SaveChanges();
                 return true;
             }
@@ -66,27 +60,20 @@ namespace Core
         /// <param name="ten"></param>
         /// <param name="ghiChu"></param>
         /// <returns>Return id of the new data if success</returns>
-        public static int? Insert(User user, int idGroup, string ten, string userName, string password, string gioiTinh = "Nam",
-            DateTime? DOB = null, string CMND = "", DateTime? ngayCap = null, string noiCap = "",
-            string diaChi = "", string dienThoai = "", string email = "", string ghiChu = "")
+        public static int? Insert(User user, int idGroup, int idKhachHang, string ten,
+            string gioiTinh = "Đực", DateTime? DOB = null, string ghiChu = "")
         {
             int? res = null;
 
             try
             {
-                User data = new User();
+                Pet data = new Pet();
+                data.Id = 1;
                 data.IdGroup = idGroup;
+                data.IdKhachHang = idKhachHang;
                 data.Ten = ten;
-                data.UserName = userName;
-                data.Password = Crypto.EncryptText(password);
                 data.GioiTinh = gioiTinh;
-                data.DOB = DOB == null ? DateTime.Now : DOB;
-                data.NgayCap = ngayCap;
-                data.CMND = CMND;
-                data.NoiCap = noiCap;
-                data.DiaChi = diaChi;
-                data.DienThoai = dienThoai;
-                data.Email = email;
+                data.DOB = DOB;
                 data.GhiChu = ghiChu;
 
                 data.CreateBy = data.UpdateBy = user.UserName;
@@ -105,13 +92,13 @@ namespace Core
             return res;
         }
 
-        public static bool Delete(User data, User user)
+        public static bool Delete(Pet data, User user)
         {
             try
             {
                 if (data != null)
                 {
-                    User objDb = GetById(data.Id);
+                    Pet objDb = GetById(data.Id);
 
                     if (objDb != null)
                     {
@@ -151,7 +138,7 @@ namespace Core
                     {
                         if (int.TryParse(id, out result))
                         {
-                            User data = GetById(result);
+                            Pet data = GetById(result);
 
                             if (!Delete(data, user))
                             {
@@ -183,7 +170,7 @@ namespace Core
             return res;
         }
 
-        public static bool Update(User data, User user)
+        public static bool Update(Pet data, User user)
         {
             try
             {
@@ -201,39 +188,39 @@ namespace Core
             }
         }
 
-        public static bool Update(User user, int id, object idGroup, string ten, string userName, string password, string gioiTinh = "Nam",
-            DateTime? DOB = null, string CMND = "", DateTime? ngayCap = null, string noiCap = "",
-            string diaChi = "", string dienThoai = "", string email = "", string ghiChu = "")
+        public static bool Update(User user, int id, object idGroup, object khachHang, string ten,
+            string gioiTinh = "Đực", DateTime? DOB = null, string ghiChu = "")
         {
             bool res = false;
 
             try
             {
-                User data = GetById(id);
+                Pet data = GetById(id);
 
                 if (data != null)
                 {
                     if (idGroup is int)
                     {
-                        data.UserGroup = UserGroupImp.GetById(ConvertUtil.ConvertToInt(idGroup));
+                        data.PetGroup = PetGroupImp.GetById(ConvertUtil.ConvertToInt(idGroup));
                     }
                     else
                     {
-                        data.UserGroup = (UserGroup)idGroup;
+                        data.PetGroup = (PetGroup)idGroup;
+                    }
+
+                    if (khachHang is int)
+                    {
+                        data.KhachHang = KhachHangImp.GetById(ConvertUtil.ConvertToInt(khachHang));
+                    }
+                    else
+                    {
+                        data.KhachHang = (KhachHang)khachHang;
                     }
 
                     data.Ten = ten;
-                    data.UserName = userName;
-                    data.Password = Crypto.EncryptText(password);
                     data.GioiTinh = gioiTinh;
-                    data.DOB = DOB == null ? DateTime.Now : DOB;
-                    data.NgayCap = ngayCap;
-                    data.CMND = CMND;
-                    data.NoiCap = noiCap;
-                    data.DiaChi = diaChi;
-                    data.DienThoai = dienThoai;
-                    data.Email = email;
-                    data.GhiChu = ghiChu;
+                    data.DOB = DOB;
+                    data.GhiChu = ghiChu; ;
 
                     data.UpdateBy = user.UserName;
                     data.UpdateDate = DateTime.Now;

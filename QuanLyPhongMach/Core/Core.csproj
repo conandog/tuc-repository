@@ -79,6 +79,7 @@
       <DependentUpon>QLPM.tt</DependentUpon>
     </Compile>
     <Compile Include="PetGroupImp.cs" />
+    <Compile Include="PetImp.cs" />
     <Compile Include="PhieuDieuTri.cs">
       <DependentUpon>QLPM.tt</DependentUpon>
     </Compile>
