@@ -90,17 +90,23 @@ namespace QuanLyPhongMach
                 listSelectedItem += data.Id + Constant.DELIMITER_STRING;
             }
 
-            if (string.IsNullOrEmpty(listSelectedItem))
+            if (listSelected.Count == 1)
             {
-                btDelete.IsEnabled = false;
+                btDelete.IsEnabled = true;
+                btEdit.IsEnabled = true;
+                chbSelect.IsChecked = true;
+            }
+            else if (listSelected.Count > 1)
+            {
+                btDelete.IsEnabled = true;
                 btEdit.IsEnabled = false;
-                chbSelect.IsChecked = false;
+                chbSelect.IsChecked = true;
             }
             else
             {
-                btEdit.IsEnabled = true;
-                btDelete.IsEnabled = true;
-                chbSelect.IsChecked = true;
+                btEdit.IsEnabled = false;
+                btDelete.IsEnabled = false;
+                chbSelect.IsChecked = false;
             }
         }
 
@@ -127,12 +133,6 @@ namespace QuanLyPhongMach
             {
                 dgShowInfo.SelectedItems.Clear();
             }
-        }
-
-        private void chbItem_Click(object sender, RoutedEventArgs e)
-        {
-            var control = sender as CheckBox;
-            control.IsChecked = !control.IsChecked;
         }
     }
 }
