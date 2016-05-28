@@ -16,7 +16,7 @@
         <Button x:Name="btAdd" Content="Thêm" HorizontalAlignment="Left" Height="48" Margin="10,10,0,0" VerticalAlignment="Top" Width="48" Click="btAdd_Click"/>
         <Button x:Name="btDelete" Content="Xóa" HorizontalAlignment="Left" Height="48" Margin="80,10,0,0" VerticalAlignment="Top" Width="48" IsEnabled="False"/>
         <Button x:Name="btEdit" Content="Sửa" HorizontalAlignment="Left" Height="48" Margin="150,10,0,0" VerticalAlignment="Top" Width="48" IsEnabled="False"/>
-        <DataGrid x:Name="dgShowInfo" CanUserAddRows="False" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="490" Margin="10,10,0,0" VerticalAlignment="Top" Width="780" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserDeleteRows="False" Grid.Row="1">
+        <DataGrid x:Name="dgShowInfo" CanUserAddRows="False" AutoGenerateColumns="False" Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserDeleteRows="False" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>

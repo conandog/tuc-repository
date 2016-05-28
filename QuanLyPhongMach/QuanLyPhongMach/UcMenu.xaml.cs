@@ -27,33 +27,34 @@ namespace QuanLyPhongMach
 
         private void ButtonDropdown_Click(object sender, RoutedEventArgs e)
         {
-            (sender as Button).ContextMenu.IsEnabled = true;
-            (sender as Button).ContextMenu.PlacementTarget = (sender as Button);
-            (sender as Button).ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
-            (sender as Button).ContextMenu.IsOpen = true;
+            var button = sender as Button;
+            button.ContextMenu.IsEnabled = true;
+            button.ContextMenu.PlacementTarget = button;
+            button.ContextMenu.Placement = System.Windows.Controls.Primitives.PlacementMode.Bottom;
+            button.ContextMenu.IsOpen = true;
         }
 
         private void mnKhachHang_Click(object sender, RoutedEventArgs e)
         {
-            var mainWD = (WdMain)Window.GetWindow(this);
+            var mainWD = Window.GetWindow(this) as WdMain;
             mainWD.LoadUcKhachHangMain();
         }
 
         private void mnPet_Click(object sender, RoutedEventArgs e)
         {
-            var mainWD = (WdMain)Window.GetWindow(this);
+            var mainWD = Window.GetWindow(this) as WdMain;
             mainWD.LoadUcPetMain();
         }
 
         private void btThuoc_Click(object sender, RoutedEventArgs e)
         {
-            var mainWD = (WdMain)Window.GetWindow(this);
+            var mainWD = Window.GetWindow(this) as WdMain;
             mainWD.LoadUcThuocMain();
         }
 
         private void btDieuTri_Click(object sender, RoutedEventArgs e)
         {
-            var mainWD = (WdMain)Window.GetWindow(this);
+            var mainWD = Window.GetWindow(this) as WdMain;
             mainWD.LoadUcDieuTriMain();
         }
     }

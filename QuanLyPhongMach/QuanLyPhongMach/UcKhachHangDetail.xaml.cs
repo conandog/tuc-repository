@@ -26,17 +26,14 @@ namespace QuanLyPhongMach
             InitializeComponent();
         }
 
-        private void btHuy_Click(object sender, RoutedEventArgs e)
+        private void UcMain_Loaded(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show(Constant.MESSAGE_HUY, Constant.CAPTION_CONFIRM, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                BackToMain();
-            }
+            ResetData();
         }
 
         private void BackToMain()
         {
-            var mainWD = (WdMain)Window.GetWindow(this);
+            var mainWD = Window.GetWindow(this) as WdMain;
             mainWD.LoadUcKhachHangMain();
         }
 
@@ -54,11 +51,6 @@ namespace QuanLyPhongMach
             datePicker.SelectedDate = DateTime.Now;
 
             tbMa.Focus();
-        }
-
-        private void UcMain_Loaded(object sender, RoutedEventArgs e)
-        {
-            ResetData();
         }
 
         private bool Validate()
@@ -102,7 +94,7 @@ namespace QuanLyPhongMach
                 }
                 else
                 {
-                    byte idKhachHangGroup = 1;
+                    int idKhachHangGroup = KhachHangGroupImp.GetList().FirstOrDefault().Id;
                     int? id = KhachHangImp.Insert(Connection.CurrentUser, idKhachHangGroup, tbMa.Text, tbTen.Text,
                         cbGioiTinh.Text, datePicker.SelectedDate, tbCMND.Text, tbDiaChi.Text,
                         tbDienThoai.Text, tbEmail.Text, tbGhiChu.Text);
@@ -129,6 +121,14 @@ namespace QuanLyPhongMach
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btHuy_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show(Constant.MESSAGE_HUY, Constant.CAPTION_CONFIRM, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                BackToMain();
             }
         }
     }
