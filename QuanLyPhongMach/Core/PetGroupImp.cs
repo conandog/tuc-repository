@@ -13,9 +13,9 @@ namespace Core
         private static IQueryable<PetGroup> GetQuery(string text)
         {
             IQueryable<PetGroup> query;
-            query = dbContext.PetGroups.Where(p => p.Ma.Contains(text) ||
-                p.Ten.Contains(text) ||
-                p.MoTa.Contains(text)
+            query = dbContext.PetGroups.Where(p => p.Ma.Contains(text)
+                || p.Ten.Contains(text)
+                || p.MoTa.Contains(text)
                 );
 
             return query;
@@ -61,7 +61,7 @@ namespace Core
         /// <param name="ten"></param>
         /// <param name="ghiChu"></param>
         /// <returns>Return id of the new data if success</returns>
-        public static int? Insert(User user, string ma, string ten, string moTa)
+        public static int? Insert(string ma, string ten, string moTa)
         {
             int? res = null;
 
@@ -85,7 +85,7 @@ namespace Core
             return res;
         }
 
-        public static bool Delete(PetGroup data, User user)
+        public static bool Delete(PetGroup data)
         {
             try
             {
@@ -111,7 +111,7 @@ namespace Core
             return false;
         }
 
-        public static bool DeleteList(string ids, User user)
+        public static bool DeleteList(string ids)
         {
             bool res = true;
 
@@ -130,7 +130,7 @@ namespace Core
                         {
                             PetGroup data = GetById(result);
 
-                            if (!Delete(data, user))
+                            if (!Delete(data))
                             {
                                 res = false;
                                 break;
@@ -160,7 +160,7 @@ namespace Core
             return res;
         }
 
-        public static bool Update(PetGroup data, User user)
+        public static bool Update(PetGroup data)
         {
             try
             {
@@ -178,7 +178,7 @@ namespace Core
             }
         }
 
-        public static bool Update(User user, int id, string ma, string ten, string moTa)
+        public static bool Update(int id, string ma, string ten, string moTa)
         {
             bool res = false;
 
@@ -191,7 +191,7 @@ namespace Core
                     data.Ma = ma;
                     data.Ten = ten;
                     data.MoTa = moTa;
-                    res = Update(data, user);
+                    res = Update(data);
                 }
             }
             catch

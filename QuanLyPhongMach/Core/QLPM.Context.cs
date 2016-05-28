@@ -29,12 +29,12 @@ namespace Core
         public DbSet<KhachHangGroup> KhachHangGroups { get; set; }
         public DbSet<Pet> Pets { get; set; }
         public DbSet<PetGroup> PetGroups { get; set; }
-        public DbSet<PhieuDieuTri> PhieuDieuTris { get; set; }
         public DbSet<PhieuDieuTri_Thuoc> PhieuDieuTri_Thuoc { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<Thuoc> Thuocs { get; set; }
         public DbSet<ThuocGroup> ThuocGroups { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserGroup> UserGroups { get; set; }
+        public DbSet<PhieuDieuTri> PhieuDieuTris { get; set; }
     }
 }

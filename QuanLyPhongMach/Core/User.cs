@@ -39,7 +39,7 @@ namespace Core
         public System.DateTime UpdateDate { get; set; }
         public bool DeleteFlag { get; set; }
     
-        public virtual ICollection<PhieuDieuTri> PhieuDieuTris { get; set; }
         public virtual UserGroup UserGroup { get; set; }
+        public virtual ICollection<PhieuDieuTri> PhieuDieuTris { get; set; }
     }
 }

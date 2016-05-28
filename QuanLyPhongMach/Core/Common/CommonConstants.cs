@@ -22,5 +22,6 @@ namespace Controller.Common
         public const string DEFAULT_TYPE_WEEK = "Tuần";
         public const string DEFAULT_TYPE_MONTH = "Tháng";
         public const string DEFAULT_TYPE_YEAR = "Năm";
+        public const string DEFAULT_PREFIX_CODE_PDT = "P";
     }
 }

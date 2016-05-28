@@ -25,6 +25,7 @@ namespace Core
         public string Ten { get; set; }
         public string GioiTinh { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }
+        public Nullable<double> TrongLuong { get; set; }
         public string GhiChu { get; set; }
         public string CreateBy { get; set; }
         public System.DateTime CreateDate { get; set; }

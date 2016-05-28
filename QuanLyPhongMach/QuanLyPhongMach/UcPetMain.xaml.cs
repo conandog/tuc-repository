@@ -74,18 +74,12 @@ namespace QuanLyPhongMach
             return res;
         }
 
-        private void btAdd_Click(object sender, RoutedEventArgs e)
-        {
-            var mainWD = (WdMain)Window.GetWindow(this);
-            mainWD.LoadUcPetDetail();
-        }
-
         private void dgShowInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             listSelectedItem = string.Empty;
             System.Collections.IList listSelected = dgShowInfo.SelectedItems;
 
-            foreach (Pet data in listSelected)
+            foreach (Model.PetViewModel data in listSelected)
             {
                 selectedItem = data;
                 listSelectedItem += data.Id + Constant.DELIMITER_STRING;
@@ -134,6 +128,40 @@ namespace QuanLyPhongMach
             {
                 dgShowInfo.SelectedItems.Clear();
             }
+        }
+
+        private void btAdd_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWD = (WdMain)Window.GetWindow(this);
+            mainWD.LoadUcPetDetail();
+        }
+
+        private void btDelete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show(Constant.MESSAGE_DELETE_CONFIRM, Constant.CAPTION_CONFIRM, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    if (PetImp.DeleteList(listSelectedItem))
+                    {
+                        //Thread.Sleep(100);
+                        LoadDataGrid();
+                    }
+                    else
+                    { 
+                        MessageBox.Show(Constant.MESSAGE_GENERAL_ERROR, Constant.CAPTION_ERROR, MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btEdit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

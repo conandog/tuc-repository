@@ -19,7 +19,7 @@ namespace Core
         public int IdThuoc { get; set; }
         public double LieuLuong { get; set; }
     
-        public virtual PhieuDieuTri PhieuDieuTri { get; set; }
         public virtual Thuoc Thuoc { get; set; }
+        public virtual PhieuDieuTri PhieuDieuTri { get; set; }
     }
 }

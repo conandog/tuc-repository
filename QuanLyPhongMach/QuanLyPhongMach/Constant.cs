@@ -36,10 +36,22 @@ namespace QuanLyPhongMach
         public const string CAPTION_WARNING = "CẢNH BÁO";
         public const string CAPTION_ERROR = "LỖI";
 
+        public const string MESSAGE_DELETE_CONFIRM = "Xóa dữ liệu đã chọn?";
+        public const string MESSAGE_DELETE_SUCCESS = "{0} đã xóa thành công.";
+        public const string MESSAGE_DELETE_ERROR = "{0} xóa thất bại!";
+
+        public const string MESSAGE_INSERT_SUCCESS = "{0} đã nhập thành công";
+        public const string MESSAGE_INSERT_ERROR = "Quá trình nhập dữ liệu mới thất bại!";
+        public const string MESSAGE_INSERT_ERROR_DUPLICATE = "Quá trình nhập dữ liệu mới thất bại!" + MESSAGE_NEW_LINE + "Vui lòng kiểm tra \"{0}\" đã tồn tại.";
+
+        public const string MESSAGE_UPDATE_CONFIRM = "Cập nhật dữ liệu?";
+        public const string MESSAGE_UPDATE_SUCCESS = "{0} đã cập nhật thành công.";
+        public const string MESSAGE_UPDATE_ERROR = "{0} cập nhật dữ liệu thất bại!";
+
         public const string MESSAGE_HUY = "Bạn có chắc muốn hủy?";
         public const string MESSAGE_MISSING_REQUIRED_FIELD = "Vui lòng điền đủ thông tin có dấu \"*\"";
-        public const string MESSAGE_DUPLICATED_CLIENT_CODE = "Mã khách hàng đã tồn tại!" + MESSAGE_NEW_LINE + "Vui lòng nhập lại mã khác";
-        public const string MESSAGE_UPDATE_SUCCESSFUL = "Cập nhật dữ liệu thành công";
+        public const string MESSAGE_GENERAL_SUCCESS = "Cập nhật dữ liệu thành công";
+        public const string MESSAGE_GENERAL_ERROR = "Có lỗi trong quá trình cập nhật dữ liệu!";
 
         public const string MESSAGE_NEW_LINE = "\r\n";
         public const string MESSAGE_EXIT = "Bạn có muốn thoát?";

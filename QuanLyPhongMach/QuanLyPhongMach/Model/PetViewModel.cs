@@ -16,11 +16,13 @@ namespace QuanLyPhongMach.Model
 
         public PetViewModel(Pet data)
         {
+            Id = data.Id;
             IdGroup = data.IdGroup;
             IdKhachHang = data.IdKhachHang;
             Ten = data.Ten;
             GioiTinh = data.GioiTinh;
             DOB = data.DOB;
+            TrongLuong = data.TrongLuong;
             GhiChu = data.GhiChu;
 
             KhachHang = data.KhachHang;

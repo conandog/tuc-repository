@@ -88,20 +88,20 @@ namespace QuanLyPhongMach
 
                 if (data != null)
                 {
-                    MessageBox.Show(Constant.MESSAGE_DUPLICATED_CLIENT_CODE);
+                    MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_ERROR_DUPLICATE, tbMa.Text));
                     tbMa.Focus();
                     tbMa.SelectAll();
                 }
                 else
                 {
                     int idKhachHangGroup = KhachHangGroupImp.GetList().FirstOrDefault().Id;
-                    int? id = KhachHangImp.Insert(Connection.CurrentUser, idKhachHangGroup, tbMa.Text, tbTen.Text,
+                    int? id = KhachHangImp.Insert(idKhachHangGroup, tbMa.Text, tbTen.Text,
                         cbGioiTinh.Text, datePicker.SelectedDate, tbCMND.Text, tbDiaChi.Text,
                         tbDienThoai.Text, tbEmail.Text, tbGhiChu.Text);
 
                     if (id != null)
                     {
-                        if (MessageBox.Show(Constant.MESSAGE_UPDATE_SUCCESSFUL + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_CONTINUE,
+                        if (MessageBox.Show(Constant.MESSAGE_GENERAL_SUCCESS + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_CONTINUE,
                         Constant.CAPTION_CONFIRM, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                         {
                             ResetData();

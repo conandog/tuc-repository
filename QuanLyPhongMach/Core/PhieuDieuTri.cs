@@ -20,11 +20,11 @@ namespace Core
         }
     
         public int Id { get; set; }
-        public string Ma { get; set; }
         public int IdPet { get; set; }
         public int IdUser { get; set; }
-        public double TrongLuong { get; set; }
-        public double NhietDo { get; set; }
+        public string Ma { get; set; }
+        public Nullable<double> TrongLuong { get; set; }
+        public Nullable<double> NhietDo { get; set; }
         public bool IsKhamBenh { get; set; }
         public bool IsChich_UongThuoc { get; set; }
         public bool IsTruyenDichTinhMach { get; set; }

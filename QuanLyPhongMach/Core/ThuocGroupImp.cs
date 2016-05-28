@@ -13,8 +13,8 @@ namespace Core
         private static IQueryable<ThuocGroup> GetQuery(string text)
         {
             IQueryable<ThuocGroup> query;
-            query = dbContext.ThuocGroups.Where(p => p.Ma.Contains(text) ||
-                p.Ten.Contains(text)
+            query = dbContext.ThuocGroups.Where(p => p.Ma.Contains(text)
+                || p.Ten.Contains(text)
                 );
 
             return query;
@@ -60,7 +60,7 @@ namespace Core
         /// <param name="ten"></param>
         /// <param name="ghiChu"></param>
         /// <returns>Return id of the new data if success</returns>
-        public static int? Insert(User user, string ma, string ten)
+        public static int? Insert(string ma, string ten)
         {
             int? res = null;
 
@@ -83,7 +83,7 @@ namespace Core
             return res;
         }
 
-        public static bool Delete(ThuocGroup data, User user)
+        public static bool Delete(ThuocGroup data)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace Core
             return false;
         }
 
-        public static bool DeleteList(string ids, User user)
+        public static bool DeleteList(string ids)
         {
             bool res = true;
 
@@ -128,7 +128,7 @@ namespace Core
                         {
                             ThuocGroup data = GetById(result);
 
-                            if (!Delete(data, user))
+                            if (!Delete(data))
                             {
                                 res = false;
                                 break;
@@ -158,7 +158,7 @@ namespace Core
             return res;
         }
 
-        public static bool Update(ThuocGroup data, User user)
+        public static bool Update(ThuocGroup data)
         {
             try
             {
@@ -176,7 +176,7 @@ namespace Core
             }
         }
 
-        public static bool Update(User user, int id, string ma, string ten)
+        public static bool Update(int id, string ma, string ten)
         {
             bool res = false;
 
@@ -188,7 +188,7 @@ namespace Core
                 {
                     data.Ma = ma;
                     data.Ten = ten;
-                    res = Update(data, user);
+                    res = Update(data);
                 }
             }
             catch

@@ -10,22 +10,27 @@ namespace Core
 {
     public class PetImp : Connection
     {
-        private static IQueryable<Pet> GetQuery(string text)
+        private static IQueryable<Pet> GetQuery(string text, bool? deleteFlag = false)
         {
             IQueryable<Pet> query;
-            query = dbContext.Pets.Where(p => p.Ten.Contains(text) ||
-                p.GhiChu.Contains(text)
+            query = dbContext.Pets.Where(p => p.Ten.Contains(text)
+                || p.GhiChu.Contains(text)
                 );
+
+            if (deleteFlag != null)
+            {
+                query.Where(p => p.DeleteFlag == deleteFlag);
+            }
 
             return query;
         }
 
-        public static int GetCount(string text = "")
+        public static int GetCount(string text = "", bool? deleteFlag = false)
         {
             return GetQuery(text).Count();
         }
 
-        public static List<Pet> GetList(string text = "", int skip = 0, int take = 0)
+        public static List<Pet> GetList(string text = "", bool? deleteFlag = false, int skip = 0, int take = 0)
         {
             if ((skip <= 0 && take <= 0) || (skip < 0 && take > 0) || (skip > 0 && take < 0))
             {
@@ -60,23 +65,23 @@ namespace Core
         /// <param name="ten"></param>
         /// <param name="ghiChu"></param>
         /// <returns>Return id of the new data if success</returns>
-        public static int? Insert(User user, int idGroup, int idKhachHang, string ten,
-            string gioiTinh = "Đực", DateTime? DOB = null, string ghiChu = "")
+        public static int? Insert(int idGroup, int idKhachHang, string ten,
+            string gioiTinh = "Đực", DateTime? DOB = null, double? trongLuong = null, string ghiChu = "")
         {
             int? res = null;
 
             try
             {
                 Pet data = new Pet();
-                data.Id = 1;
                 data.IdGroup = idGroup;
                 data.IdKhachHang = idKhachHang;
                 data.Ten = ten;
                 data.GioiTinh = gioiTinh;
-                data.DOB = DOB;
+                data.DOB = DOB == null ? DateTime.Today : DOB;
+                data.TrongLuong = trongLuong;
                 data.GhiChu = ghiChu;
 
-                data.CreateBy = data.UpdateBy = user.UserName;
+                data.CreateBy = data.UpdateBy = CurrentUser.UserName;
                 data.CreateDate = data.UpdateDate = DateTime.Now;
 
                 if (Insert(data))
@@ -92,7 +97,7 @@ namespace Core
             return res;
         }
 
-        public static bool Delete(Pet data, User user)
+        public static bool Delete(Pet data)
         {
             try
             {
@@ -102,7 +107,7 @@ namespace Core
 
                     if (objDb != null)
                     {
-                        data.UpdateBy = user.UserName;
+                        data.UpdateBy = CurrentUser.UserName;
                         data.UpdateDate = DateTime.Now;
 
                         objDb.DeleteFlag = true;
@@ -121,7 +126,7 @@ namespace Core
             return false;
         }
 
-        public static bool DeleteList(string ids, User user)
+        public static bool DeleteList(string ids)
         {
             bool res = true;
 
@@ -140,7 +145,7 @@ namespace Core
                         {
                             Pet data = GetById(result);
 
-                            if (!Delete(data, user))
+                            if (!Delete(data))
                             {
                                 res = false;
                                 break;
@@ -170,7 +175,7 @@ namespace Core
             return res;
         }
 
-        public static bool Update(Pet data, User user)
+        public static bool Update(Pet data)
         {
             try
             {
@@ -188,8 +193,8 @@ namespace Core
             }
         }
 
-        public static bool Update(User user, int id, object idGroup, object khachHang, string ten,
-            string gioiTinh = "Đực", DateTime? DOB = null, string ghiChu = "")
+        public static bool Update(int id, object idGroup, object khachHang, string ten,
+            string gioiTinh = "Đực", DateTime? DOB = null, double? trongLuong = null, string ghiChu = "")
         {
             bool res = false;
 
@@ -205,7 +210,7 @@ namespace Core
                     }
                     else
                     {
-                        data.PetGroup = (PetGroup)idGroup;
+                        data.PetGroup = idGroup as PetGroup;
                     }
 
                     if (khachHang is int)
@@ -214,18 +219,19 @@ namespace Core
                     }
                     else
                     {
-                        data.KhachHang = (KhachHang)khachHang;
+                        data.KhachHang = khachHang as KhachHang;
                     }
 
                     data.Ten = ten;
                     data.GioiTinh = gioiTinh;
-                    data.DOB = DOB;
+                    data.DOB = DOB == null ? DateTime.Today : DOB;
+                    data.TrongLuong = trongLuong;
                     data.GhiChu = ghiChu; ;
 
-                    data.UpdateBy = user.UserName;
+                    data.UpdateBy = CurrentUser.UserName;
                     data.UpdateDate = DateTime.Now;
 
-                    res = Update(data, user);
+                    res = Update(data);
                 }
             }
             catch

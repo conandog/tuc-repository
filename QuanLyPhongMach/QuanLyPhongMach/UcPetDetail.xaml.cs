@@ -88,12 +88,12 @@ namespace QuanLyPhongMach
                 PetGroup group = cbGroup.SelectedItem as PetGroup;
                 DateTime DOB = DateTime.Today.AddYears(-ConvertUtil.ConvertToInt(tbTuoi));
 
-                int? id = PetImp.Insert(Connection.CurrentUser, group.Id, khachHang.Id, tbTen.Text,
-                    cbGioiTinh.Text, DOB, tbGhiChu.Text);
+                int? id = PetImp.Insert(group.Id, khachHang.Id, tbTen.Text,
+                    cbGioiTinh.Text, DOB, ConvertUtil.ConvertToDouble(tbTrongLuong.Text), tbGhiChu.Text);
 
                 if (id != null)
                 {
-                    if (MessageBox.Show(Constant.MESSAGE_UPDATE_SUCCESSFUL + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_CONTINUE,
+                    if (MessageBox.Show(Constant.MESSAGE_GENERAL_SUCCESS + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_CONTINUE,
                     Constant.CAPTION_CONFIRM, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
                         ResetData();
