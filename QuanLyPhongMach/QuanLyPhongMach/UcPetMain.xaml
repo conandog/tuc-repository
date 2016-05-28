@@ -31,7 +31,7 @@
                 <DataGridTextColumn Binding="{Binding Ten}" ClipboardContentBinding="{x:Null}" Header="Tên" IsReadOnly="True" SortMemberPath="Ten"/>
                 <DataGridTextColumn Binding="{Binding KhachHang.Ten}" ClipboardContentBinding="{x:Null}" Header="Chủ" IsReadOnly="True" SortMemberPath="KhachHang.Ten"/>
                 <DataGridTextColumn Binding="{Binding GioiTinh}" ClipboardContentBinding="{x:Null}" Header="Giới tính" IsReadOnly="True" SortMemberPath="GioiTinh"/>
-                <DataGridTextColumn Binding="{Binding DOB}" ClipboardContentBinding="{x:Null}" Header="Ngày sinh" IsReadOnly="True" SortMemberPath="DOB"/>
+                <DataGridTextColumn Binding="{Binding Tuoi}" ClipboardContentBinding="{x:Null}" Header="Tuổi" IsReadOnly="True" SortMemberPath="Tuoi"/>
                 <DataGridTextColumn Binding="{Binding GhiChu}" ClipboardContentBinding="{x:Null}" Header="Ghi chú" IsReadOnly="True" SortMemberPath="GhiChu"/>
             </DataGrid.Columns>
             <DataGrid.DataContext>

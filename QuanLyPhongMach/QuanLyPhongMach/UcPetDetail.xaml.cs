@@ -35,7 +35,7 @@ namespace QuanLyPhongMach
         private void BackToMain()
         {
             var mainWD = Window.GetWindow(this) as WdMain;
-            mainWD.LoadUcKhachHangMain();
+            mainWD.LoadUcPetMain();
         }
 
         private void ResetData()
@@ -57,7 +57,7 @@ namespace QuanLyPhongMach
         {
             bool res = false;
 
-            if (cbGroup.SelectedItem != null)
+            if (cbGroup.SelectedItem == null)
             {
                 MessageBox.Show(Constant.MESSAGE_MISSING_REQUIRED_FIELD);
                 cbGroup.Focus();
@@ -86,7 +86,7 @@ namespace QuanLyPhongMach
             {
                 KhachHang khachHang = cbKhachHang.SelectedItem as KhachHang;
                 PetGroup group = cbGroup.SelectedItem as PetGroup;
-                DateTime DOB = DateTime.Now.AddYears(-ConvertUtil.ConvertToInt(tbTuoi));
+                DateTime DOB = DateTime.Today.AddYears(-ConvertUtil.ConvertToInt(tbTuoi));
 
                 int? id = PetImp.Insert(Connection.CurrentUser, group.Id, khachHang.Id, tbTen.Text,
                     cbGioiTinh.Text, DOB, tbGhiChu.Text);

@@ -62,6 +62,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Constant.cs" />
+    <Compile Include="Model\PetViewModel.cs" />
     <Compile Include="UcDieuTriMain.xaml.cs">
       <DependentUpon>UcDieuTriMain.xaml</DependentUpon>
     </Compile>

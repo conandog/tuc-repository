@@ -39,10 +39,11 @@ namespace QuanLyPhongMach
             try
             {
                 List<Pet> listData = PetImp.GetList();
+                List<Model.PetViewModel> listViewData = Model.PetViewModel.GetListFromPet(listData);
 
                 if (listData != null)
                 {
-                    dgShowInfo.ItemsSource = listData;
+                    dgShowInfo.ItemsSource = listViewData;
                 }
             }
             catch (Exception ex)
