@@ -5,26 +5,26 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="31d46b7e404642779441858dc4ea39a7" Name="Diagram1">
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.KhachHang" Width="1.5" PointX="8.3935255670889859" PointY="0.29350291206198881" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.KhachHangGroup" Width="1.5" PointX="5.3544488145757692" PointY="24.347962450398114" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.Pet" Width="1.5" PointX="11.475335430109563" PointY="3.77792138037175" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.PetGroup" Width="1.5" PointX="1.1067751055149246" PointY="4.6947050563500756" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.PhieuDieuTri_Thuoc" Width="1.5" PointX="6.125" PointY="17.625" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.sysdiagram" Width="1.5" PointX="6.3704138278823415" PointY="20.726237872953636" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.Thuoc" Width="1.5" PointX="9.516578535324232" PointY="4.29907535216728" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.ThuocGroup" Width="1.5" PointX="3.7818258142945478" PointY="10.190145661211641" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.User" Width="1.5" PointX="0.1613731273270087" PointY="27.136946631193602" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.UserGroup" Width="1.5" PointX="9.892848371478193" PointY="13.423244259051627" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.KhachHang" Width="1.5" PointX="7.0015339995741543" PointY="2.6099192959302662" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.KhachHangGroup" Width="1.5" PointX="9.00606773095488" PointY="20.715428898444134" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.Pet" Width="1.5" PointX="9.3048282197233423" PointY="6.2477596431261668" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.PetGroup" Width="1.5" PointX="9.2169205067758071" PointY="14.533959201785716" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.PhieuDieuTri" Width="1.5" PointX="5.1533617829686786" PointY="24.27434251842757" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.PhieuDieuTri_Thuoc" Width="1.5" PointX="7.570112220742792" PointY="19.149591723060976" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.sysdiagram" Width="1.5" PointX="2.3655093099761331" PointY="10.042673845795298" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.Thuoc" Width="1.5" PointX="9.1230052938326285" PointY="13.623580491926326" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.ThuocGroup" Width="1.5" PointX="5.5822400644338881" PointY="10.515772407183318" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.User" Width="1.5" PointX="2.7478033931682835" PointY="8.1357119568324237" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.UserGroup" Width="1.5" PointX="7.6379210742367061" PointY="8.2504112758908477" />
         <AssociationConnector Association="QuanLyPhongMachModel.FK_KhachHang_KhachHangGroup" />
         <AssociationConnector Association="QuanLyPhongMachModel.FK_Pet_KhachHang" />
         <AssociationConnector Association="QuanLyPhongMachModel.FK_Pet_PetGroup" />
-        <AssociationConnector Association="QuanLyPhongMachModel.FK_PhieuDieuTri_Thuoc_Thuoc" />
-        <AssociationConnector Association="QuanLyPhongMachModel.FK_Thuoc_ThuocGroup" />
-        <AssociationConnector Association="QuanLyPhongMachModel.FK_User_UserGroup" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.PhieuDieuTri" Width="1.5" PointX="3.3802049343382032" PointY="31.68642915770711" />
         <AssociationConnector Association="QuanLyPhongMachModel.FK_PhieuDieuTri_Pet" />
         <AssociationConnector Association="QuanLyPhongMachModel.FK_PhieuDieuTri_Thuoc_PhieuDieuTri" />
         <AssociationConnector Association="QuanLyPhongMachModel.FK_PhieuDieuTri_User" />
+        <AssociationConnector Association="QuanLyPhongMachModel.FK_PhieuDieuTri_Thuoc_Thuoc" />
+        <AssociationConnector Association="QuanLyPhongMachModel.FK_Thuoc_ThuocGroup" />
+        <AssociationConnector Association="QuanLyPhongMachModel.FK_User_UserGroup" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

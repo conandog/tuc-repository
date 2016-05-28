@@ -27,17 +27,29 @@ namespace Core
 
         public static int GetCount(string text = "", bool? deleteFlag = false)
         {
-            return GetQuery(text).Count();
+            return GetQuery(text, deleteFlag).Count();
         }
 
         public static List<Pet> GetList(string text = "", bool? deleteFlag = false, int skip = 0, int take = 0)
         {
             if ((skip <= 0 && take <= 0) || (skip < 0 && take > 0) || (skip > 0 && take < 0))
             {
-                return GetQuery(text).ToList();
+                return GetQuery(text, deleteFlag).ToList();
             }
 
-            return GetQuery(text).Skip(skip).Take(take).ToList();
+            return GetQuery(text, deleteFlag).Skip(skip).Take(take).ToList();
+        }
+
+        public static List<Pet> GetListByIdKhachHang(int idKhachHang, bool? deleteFlag = false)
+        {
+            var query = dbContext.Pets.Where(p => p.IdKhachHang.Equals(idKhachHang));
+
+            if (deleteFlag != null)
+            {
+                query = query.Where(p => p.DeleteFlag == deleteFlag);
+            }
+
+            return query.ToList();
         }
 
         public static Pet GetById(int id)

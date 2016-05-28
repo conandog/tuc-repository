@@ -28,17 +28,17 @@ namespace Core
 
         public static int GetCount(string text = "", bool? deleteFlag = false)
         {
-            return GetQuery(text).Count();
+            return GetQuery(text, deleteFlag).Count();
         }
 
         public static List<User> GetList(string text = "", bool? deleteFlag = false, int skip = 0, int take = 0)
         {
             if ((skip <= 0 && take <= 0) || (skip < 0 && take > 0) || (skip > 0 && take < 0))
             {
-                return GetQuery(text).ToList();
+                return GetQuery(text, deleteFlag).ToList();
             }
 
-            return GetQuery(text).Skip(skip).Take(take).ToList();
+            return GetQuery(text, deleteFlag).Skip(skip).Take(take).ToList();
         }
 
         public static User GetById(int id)

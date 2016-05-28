@@ -25,6 +25,7 @@ namespace Core
         public string Ma { get; set; }
         public Nullable<double> TrongLuong { get; set; }
         public Nullable<double> NhietDo { get; set; }
+        public string TrieuChung { get; set; }
         public bool IsKhamBenh { get; set; }
         public bool IsChich_UongThuoc { get; set; }
         public bool IsTruyenDichTinhMach { get; set; }
