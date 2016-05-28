@@ -51,7 +51,7 @@ namespace QuanLyPhongMach
             }
         }
 
-        private bool CheckEditPermission(User data)
+        private bool CheckEditPermission()
         {
             bool res = true;
 
