@@ -134,5 +134,11 @@ namespace QuanLyPhongMach
                 dgShowInfo.SelectedItems.Clear();
             }
         }
+
+        private void btEdit_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWD = Window.GetWindow(this) as WdMain;
+            mainWD.LoadUcKhachHangDetail(selectedItem);
+        }
     }
 }

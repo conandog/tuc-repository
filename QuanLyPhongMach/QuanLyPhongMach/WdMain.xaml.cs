@@ -48,6 +48,12 @@ namespace QuanLyPhongMach
             spMain.Children.Add(new UcKhachHangDetail());
         }
 
+        public void LoadUcKhachHangDetail(object selectedItem)
+        {
+            spMain.Children.Clear();
+            spMain.Children.Add(new UcKhachHangDetail(selectedItem));
+        }
+
         public void LoadUcPetMain()
         {
             spMain.Children.Clear();
@@ -60,6 +66,12 @@ namespace QuanLyPhongMach
             spMain.Children.Add(new UcPetDetail());
         }
 
+        public void LoadUcPetDetail(object selectedItem)
+        {
+            spMain.Children.Clear();
+            spMain.Children.Add(new UcPetDetail(selectedItem));
+        }
+
         public void LoadUcThuocMain()
         {
             spMain.Children.Clear();
@@ -70,6 +82,12 @@ namespace QuanLyPhongMach
         {
             spMain.Children.Clear();
             spMain.Children.Add(new UcThuocDetail());
+        }
+
+        public void LoadUcThuocDetail(object selectedItem)
+        {
+            spMain.Children.Clear();
+            spMain.Children.Add(new UcThuocDetail(selectedItem));
         }
 
         public void LoadUcDieuTriMain()

@@ -48,7 +48,8 @@ namespace QuanLyPhongMach
             cbKhachHang.SelectedIndex = -1;
 
             cbPet.ItemsSource = null;
-            cbPetGroup.ItemsSource = null;
+            cbPetGroup.ItemsSource = PetGroupImp.GetList();
+            cbPetGroup.SelectedIndex = 0;
             cbGioiTinh.SelectedIndex = 0;
 
             chbIsKhamBenh.IsChecked = true;
@@ -56,6 +57,7 @@ namespace QuanLyPhongMach
             chbIsTruyenDichTinhMach.IsChecked = false;
 
             dgToaThuoc.Items.Clear();
+            dgToaThuoc.Items.Add(new PhieuDieuTri_Thuoc());
 
             cbKhachHang.Focus();
         }
@@ -142,6 +144,13 @@ namespace QuanLyPhongMach
                 {
                     cbPet.SelectedIndex = 0;
                 }
+                else
+                {
+                    tbTuoi.Text = String.Empty;
+                    cbGioiTinh.Text = "Đực";
+                    tbTrongLuong.Text = String.Empty;
+                    tbNhietDo.Text = String.Empty;
+                }
             }
         }
 
@@ -153,10 +162,27 @@ namespace QuanLyPhongMach
                 Model.PetViewModel selectedItem = new Model.PetViewModel(selectedPet);
                 cbPetGroup.SelectedItem = selectedItem.PetGroup;
                 tbTuoi.Text = selectedItem.Tuoi.ToString();
-                cbGioiTinh.SelectedItem = selectedItem.GioiTinh;
+                cbGioiTinh.Text = selectedItem.GioiTinh;
                 tbTrongLuong.Text = selectedItem.TrongLuong.ToString();
-                cbPet.ItemsSource = PetImp.GetListByIdKhachHang(selectedItem.Id);
+                tbNhietDo.Text = String.Empty;
             }
+        }
+
+        private void dgToaThuoc_CurrentCellChanged(object sender, EventArgs e)
+        {
+            //if (ValidateDataGrid())
+            //{
+            //    dgToaThuoc.Items.Add(new PhieuDieuTri_Thuoc());
+            //}
+        }
+
+        private bool ValidateDataGrid()
+        {
+            bool res = false;
+
+
+
+            return res;
         }
     }
 

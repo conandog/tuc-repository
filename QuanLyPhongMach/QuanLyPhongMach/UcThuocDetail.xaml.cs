@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Core;
+using Controller.Common;
 
 namespace QuanLyPhongMach
 {
@@ -21,14 +22,27 @@ namespace QuanLyPhongMach
     /// </summary>
     public partial class UcThuocDetail : UserControl
     {
+        private int currentId;
+        private bool isEditing = false;
+
         public UcThuocDetail()
         {
             InitializeComponent();
         }
 
+        public UcThuocDetail(object selectedData)
+        {
+            InitializeComponent();
+            LoadData(selectedData);
+            isEditing = true;
+        }
+
         private void UcMain_Loaded(object sender, RoutedEventArgs e)
         {
-            ResetData();
+            if (!isEditing)
+            {
+                ResetData();
+            }
         }
 
         private void BackToMain()
@@ -48,6 +62,32 @@ namespace QuanLyPhongMach
             cbGroup.SelectedIndex = 0;
 
             tbMa.Focus();
+        }
+
+        private void LoadData(object selectedData)
+        {
+            Thuoc data = null;
+
+            if (selectedData is int)
+            {
+                data = ThuocImp.GetById(ConvertUtil.ConvertToInt(selectedData));
+            }
+            else
+            {
+                data = selectedData as Thuoc;
+            }
+
+            currentId = data.Id;
+            tbMa.Text = data.Ma;
+            tbMa.IsReadOnly = true;
+            tbTen.Text = data.Ten;
+            tbDonViTinh.Text = data.DonViTinh;
+            tbMoTa.Text = data.MoTa;
+
+            cbGroup.ItemsSource = ThuocGroupImp.GetList();
+            cbGroup.SelectedItem = data.ThuocGroup;
+
+            tbTen.Focus();
         }
 
         private bool Validate()
@@ -72,7 +112,7 @@ namespace QuanLyPhongMach
             return res;
         }
 
-        private void btHoanTat_Click(object sender, RoutedEventArgs e)
+        private void Create()
         {
             if (!Validate())
             {
@@ -116,6 +156,54 @@ namespace QuanLyPhongMach
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Update()
+        {
+            if (!Validate())
+            {
+                return;
+            }
+
+            try
+            {
+                ThuocGroup group = cbGroup.SelectedItem as ThuocGroup;
+                bool isSuccess = ThuocImp.Update(currentId, group.Id, tbMa.Text, tbTen.Text, tbDonViTinh.Text, tbMoTa.Text);
+
+                if (isSuccess)
+                {
+                    if (MessageBox.Show(Constant.MESSAGE_GENERAL_SUCCESS + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_CONTINUE,
+                        Constant.CAPTION_CONFIRM, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        ResetData();
+                    }
+                    else
+                    {
+                        BackToMain();
+                    }
+                }
+                else if (MessageBox.Show(Constant.MESSAGE_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_EXIT,
+                    Constant.CAPTION_ERROR, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    BackToMain();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btHoanTat_Click(object sender, RoutedEventArgs e)
+        {
+            if (!isEditing)
+            {
+                Create();
+            }
+            else
+            {
+                Update();
             }
         }
 

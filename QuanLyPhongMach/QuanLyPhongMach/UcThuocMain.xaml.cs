@@ -159,7 +159,8 @@ namespace QuanLyPhongMach
 
         private void btEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            var mainWD = Window.GetWindow(this) as WdMain;
+            mainWD.LoadUcThuocDetail(selectedItem);
         }
     }
 }
