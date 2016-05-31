@@ -1,0 +1,16 @@
+﻿<Window x:Name="WindowConnectDatabase" x:Class="QuanLyDonHang.ConnectDatabaseWD"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Connect Database" Height="300" Width="400" WindowStartupLocation="CenterScreen" Loaded="WindowConnectDatabase_Loaded" ResizeMode="NoResize">
+    <Grid>
+        <TextBox x:Name="tbServer" HorizontalAlignment="Left" Height="23" Margin="131,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" MaxLength="100" IsHitTestVisible="True" MaxLines="1" TextChanged="tbServer_TextChanged"/>
+        <TextBox x:Name="tbUsername" HorizontalAlignment="Left" Height="23" Margin="131,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" MaxLength="20" MaxLines="1" TextChanged="tbUsername_TextChanged"/>
+        <PasswordBox x:Name="pbPassword" HorizontalAlignment="Left" Margin="131,161,0,0" VerticalAlignment="Top" Width="188"/>
+        <Button x:Name="btConnect" Content="Connect" HorizontalAlignment="Center" Margin="158,210,158,0" VerticalAlignment="Top" Width="76" Click="btConnect_Click" IsEnabled="False"/>
+        <TextBlock HorizontalAlignment="Left" Margin="90,81,0,0" TextWrapping="Wrap" Text="Server:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="70,121,0,0" TextWrapping="Wrap" Text="Username:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="73,161,0,0" TextWrapping="Wrap" Text="Password:" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rbWA" Content="WA" HorizontalAlignment="Left" Margin="60,40,0,0" VerticalAlignment="Top" IsChecked="True" Checked="rbWA_Checked"/>
+        <RadioButton x:Name="rbSSA" Content="SSA" HorizontalAlignment="Left" Margin="280,40,0,0" VerticalAlignment="Top" Checked="rbSSA_Checked"/>
+    </Grid>
+</Window>

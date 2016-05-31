@@ -1,0 +1,716 @@
+﻿using Controller.Implementation;
+using Model;
+using QuanLyDonHang.Common;
+using System;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Controls.Primitives;
+
+
+namespace QuanLyDonHang
+{
+    /// <summary>
+    /// Interaction logic for PriceUC.xaml
+    /// </summary>
+    public partial class PriceUC : UserControl
+    {
+        private ItemMaster _historyMaster;
+        public PriceUC()
+        {
+            InitializeComponent();
+        }
+
+        public void SetTbEditVisible()
+        {
+            tbAdd.Visibility = Visibility.Collapsed;
+            tbEdit.Visibility = Visibility.Visible;
+            btEdit.Visibility = Visibility.Visible;
+        }
+
+        public void SetDisplayData(ItemMaster _itemmaster)
+        {
+            _historyMaster = _itemmaster;
+            Utilities.SelectCombobox(cbCodeMer, _itemmaster.codemer);
+            Utilities.SelectCombobox(cbKhaoSat, _itemmaster.khaosat);
+            Utilities.SelectCombobox(cbVanChuyen, _itemmaster.vanchuyen);
+            Utilities.SelectCombobox(cbLapDat, _itemmaster.lapdat);
+            Utilities.SelectCombobox(cbXinPhep, _itemmaster.xinphep);
+            Utilities.SelectCombobox(cbThiCong, _itemmaster.HMTC);
+            Utilities.SelectCombobox(cbMucKhac, _itemmaster.HMK);
+            tbNgang.Text = _itemmaster.ngang.ToString();
+            tbRong.Text = _itemmaster.rong.ToString();
+            tbSluong.Text = _itemmaster.soluong.ToString();
+            tbHMKSluong.Text = _itemmaster.soluongHMK.ToString();
+            tbBrand.Text = _itemmaster.brand;
+        }
+
+        public void SetDefaultData()
+        {
+
+            //dateDateOrder.SelectedDate = DateTime.Now;
+            LoadDataComboCodeMer();
+            LoadDataKhaoSat();
+            LoadDataVanChuyen();
+            LoadDataThiCong();
+            LoadDataLapDat();
+            LoadDataXinPhep();
+            LoadDataMucKhac();
+        }
+
+        # region combo_KhaoSat
+
+        private void cbKhaoSat_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cbKhaoSat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (cbKhaoSat.SelectedItem != null)
+                {
+                    Catalogue data = ((CommonComboBoxItem)cbKhaoSat.SelectedItem).Value as Catalogue;
+                    if (data != null)
+                        tbTienKhaoSat.Text = data.UnitPrice.ToString();
+                    else
+                    {
+                        tbTienKhaoSat.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //log
+            }
+        }
+
+        private void LoadDataKhaoSat()
+        {
+            LoadData(cbKhaoSat, CommonConstants.ITEMGROUP_KHAOSAT);
+        }
+
+        #endregion combo_KhaoSat
+
+        # region combo_VanChuyen
+
+        private void cbVanChuyen_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cbVanChuyen_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (cbVanChuyen.SelectedItem != null)
+                {
+                    Catalogue data = ((CommonComboBoxItem)cbVanChuyen.SelectedItem).Value as Catalogue;
+                    if (data != null)
+                        tbTienVanChuyen.Text = data.UnitPrice.ToString();
+                    else
+                        tbTienVanChuyen.Text = "";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //log
+            }
+        }
+
+        private void LoadDataVanChuyen()
+        {
+            LoadData(cbVanChuyen, CommonConstants.ITEMGROUP_VANCHUYEN);
+        }
+
+        #endregion combo_VanChuyen
+
+        # region combo_ThiCong
+
+        private void cbThiCong_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cbThiCong_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (cbThiCong.SelectedItem != null)
+                {
+                    Catalogue data = ((CommonComboBoxItem)cbThiCong.SelectedItem).Value as Catalogue;
+                    if (data != null)
+                    {
+                        tbHMTCdgia.Text = data.UnitPrice.ToString();
+                        tbHMTCdvi.Text = data.PartNumber;
+                    }
+                    else
+                    {
+                        tbHMTCdgia.Text = "";
+                        tbHMTCdvi.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //log
+            }
+        }
+
+        private void LoadDataThiCong()
+        {
+            LoadData(cbThiCong, CommonConstants.ITEMGROUP_HANGMUCTHICONG);
+        }
+
+        #endregion combo_ThiCong
+
+        # region combo_LapDat
+
+        private void cbLapDat_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cbLapDat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (cbLapDat.SelectedItem != null)
+                {
+                    Catalogue data = ((CommonComboBoxItem)cbLapDat.SelectedItem).Value as Catalogue;
+                    if (data != null)
+                    {
+                        tbLDdgia.Text = data.UnitPrice.ToString();
+                        tbLDdvi.Text = data.PartNumber;
+                    }
+                    else
+                    {
+                        tbLDdgia.Text = "";
+                        tbLDdvi.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //log
+            }
+        }
+
+        private void LoadDataLapDat()
+        {
+            LoadData(cbLapDat, CommonConstants.ITEMGROUP_LAPDAT);
+        }
+
+        #endregion combo_LapDat
+
+        # region combo_XinPhep
+
+        private void cbXinPhep_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cbXinPhep_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (cbXinPhep.SelectedItem != null)
+                {
+                    Catalogue data = ((CommonComboBoxItem)cbXinPhep.SelectedItem).Value as Catalogue;
+                    if (data != null)
+                    {
+                        tbXPdgia.Text = data.UnitPrice.ToString();
+                        tbXPdvi.Text = data.PartNumber;
+                    }
+                    else
+                    {
+                        tbXPdgia.Text = "";
+                        tbXPdvi.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //log
+            }
+        }
+
+        private void LoadDataXinPhep()
+        {
+            LoadData(cbXinPhep, CommonConstants.ITEMGROUP_XINPHEP);
+        }
+
+        #endregion combo_XinPhep
+
+        # region combo_MucKhac
+
+        private void cbMucKhac_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cbMucKhac_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (cbMucKhac.SelectedItem != null)
+                {
+                    Catalogue data = ((CommonComboBoxItem)cbMucKhac.SelectedItem).Value as Catalogue;
+                    if (data != null)
+                    {
+                        tbHMKgia.Text = data.UnitPrice.ToString();
+                        tbHMKdvi.Text = data.PartNumber;
+                    }
+                    else
+                    {
+                        tbHMKgia.Text = "";
+                        tbHMKdvi.Text = "";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //log
+            }
+        }
+
+        private void LoadDataMucKhac()
+        {
+            LoadData(cbMucKhac, CommonConstants.ITEMGROUP_HANGMUCKHAC);
+        }
+
+        #endregion combo_MucKhac
+
+        private void LoadData(ComboBox combo, string itemgroup)
+        {
+            try
+            {
+                List<Catalogue> listData = CatalogueImp.GetList(String.Empty, itemgroup, String.Empty, String.Empty, 0, 0);
+                combo.Items.Add(new CommonComboBoxItem("", ""));
+                foreach (Catalogue data in listData)
+                {
+                    combo.Items.Add(new CommonComboBoxItem(data.ItemDescription, data)); //get all data or just get unit price
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //log
+            }
+        }
+
+        private void LoadDataComboCodeMer()
+        {
+            try
+            {
+                List<NhaThuoc> lstData = NhaThuocImp.GetList(string.Empty, "CodeMer", string.Empty, 0, 0);
+                foreach (NhaThuoc data in lstData)
+                {
+                    cbCodeMer.Items.Add(new CommonComboBoxItem(data.CodeMer, data)); //get all data or just get unit price
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                //log
+            }
+        }
+
+        private void tbXPSluong_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TinhPhiHMTC();
+        }
+
+        private void TinhPhiHMTC()
+        {
+            double temp = Controller.Common.ConvertUtil.ConvertToDouble(tbNgang.Text) * Controller.Common.ConvertUtil.ConvertToDouble(tbRong.Text) *
+                Controller.Common.ConvertUtil.ConvertToInt(tbSluong.Text);
+
+            if (temp != 0)
+            {
+                tbDtich.Text = temp.ToString();
+                tbTienXinPhep.Text = (Controller.Common.ConvertUtil.ConvertToDouble(tbXPdgia.Text) * temp).ToString();
+                tbTienThiCong.Text = (Controller.Common.ConvertUtil.ConvertToDouble(tbHMTCdgia.Text) * temp).ToString();
+                tbTienLapDat.Text = (Controller.Common.ConvertUtil.ConvertToDouble(tbLDdgia.Text) * temp).ToString();
+            }
+            else
+            {
+                tbDtich.Text = String.Empty;
+                tbTienXinPhep.Text = String.Empty;
+                tbTienThiCong.Text = String.Empty;
+                tbTienLapDat.Text = String.Empty;
+            }
+        }
+
+        private void tbHMKSluong_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!string.IsNullOrEmpty(tbHMKSluong.Text) && !string.IsNullOrEmpty(tbHMKgia.Text))
+            {
+                tbTienMucKhac.Text = (Double.Parse(tbHMKSluong.Text) * Double.Parse(tbHMKgia.Text)).ToString();
+            }
+
+            //if (!string.IsNullOrEmpty(tbTienKhaoSat.Text) && !string.IsNullOrEmpty(tbTienLapDat.Text) && !string.IsNullOrEmpty(tbTienThiCong.Text)
+            //    && !string.IsNullOrEmpty(tbTienVanChuyen.Text) && !string.IsNullOrEmpty(tbTienXinPhep.Text) && !string.IsNullOrEmpty(tbTienMucKhac.Text))
+            //{
+            //    tbTonggia.Text = (double.Parse(tbTienKhaoSat.Text) + double.Parse(tbTienLapDat.Text) + double.Parse(tbTienThiCong.Text) + double.Parse(tbTienVanChuyen.Text)
+            //        + double.Parse(tbTienXinPhep.Text) + double.Parse(tbTienMucKhac.Text)).ToString();
+            //}
+
+        }
+
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                List<Catalogue> cata = null;
+                int? IdKhaoSat = null;
+
+                if (cbKhaoSat.SelectedItem != null)
+                {
+                    cata = CatalogueImp.GetList(cbKhaoSat.Text, CommonConstants.ITEMGROUP_KHAOSAT, string.Empty, string.Empty, 0, 0);
+                    IdKhaoSat = cata[0].Id;
+                }
+
+                int? IdVanChuyen = null;
+
+                if (cbVanChuyen.SelectedItem != null)
+                {
+                    cata = CatalogueImp.GetList(cbVanChuyen.Text, CommonConstants.ITEMGROUP_VANCHUYEN, string.Empty, string.Empty, 0, 0);
+                    IdVanChuyen = cata[0].Id;
+                }
+
+                int? IdLapDat = null;
+
+                if (cbLapDat.SelectedItem != null)
+                {
+                    cata = CatalogueImp.GetList(cbLapDat.Text, CommonConstants.ITEMGROUP_LAPDAT, string.Empty, string.Empty, 0, 0);
+                    IdLapDat = cata[0].Id;
+                }
+
+                int? IdXinPhep = null;
+
+                if (cbXinPhep.SelectedItem != null)
+                {
+                    cata = CatalogueImp.GetList(cbXinPhep.Text, CommonConstants.ITEMGROUP_XINPHEP, string.Empty, string.Empty, 0, 0);
+                    IdXinPhep = cata[0].Id;
+                }
+
+                int? IdThiCong = null;
+
+                if (cbThiCong.SelectedItem != null)
+                {
+                    cata = CatalogueImp.GetList(cbThiCong.Text, CommonConstants.ITEMGROUP_HANGMUCTHICONG, string.Empty, string.Empty, 0, 0);
+                    IdThiCong = cata[0].Id;
+                }
+
+                int? IdMucKhac = null;
+
+                if (cbMucKhac.SelectedItem != null)
+                {
+                    cata = CatalogueImp.GetList(cbMucKhac.Text, CommonConstants.ITEMGROUP_HANGMUCKHAC, string.Empty, string.Empty, 0, 0);
+                    IdMucKhac = cata[0].Id;
+                }
+
+                double? ngang = null;
+                double? rong = null;
+                byte? soLuongHMTC = null;
+                byte? soLuongHMK = null;
+
+                if (!String.IsNullOrEmpty(tbNgang.Text))
+                {
+                    ngang = Controller.Common.ConvertUtil.ConvertToDouble(tbNgang.Text);
+                }
+
+                if (!String.IsNullOrEmpty(tbRong.Text))
+                {
+                    rong = Controller.Common.ConvertUtil.ConvertToDouble(tbRong.Text);
+                }
+
+                if (!String.IsNullOrEmpty(tbSluong.Text))
+                {
+                    soLuongHMTC = Controller.Common.ConvertUtil.ConvertToByte(tbSluong.Text);
+                }
+
+                if (!String.IsNullOrEmpty(tbHMKSluong.Text))
+                {
+                    soLuongHMK = Controller.Common.ConvertUtil.ConvertToByte(tbHMKSluong.Text);
+                }
+
+                int? IdMaster = MasterChiPhiImp.Insert(IdKhaoSat, IdVanChuyen, IdThiCong, IdLapDat, IdXinPhep,
+                    ngang, rong, soLuongHMTC, IdMucKhac, soLuongHMK, tbBrand.Text);
+
+                NhaThuoc _nhathuoc = ((CommonComboBoxItem)cbCodeMer.SelectedItem).Value as NhaThuoc;
+                int IdNhaThuoc = _nhathuoc.Id;
+                int IdUser = UserImp.currentUser.Id;
+                DateTime? _date = dateDateOrder.SelectedDate;
+
+                int? id = HistoryImp.Insert(IdUser, IdNhaThuoc, (int)IdMaster, _date);
+
+                if (id != null)
+                {
+                    MessageBox.Show("Cập nhật dữ liệu thành công");
+                    RefreshData();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void RefreshData()
+        {
+            cbKhaoSat.SelectedIndex = 0;
+            cbVanChuyen.SelectedIndex = 0;
+            cbThiCong.SelectedIndex = 0;
+            cbLapDat.SelectedIndex = 0;
+            cbXinPhep.SelectedIndex = 0;
+            cbMucKhac.SelectedIndex = 0;
+            tbBrand.Text = String.Empty;
+            tbNgang.Text = String.Empty;
+            tbRong.Text = String.Empty;
+            tbSluong.Text = String.Empty;
+            tbDtich.Text = String.Empty;
+            tbHMKSluong.Text = String.Empty;
+            tbTonggia.Text = String.Empty;
+        }
+
+        private void TongTien()
+        {
+            double tienKhaoSat = Controller.Common.ConvertUtil.ConvertToDouble(tbTienKhaoSat.Text);
+            double tienVanChuyen = Controller.Common.ConvertUtil.ConvertToDouble(tbTienVanChuyen.Text);
+            double tienHMTC = Controller.Common.ConvertUtil.ConvertToDouble(tbTienThiCong.Text);
+            double tienLapDat = Controller.Common.ConvertUtil.ConvertToDouble(tbTienLapDat.Text);
+            double tienXinPhep = Controller.Common.ConvertUtil.ConvertToDouble(tbTienXinPhep.Text);
+            double tienHMC = Controller.Common.ConvertUtil.ConvertToDouble(tbTienMucKhac.Text);
+
+            tbTonggia.Text = (tienKhaoSat + tienVanChuyen + tienHMTC + tienLapDat + tienXinPhep + tienHMC).ToString();
+        }
+
+        private void tbTienKhaoSat_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TongTien();
+        }
+
+        private void tbTienVanChuyen_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TongTien();
+        }
+
+        private void tbTienThiCong_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TongTien();
+        }
+
+        private void tbTienLapDat_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TongTien();
+        }
+
+        private void tbTienXinPhep_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TongTien();
+        }
+
+        private void tbTienMucKhac_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TongTien();
+        }
+
+        private void tbNgang_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TinhPhiHMTC();
+        }
+
+        private void tbRong_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TinhPhiHMTC();
+        }
+
+        private void SelectComboCodeMer(ComboBox combo, string itemText)
+        {
+            for (int i = 0; i < combo.Items.Count; i++)
+            {
+                NhaThuoc _nt = combo.Items[i] as NhaThuoc;
+                if (_nt.CodeMer.ToString().Equals(itemText))
+                {
+                    combo.SelectedIndex = i;
+                    break;
+                }
+            }
+        }
+
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                List<Catalogue> cata = null;
+                int? IdKhaoSat = null;
+
+                if (cbKhaoSat.SelectedItem != null)
+                {
+                    if (!string.IsNullOrEmpty(cbKhaoSat.Text))
+                    {
+                        cata = CatalogueImp.GetList(cbKhaoSat.Text, CommonConstants.ITEMGROUP_KHAOSAT, string.Empty, string.Empty, 0, 0);
+                        IdKhaoSat = cata[0].Id;
+                    }
+                }
+
+                int? IdVanChuyen = null;
+
+                if (cbVanChuyen.SelectedItem != null)
+                {
+                    if (!string.IsNullOrEmpty(cbVanChuyen.Text))
+                    {
+                        cata = CatalogueImp.GetList(cbVanChuyen.Text, CommonConstants.ITEMGROUP_VANCHUYEN, string.Empty, string.Empty, 0, 0);
+                        IdVanChuyen = cata[0].Id;
+                    }
+                }
+
+                int? IdLapDat = null;
+
+                if (cbLapDat.SelectedItem != null)
+                {
+                    if (!string.IsNullOrEmpty(cbLapDat.Text))
+                    {
+                        cata = CatalogueImp.GetList(cbLapDat.Text, CommonConstants.ITEMGROUP_LAPDAT, string.Empty, string.Empty, 0, 0);
+                        IdLapDat = cata[0].Id;
+                    }
+                }
+
+                int? IdXinPhep = null;
+
+                if (cbXinPhep.SelectedItem != null)
+                {
+                    if (!string.IsNullOrEmpty(cbXinPhep.Text))
+                    {
+                        cata = CatalogueImp.GetList(cbXinPhep.Text, CommonConstants.ITEMGROUP_XINPHEP, string.Empty, string.Empty, 0, 0);
+                        IdXinPhep = cata[0].Id;
+                    }
+                }
+
+                int? IdThiCong = null;
+
+                if (cbThiCong.SelectedItem != null)
+                {
+                    if (!string.IsNullOrEmpty(cbThiCong.Text))
+                    {
+                        cata = CatalogueImp.GetList(cbThiCong.Text, CommonConstants.ITEMGROUP_HANGMUCTHICONG, string.Empty, string.Empty, 0, 0);
+                        IdThiCong = cata[0].Id;
+                    }
+                }
+
+                int? IdMucKhac = null;
+
+                if (cbMucKhac.SelectedItem != null)
+                {
+                    if (!string.IsNullOrEmpty(cbMucKhac.Text))
+                    {
+                        cata = CatalogueImp.GetList(cbMucKhac.Text, CommonConstants.ITEMGROUP_HANGMUCKHAC, string.Empty, string.Empty, 0, 0);
+                        IdMucKhac = cata[0].Id;
+                    }
+                }
+
+                double? ngang = null;
+                double? rong = null;
+                byte? soLuongHMTC = null;
+                byte? soLuongHMK = null;
+
+                if (!String.IsNullOrEmpty(tbNgang.Text))
+                {
+                    ngang = Controller.Common.ConvertUtil.ConvertToDouble(tbNgang.Text);
+                }
+
+                if (!String.IsNullOrEmpty(tbRong.Text))
+                {
+                    rong = Controller.Common.ConvertUtil.ConvertToDouble(tbRong.Text);
+                }
+
+                if (!String.IsNullOrEmpty(tbSluong.Text))
+                {
+                    soLuongHMTC = Controller.Common.ConvertUtil.ConvertToByte(tbSluong.Text);
+                }
+
+                if (!String.IsNullOrEmpty(tbHMKSluong.Text))
+                {
+                    soLuongHMK = Controller.Common.ConvertUtil.ConvertToByte(tbHMKSluong.Text);
+                }
+
+                int? IdMaster = MasterChiPhiImp.Insert(IdKhaoSat, IdVanChuyen, IdThiCong, IdLapDat, IdXinPhep,
+                    ngang, rong, soLuongHMTC, IdMucKhac, soLuongHMK, tbBrand.Text);
+
+                NhaThuoc _nhathuoc = cbCodeMer.SelectedItem as NhaThuoc;
+                int IdNhaThuoc = _nhathuoc.Id;
+
+                int IdUser = UserImp.currentUser.Id;
+
+                DateTime _date = dateDateOrder.SelectedDate == null ? DateTime.Now : dateDateOrder.SelectedDate.Value;
+                int? id = HistoryImp.Insert(IdUser, IdNhaThuoc, (int)IdMaster, _date);
+
+                if (id != null)
+                {
+                    MessageBox.Show("Cập nhật dữ liệu thành công");
+                    HistoryImp.Delete(HistoryImp.GetById(_historyMaster.id));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cb_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            TextBox textBox = comboBox.Template.FindName("PART_EditableTextBox", comboBox) as TextBox;
+            Popup popup = comboBox.Template.FindName("PART_Popup", comboBox) as Popup;
+
+            if (textBox != null)
+            {
+                //textBox.TextChanged += delegate
+                //{
+                    popup.IsOpen = true;
+                    comboBox.Items.Filter += a =>
+                    {
+                        if (a.ToString().ToLower().StartsWith(textBox.Text.ToLower()))
+                        {
+                            return true;
+                        }
+                        return false;
+                    };
+                //};
+            }
+        }
+
+        private void cbCodeMer_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbCodeMer.SelectedItem != null)
+            {
+                gridChiPhi.IsEnabled = true;
+                NhaThuoc data = ((CommonComboBoxItem)cbCodeMer.SelectedItem).Value as NhaThuoc;
+                if (data != null)
+                {
+                    tbAdress.Text = data.Address;
+                    tbWard.Text = data.Ward;
+                    tbPharmacyName.Text = data.PharmacyName;
+                    tbStreet.Text = data.Street;
+                    tbDistrict.Text = data.District;
+                    tbOther.Text = data.Other;
+                    tbCity.Text = data.Province;
+                }
+            }
+            else
+            {
+                gridChiPhi.IsEnabled = false;
+            }
+        }
+    }
+}

@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="QuanLyDonHang.InputUser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Model="clr-namespace:Model;assembly=Model"
+             mc:Ignorable="d" 
+             d:DesignHeight="580" d:DesignWidth="1170" Width="1170" Height="580" Background="LightGray" Loaded="inputUserUC_Loaded">
+    <Grid>
+        <Button x:Name="btAdd" Content="Thêm" HorizontalAlignment="Left" Height="22" Margin="22,25,0,0" VerticalAlignment="Top" Width="41" Click="btAdd_Click"/>
+        <Button x:Name="btDelete" Content="Xóa" HorizontalAlignment="Left" Height="22" Margin="82,25,0,0" VerticalAlignment="Top" Width="39" Click="btDelete_Click" IsEnabled="False"/>
+        <Button x:Name="btEdit" Content="Sửa" HorizontalAlignment="Left" Height="22" Margin="142,25,0,0" VerticalAlignment="Top" Width="40" Click="btEdit_Click" IsEnabled="False"/>
+        <DataGrid x:Name="dgShowInfo" CanUserAddRows="False" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="344" Margin="20,100,0,0" VerticalAlignment="Top" Width="1120" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="dgShowInfo_SelectionChanged" CanUserDeleteRows="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox x:Name="chbItem" IsChecked="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=DataGridRow}, Mode=TwoWay}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding Id}" ClipboardContentBinding="{x:Null}" Header="Id" IsReadOnly="True" Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding IdUserGroup}" ClipboardContentBinding="{x:Null}" Header="IdUserGroup" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Ma}" ClipboardContentBinding="{x:Null}" Header="Ma" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Ten}" ClipboardContentBinding="{x:Null}" Header="Tên" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding UserName}" ClipboardContentBinding="{x:Null}" Header="UserName" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding GioiTinh}" ClipboardContentBinding="{x:Null}" Header="GioiTinh" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding DOB}" ClipboardContentBinding="{x:Null}" Header="DOB" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding DiaChi}" ClipboardContentBinding="{x:Null}" Header="DiaChi" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding DienThoai}" ClipboardContentBinding="{x:Null}" Header="DienThoai" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding DTDD}" ClipboardContentBinding="{x:Null}" Header="DTDD" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding GhiChu}" ClipboardContentBinding="{x:Null}" Header="Ghi chú" IsReadOnly="True"/>
+            </DataGrid.Columns>
+            <DataGrid.DataContext>
+                <Model:UserGroup/>
+            </DataGrid.DataContext>
+        </DataGrid>
+        <CheckBox x:Name="chbSelect" Content="Select / deselect all" HorizontalAlignment="Left" Height="17" Margin="22,449,0,0" VerticalAlignment="Top" Width="123" Click="chbSelect_Click"/>
+    </Grid>
+</UserControl>
