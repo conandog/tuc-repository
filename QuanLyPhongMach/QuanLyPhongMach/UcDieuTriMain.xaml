@@ -51,17 +51,12 @@
             <TextBox x:Name="tbTongTien" HorizontalAlignment="Left" Height="23" Margin="290,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="100" Grid.Row="5" Grid.Column="1" TabIndex="43" HorizontalContentAlignment="Right" MaxLength="11"/>
             <TextBlock HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Lời dặn dò:" VerticalAlignment="Top" Grid.Row="4"/>
             <TextBox x:Name="tbLoiDanDo" HorizontalAlignment="Left" Height="100" Margin="17,31,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="373" Grid.Row="4" TabIndex="39" MaxLength="200"/>
-            <DataGrid Margin="10,31,0,0" Grid.Row="4" Width="380" Grid.Column="1" x:Name="dgToaThuoc" AutoGenerateColumns="False" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionUnit="CellOrRowHeader" TabIndex="41" CanUserResizeRows="False" CurrentCellChanged="dgToaThuoc_CurrentCellChanged" >
+            <DataGrid Margin="10,31,0,0" Grid.Row="4" Width="380" Grid.Column="1" x:Name="dgToaThuoc" AutoGenerateColumns="False" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" TabIndex="41" CanUserAddRows="True" CanUserDeleteRows="True" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Converter={local:RowToIndexConverter}}" CanUserSort="False" CanUserResize="False" Header="STT" IsReadOnly="True" />
-                    <DataGridComboBoxColumn CanUserSort="False" ClipboardContentBinding="{x:Null}" DisplayMemberPath="Ten" Header="Tên" SelectedValueBinding="{Binding Id}" SelectedItemBinding="{Binding Thuoc}" TextBinding="{Binding Ten}" ItemsSource="{Binding}"/>
-                    <DataGridTextColumn Binding="{Binding Thuoc.ThuocGroup.Ten}" CanUserSort="False" ClipboardContentBinding="{x:Null}" Header="Đường cấp" IsReadOnly="True"/>
-                    <DataGridTextColumn Binding="{Binding LieuLuong}" CanUserSort="False" ClipboardContentBinding="{x:Null}" Header="Liều lượng"/>
-                    <DataGridTextColumn Binding="{Binding Thuoc.DonViTinh}" CanUserSort="False" ClipboardContentBinding="{x:Null}" Header="ĐVT" IsReadOnly="True"/>
+                    <!--DataGridTextColumn Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Converter={local:RowToIndexConverter}}" CanUserSort="False" CanUserResize="False" Header="STT" IsReadOnly="True" /-->
+                    <DataGridComboBoxColumn x:Name="cbThuoc" CanUserSort="False" ClipboardContentBinding="{x:Null}" DisplayMemberPath="Ten" Header="Tên" SelectedValueBinding="{Binding Thuoc}" SelectedItemBinding="{Binding Thuoc}"/>
+                    <DataGridComboBoxColumn x:Name="cbDuongCap" CanUserSort="False" ClipboardContentBinding="{x:Null}" Header="Đường cấp" SelectedValueBinding="{Binding DuongCap}" SelectedItemBinding="{Binding DuongCap}" />
                 </DataGrid.Columns>
-                <DataGrid.DataContext>
-                    <Model:PhieuDieuTri_Thuoc/>
-                </DataGrid.DataContext>
             </DataGrid>
             <GroupBox Header="KHÁCH HÀNG" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="50" Width="780">
                 <Grid HorizontalAlignment="Center" Height="30" Width="768" VerticalAlignment="Top">

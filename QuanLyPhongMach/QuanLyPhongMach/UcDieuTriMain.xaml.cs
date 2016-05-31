@@ -57,7 +57,15 @@ namespace QuanLyPhongMach
             chbIsTruyenDichTinhMach.IsChecked = false;
 
             dgToaThuoc.Items.Clear();
-            dgToaThuoc.Items.Add(new PhieuDieuTri_Thuoc());
+
+            List<PhieuDieuTri_Thuoc> listData = new List<PhieuDieuTri_Thuoc>()
+            {
+                new PhieuDieuTri_Thuoc() { Thuoc = ThuocImp.GetList().FirstOrDefault(), DuongCap = "IM" }
+            };
+
+            dgToaThuoc.ItemsSource = listData;
+            cbThuoc.ItemsSource = ThuocImp.GetList();
+            cbDuongCap.ItemsSource = new List<string>() { "IM", "IV", "PO" };
 
             cbKhachHang.Focus();
         }
@@ -168,14 +176,6 @@ namespace QuanLyPhongMach
             }
         }
 
-        private void dgToaThuoc_CurrentCellChanged(object sender, EventArgs e)
-        {
-            //if (ValidateDataGrid())
-            //{
-            //    dgToaThuoc.Items.Add(new PhieuDieuTri_Thuoc());
-            //}
-        }
-
         private bool ValidateDataGrid()
         {
             bool res = false;
@@ -194,7 +194,7 @@ namespace QuanLyPhongMach
         {
             DataGridRow row = value as DataGridRow;
             if (row != null)
-                return row.GetIndex();
+                return row.GetIndex() + 1;
             else
                 return -1;
         }

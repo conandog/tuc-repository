@@ -55,11 +55,7 @@ namespace QuanLyPhongMach
         {
             tbMa.Text = String.Empty;
             tbTen.Text = String.Empty;
-            tbDonViTinh.Text = String.Empty;
             tbMoTa.Text = String.Empty;
-
-            cbGroup.ItemsSource = ThuocGroupImp.GetList();
-            cbGroup.SelectedIndex = 0;
 
             tbMa.Focus();
         }
@@ -81,11 +77,7 @@ namespace QuanLyPhongMach
             tbMa.Text = data.Ma;
             tbMa.IsReadOnly = true;
             tbTen.Text = data.Ten;
-            tbDonViTinh.Text = data.DonViTinh;
             tbMoTa.Text = data.MoTa;
-
-            cbGroup.ItemsSource = ThuocGroupImp.GetList();
-            cbGroup.SelectedItem = data.ThuocGroup;
 
             tbTen.Focus();
         }
@@ -131,8 +123,7 @@ namespace QuanLyPhongMach
                 }
                 else
                 {
-                    ThuocGroup group = cbGroup.SelectedItem as ThuocGroup;
-                    int? id = ThuocImp.Insert(group.Id, tbMa.Text, tbTen.Text, tbDonViTinh.Text, tbMoTa.Text);
+                    int? id = ThuocImp.Insert(tbMa.Text, tbTen.Text, tbMoTa.Text);
 
                     if (id != null)
                     {
@@ -168,8 +159,7 @@ namespace QuanLyPhongMach
 
             try
             {
-                ThuocGroup group = cbGroup.SelectedItem as ThuocGroup;
-                bool isSuccess = ThuocImp.Update(currentId, group.Id, tbMa.Text, tbTen.Text, tbDonViTinh.Text, tbMoTa.Text);
+                bool isSuccess = ThuocImp.Update(currentId, tbMa.Text, tbTen.Text, tbMoTa.Text);
 
                 if (isSuccess)
                 {
