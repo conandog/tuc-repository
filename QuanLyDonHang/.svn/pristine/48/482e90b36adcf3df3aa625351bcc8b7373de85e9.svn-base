@@ -1,0 +1,30 @@
+﻿<Window x:Name="ChiTietGiaCaWD" x:Class="QuanLyDonHang.PriceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Chi tiet gia ca" Height="700" Width="1028" Loaded="ChiTietGiaCaWD_Loaded" WindowStartupLocation="CenterScreen" Background="LightBlue">
+    <Grid>
+        <TextBlock Text="Khảo Sát:" HorizontalAlignment="Left" Height="17" Margin="145,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+        <ComboBox x:Name="cbKhaoSat" HorizontalAlignment="Left" Height="26" Margin="210,70,0,0" VerticalAlignment="Top" Width="268" IsEditable="True" Loaded="cbKhaoSat_Loaded" SelectionChanged="cbKhaoSat_SelectionChanged"/>
+        <TextBox x:Name="tbTienKhaoSat" HorizontalAlignment="Left" Height="26" Margin="520,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" RenderTransformOrigin="1.368,0.462"/>
+        
+        <TextBlock Text="Vận Chuyển:" HorizontalAlignment="Left" Height="17" Margin="128,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67"/>
+        <ComboBox x:Name="cbVanChuyen" HorizontalAlignment="Left" Height="26" Margin="210,120,0,0" VerticalAlignment="Top" Width="268" IsEditable="True" Loaded="cbVanChuyen_Loaded" SelectionChanged="cbVanChuyen_SelectionChanged"/>
+        <TextBox x:Name="tbTienVanChuyen" HorizontalAlignment="Left" Height="26" Margin="520,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" RenderTransformOrigin="1.368,0.462"/>
+        
+        <TextBlock Text="Hạng Mục Thi Công:" HorizontalAlignment="Left" Height="17" Margin="84,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109"/>
+        <ComboBox x:Name="cbThiCong" HorizontalAlignment="Left" Height="26" Margin="210,170,0,0" VerticalAlignment="Top" Width="268" IsEditable="True" Loaded="cbThiCong_Loaded" SelectionChanged="cbThiCong_SelectionChanged"/>
+        <TextBox x:Name="tbTienThiCong" HorizontalAlignment="Left" Height="26" Margin="520,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" RenderTransformOrigin="1.368,0.462"/>
+        
+        <TextBlock Text="Lắp Đặt:" HorizontalAlignment="Left" Height="17" Margin="149,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="44"/>
+        <ComboBox x:Name="cbLapDat" HorizontalAlignment="Left" Height="26" Margin="210,220,0,0" VerticalAlignment="Top" Width="268" IsEditable="True" Loaded="cbLapDat_Loaded" SelectionChanged="cbLapDat_SelectionChanged"/>
+        <TextBox x:Name="tbTienLapDat" HorizontalAlignment="Left" Height="26" Margin="520,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" RenderTransformOrigin="1.368,0.462"/>
+
+        <TextBlock Text="Xin Phép:" HorizontalAlignment="Left" Height="17" Margin="143,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+        <ComboBox x:Name="cbXinPhep" HorizontalAlignment="Left" Height="26" Margin="210,270,0,0" VerticalAlignment="Top" Width="268" IsEditable="True" Loaded="cbXinPhep_Loaded" SelectionChanged="cbXinPhep_SelectionChanged"/>
+        <TextBox x:Name="tbTienXinPhep" HorizontalAlignment="Left" Height="26" Margin="520,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" RenderTransformOrigin="1.368,0.462"/>
+        
+        <TextBlock Text="Hạng Mục Khác:" HorizontalAlignment="Left" Height="17" Margin="106,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87"/>
+        <ComboBox x:Name="cbMucKhac" HorizontalAlignment="Left" Height="26" Margin="210,320,0,0" VerticalAlignment="Top" Width="268" IsEditable="True" Loaded="cbMucKhac_Loaded" SelectionChanged="cbMucKhac_SelectionChanged"/>
+        <TextBox x:Name="tbTienMucKhac" HorizontalAlignment="Left" Height="26" Margin="520,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" RenderTransformOrigin="1.368,0.462"/>
+    </Grid>
+</Window>

@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QuanLyDonHang" Class="DatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\sql2012;Initial Catalog=QuanLyDonHang;Integrated Security=True" SettingsObjectName="Model.Properties.Settings" SettingsPropertyName="QuanLyDonHangConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Catalogue" Member="Catalogues">
+    <Type Name="Catalogue">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Category" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SubCategory" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SupplierCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SupplierName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ItemGroup" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ItemDescription" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="MoreDescription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="PartNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UOM" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UnitPrice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ReferencePrice" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Remark" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GLCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="HACAT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EffectiveDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ExpiryDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Currency" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DeleteFlag" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Catalogue_MasterChiPhi" Member="MasterChiPhis" ThisKey="Id" OtherKey="IdCatalogueKS" Type="MasterChiPhi" />
+      <Association Name="Catalogue_MasterChiPhi1" Member="MasterChiPhis1" ThisKey="Id" OtherKey="IdCatalogueVC" Type="MasterChiPhi" />
+      <Association Name="Catalogue_MasterChiPhi2" Member="MasterChiPhis2" ThisKey="Id" OtherKey="IdCatalogueHMTC" Type="MasterChiPhi" />
+      <Association Name="Catalogue_MasterChiPhi3" Member="MasterChiPhis3" ThisKey="Id" OtherKey="IdCatalogueLD" Type="MasterChiPhi" />
+      <Association Name="Catalogue_MasterChiPhi4" Member="MasterChiPhis4" ThisKey="Id" OtherKey="IdCatalogueXP" Type="MasterChiPhi" />
+      <Association Name="Catalogue_MasterChiPhi5" Member="MasterChiPhis5" ThisKey="Id" OtherKey="IdCatalogueHMK" Type="MasterChiPhi" />
+    </Type>
+  </Table>
+  <Table Name="dbo.History" Member="Histories">
+    <Type Name="History">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdUser" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="NgayOrder" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="IdNhaThuoc" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IdMasterChiPhi" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DeleteFlag" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="MasterChiPhi_History" Member="MasterChiPhi" ThisKey="IdMasterChiPhi" OtherKey="Id" Type="MasterChiPhi" IsForeignKey="true" />
+      <Association Name="NhaThuoc_History" Member="NhaThuoc" ThisKey="IdNhaThuoc" OtherKey="Id" Type="NhaThuoc" IsForeignKey="true" />
+      <Association Name="User_History" Member="User" ThisKey="IdUser" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MasterChiPhi" Member="MasterChiPhis">
+    <Type Name="MasterChiPhi">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdCatalogueKS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdCatalogueVC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdCatalogueHMTC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdCatalogueLD" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdCatalogueXP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ngang" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Rong" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QtyHMTC" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="IdCatalogueHMK" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="QtyHMK" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Brand" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="MasterChiPhi_History" Member="Histories" ThisKey="Id" OtherKey="IdMasterChiPhi" Type="History" />
+      <Association Name="Catalogue_MasterChiPhi" Member="Catalogue" ThisKey="IdCatalogueKS" OtherKey="Id" Type="Catalogue" IsForeignKey="true" />
+      <Association Name="Catalogue_MasterChiPhi1" Member="Catalogue1" ThisKey="IdCatalogueVC" OtherKey="Id" Type="Catalogue" IsForeignKey="true" />
+      <Association Name="Catalogue_MasterChiPhi2" Member="Catalogue2" ThisKey="IdCatalogueHMTC" OtherKey="Id" Type="Catalogue" IsForeignKey="true" />
+      <Association Name="Catalogue_MasterChiPhi3" Member="Catalogue3" ThisKey="IdCatalogueLD" OtherKey="Id" Type="Catalogue" IsForeignKey="true" />
+      <Association Name="Catalogue_MasterChiPhi4" Member="Catalogue4" ThisKey="IdCatalogueXP" OtherKey="Id" Type="Catalogue" IsForeignKey="true" />
+      <Association Name="Catalogue_MasterChiPhi5" Member="Catalogue5" ThisKey="IdCatalogueHMK" OtherKey="Id" Type="Catalogue" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NhaThuoc" Member="NhaThuocs">
+    <Type Name="NhaThuoc">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CodeMer" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PharmacyName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Street" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Other" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ward" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="District" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Province" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Area" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Zone" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Pharmacist" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PharmacyOwner" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Cellphone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="InChargeFYLCD" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DeleteFlag" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="NhaThuoc_History" Member="Histories" ThisKey="Id" OtherKey="IdNhaThuoc" Type="History" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdUserGroup" Type="System.Byte" DbType="TinyInt NOT NULL" CanBeNull="false" />
+      <Column Name="Ma" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Ten" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="GioiTinh" Type="System.String" DbType="NVarChar(3) NOT NULL" CanBeNull="false" />
+      <Column Name="DOB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CMND" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="NgayCap" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="NoiCap" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="DienThoai" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="DTDD" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="DeleteFlag" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="User_History" Member="Histories" ThisKey="Id" OtherKey="IdUser" Type="History" />
+      <Association Name="UserGroup_User" Member="UserGroup" ThisKey="IdUserGroup" OtherKey="Id" Type="UserGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserGroup" Member="UserGroups">
+    <Type Name="UserGroup">
+      <Column Name="Id" Type="System.Byte" DbType="TinyInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Ten" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="UserGroup_User" Member="Users" ThisKey="Id" OtherKey="IdUserGroup" Type="User" />
+    </Type>
+  </Table>
+</Database>

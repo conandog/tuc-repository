@@ -1,0 +1,186 @@
+﻿<UserControl x:Class="QuanLyDonHang.PriceUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:Model="clr-namespace:Model;assembly=Model"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1170" Width="1170" Height="600" Name="priceUC">
+    <Grid>
+        <StackPanel>
+            <Grid Height="107" HorizontalAlignment="Left" VerticalAlignment="Top" Width="1170" Background="LightBlue">
+                <ComboBox x:Name="cbNT" HorizontalAlignment="Left" VerticalAlignment="Top" Height="27" Margin="200,10,0,0" Width="200" SelectionChanged="cbCodeMer_SelectionChanged" IsEditable="True" PreviewTextInput="cb_PreviewTextInput" IsTextSearchEnabled="False">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel IsVirtualizing="True" IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+                <TextBlock HorizontalAlignment="Right" Height="27" VerticalAlignment="Top" Margin="0,42,992,0" TextWrapping="Wrap" Text="Địa chỉ:" Width="39"/>
+                <TextBlock HorizontalAlignment="Right" Height="27" VerticalAlignment="Top" Margin="0,72,992,0" TextWrapping="Wrap" Text="Phường:" Width="45"/>
+                <TextBlock HorizontalAlignment="Right" Height="27" VerticalAlignment="Top" Margin="0,12,992,0" TextWrapping="Wrap" Text="Tên Nhà Thuốc:" Width="83"/>
+                <TextBlock HorizontalAlignment="Right" Height="27" VerticalAlignment="Top" Margin="0,42,680,0" TextWrapping="Wrap" Text="Đường:" Width="40"/>
+                <TextBlock HorizontalAlignment="Right" Height="27" VerticalAlignment="Top" Margin="0,72,680,0" TextWrapping="Wrap" Text="Quận:" Width="32"/>
+                <TextBlock HorizontalAlignment="Right" Height="27" VerticalAlignment="Top" Margin="0,42,360,0" TextWrapping="Wrap" Text="Other:" Width="33"/>
+                <TextBlock HorizontalAlignment="Right" Height="27" VerticalAlignment="Top" Margin="0,12,360,0" TextWrapping="Wrap" Text="Ngày đặt hàng:" Width="82"/>
+                <TextBlock HorizontalAlignment="Right" Height="27" VerticalAlignment="Top" Margin="0,72,360,0" TextWrapping="Wrap" Text="Tỉnh Thành:" Width="62"/>
+                <TextBox Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="27" Margin="200,42,0,0" TextWrapping="Wrap" Width="150" x:Name="tbAdress" IsReadOnly="True"/>
+                <TextBox Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="27" Margin="200,72,0,0" TextWrapping="Wrap" Width="150" x:Name="tbWard" IsReadOnly="True"/>
+                <TextBox Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="27" Margin="510,12,0,0" TextWrapping="Wrap" Width="150" x:Name="tbCodeMer" IsReadOnly="True"/>
+                <TextBox Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="27" Margin="510,42,0,0" TextWrapping="Wrap" Width="150" x:Name="tbStreet" IsReadOnly="True"/>
+                <TextBox Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="27" Margin="510,72,0,0" TextWrapping="Wrap" Width="150" x:Name="tbDistrict" IsReadOnly="True"/>
+                <DatePicker HorizontalAlignment="Left" VerticalAlignment="Top" Height="27" Margin="830,12,0,0" Width="150" x:Name="dateDateOrder"/>
+                <TextBox Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="27" Margin="830,42,0,0" TextWrapping="Wrap" Width="150" x:Name="tbOther" IsReadOnly="True"/>
+                <TextBox Text="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="27" Margin="830,72,0,0" TextWrapping="Wrap" Width="150" x:Name="tbCity" IsReadOnly="True"/>
+                <TextBlock HorizontalAlignment="Right" Height="27" VerticalAlignment="Top" Margin="0,12,680,0" TextWrapping="Wrap" Text="Code:" Width="35"/>
+                <TextBlock Name="tbAdd" HorizontalAlignment="Left" Height="35" Margin="10,2,0,0" TextWrapping="Wrap" Text="THÊM" VerticalAlignment="Top" Width="85" FontWeight="Bold" Foreground="Red" FontSize="24"/>
+                <TextBlock Name="tbEdit" HorizontalAlignment="Left" Height="35" Margin="10,10,0,0" TextWrapping="Wrap" Text="SỬA" VerticalAlignment="Top" Width="85" FontWeight="Bold" Foreground="Red" FontSize="24" Visibility="Collapsed"/>
+            </Grid>
+            <Grid x:Name="gridChiPhi" Height="492" HorizontalAlignment="Left" VerticalAlignment="Bottom" Background="SkyBlue" Width="1170" IsEnabled="False">
+                <TextBlock Text="Khảo Sát:" HorizontalAlignment="Right" Height="17" Margin="0,147,1050,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                <ComboBox x:Name="cbKhaoSat" HorizontalAlignment="Left" Height="26" Margin="130,143,0,0" VerticalAlignment="Top" Width="268" Loaded="cbKhaoSat_Loaded" SelectionChanged="cbKhaoSat_SelectionChanged" IsEditable="True" PreviewTextInput="cb_PreviewTextInput" IsTextSearchEnabled="False">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel IsVirtualizing="True" IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+                <TextBox x:Name="tbTienKhaoSat" HorizontalAlignment="Right" Height="26" Margin="0,143,539,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" IsReadOnly="True" TextChanged="tbTienKhaoSat_TextChanged"/>
+
+                <TextBlock Text="Vận Chuyển:" HorizontalAlignment="Right" Height="17" Margin="0,187,1050,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67"/>
+                <ComboBox x:Name="cbVanChuyen" HorizontalAlignment="Left" Height="26" Margin="130,183,0,0" VerticalAlignment="Top" Width="268" Loaded="cbVanChuyen_Loaded" SelectionChanged="cbVanChuyen_SelectionChanged" IsEditable="True" PreviewTextInput="cb_PreviewTextInput" IsTextSearchEnabled="False">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel IsVirtualizing="True" IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+                <TextBox x:Name="tbTienVanChuyen" HorizontalAlignment="Right" Height="26" Margin="0,183,539,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" IsReadOnly="True" TextChanged="tbTienVanChuyen_TextChanged"/>
+
+                <TextBlock Text="Hạng Mục Thi Công:" HorizontalAlignment="Right" Height="17" Margin="0,227,1050,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109"/>
+                <ComboBox x:Name="cbThiCong" HorizontalAlignment="Left" Height="26" Margin="130,223,0,0" VerticalAlignment="Top" Width="268" Loaded="cbThiCong_Loaded" SelectionChanged="cbThiCong_SelectionChanged" IsEditable="True" PreviewTextInput="cb_PreviewTextInput" IsTextSearchEnabled="False">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel IsVirtualizing="True" IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+                <TextBox x:Name="tbTienThiCong" HorizontalAlignment="Right" Height="26" Margin="0,223,539,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" IsReadOnly="True" TextChanged="tbTienThiCong_TextChanged"/>
+
+                <TextBlock Text="Lắp Đặt:" HorizontalAlignment="Right" Height="17" Margin="0,267,1050,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="44"/>
+                <ComboBox x:Name="cbLapDat" HorizontalAlignment="Left" Height="26" Margin="130,263,0,0" VerticalAlignment="Top" Width="268" Loaded="cbLapDat_Loaded" SelectionChanged="cbLapDat_SelectionChanged" IsEditable="True" PreviewTextInput="cb_PreviewTextInput" IsTextSearchEnabled="False">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel IsVirtualizing="True" IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+                <TextBox x:Name="tbTienLapDat" HorizontalAlignment="Right" Height="26" Margin="0,263,539,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" IsReadOnly="True" TextChanged="tbTienLapDat_TextChanged"/>
+
+                <TextBlock Text="Xin Phép:" HorizontalAlignment="Right" Height="17" Margin="0,307,1050,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50"/>
+                <ComboBox x:Name="cbXinPhep" HorizontalAlignment="Left" Height="26" Margin="130,303,0,0" VerticalAlignment="Top" Width="268" Loaded="cbXinPhep_Loaded" SelectionChanged="cbXinPhep_SelectionChanged" IsEditable="True" PreviewTextInput="cb_PreviewTextInput" IsTextSearchEnabled="False">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel IsVirtualizing="True" IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+                <TextBox x:Name="tbTienXinPhep" HorizontalAlignment="Right" Height="26" Margin="0,303,539,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" IsReadOnly="True" TextChanged="tbTienXinPhep_TextChanged"/>
+
+                <TextBlock Text="Hạng Mục Khác:" HorizontalAlignment="Right" Height="17" Margin="0,347,1050,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="87"/>
+                <ComboBox x:Name="cbMucKhac" HorizontalAlignment="Left" Height="26" Margin="130,343,0,0" VerticalAlignment="Top" Width="268" Loaded="cbMucKhac_Loaded" SelectionChanged="cbMucKhac_SelectionChanged" IsEditable="True" PreviewTextInput="cb_PreviewTextInput" IsTextSearchEnabled="False">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel IsVirtualizing="True" IsItemsHost="True"/>
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+                <TextBox x:Name="tbTienMucKhac" HorizontalAlignment="Right" Height="26" Margin="0,343,539,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76" IsReadOnly="True" TextChanged="tbTienMucKhac_TextChanged"/>
+
+                <TextBlock Text="Brand:" HorizontalAlignment="Right" Height="17" Margin="0,395,1050,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="34"/>
+                <TextBox x:Name="tbBrand" HorizontalAlignment="Left" Height="26" Margin="130,390,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+
+                <TextBlock HorizontalAlignment="Right" Height="18" Margin="0,113,557,0" TextWrapping="Wrap" Text="Chi phí" VerticalAlignment="Top" Width="44"/>
+                <TextBlock HorizontalAlignment="Right" Height="18" Margin="0,113,700,0" TextWrapping="Wrap" Text="Đơn vị tính" VerticalAlignment="Top" Width="61"/>
+
+                <TextBox x:Name="tbHMTCdvi" HorizontalAlignment="Left" Height="26" Margin="410,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsReadOnly="True"/>
+                <TextBox x:Name="tbLDdvi" HorizontalAlignment="Left" Height="26" Margin="410,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsReadOnly="True"/>
+                <TextBox x:Name="tbXPdvi" HorizontalAlignment="Left" Height="26" Margin="410,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsReadOnly="True"/>
+                <TextBox x:Name="tbHMKdvi" HorizontalAlignment="Left" Height="26" Margin="410,343,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsReadOnly="True"/>
+                <TextBlock HorizontalAlignment="Right" Height="18" Margin="0,113,640,0" TextWrapping="Wrap" Text="Đơn giá" VerticalAlignment="Top" Width="45"/>
+
+                <TextBox x:Name="tbHMTCdgia" HorizontalAlignment="Left" Height="26" Margin="480,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsReadOnly="True"/>
+                <TextBox x:Name="tbLDdgia" HorizontalAlignment="Left" Height="26" Margin="480,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsReadOnly="True"/>
+                <TextBox x:Name="tbXPdgia" HorizontalAlignment="Left" Height="26" Margin="480,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsReadOnly="True"/>
+                <TextBox x:Name="tbHMKgia" HorizontalAlignment="Left" Height="26" Margin="480,343,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsReadOnly="True"/>
+                <TextBlock HorizontalAlignment="Right" Height="18" Margin="0,394,629,0" TextWrapping="Wrap" Text="Tổng:" VerticalAlignment="Top" Width="30"/>
+                <TextBlock Height="18" Margin="661,347,479,0" TextWrapping="Wrap" Text="SL:" VerticalAlignment="Top" Width="30"/>
+                <TextBox x:Name="tbTonggia" HorizontalAlignment="Right" Height="26" Margin="0,390,539,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" IsReadOnly="True"/>
+                <Border Margin="645,227,0,0" BorderThickness="1" BorderBrush="Black" Padding="10" Height="102" VerticalAlignment="Top">
+                    <Grid>
+
+                        <TextBlock Height="18" Margin="49,17,415,0" TextWrapping="Wrap" Text="Ngang" VerticalAlignment="Top"/>
+                        <TextBlock HorizontalAlignment="Right" Height="18" Margin="0,17,310,0" TextWrapping="Wrap" Text="Rộng" VerticalAlignment="Top" Width="32"/>
+                        <TextBlock Height="18" Margin="278,17,174,0" TextWrapping="Wrap" Text="Số lượng" VerticalAlignment="Top"/>
+                        <TextBlock HorizontalAlignment="Right" Height="18" Margin="0,17,62,0" TextWrapping="Wrap" Text="Diện tích" VerticalAlignment="Top" Width="50"/>
+
+                        <TextBox x:Name="tbNgang" HorizontalAlignment="Left" Height="26" Margin="39,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" TextChanged="tbNgang_TextChanged"/>
+                        <TextBox x:Name="tbRong" HorizontalAlignment="Left" Height="26" Margin="149,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" TextChanged="tbRong_TextChanged"/>
+                        <TextBox x:Name="tbSluong" HorizontalAlignment="Left" Height="26" Margin="269,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" TextChanged="tbXPSluong_TextChanged"/>
+                        <TextBox x:Name="tbDtich" HorizontalAlignment="Left" Height="26" Margin="389,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" IsReadOnly="True"/>
+
+                    </Grid>
+                </Border>
+
+                <TextBox x:Name="tbHMKSluong" HorizontalAlignment="Left" Height="26" Margin="696,343,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" TextChanged="tbHMKSluong_TextChanged"/>
+                <Button Content="Lưu" HorizontalAlignment="Center" Margin="543,437,543,0" VerticalAlignment="Top" Width="84" Height="46" Click="ButtonSave_Click"/>
+                <Button Name="btEdit" Content="Cập Nhật" HorizontalAlignment="Center" Margin="543,437,543,0" VerticalAlignment="Top" Width="84" Height="46" Click="ButtonEdit_Click" Visibility="Collapsed"/>
+
+                <DataGrid x:Name="dgShowInfo" CanUserAddRows="False" AutoGenerateColumns="False" HorizontalAlignment="Left" Height="102" Margin="25,6,0,0" VerticalAlignment="Top" Width="1120" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" FrozenColumnCount="4" CanUserDeleteRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding stt}" ClipboardContentBinding="{x:Null}" Header="STT" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding ngayorder}" ClipboardContentBinding="{x:Null}" Header="NGÀY ORDER" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding codemer}" ClipboardContentBinding="{x:Null}" Header="CODE MER" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding pharmacyname}" ClipboardContentBinding="{x:Null}" Header="TÊN NT" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding address}" ClipboardContentBinding="{x:Null}" Header="ĐỊA CHỈ" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding street}" ClipboardContentBinding="{x:Null}" Header="ĐƯỜNG" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding other}" ClipboardContentBinding="{x:Null}" Header="OTHER" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding ward}" ClipboardContentBinding="{x:Null}" Header="PHƯỜNG" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding dictrict}" ClipboardContentBinding="{x:Null}" Header="QUẬN" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding city}" ClipboardContentBinding="{x:Null}" Header="TỈNH/THÀNH" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding khaosat}" ClipboardContentBinding="{x:Null}" Header="KHẢO SÁT" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding chiphiKS}" ClipboardContentBinding="{x:Null}" Header="CHI PHÍ KHẢO SÁT" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding vanchuyen}" ClipboardContentBinding="{x:Null}" Header="VẬN CHUYỂN" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding chiphiVC}" ClipboardContentBinding="{x:Null}" Header="CHI PHÍ KHẢO SÁT" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding HMTC}" ClipboardContentBinding="{x:Null}" Header="HẠNG MỤC THI CÔNG" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding donviHMTC}" ClipboardContentBinding="{x:Null}" Header="Đơn vị tính" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding dongiaTC}" ClipboardContentBinding="{x:Null}" Header="Đơn giá sản xuất" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding lapdat}" ClipboardContentBinding="{x:Null}" Header="LẮP ĐẶT" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding donviLD}" ClipboardContentBinding="{x:Null}" Header="Đơn vị tính" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding dongiaLD}" ClipboardContentBinding="{x:Null}" Header="Đơn giá lắp đặt" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding xinphep}" ClipboardContentBinding="{x:Null}" Header="XIN PHÉP" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding donviXP}" ClipboardContentBinding="{x:Null}" Header="Đơn vị tính" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding dongiaXP}" ClipboardContentBinding="{x:Null}" Header="Đơn giá xin phép" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding ngang}" ClipboardContentBinding="{x:Null}" Header="Ngang" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding rong}" ClipboardContentBinding="{x:Null}" Header="Rong" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding soluong}" ClipboardContentBinding="{x:Null}" Header="Qty" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding dientich}" ClipboardContentBinding="{x:Null}" Header="M2" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding tienTC}" ClipboardContentBinding="{x:Null}" Header="Thành tiền sản xuất" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding tienLD}" ClipboardContentBinding="{x:Null}" Header="Thành tiền lắp đặt" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding tienXP}" ClipboardContentBinding="{x:Null}" Header="Thành tiền xin phép" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding HMK}" ClipboardContentBinding="{x:Null}" Header="HẠNG MỤC KHÁC" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding donviHMK}" ClipboardContentBinding="{x:Null}" Header="Đơn vị tính" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding dongiaHMK}" ClipboardContentBinding="{x:Null}" Header="Đơn giá Hạng Mục Khác" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding soluongHMK}" ClipboardContentBinding="{x:Null}" Header="Qty" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding tienHMK}" ClipboardContentBinding="{x:Null}" Header="Thành tiền Hạng Mục Khác" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding brand}" ClipboardContentBinding="{x:Null}" Header="Brand" IsReadOnly="True"/>
+                        <DataGridTextColumn Binding="{Binding tongcong}" ClipboardContentBinding="{x:Null}" Header="TỔNG CỘNG" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <TextBox x:Name="tbSTT" HorizontalAlignment="Left" Height="26" Margin="350,390,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+                <TextBlock Text="STT:" HorizontalAlignment="Right" Height="17" Margin="0,395,830,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="22"/>
+
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

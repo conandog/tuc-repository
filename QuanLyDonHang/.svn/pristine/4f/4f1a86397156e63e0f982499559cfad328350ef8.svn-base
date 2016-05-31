@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 17.625" name="Database">
+  <DataContextMoniker Name="/DatabaseDataContext" />
+  <nestedChildShapes>
+    <classShape Id="90a3eea0-9b8f-40c4-b15a-e975b217612b" absoluteBounds="0.75, 1.125, 2, 4.8477197265625005">
+      <DataClassMoniker Name="/DatabaseDataContext/Catalogue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6b1b8405-c539-4b17-b83c-94e7011dad8e" absoluteBounds="0.765, 1.585, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a23affc6-e4c6-44bf-9154-30be69517417" absoluteBounds="6.25, 2.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/DatabaseDataContext/History" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d58e67b8-03ca-48bc-bb0c-910471c06011" absoluteBounds="6.265, 2.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b68e18cd-370d-464b-b248-c210e53d2220" absoluteBounds="3.5, 1.875, 2, 3.1170068359375005">
+      <DataClassMoniker Name="/DatabaseDataContext/MasterChiPhi" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c71e548b-ab6d-415e-93e5-b5948e69e067" absoluteBounds="3.515, 2.335, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="86da0252-659f-4ebd-8d3d-703e70de0104" absoluteBounds="3.5, 13.125, 2, 4.2708154296874987">
+      <DataClassMoniker Name="/DatabaseDataContext/NhaThuoc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="81282f5c-f93d-4c60-8db5-dc02f869d1a8" absoluteBounds="3.515, 13.585, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0ac3f9a4-60ad-4554-8419-edffeb27f5f2" absoluteBounds="3.5, 8.375, 2, 4.0785139973958309">
+      <DataClassMoniker Name="/DatabaseDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c4e8fd41-7c1e-406d-aa9b-0bdac2d005ff" absoluteBounds="3.515, 8.835, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="698f9dc3-8b13-42ae-9a57-e892312992a6" absoluteBounds="0.75, 9.625, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/DatabaseDataContext/UserGroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dcbaa789-4dbd-44ad-b3fb-2777fa1eb05b" absoluteBounds="0.765, 10.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 3.45274983723958); (6.25 : 3.45274983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/MasterChiPhi/MasterChiPhi_History" />
+      <nodes>
+        <classShapeMoniker Id="b68e18cd-370d-464b-b248-c210e53d2220" />
+        <classShapeMoniker Id="a23affc6-e4c6-44bf-9154-30be69517417" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 3.43350341796875); (3.5 : 3.43350341796875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/Catalogue/Catalogue_MasterChiPhi" />
+      <nodes>
+        <classShapeMoniker Id="90a3eea0-9b8f-40c4-b15a-e975b217612b" />
+        <classShapeMoniker Id="b68e18cd-370d-464b-b248-c210e53d2220" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 2.59175170898438); (3.5 : 2.59175170898438)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/Catalogue/Catalogue_MasterChiPhi1" />
+      <nodes>
+        <classShapeMoniker Id="90a3eea0-9b8f-40c4-b15a-e975b217612b" />
+        <classShapeMoniker Id="b68e18cd-370d-464b-b248-c210e53d2220" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.27525512695312); (3.5 : 4.27525512695312)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/Catalogue/Catalogue_MasterChiPhi2" />
+      <nodes>
+        <classShapeMoniker Id="90a3eea0-9b8f-40c4-b15a-e975b217612b" />
+        <classShapeMoniker Id="b68e18cd-370d-464b-b248-c210e53d2220" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 3.85437927246094); (3.5 : 3.85437927246094)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/Catalogue/Catalogue_MasterChiPhi3" />
+      <nodes>
+        <classShapeMoniker Id="90a3eea0-9b8f-40c4-b15a-e975b217612b" />
+        <classShapeMoniker Id="b68e18cd-370d-464b-b248-c210e53d2220" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 3.01262756347656); (3.5 : 3.01262756347656)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/Catalogue/Catalogue_MasterChiPhi4" />
+      <nodes>
+        <classShapeMoniker Id="90a3eea0-9b8f-40c4-b15a-e975b217612b" />
+        <classShapeMoniker Id="b68e18cd-370d-464b-b248-c210e53d2220" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 2.17087585449219); (3.5 : 2.17087585449219)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/Catalogue/Catalogue_MasterChiPhi5" />
+      <nodes>
+        <classShapeMoniker Id="90a3eea0-9b8f-40c4-b15a-e975b217612b" />
+        <classShapeMoniker Id="b68e18cd-370d-464b-b248-c210e53d2220" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 15.2604077148437); (7.25 : 15.2604077148437); (7.25 : 4.53049967447917)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/NhaThuoc/NhaThuoc_History" />
+      <nodes>
+        <classShapeMoniker Id="86da0252-659f-4ebd-8d3d-703e70de0104" />
+        <classShapeMoniker Id="a23affc6-e4c6-44bf-9154-30be69517417" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 10.4142569986979); (6.7187475 : 10.4142569986979); (6.7187475 : 4.53049967447917)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/User/User_History" />
+      <nodes>
+        <classShapeMoniker Id="0ac3f9a4-60ad-4554-8419-edffeb27f5f2" />
+        <classShapeMoniker Id="a23affc6-e4c6-44bf-9154-30be69517417" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 10.3181469726562); (3.5 : 10.3181469726562)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DatabaseDataContext/UserGroup/UserGroup_User" />
+      <nodes>
+        <classShapeMoniker Id="698f9dc3-8b13-42ae-9a57-e892312992a6" />
+        <classShapeMoniker Id="0ac3f9a4-60ad-4554-8419-edffeb27f5f2" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
