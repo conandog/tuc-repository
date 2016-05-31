@@ -70,18 +70,15 @@ namespace Core
         /// <param name="ten"></param>
         /// <param name="ghiChu"></param>
         /// <returns>Return id of the new data if success</returns>
-        public static int? Insert(int idGroup, string ma, string ten,
-            string donViTinh = "cc", string moTa = "")
+        public static int? Insert(string ma, string ten, string moTa = "")
         {
             int? res = null;
 
             try
             {
                 Thuoc data = new Thuoc();
-                data.IdGroup = idGroup;
                 data.Ma = ma;
                 data.Ten = ten;
-                data.DonViTinh = donViTinh;
                 data.MoTa = moTa;
 
                 data.CreateBy = data.UpdateBy = CurrentUser.UserName;
@@ -190,8 +187,7 @@ namespace Core
             }
         }
 
-        public static bool Update(int id, object group, string ma, string ten,
-            string donViTinh = "cc", string moTa = "")
+        public static bool Update(int id, string ma, string ten, string moTa = "")
         {
             bool res = false;
 
@@ -201,18 +197,8 @@ namespace Core
 
                 if (data != null)
                 {
-                    if (group is int)
-                    {
-                        data.ThuocGroup = ThuocGroupImp.GetById(ConvertUtil.ConvertToInt(group));
-                    }
-                    else
-                    {
-                        data.ThuocGroup = (ThuocGroup)group;
-                    }
-
                     data.Ma = ma;
                     data.Ten = ten;
-                    data.DonViTinh = donViTinh;
                     data.MoTa = moTa;
 
                     data.UpdateBy = CurrentUser.UserName;

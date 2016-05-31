@@ -14,11 +14,6 @@ namespace Core
     
     public partial class User
     {
-        public User()
-        {
-            this.PhieuDieuTris = new HashSet<PhieuDieuTri>();
-        }
-    
         public int Id { get; set; }
         public int IdGroup { get; set; }
         public string Ten { get; set; }
@@ -39,7 +34,6 @@ namespace Core
         public System.DateTime UpdateDate { get; set; }
         public bool DeleteFlag { get; set; }
     
-        public virtual ICollection<PhieuDieuTri> PhieuDieuTris { get; set; }
         public virtual UserGroup UserGroup { get; set; }
     }
 }

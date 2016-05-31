@@ -64,6 +64,12 @@
     <Compile Include="Common\Crypto\PrivateKeyCrypto.cs" />
     <Compile Include="Common\DynamicLinq.cs" />
     <Compile Include="Connection.cs" />
+    <Compile Include="HoaDon.cs">
+      <DependentUpon>QLPM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HoaDon_SanPham.cs">
+      <DependentUpon>QLPM.tt</DependentUpon>
+    </Compile>
     <Compile Include="KhachHang.cs">
       <DependentUpon>QLPM.tt</DependentUpon>
     </Compile>
@@ -104,13 +110,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLPM.edmx</DependentUpon>
     </Compile>
+    <Compile Include="SanPham.cs">
+      <DependentUpon>QLPM.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagram.cs">
       <DependentUpon>QLPM.tt</DependentUpon>
     </Compile>
     <Compile Include="Thuoc.cs">
-      <DependentUpon>QLPM.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ThuocGroup.cs">
       <DependentUpon>QLPM.tt</DependentUpon>
     </Compile>
     <Compile Include="ThuocGroupImp.cs" />

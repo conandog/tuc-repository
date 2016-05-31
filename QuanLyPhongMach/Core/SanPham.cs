@@ -12,32 +12,23 @@ namespace Core
     using System;
     using System.Collections.Generic;
     
-    public partial class PhieuDieuTri
+    public partial class SanPham
     {
-        public PhieuDieuTri()
+        public SanPham()
         {
-            this.PhieuDieuTri_Thuoc = new HashSet<PhieuDieuTri_Thuoc>();
+            this.HoaDon_SanPham = new HashSet<HoaDon_SanPham>();
         }
     
         public int Id { get; set; }
-        public int IdPet { get; set; }
         public string Ma { get; set; }
-        public Nullable<double> TrongLuong { get; set; }
-        public string NhietDo { get; set; }
-        public string TrieuChung { get; set; }
-        public bool IsKhamBenh { get; set; }
-        public bool IsChich_UongThuoc { get; set; }
-        public bool IsTruyenDichTinhMach { get; set; }
-        public string Khac { get; set; }
-        public string LoiDanDo { get; set; }
-        public long TongTien { get; set; }
+        public string Ten { get; set; }
+        public string MoTa { get; set; }
         public string CreateBy { get; set; }
         public System.DateTime CreateDate { get; set; }
         public string UpdateBy { get; set; }
         public System.DateTime UpdateDate { get; set; }
         public bool DeleteFlag { get; set; }
     
-        public virtual Pet Pet { get; set; }
-        public virtual ICollection<PhieuDieuTri_Thuoc> PhieuDieuTri_Thuoc { get; set; }
+        public virtual ICollection<HoaDon_SanPham> HoaDon_SanPham { get; set; }
     }
 }

@@ -23,6 +23,7 @@ namespace Core
         public int IdGroup { get; set; }
         public int IdKhachHang { get; set; }
         public string Ten { get; set; }
+        public string Giong { get; set; }
         public string GioiTinh { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }
         public Nullable<double> TrongLuong { get; set; }

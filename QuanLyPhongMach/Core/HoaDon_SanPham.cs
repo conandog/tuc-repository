@@ -12,15 +12,16 @@ namespace Core
     using System;
     using System.Collections.Generic;
     
-    public partial class PhieuDieuTri_Thuoc
+    public partial class HoaDon_SanPham
     {
         public int Id { get; set; }
-        public int IdPhieuDieuTri { get; set; }
-        public int IdThuoc { get; set; }
-        public double LieuLuong { get; set; }
-        public string DuongCap { get; set; }
+        public int IdHoaDon { get; set; }
+        public int IdSanPham { get; set; }
+        public long Gia { get; set; }
+        public int SoLuong { get; set; }
+        public long TongTien { get; set; }
     
-        public virtual PhieuDieuTri PhieuDieuTri { get; set; }
-        public virtual Thuoc Thuoc { get; set; }
+        public virtual HoaDon HoaDon { get; set; }
+        public virtual SanPham SanPham { get; set; }
     }
 }

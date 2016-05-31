@@ -8,12 +8,12 @@ using Controller.Common;
 
 namespace Core
 {
-    public class ThuocGroupImp : Connection
+    public class SanPhamImp : Connection
     {
-        private static IQueryable<ThuocGroup> GetQuery(string text)
+        private static IQueryable<SanPham> GetQuery(string text)
         {
-            IQueryable<ThuocGroup> query;
-            query = dbContext.ThuocGroups.Where(p => p.Ma.Contains(text)
+            IQueryable<SanPham> query;
+            query = dbContext.SanPhams.Where(p => p.Ma.Contains(text)
                 || p.Ten.Contains(text)
                 );
 
@@ -25,7 +25,7 @@ namespace Core
             return GetQuery(text).Count();
         }
 
-        public static List<ThuocGroup> GetList(string text = "", int skip = 0, int take = 0)
+        public static List<SanPham> GetList(string text = "", int skip = 0, int take = 0)
         {
             if ((skip <= 0 && take <= 0) || (skip < 0 && take > 0) || (skip > 0 && take < 0))
             {
@@ -35,16 +35,16 @@ namespace Core
             return GetQuery(text).Skip(skip).Take(take).ToList();
         }
 
-        public static ThuocGroup GetById(int id)
+        public static SanPham GetById(int id)
         {
-            return dbContext.ThuocGroups.Where(p => p.Id == id).FirstOrDefault<ThuocGroup>();
+            return dbContext.SanPhams.Where(p => p.Id == id).FirstOrDefault<SanPham>();
         }
 
-        private static bool Insert(ThuocGroup data)
+        private static bool Insert(SanPham data)
         {
             try
             {
-                dbContext.ThuocGroups.Add(data);
+                dbContext.SanPhams.Add(data);
                 dbContext.SaveChanges();
                 return true;
             }
@@ -60,15 +60,16 @@ namespace Core
         /// <param name="ten"></param>
         /// <param name="ghiChu"></param>
         /// <returns>Return id of the new data if success</returns>
-        public static int? Insert(string ma, string ten)
+        public static int? Insert(string ma, string ten, string moTa)
         {
             int? res = null;
 
             try
             {
-                ThuocGroup data = new ThuocGroup();
+                SanPham data = new SanPham();
                 data.Ma = ma;
                 data.Ten = ten;
+                data.MoTa = moTa;
 
                 if (Insert(data))
                 {
@@ -83,13 +84,13 @@ namespace Core
             return res;
         }
 
-        public static bool Delete(ThuocGroup data)
+        public static bool Delete(SanPham data)
         {
             try
             {
                 if (data != null)
                 {
-                    dbContext.ThuocGroups.Remove(data);
+                    dbContext.SanPhams.Remove(data);
                     dbContext.SaveChanges();
 
                     return true;
@@ -121,7 +122,7 @@ namespace Core
                     {
                         if (int.TryParse(id, out result))
                         {
-                            ThuocGroup data = GetById(result);
+                            SanPham data = GetById(result);
 
                             if (!Delete(data))
                             {
@@ -153,7 +154,7 @@ namespace Core
             return res;
         }
 
-        public static bool Update(ThuocGroup data)
+        public static bool Update(SanPham data)
         {
             try
             {
@@ -171,18 +172,19 @@ namespace Core
             }
         }
 
-        public static bool Update(int id, string ma, string ten)
+        public static bool Update(int id, string ma, string ten, string moTa)
         {
             bool res = false;
 
             try
             {
-                ThuocGroup data = GetById(id);
+                SanPham data = GetById(id);
 
                 if (data != null)
                 {
                     data.Ma = ma;
                     data.Ten = ten;
+                    data.Ten = moTa;
                     res = Update(data);
                 }
             }

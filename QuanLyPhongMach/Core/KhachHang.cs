@@ -16,6 +16,7 @@ namespace Core
     {
         public KhachHang()
         {
+            this.HoaDons = new HashSet<HoaDon>();
             this.Pets = new HashSet<Pet>();
         }
     
@@ -36,6 +37,7 @@ namespace Core
         public System.DateTime UpdateDate { get; set; }
         public bool DeleteFlag { get; set; }
     
+        public virtual ICollection<HoaDon> HoaDons { get; set; }
         public virtual KhachHangGroup KhachHangGroup { get; set; }
         public virtual ICollection<Pet> Pets { get; set; }
     }

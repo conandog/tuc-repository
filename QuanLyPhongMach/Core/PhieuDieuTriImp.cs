@@ -16,7 +16,6 @@ namespace Core
             query = dbContext.PhieuDieuTris.Where(p => p.Ma.Contains(text)
                 || p.Pet.Ten.Contains(text)
                 || p.Pet.KhachHang.Ten.Contains(text)
-                || p.User.Ten.Contains(text)
                 );
 
             if (deleteFlag != null)
@@ -72,9 +71,9 @@ namespace Core
         /// <param name="ten"></param>
         /// <param name="ghiChu"></param>
         /// <returns>Return id of the new data if success</returns>
-        public static int? Insert(int idPet, int idUser, string ma, string ten, long tongTien,
+        public static int? Insert(int idPet, string ma, string ten, long tongTien,
             bool isKhamBenh, bool isChich_UongThuoc, bool isTruyenDichTinhMach, string khac = "", string trieuChung = "",
-            double? trongLuong = null, double? nhietDo = null, string loiDanDo = "")
+            double? trongLuong = null, string nhietDo = "", string loiDanDo = "")
         {
             int? res = null;
 
@@ -82,7 +81,6 @@ namespace Core
             {
                 PhieuDieuTri data = new PhieuDieuTri();
                 data.IdPet = idPet;
-                data.IdUser = idUser;
                 data.Ma = String.IsNullOrEmpty(ma) ? (CommonConstants.DEFAULT_PREFIX_CODE_PDT + GetList().LastOrDefault<PhieuDieuTri>().Id.ToString()) : ma;
                 data.TrongLuong = trongLuong;
                 data.NhietDo = nhietDo;
@@ -201,9 +199,9 @@ namespace Core
             }
         }
 
-        public static bool Update(int id, object pet, object user, string ma, string ten, long tongTien,
+        public static bool Update(int id, object pet, string ma, string ten, long tongTien,
             bool isKhamBenh, bool isChich_UongThuoc, bool isTruyenDichTinhMach, string khac = "", string trieuChung = "", 
-            double? trongLuong = null, double? nhietDo = null, string loiDanDo = "")
+            double? trongLuong = null, string nhietDo = "", string loiDanDo = "")
         {
             bool res = false;
 
@@ -220,15 +218,6 @@ namespace Core
                     else
                     {
                         data.Pet = pet as Pet;
-                    }
-
-                    if (user is int)
-                    {
-                        data.User = UserImp.GetById(ConvertUtil.ConvertToInt(user));
-                    }
-                    else
-                    {
-                        data.User = pet as User;
                     }
 
                     data.Ma = String.IsNullOrEmpty(ma) ? (CommonConstants.DEFAULT_PREFIX_CODE_PDT + id.ToString()) : ma;

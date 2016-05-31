@@ -20,10 +20,8 @@ namespace Core
         }
     
         public int Id { get; set; }
-        public int IdGroup { get; set; }
         public string Ma { get; set; }
         public string Ten { get; set; }
-        public string DonViTinh { get; set; }
         public string MoTa { get; set; }
         public string CreateBy { get; set; }
         public System.DateTime CreateDate { get; set; }
@@ -32,6 +30,5 @@ namespace Core
         public bool DeleteFlag { get; set; }
     
         public virtual ICollection<PhieuDieuTri_Thuoc> PhieuDieuTri_Thuoc { get; set; }
-        public virtual ThuocGroup ThuocGroup { get; set; }
     }
 }
