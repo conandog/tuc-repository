@@ -94,7 +94,7 @@ namespace QuanLyPhongMach
 
         private void btHoanTat_Click(object sender, RoutedEventArgs e)
         {
-            if (!Validate())
+            if (!Validate() || !ValidateDataGrid())
             {
                 return;
             }
@@ -179,39 +179,59 @@ namespace QuanLyPhongMach
         private bool ValidateDataGrid()
         {
             bool res = false;
+            var listData = new List<Thuoc>();
 
+            for (int i = 0; i < dgToaThuoc.Items.Count; i++)
+            {
+                DataGridRow row = dgToaThuoc.ItemContainerGenerator.ContainerFromIndex(i) as DataGridRow;
 
+                if (row.Item != null && row.Item is PhieuDieuTri_Thuoc)
+                {
+                    var data = row.Item as PhieuDieuTri_Thuoc;
+
+                    if (data.Thuoc != null)
+                    {
+                        listData.Add(data.Thuoc);
+                    }
+                }
+            }
+
+            var duplicateKeys = listData.GroupBy(x => x).Where(group => group.Count() > 1).Select(group => group.Key).ToList();
+
+            if (duplicateKeys.Count > 0 && MessageBox.Show("Toa thuốc có dữ liệu bị trùng!" + Constant.MESSAGE_NEW_LINE + "Bạn có muốn tiếp tục cập nhật?",
+                    Constant.CAPTION_CONFIRM, MessageBoxButton.OKCancel, MessageBoxImage.Question) == MessageBoxResult.OK
+                || duplicateKeys.Count == 0)
+            {
+                res = true;
+            }
 
             return res;
         }
-    }
 
-    public class RowToIndexConverter : MarkupExtension, IValueConverter
-    {
-        static RowToIndexConverter converter;
-
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        private void GenerateRowNumber()
         {
-            DataGridRow row = value as DataGridRow;
-            if (row != null)
-                return row.GetIndex() + 1;
+            for (int i = 0; i < dgToaThuoc.Items.Count; i++)
+            {
+                DataGridRow row = dgToaThuoc.ItemContainerGenerator.ContainerFromIndex(i) as DataGridRow;
+                row.Header = (i + 1).ToString();
+            }
+        }
+
+        private void dgToaThuoc_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            if (e.Row.IsNewItem)
+            {
+                GenerateRowNumber();
+            }
             else
-                return -1;
+            {
+                e.Row.Header = (e.Row.GetIndex() + 1).ToString();
+            }
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        private void dgToaThuoc_UnloadingRow(object sender, DataGridRowEventArgs e)
         {
-            throw new NotImplementedException();
-        }
-
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            if (converter == null) converter = new RowToIndexConverter();
-            return converter;
-        }
-
-        public RowToIndexConverter()
-        {
+            GenerateRowNumber();
         }
     }
 }
