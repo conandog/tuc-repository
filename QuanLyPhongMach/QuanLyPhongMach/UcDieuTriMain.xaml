@@ -34,7 +34,7 @@
             <Button x:Name="btHuy" Content="HỦY" Height="30" Margin="0,0,50,10" Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" TabIndex="101" Click="btHuy_Click"/>
             <Button x:Name="btHoanTat" Content="HOÀN TẤT" Height="30" Margin="50,0,0,10" Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="80" Grid.Column="1" TabIndex="103" Click="btHoanTat_Click"/>
             <TextBlock HorizontalAlignment="Left" Margin="10,13,0,0" TextWrapping="Wrap" Text="Triệu chứng:" VerticalAlignment="Top" Grid.Row="2"/>
-            <TextBox x:Name="tbTrieuChung" HorizontalAlignment="Left" Height="23" Margin="81,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="649" Grid.Row="2" TabIndex="29" Grid.ColumnSpan="2" MaxLength="200"/>
+            <TextBox x:Name="tbTrieuChung" HorizontalAlignment="Left" Height="23" Margin="81,10,0,0" Text="TextBox" VerticalAlignment="Top" Width="649" Grid.Row="2" TabIndex="29" Grid.ColumnSpan="2" MaxLength="200" MaxLines="1"/>
             <TextBlock HorizontalAlignment="Left" Margin="34,10,0,0" TextWrapping="Wrap" Text="Điều trị:" VerticalAlignment="Top" Grid.Row="3"/>
             <Border BorderBrush="Gray" BorderThickness="1" DockPanel.Dock="Top"
                     Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="70" Margin="80,7,0,0" Grid.Row="3" VerticalAlignment="Top" Width="650">
@@ -43,28 +43,34 @@
                     <CheckBox x:Name="chbIsChich_UongThuoc" Content="Chích thuốc / uống thuốc" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" IsChecked="True" TabIndex="33"/>
                     <CheckBox x:Name="chbIsTruyenDichTinhMach" Content="Truyền dịch tĩnh mạch" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" TabIndex="35"/>
                     <TextBlock HorizontalAlignment="Left" Margin="200,34,0,0" TextWrapping="Wrap" Text="Khác:" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbKhac" HorizontalAlignment="Left" Height="23" Margin="233,31,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="407" TabIndex="37" MaxLength="50"/>
+                    <TextBox x:Name="tbKhac" HorizontalAlignment="Left" Height="23" Margin="233,31,0,0" Text="TextBox" VerticalAlignment="Top" Width="407" TabIndex="37" MaxLength="50" MaxLines="1"/>
                 </Grid>
             </Border>
             <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TOA THUỐC" VerticalAlignment="Top" Grid.Row="4" Grid.Column="1"/>
             <TextBlock HorizontalAlignment="Left" Margin="226,13,0,0" TextWrapping="Wrap" Text="Tổng cộng:" VerticalAlignment="Top" Grid.Row="5" Grid.Column="1"/>
-            <TextBox x:Name="tbTongTien" HorizontalAlignment="Left" Height="23" Margin="290,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="100" Grid.Row="5" Grid.Column="1" TabIndex="43" HorizontalContentAlignment="Right" MaxLength="11"/>
+            <TextBox x:Name="tbTongTien" HorizontalAlignment="Left" Height="23" Margin="290,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="100" Grid.Row="5" Grid.Column="1" TabIndex="43" HorizontalContentAlignment="Right" MaxLength="11" MaxLines="1" TextChanged="tbTongTien_TextChanged" KeyDown="tbTongTien_KeyDown"/>
             <TextBlock HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Lời dặn dò:" VerticalAlignment="Top" Grid.Row="4"/>
-            <TextBox x:Name="tbLoiDanDo" HorizontalAlignment="Left" Height="100" Margin="17,31,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="373" Grid.Row="4" TabIndex="39" MaxLength="200"/>
+            <TextBox x:Name="tbLoiDanDo" HorizontalAlignment="Left" Height="100" Margin="17,31,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="373" Grid.Row="4" TabIndex="39" MaxLength="200" MaxLines="5"/>
             <DataGrid Margin="10,31,0,0" Grid.Row="4" Width="380" Grid.Column="1" x:Name="dgToaThuoc" AutoGenerateColumns="False" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" TabIndex="41" CanUserAddRows="True" CanUserDeleteRows="True" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False" LoadingRow="dgToaThuoc_LoadingRow" UnloadingRow="dgToaThuoc_UnloadingRow" >
                 <DataGrid.Columns>
                     <DataGridComboBoxColumn x:Name="cbThuoc" ClipboardContentBinding="{x:Null}" DisplayMemberPath="Ten" Header="Tên" SelectedItemBinding="{Binding Thuoc}" />
                     <DataGridComboBoxColumn x:Name="cbDuongCap" ClipboardContentBinding="{x:Null}" Header="Đường cấp" SelectedItemBinding="{Binding DuongCap}" />
+                    <DataGridTextColumn Binding="{Binding LieuLuong}" ClipboardContentBinding="{x:Null}" Header="Liều lượng"/>
                 </DataGrid.Columns>
             </DataGrid>
             <GroupBox Header="KHÁCH HÀNG" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="50" Width="780">
                 <Grid HorizontalAlignment="Center" Height="30" Width="768" VerticalAlignment="Top">
-                    <TextBlock HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" Text="*Tên chủ:" VerticalAlignment="Top"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="389,8,0,0" TextWrapping="Wrap" Text="Địa chỉ:" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbDiaChi" HorizontalAlignment="Left" Height="23" Margin="433,5,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="325" TabIndex="15" MaxLength="100"/>
-                    <ComboBox x:Name="cbKhachHang" HorizontalAlignment="Left" Margin="64,5,0,0" VerticalAlignment="Top" Width="150" DisplayMemberPath="Ten" ItemsSource="{Binding}" IsEditable="True" TabIndex="11" SelectionChanged="cbKhachHang_SelectionChanged"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="247,8,0,0" TextWrapping="Wrap" Text="ĐT:" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbDienThoai" HorizontalAlignment="Left" Height="23" Margin="269,5,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="100" TabIndex="13" MaxLength="20"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,7,0,0" TextWrapping="Wrap" Text="*Tên chủ:" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="464,7,0,0" TextWrapping="Wrap" Text="Địa chỉ:" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbDiaChi" HorizontalAlignment="Left" Height="23" Margin="508,4,0,0" Text="TextBox" VerticalAlignment="Top" Width="250" TabIndex="15" MaxLength="100" MaxLines="1"/>
+                    <ComboBox x:Name="cbKhachHang" HorizontalAlignment="Left" Margin="64,4,0,0" VerticalAlignment="Top" Width="150" DisplayMemberPath="Ten" SelectedValue="{Binding Id}" ItemsSource="{Binding}" IsEditable="True" TabIndex="11" SelectionChanged="cbKhachHang_SelectionChanged"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="329,7,0,0" TextWrapping="Wrap" Text="ĐT:" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbDienThoai" HorizontalAlignment="Left" Height="23" Margin="351,4,0,0" Text="TextBox" VerticalAlignment="Top" Width="100" TabIndex="13" MaxLength="20" KeyDown="tbDienThoai_KeyDown" MaxLines="1" />
+                    <TextBlock HorizontalAlignment="Left" Margin="231,7,0,0" TextWrapping="Wrap" Text="GT:" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="cbGioiTinhKhachHang" HorizontalAlignment="Left" Margin="253,4,0,0" VerticalAlignment="Top" Width="60" SelectedIndex="0" TabIndex="5" >
+                        <ComboBoxItem Content="Nam"/>
+                        <ComboBoxItem Content="Nữ"/>
+                    </ComboBox>
                 </Grid>
             </GroupBox>
             <GroupBox Header="THÚ" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="90" Width="780" Grid.RowSpan="3">
@@ -78,21 +84,21 @@
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
                     <TextBlock HorizontalAlignment="Left" Margin="10,8,0,0" TextWrapping="Wrap" Text="*Tên thú:" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="cbPet" HorizontalAlignment="Left" Margin="64,5,0,0" VerticalAlignment="Top" Width="150" DisplayMemberPath="Ten" ItemsSource="{Binding}" IsEditable="True" TabIndex="17" SelectionChanged="cbPet_SelectionChanged"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="283,8,0,0" TextWrapping="Wrap" Text="Nhóm:" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="cbPetGroup" HorizontalAlignment="Left" Margin="324,5,0,0" VerticalAlignment="Top" Width="50" DisplayMemberPath="Ten" ItemsSource="{Binding}" TabIndex="19"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="271,13,0,0" TextWrapping="Wrap" Text="Giới tính:" VerticalAlignment="Top" Grid.Row="1"/>
-                    <ComboBox x:Name="cbGioiTinh" HorizontalAlignment="Left" Margin="324,10,0,0" VerticalAlignment="Top" Width="50" Grid.Row="1" SelectedIndex="0" TabIndex="23" >
+                    <ComboBox x:Name="cbPet" HorizontalAlignment="Left" Margin="64,5,0,0" VerticalAlignment="Top" Width="150" DisplayMemberPath="Ten" SelectedValue="{Binding Id}" ItemsSource="{Binding}" IsEditable="True" TabIndex="17" SelectionChanged="cbPet_SelectionChanged"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="273,8,0,0" TextWrapping="Wrap" Text="Nhóm:" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="cbPetGroup" HorizontalAlignment="Left" Margin="314,5,0,0" VerticalAlignment="Top" Width="60" DisplayMemberPath="Ten" ItemsSource="{Binding}" TabIndex="19"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="261,12.6,0,0" TextWrapping="Wrap" Text="Giới tính:" VerticalAlignment="Top" Grid.Row="1"/>
+                    <ComboBox x:Name="cbGioiTinhPet" HorizontalAlignment="Left" Margin="314,9.6,0,0" VerticalAlignment="Top" Width="60" Grid.Row="1" SelectedIndex="0" TabIndex="23" >
                         <ComboBoxItem Content="Đực"/>
                         <ComboBoxItem Content="Cái"/>
                     </ComboBox>
                     <TextBlock HorizontalAlignment="Left" Margin="32,13,0,0" TextWrapping="Wrap" Text="Tuổi:" VerticalAlignment="Top" Grid.Row="1"/>
-                    <TextBox x:Name="tbTuoi" HorizontalAlignment="Left" Height="23" Margin="63,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="30" Grid.Row="1" TabIndex="21" MaxLength="2" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="tbTuoi" HorizontalAlignment="Left" Height="23" Margin="63,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="30" Grid.Row="1" TabIndex="21" MaxLength="2" HorizontalContentAlignment="Center" MaxLines="1" KeyDown="tbTuoi_KeyDown"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,13,0,0" TextWrapping="Wrap" Text="Trọng lượng:" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
-                    <TextBox x:Name="tbTrongLuong" HorizontalAlignment="Left" Height="23" Margin="83,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="40" Grid.Row="1" TabIndex="25" MaxLength="4" HorizontalContentAlignment="Center" Grid.Column="1"/>
+                    <TextBox x:Name="tbTrongLuong" HorizontalAlignment="Left" Height="23" Margin="83,10,0,0" Text="TextBox" VerticalAlignment="Top" Width="40" Grid.Row="1" TabIndex="25" MaxLength="4" HorizontalContentAlignment="Center" Grid.Column="1" MaxLines="1" TextChanged="tbTrongLuong_TextChanged" KeyDown="tbTrongLuong_KeyDown"/>
                     <TextBlock x:Name="textDonViTinh" HorizontalAlignment="Left" Margin="128,13,0,0" TextWrapping="Wrap" Text="kg" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
                     <TextBlock HorizontalAlignment="Left" Margin="263,13,0,0" TextWrapping="Wrap" Text="Nhiệt độ:" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
-                    <TextBox x:Name="tbNhietDo" HorizontalAlignment="Left" Height="23" Margin="317,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="40" Grid.Row="1" TabIndex="27" MaxLength="4" HorizontalContentAlignment="Center" Grid.Column="1"/>
+                    <TextBox x:Name="tbNhietDo" HorizontalAlignment="Left" Height="23" Margin="317,10,0,0" Text="TextBox" VerticalAlignment="Top" Width="40" Grid.Row="1" TabIndex="27" MaxLength="4" HorizontalContentAlignment="Center" Grid.Column="1" MaxLines="1"/>
                     <TextBlock x:Name="textDonViTinh_Copy" HorizontalAlignment="Left" Margin="362,13,0,0" TextWrapping="Wrap" Text="°C" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
                 </Grid>
             </GroupBox>

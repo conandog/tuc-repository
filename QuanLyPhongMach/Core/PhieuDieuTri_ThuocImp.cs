@@ -60,7 +60,7 @@ namespace Core
         /// <param name="ten"></param>
         /// <param name="ghiChu"></param>
         /// <returns>Return id of the new data if success</returns>
-        public static int? Insert(int idPhieuDieuTri, int idThuoc, double lieuLuong)
+        public static int? Insert(int idPhieuDieuTri, int idThuoc, string duongCap, double lieuLuong)
         {
             int? res = null;
 
@@ -69,6 +69,7 @@ namespace Core
                 PhieuDieuTri_Thuoc data = new PhieuDieuTri_Thuoc();
                 data.IdPhieuDieuTri = idPhieuDieuTri;
                 data.IdThuoc = idThuoc;
+                data.DuongCap = duongCap;
                 data.LieuLuong = lieuLuong;
 
                 if (Insert(data))
@@ -172,7 +173,7 @@ namespace Core
             }
         }
 
-        public static bool Update(int id, object phieuDieuTri, object thuoc, double lieuLuong)
+        public static bool Update(int id, object phieuDieuTri, object thuoc, string duongCap, double lieuLuong)
         {
             bool res = false;
 
@@ -200,6 +201,7 @@ namespace Core
                         data.Thuoc = thuoc as Thuoc;
                     }
 
+                    data.DuongCap = duongCap;
                     data.LieuLuong = lieuLuong;
 
                     res = Update(data);

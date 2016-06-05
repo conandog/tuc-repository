@@ -10,6 +10,7 @@ namespace QuanLyPhongMach
     {
         public const string DEFAULT_TITLE_ADD = "THÊM";
         public const string DEFAULT_TITLE_EDIT = "SỬA";
+        public const string DEFAULT_PHIEU_DIEU_TRI_PREFIX = "P";
 
         public const string DEFAULT_WELCOME_DATE_TIME_FORMAT = "Hôm nay là {0}, {1}";
 

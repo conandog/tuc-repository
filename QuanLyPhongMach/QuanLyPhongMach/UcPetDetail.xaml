@@ -34,7 +34,7 @@
             <TextBlock HorizontalAlignment="Left" Margin="52,13,0,0" TextWrapping="Wrap" Text="*Tên:" VerticalAlignment="Top" Grid.Row="1"/>
             <TextBlock HorizontalAlignment="Left" Margin="10,13,0,0" TextWrapping="Wrap" Text="Giới tính:" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
             <TextBlock HorizontalAlignment="Left" Margin="53,13,0,0" TextWrapping="Wrap" Text="Tuổi:" VerticalAlignment="Top" Grid.Row="2"/>
-            <ComboBox x:Name="cbGioiTinh" HorizontalAlignment="Left" Margin="63,10,0,0" VerticalAlignment="Top" Width="50" Grid.Row="1" SelectedIndex="0" Grid.Column="1" TabIndex="17" >
+            <ComboBox x:Name="cbGioiTinh" HorizontalAlignment="Left" Margin="63,10,0,0" VerticalAlignment="Top" Width="60" Grid.Row="1" SelectedIndex="0" Grid.Column="1" TabIndex="17" >
                 <ComboBoxItem Content="Đực"/>
                 <ComboBoxItem Content="Cái"/>
             </ComboBox>
@@ -45,7 +45,7 @@
             <Button x:Name="btHoanTat" Content="HOÀN TẤT" Height="80" Margin="50,0,0,10" Grid.Row="4" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="80" Grid.Column="1" Click="btHoanTat_Click" TabIndex="103"/>
             <TextBox x:Name="tbTuoi" HorizontalAlignment="Left" Height="23" Margin="84,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="30" Grid.Row="2" TabIndex="19" MaxLength="2" HorizontalContentAlignment="Center"/>
             <TextBlock HorizontalAlignment="Left" Margin="22,13,0,0" TextWrapping="Wrap" Text="Nhóm:" VerticalAlignment="Top" Grid.Column="1"/>
-            <ComboBox x:Name="cbGroup" HorizontalAlignment="Left" Margin="63,10,0,0" VerticalAlignment="Top" Width="50" SelectedIndex="0" Grid.Column="1" TabIndex="14" DisplayMemberPath="Ten" ItemsSource="{Binding}"/>
+            <ComboBox x:Name="cbGroup" HorizontalAlignment="Left" Margin="63,10,0,0" VerticalAlignment="Top" Width="60" SelectedIndex="0" Grid.Column="1" TabIndex="14" DisplayMemberPath="Ten" ItemsSource="{Binding}"/>
             <TextBlock HorizontalAlignment="Left" Margin="11,13,0,0" TextWrapping="Wrap" Text="Trọng lượng:" VerticalAlignment="Top" Grid.Row="3"/>
             <TextBox x:Name="tbTrongLuong" HorizontalAlignment="Left" Height="23" Margin="84,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="40" Grid.Row="3" TabIndex="20" MaxLength="4" HorizontalContentAlignment="Center"/>
             <TextBlock HorizontalAlignment="Left" Margin="129,13,0,0" TextWrapping="Wrap" Text="kg" VerticalAlignment="Top" Grid.Row="3"/>

@@ -71,7 +71,7 @@ namespace Core
         /// <param name="ten"></param>
         /// <param name="ghiChu"></param>
         /// <returns>Return id of the new data if success</returns>
-        public static int? Insert(int idPet, string ma, string ten, long tongTien,
+        public static int? Insert(int idPet, string ma, long tongTien,
             bool isKhamBenh, bool isChich_UongThuoc, bool isTruyenDichTinhMach, string khac = "", string trieuChung = "",
             double? trongLuong = null, string nhietDo = "", string loiDanDo = "")
         {
@@ -199,7 +199,7 @@ namespace Core
             }
         }
 
-        public static bool Update(int id, object pet, string ma, string ten, long tongTien,
+        public static bool Update(int id, object pet, string ma, long tongTien,
             bool isKhamBenh, bool isChich_UongThuoc, bool isTruyenDichTinhMach, string khac = "", string trieuChung = "", 
             double? trongLuong = null, string nhietDo = "", string loiDanDo = "")
         {
