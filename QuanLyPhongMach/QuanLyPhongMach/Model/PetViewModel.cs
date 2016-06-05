@@ -21,6 +21,7 @@ namespace QuanLyPhongMach.Model
             IdKhachHang = data.IdKhachHang;
             Ten = data.Ten;
             GioiTinh = data.GioiTinh;
+            Giong = data.Giong;
             DOB = data.DOB;
             TrongLuong = data.TrongLuong;
             GhiChu = data.GhiChu;
@@ -46,15 +47,7 @@ namespace QuanLyPhongMach.Model
         {
             get
             {
-                int age = 0;
-
-                if (DOB.HasValue)
-                {
-                    age = DateTime.Today.Year - DOB.Value.Year;
-                    age = DateTime.Today < DOB.Value.AddYears(age) ? age-- : age; 
-                }
-
-                return age;
+                return PetImp.GetTuoi(DOB);
             }
         }
     }

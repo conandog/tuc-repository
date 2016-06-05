@@ -57,6 +57,19 @@ namespace Core
             return dbContext.Pets.Where(p => p.Id.Equals(id)).FirstOrDefault<Pet>();
         }
 
+        public static int GetTuoi(DateTime? DOB)
+        {
+            int age = 0;
+
+            if (DOB.HasValue)
+            {
+                age = DateTime.Today.Year - DOB.Value.Year;
+                age = DateTime.Today < DOB.Value.AddYears(age) ? age-- : age;
+            }
+
+            return age;
+        }
+
         private static bool Insert(Pet data)
         {
             try
@@ -78,7 +91,7 @@ namespace Core
         /// <param name="ghiChu"></param>
         /// <returns>Return id of the new data if success</returns>
         public static int? Insert(int idGroup, int idKhachHang, string ten,
-            string gioiTinh = "Đực", DateTime? DOB = null, double? trongLuong = null, string ghiChu = "")
+            string gioiTinh = "Đực", string giong = "", DateTime? DOB = null, double? trongLuong = null, string ghiChu = "")
         {
             int? res = null;
 
@@ -88,6 +101,7 @@ namespace Core
                 data.IdGroup = idGroup;
                 data.IdKhachHang = idKhachHang;
                 data.Ten = ten;
+                data.Giong = giong;
                 data.GioiTinh = gioiTinh;
                 data.DOB = DOB == null ? DateTime.Today : DOB;
                 data.TrongLuong = trongLuong;
@@ -200,7 +214,7 @@ namespace Core
         }
 
         public static bool Update(int id, object idGroup, object khachHang, string ten,
-            string gioiTinh = "Đực", DateTime? DOB = null, double? trongLuong = null, string ghiChu = "")
+            string gioiTinh = "Đực", string giong = "", DateTime? DOB = null, double? trongLuong = null, string ghiChu = "")
         {
             bool res = false;
 
@@ -229,6 +243,7 @@ namespace Core
                     }
 
                     data.Ten = ten;
+                    data.Giong = giong;
                     data.GioiTinh = gioiTinh;
                     data.DOB = DOB == null ? DateTime.Today : DOB;
                     data.TrongLuong = trongLuong;

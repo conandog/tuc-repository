@@ -124,8 +124,8 @@
           <Property Name="IdGroup" Type="int" Nullable="false" />
           <Property Name="IdKhachHang" Type="int" Nullable="false" />
           <Property Name="Ten" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="Giong" Type="nvarchar" MaxLength="20" />
           <Property Name="GioiTinh" Type="nvarchar" Nullable="false" MaxLength="3" />
+          <Property Name="Giong" Type="nvarchar" MaxLength="20" />
           <Property Name="DOB" Type="date" />
           <Property Name="TrongLuong" Type="float" />
           <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
@@ -497,8 +497,8 @@
           <Property Type="Int32" Name="IdGroup" Nullable="false" />
           <Property Type="Int32" Name="IdKhachHang" Nullable="false" />
           <Property Type="String" Name="Ten" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Giong" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="GioiTinh" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Giong" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="DOB" Precision="0" />
           <Property Type="Double" Name="TrongLuong" />
           <Property Type="String" Name="GhiChu" MaxLength="200" FixedLength="false" Unicode="true" />
@@ -828,8 +828,8 @@
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
                 <ScalarProperty Name="TrongLuong" ColumnName="TrongLuong" />
                 <ScalarProperty Name="DOB" ColumnName="DOB" />
-                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
                 <ScalarProperty Name="Giong" ColumnName="Giong" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
                 <ScalarProperty Name="Ten" ColumnName="Ten" />
                 <ScalarProperty Name="IdKhachHang" ColumnName="IdKhachHang" />
                 <ScalarProperty Name="IdGroup" ColumnName="IdGroup" />

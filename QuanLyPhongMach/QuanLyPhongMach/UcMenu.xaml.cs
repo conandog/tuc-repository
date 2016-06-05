@@ -55,7 +55,7 @@ namespace QuanLyPhongMach
         private void btDieuTri_Click(object sender, RoutedEventArgs e)
         {
             var mainWD = Window.GetWindow(this) as WdMain;
-            mainWD.LoadUcDieuTriMain();
+            mainWD.LoadUcDieuTriDetail();
         }
     }
 }

@@ -19,11 +19,11 @@ using Controller.Common;
 namespace QuanLyPhongMach
 {
     /// <summary>
-    /// Interaction logic for DieuTriMainPage.xaml
+    /// Interaction logic for UcDieuTriDetail.xaml
     /// </summary>
-    public partial class UcDieuTriMain : UserControl
+    public partial class UcDieuTriDetail : UserControl
     {
-        public UcDieuTriMain()
+        public UcDieuTriDetail()
         {
             InitializeComponent();
         }
@@ -37,6 +37,7 @@ namespace QuanLyPhongMach
         {
             tbDienThoai.Text = String.Empty;
             tbDiaChi.Text = String.Empty;
+            tbGiong.Text = String.Empty;
             tbTuoi.Text = String.Empty;
             tbTrongLuong.Text = String.Empty;
             tbNhietDo.Text = String.Empty;
@@ -150,6 +151,7 @@ namespace QuanLyPhongMach
                     {
                         var data = cbPet.SelectedItem as Pet;
                         data.GioiTinh = cbGioiTinhPet.Text;
+                        data.Giong = tbGiong.Text;
                         DateTime DOB = DateTime.Today.AddYears(-ConvertUtil.ConvertToInt(tbTuoi.Text));
                         data.TrongLuong = ConvertUtil.ConvertToDouble(tbTrongLuong.Text);
                         bool isSuccess = PetImp.Update(data);
@@ -164,7 +166,7 @@ namespace QuanLyPhongMach
                         PetGroup group = cbPetGroup.SelectedItem as PetGroup;
                         DateTime DOB = DateTime.Today.AddYears(-ConvertUtil.ConvertToInt(tbTuoi.Text));
                         int? id = PetImp.Insert(group.Id, idKhachHang.Value, cbPet.Text,
-                            cbGioiTinhPet.Text, DOB, ConvertUtil.ConvertToDouble(tbTrongLuong.Text));
+                            cbGioiTinhPet.Text, tbGiong.Text, DOB, ConvertUtil.ConvertToDouble(tbTrongLuong.Text));
 
                         if (id != null)
                         {

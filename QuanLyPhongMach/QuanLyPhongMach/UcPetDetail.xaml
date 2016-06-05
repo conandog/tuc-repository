@@ -49,6 +49,8 @@
             <TextBlock HorizontalAlignment="Left" Margin="11,13,0,0" TextWrapping="Wrap" Text="Trọng lượng:" VerticalAlignment="Top" Grid.Row="3"/>
             <TextBox x:Name="tbTrongLuong" HorizontalAlignment="Left" Height="23" Margin="84,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="40" Grid.Row="3" TabIndex="20" MaxLength="4" HorizontalContentAlignment="Center"/>
             <TextBlock HorizontalAlignment="Left" Margin="129,13,0,0" TextWrapping="Wrap" Text="kg" VerticalAlignment="Top" Grid.Row="3"/>
+            <TextBlock HorizontalAlignment="Left" Margin="201,13,0,0" TextWrapping="Wrap" Text="Giống:" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+            <TextBox x:Name="tbGiong" HorizontalAlignment="Left" Height="23" Margin="240,10,0,0" Text="TextBox" VerticalAlignment="Top" Width="150" TabIndex="20" MaxLength="20" MaxLines="1" Grid.Column="1" Grid.Row="1" />
         </Grid>
     </Grid>
 </UserControl>

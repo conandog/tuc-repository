@@ -90,10 +90,10 @@ namespace QuanLyPhongMach
             spMain.Children.Add(new UcThuocDetail(selectedItem));
         }
 
-        public void LoadUcDieuTriMain()
+        public void LoadUcDieuTriDetail()
         {
             spMain.Children.Clear();
-            spMain.Children.Add(new UcDieuTriMain());
+            spMain.Children.Add(new UcDieuTriDetail());
         }
     }
 }

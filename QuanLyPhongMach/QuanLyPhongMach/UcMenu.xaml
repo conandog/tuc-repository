@@ -7,13 +7,13 @@
              d:DesignHeight="104" d:DesignWidth="1080" HorizontalAlignment="Stretch"  VerticalAlignment="Top" Height="104">
     <Border BorderBrush="Gray" Background="LightGray" BorderThickness="2" DockPanel.Dock="Top">
         <Grid>
-            <Button x:Name="btUser" Content="User" HorizontalAlignment="Left" Height="80" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="101"/>
+            <Button x:Name="btUser" Content="USER" HorizontalAlignment="Left" Height="80" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="101"/>
             <Button x:Name="btKhachHang" HorizontalAlignment="Left" Height="80" Margin="130,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="102" Click="ButtonDropdown_Click">
                 <Button.Content>
                     <StackPanel Orientation="Vertical">
                         <!--<Image Source="Image/FileName"/>-->
-                        <TextBlock Text="Khách hàng" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <Path x:Name="btKH" Margin="4" VerticalAlignment="Bottom" Width="10" Fill="#FF527DB5" Stretch="Uniform" HorizontalAlignment="Center" Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z "/>
+                        <TextBlock Text="KHÁCH HÀNG" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Path Margin="4" VerticalAlignment="Bottom" Width="10" Fill="#FF527DB5" Stretch="Uniform" HorizontalAlignment="Center" Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z "/>
                     </StackPanel>
                 </Button.Content>
                 <Button.ContextMenu>
@@ -23,8 +23,23 @@
                     </ContextMenu>
                 </Button.ContextMenu>
             </Button>
-            <Button x:Name="btThuoc" Content="Thuốc" HorizontalAlignment="Left" Height="80" Margin="250,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="103" Click="btThuoc_Click"/>
-            <Button x:Name="btDieuTri" Content="Điều trị" HorizontalAlignment="Left" Height="80" Margin="370,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="104" Click="btDieuTri_Click"/>
+            <Button x:Name="btThuoc" Content="THUỐC" HorizontalAlignment="Left" Height="80" Margin="250,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="103" Click="btThuoc_Click"/>
+            <Button x:Name="btSoSach" HorizontalAlignment="Left" Height="80" Margin="370,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="104" Click="ButtonDropdown_Click">
+                <Button.Content>
+                    <StackPanel Orientation="Vertical">
+                        <!--<Image Source="Image/FileName"/>-->
+                        <TextBlock Text="SỔ SÁCH" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Path Margin="4" VerticalAlignment="Bottom" Width="10" Fill="#FF527DB5" Stretch="Uniform" HorizontalAlignment="Center" Data="F1 M 301.14,-189.041L 311.57,-189.041L 306.355,-182.942L 301.14,-189.041 Z "/>
+                    </StackPanel>
+                </Button.Content>
+                <Button.ContextMenu>
+                    <ContextMenu >
+                        <MenuItem x:Name="mnLichSuDieuTri" Header="Lịch sử điều trị" Click="mnKhachHang_Click"/>
+                        <MenuItem x:Name="mnThuChi" Header="Thu chi" Click="mnPet_Click"/>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
+            <Button x:Name="btDieuTri" Content="ĐIỀU TRỊ" HorizontalAlignment="Left" Height="80" Margin="490,10,0,0" VerticalAlignment="Top" Width="80" TabIndex="105" Click="btDieuTri_Click"/>
         </Grid>
     </Border>
 </UserControl>

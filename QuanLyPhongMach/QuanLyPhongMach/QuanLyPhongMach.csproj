@@ -64,8 +64,8 @@
     <Compile Include="Common\CommonFunction.cs" />
     <Compile Include="Common\Constant.cs" />
     <Compile Include="Model\PetViewModel.cs" />
-    <Compile Include="UcDieuTriMain.xaml.cs">
-      <DependentUpon>UcDieuTriMain.xaml</DependentUpon>
+    <Compile Include="UcDieuTriDetail.xaml.cs">
+      <DependentUpon>UcDieuTriDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="UcThuocDetail.xaml.cs">
       <DependentUpon>UcThuocDetail.xaml</DependentUpon>
@@ -73,7 +73,7 @@
     <Compile Include="UcThuocMain.xaml.cs">
       <DependentUpon>UcThuocMain.xaml</DependentUpon>
     </Compile>
-    <Page Include="UcDieuTriMain.xaml">
+    <Page Include="UcDieuTriDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

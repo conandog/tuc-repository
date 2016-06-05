@@ -54,16 +54,17 @@ namespace QuanLyPhongMach
         private void ResetData()
         {
             tbTen.Text = String.Empty;
+            tbGiong.Text = String.Empty;
             tbTuoi.Text = String.Empty;
             tbTrongLuong.Text = String.Empty;
             tbGhiChu.Text = String.Empty;
-            cbGioiTinh.SelectedIndex = 0;
 
+            cbGioiTinh.SelectedIndex = 0;
             cbGroup.ItemsSource = PetGroupImp.GetList();
             cbGroup.SelectedIndex = 0;
-
             cbKhachHang.ItemsSource = KhachHangImp.GetList();
             cbKhachHang.SelectedIndex = -1;
+
             cbKhachHang.Focus();
         }
 
@@ -82,7 +83,9 @@ namespace QuanLyPhongMach
 
             currentId = data.Id;
             tbTen.Text = data.Ten;
-            tbTuoi.Text = String.Empty;
+            tbGiong.Text = data.Giong;
+            var tuoi = PetImp.GetTuoi(data.DOB);
+            tbTuoi.Text = tuoi == 0 ? String.Empty : tuoi.ToString();
             tbTrongLuong.Text = data.TrongLuong == null ? String.Empty : data.TrongLuong.ToString();
             tbGhiChu.Text = data.GhiChu;
 
@@ -130,7 +133,7 @@ namespace QuanLyPhongMach
                 PetGroup group = cbGroup.SelectedItem as PetGroup;
                 DateTime DOB = DateTime.Today.AddYears(-ConvertUtil.ConvertToInt(tbTuoi.Text));
                 int? id = PetImp.Insert(group.Id, khachHang.Id, tbTen.Text,
-                    cbGioiTinh.Text, DOB, ConvertUtil.ConvertToDouble(tbTrongLuong.Text), tbGhiChu.Text);
+                    cbGioiTinh.Text, tbGiong.Text, DOB, ConvertUtil.ConvertToDouble(tbTrongLuong.Text), tbGhiChu.Text);
 
                 if (id != null)
                 {
@@ -169,7 +172,7 @@ namespace QuanLyPhongMach
                 PetGroup group = cbGroup.SelectedItem as PetGroup;
                 DateTime DOB = DateTime.Today.AddYears(-ConvertUtil.ConvertToInt(tbTuoi.Text));
                 bool isSuccess = PetImp.Update(currentId, group.Id, khachHang.Id, tbTen.Text,
-                    cbGioiTinh.Text, DOB, ConvertUtil.ConvertToDouble(tbTrongLuong.Text), tbGhiChu.Text);
+                    cbGioiTinh.Text, tbGiong.Text, DOB, ConvertUtil.ConvertToDouble(tbTrongLuong.Text), tbGhiChu.Text);
 
                 if (isSuccess)
                 {
