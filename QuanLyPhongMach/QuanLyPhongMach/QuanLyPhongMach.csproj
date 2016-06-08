@@ -64,24 +64,28 @@
     <Compile Include="Common\CommonFunction.cs" />
     <Compile Include="Common\Constant.cs" />
     <Compile Include="Model\PetViewModel.cs" />
-    <Compile Include="UcDieuTriDetail.xaml.cs">
+    <Compile Include="DieuTri\UcDieuTriDetail.xaml.cs">
       <DependentUpon>UcDieuTriDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UcThuocDetail.xaml.cs">
+    <Compile Include="DieuTri\UcThuocDetail.xaml.cs">
       <DependentUpon>UcThuocDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UcThuocMain.xaml.cs">
+    <Compile Include="DieuTri\UcThuocMain.xaml.cs">
       <DependentUpon>UcThuocMain.xaml</DependentUpon>
     </Compile>
-    <Page Include="UcDieuTriDetail.xaml">
+    <Page Include="DieuTri\UcDieuTriDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UcKhachHangDetail.xaml">
+    <Page Include="KhachHang\UcKhachHangDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UcKhachHangMain.xaml">
+    <Page Include="KhachHang\UcKhachHangMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UcDieuTriMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -97,11 +101,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UcKhachHangDetail.xaml.cs">
+    <Compile Include="KhachHang\UcKhachHangDetail.xaml.cs">
       <DependentUpon>UcKhachHangDetail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UcKhachHangMain.xaml.cs">
+    <Compile Include="KhachHang\UcKhachHangMain.xaml.cs">
       <DependentUpon>UcKhachHangMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UcDieuTriMain.xaml.cs">
+      <DependentUpon>UcDieuTriMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="WdLogin.xaml.cs">
       <DependentUpon>WdLogin.xaml</DependentUpon>
@@ -113,19 +120,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UcPetMain.xaml">
+    <Page Include="KhachHang\UcPetMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UcPetDetail.xaml">
+    <Page Include="KhachHang\UcPetDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UcThuocDetail.xaml">
+    <Page Include="DieuTri\UcThuocDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UcThuocMain.xaml">
+    <Page Include="DieuTri\UcThuocMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,10 +141,10 @@
     <Compile Include="UcMenu.xaml.cs">
       <DependentUpon>UcMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UcPetMain.xaml.cs">
+    <Compile Include="KhachHang\UcPetMain.xaml.cs">
       <DependentUpon>UcPetMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UcPetDetail.xaml.cs">
+    <Compile Include="KhachHang\UcPetDetail.xaml.cs">
       <DependentUpon>UcPetDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -178,6 +185,9 @@
       <Project>{4402f505-2b17-44e7-ad52-7da7045e9beb}</Project>
       <Name>Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="User\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

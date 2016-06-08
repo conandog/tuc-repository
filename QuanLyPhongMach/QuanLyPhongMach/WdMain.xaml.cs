@@ -95,5 +95,11 @@ namespace QuanLyPhongMach
             spMain.Children.Clear();
             spMain.Children.Add(new UcDieuTriDetail());
         }
+
+        public void LoadUcDieuTriMain()
+        {
+            spMain.Children.Clear();
+            spMain.Children.Add(new UcDieuTriMain());
+        }
     }
 }

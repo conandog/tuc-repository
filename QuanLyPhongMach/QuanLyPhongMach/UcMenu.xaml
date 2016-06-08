@@ -34,7 +34,7 @@
                 </Button.Content>
                 <Button.ContextMenu>
                     <ContextMenu >
-                        <MenuItem x:Name="mnLichSuDieuTri" Header="Lịch sử điều trị" Click="mnKhachHang_Click"/>
+                        <MenuItem x:Name="mnLichSuDieuTri" Header="Lịch sử điều trị" Click="mnLichSuDieuTri_Click"/>
                         <MenuItem x:Name="mnThuChi" Header="Thu chi" Click="mnPet_Click"/>
                     </ContextMenu>
                 </Button.ContextMenu>

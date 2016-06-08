@@ -79,6 +79,28 @@ namespace QuanLyPhongMach
             mainWD.LoadUcKhachHangDetail();
         }
 
+        private void btDelete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show(Constant.MESSAGE_DELETE_CONFIRM, Constant.CAPTION_CONFIRM, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    if (KhachHangImp.DeleteList(listSelectedItem))
+                    {
+                        LoadDataGrid();
+                    }
+                    else
+                    {
+                        MessageBox.Show(Constant.MESSAGE_GENERAL_ERROR, Constant.CAPTION_ERROR, MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void dgShowInfo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             listSelectedItem = string.Empty;
