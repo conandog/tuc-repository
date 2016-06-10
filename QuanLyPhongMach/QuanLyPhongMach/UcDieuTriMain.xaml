@@ -37,7 +37,7 @@
             </DataGrid.DataContext>
         </DataGrid>
         <CheckBox x:Name="chbSelect" Content="Chọn / bỏ chọn tất cả" HorizontalAlignment="Left" Height="17" Margin="10,3,0,0" VerticalAlignment="Top" Width="140" Grid.Row="2" Click="chbSelect_Click"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,10,0" Text="LỊCH SỬ ĐIỀU TRỊ" VerticalAlignment="Center" FontSize="24" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,10,0" Text="LỊCH SỬ ĐIỀU TRỊ" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
         <Button x:Name="btSearch" Content="Tra cứu" HorizontalAlignment="Left" Height="48" Margin="150,10,0,0" VerticalAlignment="Top" Width="48" IsEnabled="False" Click="btEdit_Click"/>
     </Grid>
 </UserControl>

@@ -89,6 +89,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WdDieuTriInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WdLogin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -109,6 +113,9 @@
     </Compile>
     <Compile Include="UcDieuTriMain.xaml.cs">
       <DependentUpon>UcDieuTriMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WdDieuTriInfo.xaml.cs">
+      <DependentUpon>WdDieuTriInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="WdLogin.xaml.cs">
       <DependentUpon>WdLogin.xaml</DependentUpon>
