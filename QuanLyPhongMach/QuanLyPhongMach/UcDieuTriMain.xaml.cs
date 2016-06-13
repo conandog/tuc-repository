@@ -114,18 +114,21 @@ namespace QuanLyPhongMach
 
             if (listSelected.Count == 1)
             {
+                btPrint.IsEnabled = true;
                 btDelete.IsEnabled = true;
                 btEdit.IsEnabled = true;
                 chbSelect.IsChecked = true;
             }
             else if (listSelected.Count > 1)
             {
+                btPrint.IsEnabled = false;
                 btDelete.IsEnabled = true;
                 btEdit.IsEnabled = false;
                 chbSelect.IsChecked = true;
             }
             else
             {
+                btPrint.IsEnabled = false;
                 btEdit.IsEnabled = false;
                 btDelete.IsEnabled = false;
                 chbSelect.IsChecked = false;
@@ -161,6 +164,12 @@ namespace QuanLyPhongMach
         {
             //var mainWD = Window.GetWindow(this) as WdMain;
             //mainWD.LoadUcDieuTriDetail(selectedItem);
+        }
+
+        private void btPrint_Click(object sender, RoutedEventArgs e)
+        {
+            var wd = new WdDieuTriInfo();
+            wd.ShowDialog();
         }
     }
 }

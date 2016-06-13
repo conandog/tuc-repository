@@ -26,28 +26,28 @@ namespace QuanLyPhongMach
 
         private void WdMain_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            CreateMyWPFControlReport(new UcDieuTriPrint());
         }
 
-        public void CreateMyWPFControlReport()
+        public void CreateMyWPFControlReport(UserControl uc)
         {
-            ////Set up the WPF Control to be printed
+            //Set up the WPF Control to be printed
             //MyWPFControl controlToPrint;
             //controlToPrint = new MyWPFControl();
             //controlToPrint.DataContext = usefulData;
 
-            //FixedDocument fixedDoc = new FixedDocument();
-            //PageContent pageContent = new PageContent();
-            //FixedPage fixedPage = new FixedPage();
+            FixedDocument fixedDoc = new FixedDocument();
+            PageContent pageContent = new PageContent();
+            FixedPage fixedPage = new FixedPage();
 
-            ////Create first page of document
-            //fixedPage.Children.Add(controlToPrint);
-            //((System.Windows.Markup.IAddChild)pageContent).AddChild(fixedPage);
-            //fixedDoc.Pages.Add(pageContent);
-            ////Create any other required pages here
+            //Create first page of document
+            fixedPage.Children.Add(uc);
+            ((System.Windows.Markup.IAddChild)pageContent).AddChild(fixedPage);
+            fixedDoc.Pages.Add(pageContent);
+            //Create any other required pages here
 
-            ////View the document
-            //documentViewer1.Document = fixedDoc;
+            //View the document
+            docViewer.Document = fixedDoc;
         }
     }
 }

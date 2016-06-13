@@ -21,6 +21,7 @@ namespace QuanLyPhongMach
         public const string DEFAULT_TYPE_DAY = "Ngày";
         public const string DEFAULT_TYPE_MONTH = "Tháng";
         public const string DEFAULT_TYPE_YEAR = "Năm";
+        public const string DEFAULT_TYPE_DATE = "Ngày {0} tháng {1} năm {2}";
 
         public const string DEFAULT_FORMAT_ID_PRODUCT = "0000";
         public const string DEFAULT_FORMAT_ID_BILL = "00000";

@@ -1,0 +1,77 @@
+﻿<UserControl x:Name="UcMain" x:Class="QuanLyPhongMach.UcDieuTriPrint"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QuanLyPhongMach"
+             xmlns:Model="clr-namespace:Core;assembly=Core"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Width="560" Height="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="150" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Phòng khám thú y" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,31,0,0" TextWrapping="Wrap" Text="326 Tùng Thiện Vương, P.13, Q.8, Tp.HCM" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="PHIẾU ĐIỀU TRỊ" VerticalAlignment="Top" Grid.Column="1" FontWeight="Bold"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="105"/>
+                <RowDefinition />
+                <RowDefinition Height="25"/>
+            </Grid.RowDefinitions>
+            <TextBlock HorizontalAlignment="Left" Margin="50,5,0,0" TextWrapping="Wrap" Text="ĐIỀU TRỊ" VerticalAlignment="Top" Grid.Row="1" FontWeight="Bold"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,5,0,0" TextWrapping="Wrap" Text="TOA THUỐC" VerticalAlignment="Top" Grid.Row="2" FontWeight="Bold"/>
+            <TextBlock HorizontalAlignment="Right" Margin="0,0,170,5" TextWrapping="Wrap" Text="Tổng cộng:" VerticalAlignment="Bottom" Grid.Row="2" FontWeight="Bold"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,5,0,0" TextWrapping="Wrap" Text="Lời dặn dò:" VerticalAlignment="Top" Grid.Row="3"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,5,0,0" TextWrapping="Wrap" Text="Tên chủ (Ông, Bà):" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,26,0,0" TextWrapping="Wrap" Text="Địa chỉ:" VerticalAlignment="Top"></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="50,47,0,0" TextWrapping="Wrap" Text="Loại thú:" VerticalAlignment="Top"></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Margin="250,47,0,0" TextWrapping="Wrap" Text="-Tuổi:" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="320,47,0,0" TextWrapping="Wrap" Text="-Giới tính:" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="430,47,0,0" TextWrapping="Wrap" Text="-Trọng lượng:" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="72,86,0,0" TextWrapping="Wrap" Text="Khác:" VerticalAlignment="Top" Grid.Row="1"/>
+            <TextBlock x:Name="tblLoaiThu" HorizontalAlignment="Left" Margin="100,47,0,0" TextWrapping="Wrap" Text="Chó - Chó ta" VerticalAlignment="Top"/>
+            <TextBlock x:Name="tblGioiTinhPet" HorizontalAlignment="Left" Margin="377,47,0,0" TextWrapping="Wrap" Text="Đực" VerticalAlignment="Top"/>
+            <TextBlock x:Name="tblTuoi" HorizontalAlignment="Left" Margin="285,47,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top"/>
+            <TextBlock x:Name="tblTrongLuong" HorizontalAlignment="Left" Margin="508,47,0,0" TextWrapping="Wrap" Text="10" VerticalAlignment="Top"/>
+            <TextBlock x:Name="tblTenChu" HorizontalAlignment="Left" Margin="152,5,0,0" TextWrapping="Wrap" Text="Nguyễn Gia Túc" VerticalAlignment="Top"/>
+            <TextBlock x:Name="tblDiaChi" HorizontalAlignment="Left" Margin="94,26,0,0" TextWrapping="Wrap" Text="31/19 Trần Quý Cáp, P.12, Q.BT" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="50,68,0,0" TextWrapping="Wrap" Text="Triệu chứng:" VerticalAlignment="Top"/>
+            <TextBlock x:Name="tblTrieuChung" HorizontalAlignment="Left" Margin="121,68,0,0" TextWrapping="Wrap" Text="Bệnh" VerticalAlignment="Top"/>
+            <CheckBox x:Name="chbIsKhamBenh" Content="Khám bệnh" HorizontalAlignment="Left" Margin="70,26,0,0" VerticalAlignment="Top" IsChecked="True" TabIndex="31" Grid.Row="1"/>
+            <CheckBox x:Name="chbIsChich_UongThuoc" Content="Chích thuốc / uống thuốc" HorizontalAlignment="Left" Margin="70,46,0,0" VerticalAlignment="Top" IsChecked="True" TabIndex="33" Grid.Row="1"/>
+            <CheckBox x:Name="chbIsTruyenDichTinhMach" Content="Truyền dịch tĩnh mạch" HorizontalAlignment="Left" Margin="70,66,0,0" VerticalAlignment="Top" TabIndex="35" Grid.Row="1"/>
+            <ListView Margin="80,26" Grid.Row="2" Width="400" HorizontalAlignment="Center">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <TextBlock x:Name="tblTongTien" HorizontalAlignment="Right" Margin="0,0,90,5" TextWrapping="Wrap" Text="999.999" VerticalAlignment="Bottom" Grid.Row="2" FontWeight="Bold"/>
+            <TextBlock x:Name="tblLoiDanDo" HorizontalAlignment="Left" Margin="114,5,0,0" TextWrapping="Wrap" Text="Tái khám" VerticalAlignment="Top" Grid.Row="3"/>
+            <TextBlock x:Name="tblKhac" HorizontalAlignment="Left" Margin="105,86,0,0" TextWrapping="Wrap" Text="Lý do khác" VerticalAlignment="Top" Grid.Row="1"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="tblDate" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Ngày 31 tháng 12 năm 2016" VerticalAlignment="Top" Grid.Column="1"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,31,0,0" TextWrapping="Wrap" Text="Bác sĩ điều trị" VerticalAlignment="Top" Grid.Column="1"/>
+        </Grid>
+    </Grid>
+</UserControl>
