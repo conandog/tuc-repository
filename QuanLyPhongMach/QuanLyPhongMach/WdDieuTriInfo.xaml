@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="REVIEW" Height="736" Width="1024" Loaded="WdMain_Loaded" >
     <Grid>
-        <DocumentViewer x:Name="docViewer" HorizontalAlignment="Left" Height="685" Margin="10,10,0,0" VerticalAlignment="Top" Width="996"/>
+        <DocumentViewer x:Name="docViewer" Height="685" Width="996"/>
 
     </Grid>
 </Window>

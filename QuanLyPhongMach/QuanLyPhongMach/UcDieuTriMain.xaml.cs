@@ -168,7 +168,7 @@ namespace QuanLyPhongMach
 
         private void btPrint_Click(object sender, RoutedEventArgs e)
         {
-            var wd = new WdDieuTriInfo();
+            var wd = new WdDieuTriInfo(selectedItem);
             wd.ShowDialog();
         }
     }

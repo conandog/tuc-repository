@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Core;
 
 namespace QuanLyPhongMach
 {
@@ -24,9 +25,15 @@ namespace QuanLyPhongMach
             InitializeComponent();
         }
 
+        public WdDieuTriInfo(PhieuDieuTri data)
+        {
+            InitializeComponent();
+            CreateMyWPFControlReport(new UcDieuTriPrint(data));
+        }
+
         private void WdMain_Loaded(object sender, RoutedEventArgs e)
         {
-            CreateMyWPFControlReport(new UcDieuTriPrint());
+            
         }
 
         public void CreateMyWPFControlReport(UserControl uc)
@@ -43,6 +50,7 @@ namespace QuanLyPhongMach
             //Create first page of document
             fixedPage.Children.Add(uc);
             ((System.Windows.Markup.IAddChild)pageContent).AddChild(fixedPage);
+            fixedDoc.DocumentPaginator.PageSize = new Size(96 * 5.83, 96 * 8.27);
             fixedDoc.Pages.Add(pageContent);
             //Create any other required pages here
 

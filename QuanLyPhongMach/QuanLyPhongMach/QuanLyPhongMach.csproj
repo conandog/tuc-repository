@@ -115,6 +115,7 @@
     <Compile Include="KhachHang\UcKhachHangMain.xaml.cs">
       <DependentUpon>UcKhachHangMain.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\ToaThuocViewModel.cs" />
     <Compile Include="UcDieuTriMain.xaml.cs">
       <DependentUpon>UcDieuTriMain.xaml</DependentUpon>
     </Compile>

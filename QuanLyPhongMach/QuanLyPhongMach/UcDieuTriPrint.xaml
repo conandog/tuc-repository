@@ -53,10 +53,13 @@
             <CheckBox x:Name="chbIsKhamBenh" Content="Khám bệnh" HorizontalAlignment="Left" Margin="70,26,0,0" VerticalAlignment="Top" IsChecked="True" TabIndex="31" Grid.Row="1"/>
             <CheckBox x:Name="chbIsChich_UongThuoc" Content="Chích thuốc / uống thuốc" HorizontalAlignment="Left" Margin="70,46,0,0" VerticalAlignment="Top" IsChecked="True" TabIndex="33" Grid.Row="1"/>
             <CheckBox x:Name="chbIsTruyenDichTinhMach" Content="Truyền dịch tĩnh mạch" HorizontalAlignment="Left" Margin="70,66,0,0" VerticalAlignment="Top" TabIndex="35" Grid.Row="1"/>
-            <ListView Margin="80,26" Grid.Row="2" Width="400" HorizontalAlignment="Center">
+            <ListView x:Name="lvToaThuoc" Margin="80,26" Grid.Row="2" Width="400" HorizontalAlignment="Center">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn/>
+                        <GridViewColumn Header="STT" Width="30" DisplayMemberBinding="{Binding STT}"/>
+                        <GridViewColumn Header="Tên" Width="250" DisplayMemberBinding="{Binding Thuoc.Ten}"/>
+                        <GridViewColumn Header="ĐCấp" Width="55" DisplayMemberBinding="{Binding DuongCap}"/>
+                        <GridViewColumn Header="LLượng" Width="55" DisplayMemberBinding="{Binding LieuLuong}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
