@@ -51,19 +51,6 @@ namespace QuanLyPhongMach
             chbIsKhamBenh.IsChecked = true;
             chbIsChich_UongThuoc.IsChecked = true;
             chbIsTruyenDichTinhMach.IsChecked = false;
-
-            //dgToaThuoc.ItemsSource = null;
-
-            //List<PhieuDieuTri_Thuoc> listData = new List<PhieuDieuTri_Thuoc>()
-            //{
-            //    new PhieuDieuTri_Thuoc() {  }
-            //};
-
-            //dgToaThuoc.ItemsSource = listData;
-            //cbThuoc.ItemsSource = ThuocImp.GetList();
-            //cbDuongCap.ItemsSource = new List<string>() { "IM", "IV", "PO" };
-
-            //cbKhachHang.Focus();
         }
 
         private void LoadData(object selectedData)
@@ -103,7 +90,7 @@ namespace QuanLyPhongMach
                 listThuoc.Add(newThuoc);
             }
 
-            lvToaThuoc.ItemsSource = listThuoc;
+            dgShowInfo.ItemsSource = listThuoc;
         }
     }
 }
