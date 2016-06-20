@@ -85,15 +85,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UcDieuTriMain.xaml">
+    <Page Include="DieuTri\UcDieuTriMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UcDieuTriPrint.xaml">
+    <Page Include="DieuTri\UcDieuTriPrint.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WdDieuTriInfo.xaml">
+    <Page Include="DieuTri\WdDieuTriInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,13 +116,13 @@
       <DependentUpon>UcKhachHangMain.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\ToaThuocViewModel.cs" />
-    <Compile Include="UcDieuTriMain.xaml.cs">
+    <Compile Include="DieuTri\UcDieuTriMain.xaml.cs">
       <DependentUpon>UcDieuTriMain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UcDieuTriPrint.xaml.cs">
+    <Compile Include="DieuTri\UcDieuTriPrint.xaml.cs">
       <DependentUpon>UcDieuTriPrint.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WdDieuTriInfo.xaml.cs">
+    <Compile Include="DieuTri\WdDieuTriInfo.xaml.cs">
       <DependentUpon>WdDieuTriInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="WdLogin.xaml.cs">

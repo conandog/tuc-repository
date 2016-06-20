@@ -34,16 +34,16 @@
             <Button x:Name="btHuy" Content="HỦY" Height="30" Margin="0,0,50,10" Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" TabIndex="101" Click="btHuy_Click"/>
             <Button x:Name="btHoanTat" Content="HOÀN TẤT" Height="30" Margin="50,0,0,10" Grid.Row="7" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="80" Grid.Column="1" TabIndex="103" Click="btHoanTat_Click"/>
             <TextBlock HorizontalAlignment="Left" Margin="10,13,0,0" TextWrapping="Wrap" Text="Triệu chứng:" VerticalAlignment="Top" Grid.Row="2"/>
-            <TextBox x:Name="tbTrieuChung" HorizontalAlignment="Left" Height="23" Margin="81,10,0,0" Text="TextBox" VerticalAlignment="Top" Width="649" Grid.Row="2" TabIndex="29" Grid.ColumnSpan="2" MaxLength="200" MaxLines="1"/>
+            <TextBox x:Name="tbTrieuChung" HorizontalAlignment="Left" Height="23" Margin="81,10,0,0" Text="TextBox" VerticalAlignment="Top" Width="600" Grid.Row="2" TabIndex="29" Grid.ColumnSpan="2" MaxLength="200" MaxLines="1"/>
             <TextBlock HorizontalAlignment="Left" Margin="34,10,0,0" TextWrapping="Wrap" Text="Điều trị:" VerticalAlignment="Top" Grid.Row="3"/>
             <Border BorderBrush="Gray" BorderThickness="1" DockPanel.Dock="Top"
-                    Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="70" Margin="80,7,0,0" Grid.Row="3" VerticalAlignment="Top" Width="650">
+                    Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="70" Margin="80,7,0,0" Grid.Row="3" VerticalAlignment="Top" Width="710">
                 <Grid>
                     <CheckBox x:Name="chbIsKhamBenh" Content="Khám bệnh" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True" TabIndex="31"/>
                     <CheckBox x:Name="chbIsChich_UongThuoc" Content="Chích thuốc / uống thuốc" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top" IsChecked="True" TabIndex="33"/>
                     <CheckBox x:Name="chbIsTruyenDichTinhMach" Content="Truyền dịch tĩnh mạch" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" TabIndex="35"/>
                     <TextBlock HorizontalAlignment="Left" Margin="200,34,0,0" TextWrapping="Wrap" Text="Khác:" VerticalAlignment="Top"/>
-                    <TextBox x:Name="tbKhac" HorizontalAlignment="Left" Height="23" Margin="233,31,0,0" Text="TextBox" VerticalAlignment="Top" Width="407" TabIndex="37" MaxLength="50" MaxLines="1"/>
+                    <TextBox x:Name="tbKhac" HorizontalAlignment="Left" Height="23" Margin="233,31,0,0" Text="TextBox" VerticalAlignment="Top" Width="465" TabIndex="37" MaxLength="50" MaxLines="1"/>
                 </Grid>
             </Border>
             <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TOA THUỐC" VerticalAlignment="Top" Grid.Row="4" Grid.Column="1"/>
@@ -104,6 +104,7 @@
                     <TextBox x:Name="tbGiong" HorizontalAlignment="Left" Height="23" Margin="83,5,0,0" Text="TextBox" VerticalAlignment="Top" Width="150" TabIndex="20" MaxLength="20" KeyDown="tbDienThoai_KeyDown" MaxLines="1" Grid.Column="1" />
                 </Grid>
             </GroupBox>
+            <Button x:Name="btCopyFromTheLast" Content="Copy từ lần trước" HorizontalAlignment="Left" Margin="290,11,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1" Grid.Row="2" Click="btCopyFromTheLast_Click"/>
         </Grid>
     </Grid>
 </UserControl>

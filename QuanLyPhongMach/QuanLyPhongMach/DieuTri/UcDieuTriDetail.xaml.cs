@@ -73,6 +73,21 @@ namespace QuanLyPhongMach
             cbKhachHang.Focus();
         }
 
+        private void LoadFromTheLast(PhieuDieuTri data)
+        {
+            tbTrongLuong.Text = data.TrongLuong.HasValue ? data.TrongLuong.ToString() : String.Empty;
+            tbTrieuChung.Text = data.TrieuChung;
+            tbKhac.Text = data.Khac;
+            tbLoiDanDo.Text = data.LoiDanDo;
+            tbTongTien.Text = data.TongTien.ToString(Constant.DEFAULT_FORMAT_MONEY);
+
+            chbIsKhamBenh.IsChecked = data.IsKhamBenh;
+            chbIsChich_UongThuoc.IsChecked = data.IsChich_UongThuoc;
+            chbIsTruyenDichTinhMach.IsChecked = data.IsTruyenDichTinhMach;
+
+            dgToaThuoc.ItemsSource = data.PhieuDieuTri_Thuoc;
+        }
+
         private bool Validate()
         {
             bool res = false;
@@ -425,6 +440,11 @@ namespace QuanLyPhongMach
         private void tbTrongLuong_KeyDown(object sender, KeyEventArgs e)
         {
             CommonFunc.ValidateNumeric(e);
+        }
+
+        private void btCopyFromTheLast_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
