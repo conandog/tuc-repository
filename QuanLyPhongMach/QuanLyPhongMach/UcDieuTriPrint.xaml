@@ -53,25 +53,16 @@
             <CheckBox x:Name="chbIsKhamBenh" Content="Khám bệnh" HorizontalAlignment="Left" Margin="70,26,0,0" VerticalAlignment="Top" IsChecked="True" TabIndex="31" Grid.Row="1" IsHitTestVisible="False"/>
             <CheckBox x:Name="chbIsChich_UongThuoc" Content="Chích thuốc / uống thuốc" HorizontalAlignment="Left" Margin="70,46,0,0" VerticalAlignment="Top" IsChecked="True" TabIndex="33" Grid.Row="1" IsHitTestVisible="False"/>
             <CheckBox x:Name="chbIsTruyenDichTinhMach" Content="Truyền dịch tĩnh mạch" HorizontalAlignment="Left" Margin="70,66,0,0" VerticalAlignment="Top" TabIndex="35" Grid.Row="1" IsHitTestVisible="False"/>
-            <DataGrid x:Name="dgShowInfo" Margin="80,26" Grid.Row="2" Width="400" HorizontalAlignment="Center" BorderThickness="0" CanUserAddRows="False" AutoGenerateColumns="False" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserDeleteRows="False" CanUserResizeRows="False" IsHitTestVisible="False" Focusable="False">
-                <DataGrid.CellStyle>
-                    <Style TargetType="DataGridCell">
-                        <Setter Property="BorderThickness" Value="0"/>
-                        <!-- Update from comments.
-                 Remove the focus indication for the selected cell -->
-                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-                    </Style>
-                </DataGrid.CellStyle>
-                <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding STT}" ClipboardContentBinding="{x:Null}" Header="STT" IsReadOnly="True" Width="30"/>
-                    <DataGridTextColumn Binding="{Binding Thuoc.Ten}" ClipboardContentBinding="{x:Null}" Header="Tên" IsReadOnly="True" Width="250"/>
-                    <DataGridTextColumn Binding="{Binding DuongCap}" ClipboardContentBinding="{x:Null}" Header="ĐCấp" IsReadOnly="True" Width="55"/>
-                    <DataGridTextColumn Binding="{Binding LieuLuong}" ClipboardContentBinding="{x:Null}" Header="LLượng" IsReadOnly="True" Width="55"/>
-                </DataGrid.Columns>
-                <DataGrid.DataContext>
-                    <Model:PhieuDieuTri_Thuoc/>
-                </DataGrid.DataContext>
-            </DataGrid>
+            <ListView x:Name="lvToaThuoc" Margin="80,26" Grid.Row="2" Width="400" HorizontalAlignment="Center" BorderThickness="0" IsHitTestVisible="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="STT" Width="30" DisplayMemberBinding="{Binding STT}"/>
+                        <GridViewColumn Header="Tên" Width="250" DisplayMemberBinding="{Binding Thuoc.Ten}"/>
+                        <GridViewColumn Header="ĐCấp" Width="60" DisplayMemberBinding="{Binding DuongCap}"/>
+                        <GridViewColumn Header="LLượng" Width="60" DisplayMemberBinding="{Binding LieuLuong}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
             <TextBlock x:Name="tblTongTien" HorizontalAlignment="Right" Margin="0,0,90,5" TextWrapping="Wrap" Text="999.999" VerticalAlignment="Bottom" Grid.Row="2" FontWeight="Bold"/>
             <TextBlock x:Name="tblLoiDanDo" HorizontalAlignment="Left" Margin="114,5,0,0" TextWrapping="Wrap" Text="Tái khám" VerticalAlignment="Top" Grid.Row="3"/>
             <TextBlock x:Name="tblKhac" HorizontalAlignment="Left" Margin="105,86,0,0" TextWrapping="Wrap" Text="Lý do khác" VerticalAlignment="Top" Grid.Row="1"/>

@@ -90,7 +90,7 @@ namespace QuanLyPhongMach
                 listThuoc.Add(newThuoc);
             }
 
-            dgShowInfo.ItemsSource = listThuoc;
+            lvToaThuoc.ItemsSource = listThuoc;
         }
     }
 }

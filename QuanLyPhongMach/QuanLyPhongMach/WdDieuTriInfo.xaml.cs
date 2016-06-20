@@ -57,5 +57,10 @@ namespace QuanLyPhongMach
             //View the document
             docViewer.Document = fixedDoc;
         }
+
+        private void docViewer_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }
