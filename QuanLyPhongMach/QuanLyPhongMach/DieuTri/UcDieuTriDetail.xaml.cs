@@ -35,6 +35,7 @@ namespace QuanLyPhongMach
 
         private void ResetData()
         {
+            btCopyFromTheLast.Visibility = System.Windows.Visibility.Hidden;
             tbDienThoai.Text = String.Empty;
             tbDiaChi.Text = String.Empty;
             tbGiong.Text = String.Empty;
@@ -73,19 +74,38 @@ namespace QuanLyPhongMach
             cbKhachHang.Focus();
         }
 
-        private void LoadFromTheLast(PhieuDieuTri data)
+        private void CopyFromTheLast()
         {
-            tbTrongLuong.Text = data.TrongLuong.HasValue ? data.TrongLuong.ToString() : String.Empty;
-            tbTrieuChung.Text = data.TrieuChung;
-            tbKhac.Text = data.Khac;
-            tbLoiDanDo.Text = data.LoiDanDo;
-            tbTongTien.Text = data.TongTien.ToString(Constant.DEFAULT_FORMAT_MONEY);
+            var selectedPet = cbPet.SelectedItem as Pet;
+            PhieuDieuTri data = PhieuDieuTriImp.GetLastByIdPet(selectedPet.Id);
 
-            chbIsKhamBenh.IsChecked = data.IsKhamBenh;
-            chbIsChich_UongThuoc.IsChecked = data.IsChich_UongThuoc;
-            chbIsTruyenDichTinhMach.IsChecked = data.IsTruyenDichTinhMach;
+            if (data != null)
+            {
+                tbTrongLuong.Text = data.TrongLuong.HasValue ? data.TrongLuong.ToString() : String.Empty;
+                tbTrieuChung.Text = data.TrieuChung;
+                tbKhac.Text = data.Khac;
+                tbLoiDanDo.Text = data.LoiDanDo;
+                tbTongTien.Text = data.TongTien.ToString(Constant.DEFAULT_FORMAT_MONEY);
 
-            dgToaThuoc.ItemsSource = data.PhieuDieuTri_Thuoc;
+                chbIsKhamBenh.IsChecked = data.IsKhamBenh;
+                chbIsChich_UongThuoc.IsChecked = data.IsChich_UongThuoc;
+                chbIsTruyenDichTinhMach.IsChecked = data.IsTruyenDichTinhMach;
+
+                dgToaThuoc.ItemsSource = null;
+                List<PhieuDieuTri_Thuoc> listData = new List<PhieuDieuTri_Thuoc>();
+
+                foreach (PhieuDieuTri_Thuoc thuoc in data.PhieuDieuTri_Thuoc)
+                {
+                    PhieuDieuTri_Thuoc temp = new PhieuDieuTri_Thuoc() { Thuoc = thuoc.Thuoc, DuongCap = thuoc.DuongCap, LieuLuong = thuoc.LieuLuong };
+                    listData.Add(temp);
+                }
+
+                dgToaThuoc.ItemsSource = listData;
+            }
+            else
+            {
+                MessageBox.Show(Constant.MESSAGE_ERROR_NULL_DATA, Constant.CAPTION_WARNING, MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         private bool Validate()
@@ -289,7 +309,7 @@ namespace QuanLyPhongMach
 
             try
             {
-                //Create();
+                Create();
                 ResetData();
             }
             catch (Exception ex)
@@ -331,6 +351,8 @@ namespace QuanLyPhongMach
 
         private void cbPet_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            btCopyFromTheLast.Visibility = System.Windows.Visibility.Hidden;
+
             if (cbPet.SelectedItem != null)
             {
                 var selectedPet = cbPet.SelectedItem as Pet;
@@ -340,6 +362,12 @@ namespace QuanLyPhongMach
                 cbGioiTinhPet.Text = selectedItem.GioiTinh;
                 tbTrongLuong.Text = selectedItem.TrongLuong.ToString();
                 tbNhietDo.Text = String.Empty;
+                PhieuDieuTri data = PhieuDieuTriImp.GetLastByIdPet(selectedPet.Id);
+
+                if (data != null)
+                {
+                    btCopyFromTheLast.Visibility = System.Windows.Visibility.Visible;
+                }
             }
         }
 
@@ -444,7 +472,7 @@ namespace QuanLyPhongMach
 
         private void btCopyFromTheLast_Click(object sender, RoutedEventArgs e)
         {
-
+            CopyFromTheLast();
         }
     }
 }

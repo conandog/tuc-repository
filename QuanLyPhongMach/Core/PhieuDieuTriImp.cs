@@ -51,6 +51,11 @@ namespace Core
             return dbContext.PhieuDieuTris.Where(p => p.Ma.Equals(ma)).FirstOrDefault<PhieuDieuTri>();
         }
 
+        public static PhieuDieuTri GetLastByIdPet(int idPet)
+        {
+            return dbContext.PhieuDieuTris.Where(p => p.IdPet.Equals(idPet)).OrderByDescending(p => p.CreateDate).FirstOrDefault<PhieuDieuTri>();
+        }
+
         private static bool Insert(PhieuDieuTri data)
         {
             try
