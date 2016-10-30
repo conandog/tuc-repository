@@ -97,6 +97,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\DictionaryIcons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\DictionaryCustomControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WdLogin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -191,6 +199,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="Resources\Icons\KhachHang\Thumbs.db" />
+    <None Include="Resources\Icons\Main\Thumbs.db" />
+    <None Include="Resources\Icons\User\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -203,6 +214,108 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="User\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\ChucNang\add.png" />
+    <Resource Include="Resources\Icons\ChucNang\back.png" />
+    <Resource Include="Resources\Icons\ChucNang\back_disable.png" />
+    <Resource Include="Resources\Icons\ChucNang\back_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\button_back.png" />
+    <Resource Include="Resources\Icons\ChucNang\button_back_disable.png" />
+    <Resource Include="Resources\Icons\ChucNang\button_back_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\button_exit.PNG" />
+    <Resource Include="Resources\Icons\ChucNang\button_exit_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\button_minimize.png" />
+    <Resource Include="Resources\Icons\ChucNang\button_minimize_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\button_next.png" />
+    <Resource Include="Resources\Icons\ChucNang\button_next_disable.PNG" />
+    <Resource Include="Resources\Icons\ChucNang\button_next_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\button_ok.PNG" />
+    <Resource Include="Resources\Icons\ChucNang\button_ok_disable.png" />
+    <Resource Include="Resources\Icons\ChucNang\button_ok_mouseover.PNG" />
+    <Resource Include="Resources\Icons\ChucNang\button_refresh.png" />
+    <Resource Include="Resources\Icons\ChucNang\button_refresh_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\delete.png" />
+    <Resource Include="Resources\Icons\ChucNang\export.png" />
+    <Resource Include="Resources\Icons\ChucNang\export_disable.png" />
+    <Resource Include="Resources\Icons\ChucNang\export_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\export_title.png" />
+    <Resource Include="Resources\Icons\ChucNang\forward.png" />
+    <Resource Include="Resources\Icons\ChucNang\forward_disable.png" />
+    <Resource Include="Resources\Icons\ChucNang\forward_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_apply.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_apply_dis.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_apply_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_birthday.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_birthday_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_browse.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_browse_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_cancel.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_cancel_disable.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_cancel_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_check.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_crop.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_crop_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_crop_ok.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_crop_ok_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_excel.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_excel_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_find.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_find_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_home.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_home_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_move.PNG" />
+    <Resource Include="Resources\Icons\ChucNang\icon_ok.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_ok_disable.PNG" />
+    <Resource Include="Resources\Icons\ChucNang\icon_ok_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_searchtextbox.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_send_back.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_send_back_disable.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_send_back_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_sua.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_sua_disable.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_sua_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_them.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_them_disable.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_them_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_totalpagenumber.PNG" />
+    <Resource Include="Resources\Icons\ChucNang\icon_warning.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_xoa.PNG" />
+    <Resource Include="Resources\Icons\ChucNang\icon_xoa_disable.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_xoa_mouseover.png" />
+    <Resource Include="Resources\Icons\ChucNang\search_bgbar.PNG" />
+    <Resource Include="Resources\Icons\KhachHang\icon_history.png" />
+    <Resource Include="Resources\Icons\KhachHang\icon_history_disable.png" />
+    <Resource Include="Resources\Icons\KhachHang\icon_history_mouseover.png" />
+    <Resource Include="Resources\Icons\KhachHang\icon_khachhang.png" />
+    <Resource Include="Resources\Icons\KhachHang\icon_khachhang1.png" />
+    <Resource Include="Resources\Icons\KhachHang\icon_khachhang_group_index.png" />
+    <Resource Include="Resources\Icons\KhachHang\icon_khachhang_group_index_mouseover.png" />
+    <Resource Include="Resources\Icons\KhachHang\icon_khachhang_index.png" />
+    <Resource Include="Resources\Icons\KhachHang\icon_khachhang_index_mouseover.png" />
+    <Resource Include="Resources\Icons\KhachHang\icon_khachhang_mouseover.png" />
+    <Resource Include="Resources\Icons\KhachHang\icon_khachhang_title.png" />
+    <Resource Include="Resources\Icons\KhachHang\icon_pay_debt.png" />
+    <Resource Include="Resources\Icons\KhachHang\icon_pay_debt_disable.png" />
+    <Resource Include="Resources\Icons\KhachHang\icon_pay_debt_mouseover.png" />
+    <Resource Include="Resources\Icons\Main\bottom_horizonline.png" />
+    <Resource Include="Resources\Icons\Main\horizonline.png" />
+    <Resource Include="Resources\Icons\Main\icon_key.png" />
+    <Resource Include="Resources\Icons\Main\icon_key_disable.png" />
+    <Resource Include="Resources\Icons\Main\icon_key_mouseover.png" />
+    <Resource Include="Resources\Icons\Main\login.png" />
+    <Resource Include="Resources\Icons\Main\logoND.png" />
+    <Resource Include="Resources\Icons\Main\startup.png" />
+    <Resource Include="Resources\Icons\Main\topbar.png" />
+    <Resource Include="Resources\Icons\User\icon_user.png" />
+    <Resource Include="Resources\Icons\User\icon_user_mouseover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\ChucNang\icon_print.png" />
+    <Resource Include="Resources\Icons\ChucNang\icon_print_mouseover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\ChucNang\icon_print_disable.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

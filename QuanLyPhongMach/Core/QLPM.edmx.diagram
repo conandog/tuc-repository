@@ -5,19 +5,18 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="31d46b7e404642779441858dc4ea39a7" Name="Diagram1">
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.HoaDon" Width="1.5" PointX="5.83634869094768" PointY="19.8466128054292" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.HoaDon_SanPham" Width="1.5" PointX="10.186954165895914" PointY="6.9610055568446434" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.KhachHang" Width="1.5" PointX="2.3253325178871549" PointY="23.101237397222423" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.KhachHangGroup" Width="1.5" PointX="10.450850871601539" PointY="17.969259419464162" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.Pet" Width="1.5" PointX="5.2403327567690674" PointY="16.184826053765057" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.PetGroup" Width="1.5" PointX="1.2035345161350137" PointY="13.149430728121395" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.PhieuDieuTri" Width="1.5" PointX="8.8495553307466" PointY="18.228934236908767" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.PhieuDieuTri_Thuoc" Width="1.5" PointX="1.7049635451775806" PointY="7.3697940443501784" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.SanPham" Width="1.5" PointX="0.58897526962169222" PointY="17.326436184964347" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.sysdiagram" Width="1.5" PointX="6.4016013473279783" PointY="3.6659741269731771" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.Thuoc" Width="1.5" PointX="5.8414467320970473" PointY="18.911683523520679" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.User" Width="1.5" PointX="10.355048646384407" PointY="22.140337999044142" />
-        <EntityTypeShape EntityType="QuanLyPhongMachModel.UserGroup" Width="1.5" PointX="8.60537682315585" PointY="8.38989732060111" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.HoaDon" Width="1.5" PointX="0.64358820237386416" PointY="8.61282182140873" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.HoaDon_SanPham" Width="1.5" PointX="5.3672452985156536" PointY="14.2925738609827" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.KhachHang" Width="1.5" PointX="10.481273900010285" PointY="31.269341960209115" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.KhachHangGroup" Width="1.5" PointX="11.874645771400374" PointY="15.08947610067645" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.Pet" Width="1.5" PointX="2.7095744994979234" PointY="17.312791921809684" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.PetGroup" Width="1.5" PointX="4.0133068449857214" PointY="27.802099941206212" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.PhieuDieuTri" Width="1.5" PointX="5.4633157334585283" PointY="25.861712050559795" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.PhieuDieuTri_Thuoc" Width="1.5" PointX="9.4376305180777" PointY="9.6847269878185944" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.SanPham" Width="1.5" PointX="2.3802894662973886" PointY="28.756220905462381" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.Thuoc" Width="1.5" PointX="5.3228604278167992" PointY="10.876952355204594" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.User" Width="1.5" PointX="6.3821919776416349" PointY="2.4073689442162256" />
+        <EntityTypeShape EntityType="QuanLyPhongMachModel.UserGroup" Width="1.5" PointX="10.966079279298931" PointY="23.340392913362194" />
         <AssociationConnector Association="QuanLyPhongMachModel.FK_HoaDon_KhachHang" />
         <AssociationConnector Association="QuanLyPhongMachModel.FK_HoaDon_SanPham_HoaDon" />
         <AssociationConnector Association="QuanLyPhongMachModel.FK_HoaDon_SanPham_SanPham" />

@@ -5,6 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Width="800" Height="600" Loaded="UcMain_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/DictionaryIcons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -41,8 +48,8 @@
             <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="70,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="150" TabIndex="7" DisplayDateEnd="{Binding DisplayDate, ElementName=datePicker}"/>
             <TextBlock HorizontalAlignment="Left" Margin="22,13,0,0" TextWrapping="Wrap" Text="Ghi chú:" VerticalAlignment="Top" Grid.Row="5"/>
             <TextBox x:Name="tbGhiChu"  HorizontalAlignment="Left" Height="80" Margin="70,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="717" Grid.Row="5" Grid.ColumnSpan="2" TabIndex="17" MaxLength="200"/>
-            <Button x:Name="btHuy" Content="HỦY" Margin="0,0,50,10" Grid.Row="6" HorizontalAlignment="Right" Width="80" Height="80" VerticalAlignment="Bottom" Click="btHuy_Click" TabIndex="101"/>
-            <Button x:Name="btHoanTat" Content="HOÀN TẤT" Margin="50,0,0,10" Grid.Row="6" HorizontalAlignment="Left" Width="80" Grid.Column="1" Height="80" VerticalAlignment="Bottom" TabIndex="103" Click="btHoanTat_Click"/>
+            <Button x:Name="btHuy" Margin="0,0,50,10" Grid.Row="6" HorizontalAlignment="Right" Width="80" Height="65" VerticalAlignment="Bottom" Click="btHuy_Click" TabIndex="101" Style="{StaticResource btCancel}"/>
+            <Button x:Name="btHoanTat" Content="HOÀN TẤT" Margin="50,0,0,10" Grid.Row="6" HorizontalAlignment="Left" Width="80" Grid.Column="1" Height="65" VerticalAlignment="Bottom" TabIndex="103" Click="btHoanTat_Click" Style="{StaticResource btOk}"/>
             <TextBox x:Name="tbMa" HorizontalAlignment="Left" Height="23" Margin="70,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="80" TabIndex="1" MaxLength="10"/>
             <TextBlock HorizontalAlignment="Left" Margin="29,14,0,0" TextWrapping="Wrap" Text="CMND:" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1"/>
             <TextBox x:Name="tbCMND"  HorizontalAlignment="Left" Height="23" Margin="72,11,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="100" Grid.Row="2" Grid.Column="1" TabIndex="9" MaxLength="10"/>

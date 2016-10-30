@@ -34,11 +34,20 @@ namespace QuanLyPhongMach
             LoadDataGrid();
         }
 
-        private void LoadDataGrid()
+        private void LoadDataGrid(string text = "")
         {
             try
             {
-                List<Thuoc> listData = ThuocImp.GetList();
+                List<Thuoc> listData = null;
+
+                if (String.IsNullOrEmpty(text))
+                {
+                    listData = ThuocImp.GetList();
+                }
+                else
+                {
+                    listData = ThuocImp.GetList(text);
+                }
 
                 if (listData != null)
                 {
@@ -161,6 +170,19 @@ namespace QuanLyPhongMach
         {
             var mainWD = Window.GetWindow(this) as WdMain;
             mainWD.LoadUcThuocDetail(selectedItem);
+        }
+
+        private void tbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                LoadDataGrid(tbSearch.Text);
+            }
+        }
+
+        private void btSearch_Click(object sender, RoutedEventArgs e)
+        {
+            LoadDataGrid(tbSearch.Text);
         }
     }
 }

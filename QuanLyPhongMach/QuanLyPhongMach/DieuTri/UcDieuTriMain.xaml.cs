@@ -34,11 +34,20 @@ namespace QuanLyPhongMach
             LoadDataGrid();
         }
 
-        private void LoadDataGrid()
+        private void LoadDataGrid(string text = "")
         {
             try
             {
-                List<PhieuDieuTri> listData = PhieuDieuTriImp.GetList();
+                List<PhieuDieuTri> listData = null;
+
+                if (String.IsNullOrEmpty(text))
+                {
+                    listData = PhieuDieuTriImp.GetList();
+                }
+                else
+                {
+                    listData = PhieuDieuTriImp.GetList(text);
+                }
 
                 if (listData != null)
                 {
@@ -170,6 +179,19 @@ namespace QuanLyPhongMach
         {
             var wd = new WdDieuTriInfo(selectedItem);
             wd.ShowDialog();
+        }
+
+        private void tbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                LoadDataGrid(tbSearch.Text);
+            }
+        }
+
+        private void btSearch_Click(object sender, RoutedEventArgs e)
+        {
+            LoadDataGrid(tbSearch.Text);
         }
     }
 }

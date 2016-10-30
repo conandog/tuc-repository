@@ -113,9 +113,6 @@
     <Compile Include="SanPham.cs">
       <DependentUpon>QLPM.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>QLPM.tt</DependentUpon>
-    </Compile>
     <Compile Include="Thuoc.cs">
       <DependentUpon>QLPM.tt</DependentUpon>
     </Compile>

@@ -34,11 +34,20 @@ namespace QuanLyPhongMach
             LoadDataGrid();
         }
 
-        private void LoadDataGrid()
+        private void LoadDataGrid(string text = "")
         {
             try
             {
-                List<KhachHang> listData = KhachHangImp.GetList();
+                List<KhachHang> listData = null;
+
+                if (String.IsNullOrEmpty(text))
+                {
+                    listData = KhachHangImp.GetList();
+                }
+                else
+                {
+                    listData = KhachHangImp.GetList(text);
+                }
 
                 if (listData != null)
                 {
@@ -161,6 +170,19 @@ namespace QuanLyPhongMach
         {
             var mainWD = Window.GetWindow(this) as WdMain;
             mainWD.LoadUcKhachHangDetail(selectedItem);
+        }
+
+        private void tbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                LoadDataGrid(tbSearch.Text);
+            }
+        }
+
+        private void btSearch_Click(object sender, RoutedEventArgs e)
+        {
+            LoadDataGrid(tbSearch.Text);
         }
     }
 }

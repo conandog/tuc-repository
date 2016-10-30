@@ -34,11 +34,21 @@ namespace QuanLyPhongMach
             LoadDataGrid();
         }
 
-        private void LoadDataGrid()
+        private void LoadDataGrid(string text = "")
         {
             try
             {
-                List<Pet> listData = PetImp.GetList();
+                List<Pet> listData = null;
+
+                if (String.IsNullOrEmpty(text))
+                {
+                    listData = PetImp.GetList();
+                }
+                else
+                {
+                    listData = PetImp.GetList(text);
+                }
+                
                 List<Model.PetViewModel> listViewData = Model.PetViewModel.GetListFromPet(listData);
 
                 if (listData != null)
@@ -162,6 +172,19 @@ namespace QuanLyPhongMach
         {
             var mainWD = Window.GetWindow(this) as WdMain;
             mainWD.LoadUcPetDetail(selectedItem);
+        }
+
+        private void tbSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                LoadDataGrid(tbSearch.Text);
+            }
+        }
+
+        private void btSearch_Click(object sender, RoutedEventArgs e)
+        {
+            LoadDataGrid(tbSearch.Text);
         }
     }
 }

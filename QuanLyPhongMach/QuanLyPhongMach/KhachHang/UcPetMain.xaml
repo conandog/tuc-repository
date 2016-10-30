@@ -6,6 +6,14 @@
              xmlns:Model="clr-namespace:Core;assembly=Core"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" Width="800" Height="600" Loaded="UcMain_Loaded">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/DictionaryIcons.xaml"/>
+                <ResourceDictionary Source="/Resources/DictionaryCustomControls.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
@@ -13,9 +21,9 @@
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
 
-        <Button x:Name="btAdd" Content="Thêm" HorizontalAlignment="Left" Height="48" Margin="10,10,0,0" VerticalAlignment="Top" Width="48" Click="btAdd_Click"/>
-        <Button x:Name="btDelete" Content="Xóa" HorizontalAlignment="Left" Height="48" Margin="80,10,0,0" VerticalAlignment="Top" Width="48" IsEnabled="False" Click="btDelete_Click"/>
-        <Button x:Name="btEdit" Content="Sửa" HorizontalAlignment="Left" Height="48" Margin="150,10,0,0" VerticalAlignment="Top" Width="48" IsEnabled="False" Click="btEdit_Click"/>
+        <Button x:Name="btAdd" HorizontalAlignment="Left" Height="48" Margin="10,10,0,0" VerticalAlignment="Top" Width="48" Click="btAdd_Click" Style="{StaticResource btAdd}"/>
+        <Button x:Name="btDelete" HorizontalAlignment="Left" Height="48" Margin="80,10,0,0" VerticalAlignment="Top" Width="48" IsEnabled="False" Click="btDelete_Click" Style="{StaticResource btDelete}"/>
+        <Button x:Name="btEdit" HorizontalAlignment="Left" Height="48" Margin="150,10,0,0" VerticalAlignment="Top" Width="48" IsEnabled="False" Click="btEdit_Click" Style="{StaticResource btEdit}"/>
         <DataGrid x:Name="dgShowInfo" CanUserAddRows="False" AutoGenerateColumns="False" Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserDeleteRows="False" Grid.Row="1" SelectionChanged="dgShowInfo_SelectionChanged" CanUserResizeRows="False">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
@@ -40,5 +48,9 @@
         </DataGrid>
         <CheckBox x:Name="chbSelect" Content="Chọn / bỏ chọn tất cả" HorizontalAlignment="Left" Height="17" Margin="10,3,0,0" VerticalAlignment="Top" Width="140" Grid.Row="2" Click="chbSelect_Click"/>
         <TextBlock HorizontalAlignment="Right" Margin="0,0,10,0" Text="THÚ" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>
+        <Grid HorizontalAlignment="Left" Height="48" Margin="203,10,0,0" VerticalAlignment="Top" Width="532">
+            <TextBox x:Name="tbSearch" HorizontalAlignment="Left" Height="23" Margin="10,15,0,0" VerticalAlignment="Top" Width="200" TabIndex="3" MaxLength="50" MaxLines="1" KeyDown="tbSearch_KeyDown" Style="{StaticResource tbSearch}"/>
+            <Button x:Name="btSearch" HorizontalAlignment="Left" Margin="215,17,0,0" VerticalAlignment="Top" Width="26" Height="21" Click="btSearch_Click" Style="{StaticResource btSearch}"/>
+        </Grid>
     </Grid>
 </UserControl>

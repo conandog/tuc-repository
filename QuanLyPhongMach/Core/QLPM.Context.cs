@@ -34,7 +34,6 @@ namespace Core
         public DbSet<PhieuDieuTri> PhieuDieuTris { get; set; }
         public DbSet<PhieuDieuTri_Thuoc> PhieuDieuTri_Thuoc { get; set; }
         public DbSet<SanPham> SanPhams { get; set; }
-        public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<Thuoc> Thuocs { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserGroup> UserGroups { get; set; }
