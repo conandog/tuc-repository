@@ -24,7 +24,7 @@
         <Button x:Name="btAdd" HorizontalAlignment="Left" Height="48" Margin="10,10,0,0" VerticalAlignment="Top" Width="48" Click="btAdd_Click" Style="{StaticResource btAdd}"/>
         <Button x:Name="btDelete" HorizontalAlignment="Left" Height="48" Margin="80,10,0,0" VerticalAlignment="Top" Width="48" IsEnabled="False"  Click="btDelete_Click" Style="{StaticResource btDelete}"/>
         <Button x:Name="btEdit" HorizontalAlignment="Left" Height="48" Margin="150,10,0,0" VerticalAlignment="Top" Width="48" IsEnabled="False" Click="btEdit_Click" Style="{StaticResource btEdit}"/>
-        <DataGrid x:Name="dgShowInfo" CanUserAddRows="False" AutoGenerateColumns="False" Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserDeleteRows="False" Grid.Row="1" SelectionChanged="dgShowInfo_SelectionChanged" CanUserResizeRows="False">
+        <DataGrid x:Name="dgShowInfo" CanUserAddRows="False" AutoGenerateColumns="False" Margin="10" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" CanUserDeleteRows="False" Grid.Row="1" SelectionChanged="dgShowInfo_SelectionChanged" CanUserResizeRows="False" ContextMenuOpening="PreLoadHandler">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -45,6 +45,11 @@
             <DataGrid.DataContext>
                 <Model:KhachHang/>
             </DataGrid.DataContext>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="mnPet" Header="Pet" Click="mnPet_Click"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
         <CheckBox x:Name="chbSelect" Content="Chọn / bỏ chọn tất cả" HorizontalAlignment="Left" Height="17" Margin="10,3,0,0" VerticalAlignment="Top" Width="140" Grid.Row="2" Click="chbSelect_Click"/>
         <TextBlock HorizontalAlignment="Right" Margin="0,0,10,0" Text="KHÁCH HÀNG" VerticalAlignment="Top" FontSize="24" FontWeight="Bold"/>

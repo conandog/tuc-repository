@@ -184,5 +184,44 @@ namespace QuanLyPhongMach
         {
             LoadDataGrid(tbSearch.Text);
         }
+
+        private void mnPet_Click(object sender, RoutedEventArgs e)
+        {
+            System.Collections.IList listSelected = dgShowInfo.SelectedItems;
+
+            if (listSelected.Count > 0)
+            {
+                int a = 1;
+            }
+        }
+
+        private bool FlagForCustomContextMenu = true;
+
+        private void PreLoadHandler(object sender, ContextMenuEventArgs e)
+        {
+            if (!FlagForCustomContextMenu)
+            {
+                e.Handled = true; //need to suppress empty menu
+                FrameworkElement fe = e.Source as FrameworkElement;
+                fe.ContextMenu = BuildMenu();
+                FlagForCustomContextMenu = true;
+                fe.ContextMenu.IsOpen = true;
+            }
+        }
+
+        private ContextMenu BuildMenu()
+        {
+            ContextMenu theMenu = new ContextMenu();
+            MenuItem mia = new MenuItem();
+            mia.Header = "Item1";
+            MenuItem mib = new MenuItem();
+            mib.Header = "Item2";
+            MenuItem mic = new MenuItem();
+            mic.Header = "Item3";
+            theMenu.Items.Add(mia);
+            theMenu.Items.Add(mib);
+            theMenu.Items.Add(mic);
+            return theMenu;
+        }
     }
 }
