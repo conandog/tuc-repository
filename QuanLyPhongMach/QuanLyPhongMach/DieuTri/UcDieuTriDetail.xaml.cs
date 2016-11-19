@@ -64,7 +64,7 @@ namespace QuanLyPhongMach
 
             List<PhieuDieuTri_Thuoc> listData = new List<PhieuDieuTri_Thuoc>()
             {
-                new PhieuDieuTri_Thuoc() {  }
+                new PhieuDieuTri_Thuoc() { DuongCap = "IM", LieuLuong = 1 }
             };
 
             dgToaThuoc.ItemsSource = listData;
@@ -416,7 +416,11 @@ namespace QuanLyPhongMach
             for (int i = 0; i < dgToaThuoc.Items.Count; i++)
             {
                 DataGridRow row = dgToaThuoc.ItemContainerGenerator.ContainerFromIndex(i) as DataGridRow;
-                row.Header = (i + 1).ToString();
+
+                if (row != null)
+                {
+                    row.Header = (i + 1).ToString();
+                }
             }
         }
 
@@ -473,6 +477,28 @@ namespace QuanLyPhongMach
         private void btCopyFromTheLast_Click(object sender, RoutedEventArgs e)
         {
             CopyFromTheLast();
+        }
+
+        private void btNewRow_Click(object sender, RoutedEventArgs e)
+        {
+            AddNewRow();
+        }
+
+        private void dgToaThuoc_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Add || e.Key == Key.OemPlus)
+            {
+                AddNewRow();
+            }
+        }
+
+        private void AddNewRow()
+        {
+            object[] arrayData = new object[dgToaThuoc.Items.Count];
+            dgToaThuoc.Items.CopyTo(arrayData, 0);
+            List<object> listData = arrayData.ToList();
+            listData.Add(new PhieuDieuTri_Thuoc() { DuongCap = "IM", LieuLuong = 1 });
+            dgToaThuoc.ItemsSource = listData;
         }
     }
 }

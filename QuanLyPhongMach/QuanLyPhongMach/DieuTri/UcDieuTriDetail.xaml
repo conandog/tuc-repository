@@ -58,7 +58,7 @@
             <TextBox x:Name="tbTongTien" HorizontalAlignment="Left" Height="23" Margin="290,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="100" Grid.Row="5" Grid.Column="1" TabIndex="43" HorizontalContentAlignment="Right" MaxLength="11" MaxLines="1" TextChanged="tbTongTien_TextChanged" KeyDown="tbTongTien_KeyDown"/>
             <TextBlock HorizontalAlignment="Left" Margin="17,10,0,0" TextWrapping="Wrap" Text="Lời dặn dò:" VerticalAlignment="Top" Grid.Row="4"/>
             <TextBox x:Name="tbLoiDanDo" HorizontalAlignment="Left" Height="100" Margin="17,31,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="373" Grid.Row="4" TabIndex="39" MaxLength="200" MaxLines="5"/>
-            <DataGrid Margin="10,31,0,0" Grid.Row="4" Width="380" Grid.Column="1" x:Name="dgToaThuoc" AutoGenerateColumns="False" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" TabIndex="41" CanUserAddRows="True" CanUserDeleteRows="True" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False" LoadingRow="dgToaThuoc_LoadingRow" UnloadingRow="dgToaThuoc_UnloadingRow" >
+            <DataGrid Margin="10,31,0,0" Grid.Row="4" Width="380" Grid.Column="1" x:Name="dgToaThuoc" AutoGenerateColumns="False" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" TabIndex="41" CanUserDeleteRows="True" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeRows="False" LoadingRow="dgToaThuoc_LoadingRow" UnloadingRow="dgToaThuoc_UnloadingRow" CanUserAddRows="False" KeyUp="dgToaThuoc_KeyUp" >
                 <DataGrid.Columns>
                     <DataGridComboBoxColumn x:Name="cbThuoc" ClipboardContentBinding="{x:Null}" DisplayMemberPath="Ten" Header="Tên" SelectedItemBinding="{Binding Thuoc}" />
                     <DataGridComboBoxColumn x:Name="cbDuongCap" ClipboardContentBinding="{x:Null}" Header="Đường cấp" SelectedItemBinding="{Binding DuongCap}" />
@@ -112,6 +112,7 @@
                 </Grid>
             </GroupBox>
             <Button x:Name="btCopyFromTheLast" Content="Copy từ lần trước" HorizontalAlignment="Left" Margin="290,11,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1" Grid.Row="2" Click="btCopyFromTheLast_Click"/>
+            <Button x:Name="btNewRow" Content="Thêm dòng (phím +)" HorizontalAlignment="Left" Margin="270,6.4,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="4" Click="btNewRow_Click"/>
         </Grid>
     </Grid>
 </UserControl>
