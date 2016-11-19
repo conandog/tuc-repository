@@ -183,15 +183,9 @@ namespace QuanLyPhongMach
 
                 if (isSuccess)
                 {
-                    if (MessageBox.Show(Constant.MESSAGE_GENERAL_SUCCESS + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_CONTINUE,
-                        Constant.CAPTION_CONFIRM, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                    {
-                        ResetData();
-                    }
-                    else
-                    {
-                        BackToMain();
-                    }
+                    MessageBox.Show(String.Format(Constant.MESSAGE_UPDATE_SUCCESS, tbMa.Text),
+                        Constant.CAPTION_CONFIRM, MessageBoxButton.OK, MessageBoxImage.Information);
+                    BackToMain();
                 }
                 else if (MessageBox.Show(Constant.MESSAGE_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_EXIT,
                     Constant.CAPTION_ERROR, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)

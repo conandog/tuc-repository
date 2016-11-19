@@ -43,7 +43,7 @@ namespace QuanLyPhongMach.Model
             return res;
         }
 
-        public int Tuoi
+        public double Tuoi
         {
             get
             {

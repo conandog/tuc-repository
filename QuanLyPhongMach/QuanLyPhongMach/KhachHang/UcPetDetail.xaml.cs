@@ -147,7 +147,10 @@ namespace QuanLyPhongMach
             {
                 KhachHang khachHang = cbKhachHang.SelectedItem as KhachHang;
                 PetGroup group = cbGroup.SelectedItem as PetGroup;
-                DateTime DOB = DateTime.Today.AddYears(-ConvertUtil.ConvertToInt(tbTuoi.Text));
+
+                int years = ConvertUtil.ConvertToInt(tbTuoi.Text);
+                int months = (int)((ConvertUtil.ConvertToDouble(tbTuoi.Text) - ConvertUtil.ConvertToInt(tbTuoi.Text)) * 10);
+                DateTime DOB = DateTime.Today.AddYears(-years).AddMonths(-months);
                 int? id = PetImp.Insert(group.Id, khachHang.Id, tbTen.Text,
                     cbGioiTinh.Text, tbGiong.Text, DOB, ConvertUtil.ConvertToDouble(tbTrongLuong.Text), tbGhiChu.Text);
 
@@ -186,21 +189,17 @@ namespace QuanLyPhongMach
             {
                 KhachHang khachHang = cbKhachHang.SelectedItem as KhachHang;
                 PetGroup group = cbGroup.SelectedItem as PetGroup;
-                DateTime DOB = DateTime.Today.AddYears(-ConvertUtil.ConvertToInt(tbTuoi.Text));
+                int years = ConvertUtil.ConvertToInt(tbTuoi.Text);
+                int months = (int)((ConvertUtil.ConvertToDouble(tbTuoi.Text) - ConvertUtil.ConvertToInt(tbTuoi.Text)) * 10);
+                DateTime DOB = DateTime.Today.AddYears(-years).AddMonths(-months);
                 bool isSuccess = PetImp.Update(currentId, group.Id, khachHang.Id, tbTen.Text,
                     cbGioiTinh.Text, tbGiong.Text, DOB, ConvertUtil.ConvertToDouble(tbTrongLuong.Text), tbGhiChu.Text);
 
                 if (isSuccess)
                 {
-                    if (MessageBox.Show(Constant.MESSAGE_GENERAL_SUCCESS + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_CONTINUE,
-                        Constant.CAPTION_CONFIRM, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                    {
-                        ResetData();
-                    }
-                    else
-                    {
-                        BackToMain();
-                    }
+                    MessageBox.Show(String.Format(Constant.MESSAGE_UPDATE_SUCCESS, tbTen.Text),
+                        Constant.CAPTION_CONFIRM, MessageBoxButton.OK, MessageBoxImage.Information);
+                    BackToMain();
                 }
                 else if (MessageBox.Show(Constant.MESSAGE_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_EXIT,
                     Constant.CAPTION_ERROR, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)

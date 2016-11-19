@@ -50,7 +50,7 @@
             <TextBox x:Name="tbGhiChu" HorizontalAlignment="Left" Height="63" Margin="63,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="327" Grid.Row="2" Grid.Column="1" TabIndex="21" MaxLength="200" Grid.RowSpan="2"/>
             <Button x:Name="btHuy" Height="65" Margin="0,0,50,10" Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="80" Click="btHuy_Click" TabIndex="101" Style="{StaticResource btCancel}"/>
             <Button x:Name="btHoanTat" Height="65" Margin="50,0,0,10" Grid.Row="5" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="80" Grid.Column="1" Click="btHoanTat_Click" TabIndex="103" Style="{StaticResource btOk}"/>
-            <TextBox x:Name="tbTuoi" HorizontalAlignment="Left" Height="23" Margin="84,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="30" Grid.Row="2" TabIndex="19" MaxLength="2" HorizontalContentAlignment="Center"/>
+            <TextBox x:Name="tbTuoi" HorizontalAlignment="Left" Height="23" Margin="84,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="30" Grid.Row="2" TabIndex="19" MaxLength="3" HorizontalContentAlignment="Center"/>
             <TextBlock HorizontalAlignment="Left" Margin="22,13,0,0" TextWrapping="Wrap" Text="Nhóm:" VerticalAlignment="Top" Grid.Column="1"/>
             <ComboBox x:Name="cbGroup" HorizontalAlignment="Left" Margin="63,10,0,0" VerticalAlignment="Top" Width="60" SelectedIndex="0" Grid.Column="1" TabIndex="14" DisplayMemberPath="Ten" ItemsSource="{Binding}"/>
             <TextBlock HorizontalAlignment="Left" Margin="11,13,0,0" TextWrapping="Wrap" Text="Trọng lượng:" VerticalAlignment="Top" Grid.Row="3"/>

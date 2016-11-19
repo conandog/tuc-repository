@@ -57,14 +57,21 @@ namespace Core
             return dbContext.Pets.Where(p => p.Id.Equals(id)).FirstOrDefault<Pet>();
         }
 
-        public static int GetTuoi(DateTime? DOB)
+        public static double GetTuoi(DateTime? DOB)
         {
-            int age = 0;
+            double age = 0;
 
             if (DOB.HasValue)
             {
-                age = DateTime.Today.Year - DOB.Value.Year;
-                age = DateTime.Today < DOB.Value.AddYears(age) ? age-- : age;
+                int years = DateTime.Today.Year - DOB.Value.Year;
+                age = DateTime.Today < DOB.Value.AddYears(years) ? years-- : years;
+                double months = Math.Abs((DateTime.Today.Month - DOB.Value.Month) + 12 * (DateTime.Today.Year - DOB.Value.Year));
+
+                if (months < 12)
+                {
+                    months = months < 10 ? months : 9;
+                    age += months / 10;
+                }
             }
 
             return age;
