@@ -185,43 +185,47 @@ namespace QuanLyPhongMach
             LoadDataGrid(tbSearch.Text);
         }
 
-        private void mnPet_Click(object sender, RoutedEventArgs e)
-        {
-            System.Collections.IList listSelected = dgShowInfo.SelectedItems;
-
-            if (listSelected.Count > 0)
-            {
-                int a = 1;
-            }
-        }
-
-        private bool FlagForCustomContextMenu = true;
-
         private void PreLoadHandler(object sender, ContextMenuEventArgs e)
         {
-            if (!FlagForCustomContextMenu)
-            {
-                e.Handled = true; //need to suppress empty menu
-                FrameworkElement fe = e.Source as FrameworkElement;
-                fe.ContextMenu = BuildMenu();
-                FlagForCustomContextMenu = true;
-                fe.ContextMenu.IsOpen = true;
-            }
+            FrameworkElement fe = e.Source as FrameworkElement;
+            fe.ContextMenu = BuildMenu(selectedItem);
         }
 
-        private ContextMenu BuildMenu()
+        private ContextMenu BuildMenu(KhachHang khachHang)
         {
             ContextMenu theMenu = new ContextMenu();
-            MenuItem mia = new MenuItem();
-            mia.Header = "Item1";
-            MenuItem mib = new MenuItem();
-            mib.Header = "Item2";
-            MenuItem mic = new MenuItem();
-            mic.Header = "Item3";
-            theMenu.Items.Add(mia);
-            theMenu.Items.Add(mib);
-            theMenu.Items.Add(mic);
+            MenuItem miDefault = new MenuItem();
+            miDefault.Header = khachHang.Ma + " -> THEM MOI THU NUOI";
+            miDefault.Click += MiDefault_Click;
+            theMenu.Items.Add(miDefault);
+
+            if (khachHang != null)
+            {
+                List<Pet> listData = PetImp.GetListByIdKhachHang(khachHang.Id);
+
+                foreach (Pet data in listData)
+                {
+                    MenuItem mi = new MenuItem();
+                    mi.Header = data.Ten;
+                    mi.Click += Mi_Click;
+                    theMenu.Items.Add(mi);
+                }
+            }
+
             return theMenu;
+        }
+
+        private void MiDefault_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWD = Window.GetWindow(this) as WdMain;
+            mainWD.LoadUcPetDetail(selectedItem);
+        }
+
+        private void Mi_Click(object sender, RoutedEventArgs e)
+        {
+            Pet data = sender as Pet;
+            var mainWD = Window.GetWindow(this) as WdMain;
+            mainWD.LoadUcPetDetail(data);
         }
     }
 }

@@ -72,6 +72,12 @@ namespace QuanLyPhongMach
             spMain.Children.Add(new UcPetDetail(selectedItem));
         }
 
+        public void LoadUcPetDetail(KhachHang khachHang)
+        {
+            spMain.Children.Clear();
+            spMain.Children.Add(new UcPetDetail(khachHang));
+        }
+
         public void LoadUcThuocMain()
         {
             spMain.Children.Clear();

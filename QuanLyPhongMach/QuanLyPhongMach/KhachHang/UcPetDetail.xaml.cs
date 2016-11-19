@@ -28,21 +28,27 @@ namespace QuanLyPhongMach
         public UcPetDetail()
         {
             InitializeComponent();
+            ResetData();
         }
 
         public UcPetDetail(object selectedData)
         {
             InitializeComponent();
+            ResetData();
             LoadData(selectedData);
             isEditing = true;
         }
 
+        public UcPetDetail(KhachHang khachHang)
+        {
+            InitializeComponent();
+            ResetData();
+            LoadDataKhachHang(khachHang);
+        }
+
         private void UcMain_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!isEditing)
-            {
-                ResetData();
-            }
+            //TO-DO
         }
 
         private void BackToMain()
@@ -94,6 +100,16 @@ namespace QuanLyPhongMach
             cbGroup.SelectedItem = data.PetGroup;
             cbKhachHang.ItemsSource = KhachHangImp.GetList();
             cbKhachHang.SelectedItem = data.KhachHang;
+            cbKhachHang.IsEnabled = false;
+
+            tbTen.Focus();
+        }
+
+        private void LoadDataKhachHang(KhachHang khachHang)
+        {
+            cbKhachHang.ItemsSource = KhachHangImp.GetList();
+            cbKhachHang.SelectedItem = khachHang;
+            cbKhachHang.IsEnabled = false;
 
             tbTen.Focus();
         }

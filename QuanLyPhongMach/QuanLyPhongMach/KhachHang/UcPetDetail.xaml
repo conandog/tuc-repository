@@ -38,7 +38,7 @@
             <TextBlock HorizontalAlignment="Left" Margin="50,13,0,0" TextWrapping="Wrap" Text="*Chủ:" VerticalAlignment="Top"/>
             <ComboBox x:Name="cbKhachHang" HorizontalAlignment="Left" Margin="84,10,0,0" VerticalAlignment="Top" Width="251" TabIndex="11" DisplayMemberPath="Ten" ItemsSource="{Binding}"/>
             <Button x:Name="btAddKhachHang" Content="Thêm" HorizontalAlignment="Left" Margin="340,10,0,0" VerticalAlignment="Top" Width="50" TabIndex="13"/>
-            <TextBlock HorizontalAlignment="Left" Margin="52,13,0,0" TextWrapping="Wrap" Text="*Tên:" VerticalAlignment="Top" Grid.Row="1"/>
+            <TextBlock HorizontalAlignment="Left" Margin="31,13,0,0" TextWrapping="Wrap" Text="*Tên thú:" VerticalAlignment="Top" Grid.Row="1"/>
             <TextBlock HorizontalAlignment="Left" Margin="10,13,0,0" TextWrapping="Wrap" Text="Giới tính:" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
             <TextBlock HorizontalAlignment="Left" Margin="53,13,0,0" TextWrapping="Wrap" Text="Tuổi:" VerticalAlignment="Top" Grid.Row="2"/>
             <ComboBox x:Name="cbGioiTinh" HorizontalAlignment="Left" Margin="63,10,0,0" VerticalAlignment="Top" Width="60" Grid.Row="1" SelectedIndex="0" Grid.Column="1" TabIndex="17" >

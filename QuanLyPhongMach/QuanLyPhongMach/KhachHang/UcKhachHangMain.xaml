@@ -47,7 +47,7 @@
             </DataGrid.DataContext>
             <DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem x:Name="mnPet" Header="Pet" Click="mnPet_Click"/>
+                    <MenuItem x:Name="mnPet" Header="THEM MOI THU NUOI"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
