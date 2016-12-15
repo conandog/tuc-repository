@@ -24,6 +24,27 @@ namespace SaleNotes.Droid
             Button bt = FindViewById<Button>(Resource.Id.btLogin);
             bt.TextSize = 20;
             bt.Click += button_Click;
+
+            LoadLogo();
+        }
+
+        private void LoadLogo()
+        {
+            var metrics = Resources.DisplayMetrics;
+            var heightInDp = ConvertPixelsToDp(metrics.HeightPixels);
+
+            //Setters
+            RelativeLayout layout = FindViewById<RelativeLayout>(Resource.Id.relativeLayoutLogo);
+            layout.LayoutParameters.Height = (int)(heightInDp * 0.4);
+
+            ImageView image = FindViewById<ImageView>(Resource.Id.imgLogo);
+            image.SetImageResource(Resource.Drawable.LogoND);
+        }
+
+        private int ConvertPixelsToDp(float pixelValue)
+        {
+            var dp = (int)((pixelValue) / Resources.DisplayMetrics.Density);
+            return dp;
         }
 
         private void button_Click(object sender, EventArgs e)

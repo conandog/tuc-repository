@@ -16,60 +16,62 @@
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/relativeLayout2"
-        android:layout_weight="0.3">
-        <TextView
-            android:text="SỔ TAY ĐƠN HÀNG"
-            android:textColor="@color/title"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/relativeLayoutLogo"
+        android:layout_weight="0.4">
+        <ImageView
+            android:src="@android:drawable/ic_menu_gallery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView1"
-            android:layout_centerInParent="true"
-            android:textStyle="bold" />
+            android:id="@+id/imgLogo"
+            android:scaleType="centerInside"
+            android:layout_centerInParent="true" />
     </RelativeLayout>
+    <RelativeLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout4"
+        android:layout_weight="0.1" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/relativeLayout3"
         android:layout_weight="0.4"
-        android:padding="30dp">
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingTop="10dp">
         <LinearLayout
             android:id="@+id/loginLayout"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:orientation="vertical"
-            android:background="@drawable/LoginTextBox">
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
             <EditText
                 android:id="@+id/tbUserName"
                 android:layout_width="fill_parent"
                 android:layout_height="45dp"
                 android:padding="5dp"
-                android:background="@android:color/white"
-                android:textColor="#4094c7"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:background="@drawable/LoginTextBox"
+                android:textColor="@color/text"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:text="User Name" />
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2dp"
-                android:background="#A7D9F8" />
+                android:hint="Username"
+                android:gravity="center"
+                android:singleLine="true" />
             <EditText
                 android:id="@+id/tbPassword"
                 android:layout_width="fill_parent"
                 android:layout_height="45dp"
-                android:padding="5dp"
-                android:background="@android:color/white"
-                android:textColor="#4094c7"
+                android:background="@drawable/LoginTextBox"
+                android:textColor="@color/text"
                 android:inputType="textPassword"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="12354678" />
+                android:hint="Password"
+                android:gravity="center"
+                android:padding="5dp"
+                android:singleLine="true" />
         </LinearLayout>
         <Button
             android:id="@+id/btLogin"
@@ -81,28 +83,16 @@
             android:textColor="@android:color/white"
             android:textStyle="bold"
             android:clickable="true" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/relativeLayout4"
-        android:layout_weight="0.2">
         <TextView
-            android:text="Lost password?"
-            android:textColor="#4094c7"
+            android:text="Forget password?"
+            android:textColor="@color/text"
             android:textAppearance="?android:attr/textAppearanceSmall"
+            android:background="@drawable/DefaultUnderline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView2"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="7dp" />
-        <ImageView
-            android:src="@android:drawable/ic_menu_gallery"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView1"
-            android:layout_toLeftOf="@id/textView2" />
+            android:layout_marginTop="7dp"
+            android:layout_below="@id/btLogin" />
     </RelativeLayout>
 </LinearLayout>
