@@ -31,7 +31,8 @@
             android:id="@+id/relativeLayout4"
             android:layout_weight="0.8">
             <TextView
-                android:text="Danh sách đơn hàng"
+                android:text="New Order"
+                android:textColor="@color/title"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,21 +53,63 @@
                 android:id="@+id/imageButton2" />
         </RelativeLayout>
     </LinearLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/relativeLayout1"
-        android:minWidth="25px"
-        android:minHeight="25px">
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
-    <RelativeLayout
+    <ScrollView
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/relativeLayout2" />
+        android:id="@+id/scrollView1">
+        <LinearLayout
+            android:id="@+id/loginLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical"
+            android:background="@drawable/LoginTextBox">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/relativeLayout4">
+                <TextView
+                    android:text="Tên:"
+                    android:textColor="@color/title"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp" />
+                <EditText
+                    android:id="@+id/tbUserName"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dp"
+                    android:padding="5dp"
+                    android:background="@android:color/white"
+                    android:textColor="#4094c7"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="User Name"
+                    android:layout_toRightOf="@id/textView2" />
+            </RelativeLayout>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="#A7D9F8" />
+            <EditText
+                android:id="@+id/tbPassword"
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:padding="5dp"
+                android:background="@android:color/white"
+                android:textColor="#4094c7"
+                android:inputType="textPassword"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="12354678" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
