@@ -9,12 +9,18 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Firebase.Auth;
+using Firebase;
+using Android.Gms.Tasks;
 
 namespace SaleNotes.Droid
 {
     [Activity(Label = "LoginActivity", Theme = "@android:style/Theme.NoTitleBar", MainLauncher = true, Icon = "@drawable/icon")]
-    public class LoginActivity : Activity
+    public class LoginActivity : Activity, IOnCompleteListener
     {
+        public FirebaseApp app;
+        public FirebaseAuth auth;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -23,9 +29,27 @@ namespace SaleNotes.Droid
             SetContentView(Resource.Layout.Login);
             Button bt = FindViewById<Button>(Resource.Id.btLogin);
             bt.TextSize = 20;
-            bt.Click += button_Click;
+            bt.Click += buttonLogin_Click;
 
             LoadLogo();
+            InitFirebaseAuth();
+        }
+
+        private void InitFirebaseAuth()
+        {
+            var options = new FirebaseOptions.Builder()
+                .SetApplicationId("1:1078409326584:android:25da17737e424103")
+                .SetApiKey("AIzaSyBpMxDiNyelgQ1ZMb8RpIG1BUlpjTzK-Ro")
+                //.SetDatabaseUrl("https://tucnguyen-af6f4.firebaseio.com")
+                //.SetStorageBucket("tucnguyen - af6f4.appspot.com")
+                //.SetGcmSenderId("1078409326584")
+                .Build();
+
+            if (app == null)
+            {
+                app = FirebaseApp.InitializeApp(this, options);
+            }
+            auth = FirebaseAuth.GetInstance(app);
         }
 
         private void LoadLogo()
@@ -47,9 +71,28 @@ namespace SaleNotes.Droid
             return dp;
         }
 
-        private void button_Click(object sender, EventArgs e)
+        private void buttonLogin_Click(object sender, EventArgs e)
         {
-            if (!Login())
+            var editName = FindViewById<EditText>(Resource.Id.tbUserName);
+            var editPass = FindViewById<EditText>(Resource.Id.tbPassword);
+            string name = editName.Text;
+            string pass = editPass.Text;
+            Login(name, pass);
+        }
+
+        private void Login(string name, string pass)
+        {
+            auth.SignInWithEmailAndPassword(name, pass).AddOnCompleteListener(this);
+        }
+
+        public void OnComplete(Task task)
+        {
+            if (task.IsSuccessful)
+            {
+                //Todo
+                //Finish();
+            }
+            else
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.SetTitle("Cảnh báo");
@@ -61,49 +104,7 @@ namespace SaleNotes.Droid
 
                 AlertDialog alert = builder.Create();
                 alert.Show();
-
-                var editName = FindViewById<EditText>(Resource.Id.tbUserName);
-                editName.RequestFocus();
             }
-        }
-
-        private bool Login()
-        {
-            var editName = FindViewById<EditText>(Resource.Id.tbUserName);
-            var editPass = FindViewById<EditText>(Resource.Id.tbPassword);
-            string name = editName.Text;
-            string pass = editPass.Text;
-
-            if (name.ToLower() == "admin" && pass == "ngocdang")
-            {
-                return true;
-            }
-
-            return false;
-
-            //string userName = UserBus.GetByUserName(tbUserName.Text);
-
-            //if (FormMain.user != null)
-            //{
-            //    string s = Crypto.EncryptText(tbPassword.Text);
-
-            //    if (FormMain.user.Password == Crypto.EncryptText(tbPassword.Text))
-            //    {
-            //        this.Dispose();
-            //    }
-            //    else
-            //    {
-            //        lbError.Text = Constant.MESSAGE_LOGIN_WRONG_PASS;
-
-            //        FormMain.user = null;
-            //    }
-            //}
-            //else
-            //{
-            //    lbError.Text = Constant.MESSAGE_LOGIN_WRONG_USERNAME;
-
-            //    FormMain.user = null;
-            //}
         }
     }
 }
