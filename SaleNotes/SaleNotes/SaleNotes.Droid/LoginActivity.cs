@@ -90,7 +90,8 @@ namespace SaleNotes.Droid
             if (task.IsSuccessful)
             {
                 //Todo
-                //Finish();
+                StartActivity(new Android.Content.Intent(this, typeof(Home)));
+                Finish();
             }
             else
             {

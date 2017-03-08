@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+    <RelativeLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout1"
+        android:layout_weight="0.4">
+        <ImageView
+            android:src="@android:drawable/ic_menu_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgLogo"
+            android:scaleType="centerInside"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout2"
+        android:layout_weight="0.3">
+        <Button
+            android:id="@+id/btWaiting"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:text="Đơn hàng chưa xử lý"
+            android:background="@color/button_waiting_notes"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="25dp" />
+        <Button
+            android:id="@+id/btUrgent"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:text="Đơn hàng cần xử lý gấp"
+            android:background="@color/button_urgent_notes"
+            android:textColor="@android:color/white"
+            android:layout_toRightOf="@id/btWaiting"
+            android:layout_marginTop="25dp" />
+        <Button
+            android:id="@+id/btAddNewOrder"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ButtonAddNewOrder"
+            android:shadowColor="#f6951c"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="5"
+            android:text="+"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="100dp" />
+        <Button
+            android:id="@+id/btToday"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:text="Đơn hàng trong ngày"
+            android:background="#dbdbdb"
+            android:textColor="@android:color/white"
+            android:layout_below="@id/btWaiting" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout3"
+        android:layout_weight="0.3"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingTop="10dp" />
+</LinearLayout>

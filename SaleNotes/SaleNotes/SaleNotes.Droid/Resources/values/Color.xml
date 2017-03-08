@@ -7,5 +7,10 @@
   <color name="button_event_solid">#f3b466</color>
   <color name="button_solid">#f6951c</color>
   <color name="title">#000000</color>
-  <color name="text">#000000</color> 
+  <color name="text">#000000</color>
+  <color name="button_add_new_order">@android:color/white</color>
+  <color name="button_add_new_order_event">#dbdbdb</color>
+  <color name="button_add_new_order_border">#e9e9e9</color>
+  <color name="button_waiting_notes">#0072bc</color>
+  <color name="button_urgent_notes">#f26522</color>
 </resources>
