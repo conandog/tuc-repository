@@ -5,15 +5,26 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
     <RelativeLayout
+        android:id="@+id/relativeLayoutLogo"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.4">
+        android:layout_weight="0.3">
+        <ImageButton
+            android:id="@+id/btPopupMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:src="@drawable/MenuIcon" />
         <ImageView
             android:src="@android:drawable/ic_menu_gallery"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:id="@+id/imgLogo"
             android:scaleType="centerInside"
             android:layout_centerInParent="true" />
@@ -30,7 +41,7 @@
             android:layout_width="fill_parent"
             android:orientation="horizontal"
             android:weightSum="1.0"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="30dp">
             <Button
                 android:id="@+id/btWaiting"
                 android:layout_height="100dp"
@@ -51,23 +62,19 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
+            <ImageButton
                 android:id="@+id/btAddNewOrder"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/ButtonAddNewOrder"
-                android:shadowColor="#f6951c"
-                android:shadowDx="1"
-                android:shadowDy="1"
-                android:shadowRadius="5"
-                android:text="+"
-                android:textColor="@android:color/black"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/ButtonAddNewOrder"
                 android:layout_centerInParent="true" />
         </RelativeLayout>
         <Button
             android:id="@+id/btToday"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:text="Đơn hàng trong ngày"
             android:background="#dbdbdb"
             android:textColor="@color/button_today_notes"
@@ -76,7 +83,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.3"
+        android:layout_weight="0.4"
         android:paddingLeft="50dp"
         android:paddingRight="50dp"
         android:paddingTop="10dp" />
