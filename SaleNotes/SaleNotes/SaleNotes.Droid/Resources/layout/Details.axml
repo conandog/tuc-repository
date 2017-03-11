@@ -3,113 +3,298 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
-    <LinearLayout
-        android:orientation="horizontal"
-        android:minWidth="25px"
-        android:minHeight="100px"
-        android:layout_width="match_parent"
-        android:layout_height="100px"
-        android:id="@+id/linearLayout1">
-        <RelativeLayout
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/relativeLayout3">
-            <ImageButton
-                android:src="@android:drawable/ic_menu_gallery"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageButton1" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/relativeLayout4"
-            android:layout_weight="0.8">
-            <TextView
-                android:text="New Order"
-                android:textColor="@color/title"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView1"
-                android:gravity="center"
-                android:layout_centerInParent="true" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:minWidth="25px"
-            android:minHeight="25px"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/relativeLayout5">
-            <ImageButton
-                android:src="@android:drawable/ic_menu_gallery"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageButton2" />
-        </RelativeLayout>
-    </LinearLayout>
-    <ScrollView
+    android:background="@color/background_detail">
+    <RelativeLayout
+        android:id="@+id/relativeLayoutTitle"
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView1">
-        <LinearLayout
-            android:id="@+id/loginLayout"
-            android:layout_width="fill_parent"
+        android:background="@android:color/white">
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:orientation="vertical"
-            android:background="@drawable/LoginTextBox">
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp">
+            <ImageButton
+                android:id="@+id/btBack"
+                android:layout_width="10dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="25dp"
+                android:background="@android:color/transparent"
+                android:scaleType="centerInside"
+                android:src="@drawable/ButtonBack"
+                android:layout_centerVertical="true" />
+            <TextView
+                android:text="Chi tiết đơn hàng - [Mã]"
+                android:textColor="@color/text"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="20dp" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".9">
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:orientation="vertical">
+            <TextView
+                android:text="THÔNG TIN KHÁCH HÀNG"
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp" />
             <RelativeLayout
+                android:minWidth="25px"
+                android:minHeight="25px"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/relativeLayout4">
-                <TextView
-                    android:text="Tên:"
-                    android:textColor="@color/title"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView2"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp" />
-                <EditText
-                    android:id="@+id/tbUserName"
-                    android:layout_width="fill_parent"
-                    android:layout_height="45dp"
-                    android:padding="5dp"
-                    android:background="@android:color/white"
-                    android:textColor="#4094c7"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="5dp"
-                    android:text="User Name"
-                    android:layout_toRightOf="@id/textView2" />
-            </RelativeLayout>
-            <View
-                android:layout_width="fill_parent"
-                android:layout_height="2dp"
-                android:background="#A7D9F8" />
-            <EditText
-                android:id="@+id/tbPassword"
-                android:layout_width="fill_parent"
-                android:layout_height="45dp"
                 android:padding="5dp"
-                android:background="@android:color/white"
-                android:textColor="#4094c7"
-                android:inputType="textPassword"
-                android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
+                android:background="@drawable/BorderDetailLayout">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp">
+                    <TextView
+                        android:id="@+id/textName"
+                        android:text="Tên: "
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/textNameValue"
+                        android:text="Chị A"
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/textName" />
+                    <TextView
+                        android:id="@+id/textPhone"
+                        android:text="SĐT: "
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textName" />
+                    <TextView
+                        android:id="@+id/textPhoneValue"
+                        android:text="0912345678"
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textName"
+                        android:layout_toRightOf="@id/textPhone" />
+                    <TextView
+                        android:id="@+id/textAddress"
+                        android:text="Địa chỉ: "
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textPhone" />
+                    <TextView
+                        android:id="@+id/textAddressValue"
+                        android:text="123 Nguyễn Văn B, Phường X, Quận Y"
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textPhone"
+                        android:layout_toRightOf="@id/textAddress" />
+                    <TextView
+                        android:id="@+id/textCount"
+                        android:text="Số lần đặt hàng: "
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textAddress" />
+                    <TextView
+                        android:id="@+id/textCountValue"
+                        android:text="xxx"
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textAddress"
+                        android:layout_toRightOf="@id/textCount" />
+                    <TextView
+                        android:id="@+id/textNotes"
+                        android:text="Ghi chú: "
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textCount" />
+                    <TextView
+                        android:id="@+id/textNotesValue"
+                        android:text="Giao hàng trước dd/mm"
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textCount"
+                        android:layout_toRightOf="@id/textNotes" />
+                </RelativeLayout>
+            </RelativeLayout>
+            <TextView
+                android:text="CHI TIẾT ĐƠN HÀNG"
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:text="12354678" />
+                android:layout_marginTop="20dp" />
+            <LinearLayout
+                android:id="@+id/layoutDetail"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/BorderDetailLayout" />
+            <TextView
+                android:text="TỔNG CỘNG"
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp" />
+            <RelativeLayout
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/BorderDetailLayout">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp">
+                    <TextView
+                        android:id="@+id/textTotal"
+                        android:text="Tổng giá trị: "
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/textTotalValue"
+                        android:text="2.060.000 VND"
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/textTotal" />
+                    <TextView
+                        android:id="@+id/textDateCreate"
+                        android:text="Ngày tạo: "
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textTotal" />
+                    <TextView
+                        android:id="@+id/textDateValue"
+                        android:text="8/3/2017"
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textTotal"
+                        android:layout_toRightOf="@id/textDateCreate" />
+                    <TextView
+                        android:id="@+id/textStatus"
+                        android:text="Trạng thái: "
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textDateCreate" />
+                    <TextView
+                        android:id="@+id/textStatusValue"
+                        android:text="Đang chuận bị (3 ngày)"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textDateCreate"
+                        android:layout_toRightOf="@id/textStatus" />
+                    <TextView
+                        android:id="@+id/textDateDeliver"
+                        android:text="Ngày giao: "
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textStatus" />
+                    <TextView
+                        android:id="@+id/textDateDeliverValue"
+                        android:text=""
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textStatus"
+                        android:layout_toRightOf="@id/textDateDeliver" />
+                    <TextView
+                        android:id="@+id/textDeliverMan"
+                        android:text="Người giao: "
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textDateDeliver" />
+                    <TextView
+                        android:id="@+id/textDeliverManValue"
+                        android:text="Nguyen Van C"
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textDateDeliver"
+                        android:layout_toRightOf="@id/textDeliverMan" />
+                    <TextView
+                        android:id="@+id/textUserConfirm"
+                        android:text="Người xác nhận: "
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textDeliverMan" />
+                    <TextView
+                        android:id="@+id/textUserConfirmValue"
+                        android:text=""
+                        android:textColor="@color/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textDeliverMan"
+                        android:layout_toRightOf="@id/textUserConfirm" />
+                </RelativeLayout>
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
+    <LinearLayout
+        android:layout_height="60dp"
+        android:layout_width="fill_parent"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btDeliver"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="Giao hàng"
+            android:background="@color/button_deliver"
+            android:textColor="@android:color/white" />
+        <Button
+            android:id="@+id/btEdit"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="Sửa"
+            android:background="@color/button_edit"
+            android:textColor="@android:color/white" />
+        <Button
+            android:id="@+id/btDelete"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="Xóa"
+            android:background="@android:color/white"
+            android:textColor="@color/text" />
+    </LinearLayout>
 </LinearLayout>

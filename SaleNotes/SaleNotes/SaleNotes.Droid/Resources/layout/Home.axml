@@ -33,19 +33,17 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.3">
+        android:layout_height="wrap_content">
         <LinearLayout
             android:id="@+id/linearLayout1"
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:orientation="horizontal"
-            android:weightSum="1.0"
             android:layout_marginTop="30dp">
             <Button
                 android:id="@+id/btWaiting"
                 android:layout_height="100dp"
-                android:layout_weight=".5"
+                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:text="Đơn hàng chưa xử lý"
                 android:background="@color/button_waiting_notes"
@@ -53,7 +51,7 @@
             <Button
                 android:id="@+id/btUrgent"
                 android:layout_height="100dp"
-                android:layout_weight=".5"
+                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:text="Đơn hàng cần xử lý gấp"
                 android:background="@color/button_urgent_notes"
@@ -68,7 +66,7 @@
                 android:layout_height="60dp"
                 android:background="@android:color/transparent"
                 android:scaleType="centerInside"
-                android:src="@drawable/ButtonAddNewOrder"
+                android:src="@drawable/ImgButtonAddNewOrder"
                 android:layout_centerInParent="true" />
         </RelativeLayout>
         <Button
