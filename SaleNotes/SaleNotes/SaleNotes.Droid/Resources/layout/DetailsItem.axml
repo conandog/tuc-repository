@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayoutDetailsItem"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingRight="10dp"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/BorderDetailLayout">
+    <ImageView
+        android:id="@+id/iconHeader"
+        android:layout_width="5dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:scaleType="center"
+        android:src="@drawable/DetailsItemRectangleEven" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/textNameDetailsItem"
+            android:text="Tên sản phẩm: "
+            android:textColor="@color/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/textNameDetailsItemValue"
+            android:text="Áo sơ mi"
+            android:textColor="@color/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/textNameDetailsItem" />
+        <TextView
+            android:id="@+id/textCodeDetailsItem"
+            android:text="Mã sản phẩm: "
+            android:textColor="@color/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textNameDetailsItem" />
+        <TextView
+            android:id="@+id/textCodeDetailsItemValue"
+            android:text="ASM-1"
+            android:textColor="@color/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textNameDetailsItem"
+            android:layout_toRightOf="@id/textCodeDetailsItem" />
+        <TextView
+            android:id="@+id/textQuantityDetailsItem"
+            android:text="Số lượng: "
+            android:textColor="@color/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textCodeDetailsItem" />
+        <TextView
+            android:id="@+id/textQuantityDetailsItemItemValue"
+            android:text="5"
+            android:textColor="@color/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textCodeDetailsItem"
+            android:layout_toRightOf="@id/textQuantityDetailsItem" />
+        <TextView
+            android:id="@+id/textPriceDetailsItem"
+            android:text="Đơn giá: "
+            android:textColor="@color/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textQuantityDetailsItem" />
+        <TextView
+            android:id="@+id/textPriceDetailsItemValue"
+            android:text="150.000 VND/cái"
+            android:textColor="@color/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textQuantityDetailsItem"
+            android:layout_toRightOf="@id/textPriceDetailsItem" />
+    </RelativeLayout>
+</LinearLayout>

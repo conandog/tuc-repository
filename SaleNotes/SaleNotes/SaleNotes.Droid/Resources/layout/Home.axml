@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white">
     <LinearLayout
-        android:id="@+id/relativeLayoutHomeHeader"
+        android:id="@+id/relativeLayoutHeaderHome"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -85,16 +85,16 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/linearLayoutHomeHomeItem"
+        android:id="@+id/linearLayoutHomeItemHome"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:layout_weight=".4"
         android:orientation="vertical">
-        <ListView
+      <ListView
+        android:id="@+id/listViewHomeItem"
             android:divider="@null"
             android:dividerHeight="0dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/listViewHomeItem" />
+            android:layout_height="match_parent"/>
     </LinearLayout>
 </LinearLayout>

@@ -102,12 +102,12 @@ namespace SaleNotes.Droid
             var heightInDp = ConvertPixelsToDp(metrics.HeightPixels);
 
             //Setters
-            var layoutHomeHeader = FindViewById<LinearLayout>(Resource.Id.relativeLayoutHomeHeader);
-            layoutHomeHeader.LayoutParameters.Height = (int)(heightInDp * 0.6);
+            var layoutHeaderHome = FindViewById<LinearLayout>(Resource.Id.relativeLayoutHeaderHome);
+            layoutHeaderHome.LayoutParameters.Height = (int)(heightInDp * 0.6);
             //var layoutHomeSummary = FindViewById<LinearLayout>(Resource.Id.relativeLayoutHomeSummary);
             //layoutHomeSummary.LayoutParameters.Height = (int)(heightInDp * 0.3);
-            var layoutHomeItem = FindViewById<LinearLayout>(Resource.Id.linearLayoutHomeHomeItem);
-            layoutHomeItem.LayoutParameters.Height = (int)(heightInDp * 0.4);
+            var layoutItemHome = FindViewById<LinearLayout>(Resource.Id.linearLayoutHomeItemHome);
+            layoutItemHome.LayoutParameters.Height = (int)(heightInDp * 0.4);
 
             var image = FindViewById<ImageView>(Resource.Id.imgLogo);
             image.SetImageResource(Resource.Drawable.LogoND);
