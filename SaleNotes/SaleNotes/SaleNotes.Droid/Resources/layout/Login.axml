@@ -79,9 +79,8 @@
             android:layout_height="45dp"
             android:layout_below="@id/loginLayout"
             android:background="@drawable/ButtonLogin"
-            android:text="LOGIN"
+            android:text="Login"
             android:textColor="@android:color/white"
-            android:textStyle="bold"
             android:clickable="true" />
         <TextView
             android:text="Forget password?"

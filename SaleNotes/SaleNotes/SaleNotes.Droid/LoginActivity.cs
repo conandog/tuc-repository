@@ -15,7 +15,7 @@ using Android.Gms.Tasks;
 
 namespace SaleNotes.Droid
 {
-    [Activity(Label = "LoginActivity", Theme = "@android:style/Theme.NoTitleBar", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "LoginActivity", Theme = "@android:style/Theme.NoTitleBar", MainLauncher = true, Icon = "@drawable/LogoND")]
     public class LoginActivity : Activity, IOnCompleteListener
     {
         public FirebaseApp app;
@@ -32,7 +32,7 @@ namespace SaleNotes.Droid
             bt.Click += buttonLogin_Click;
 
             LoadLogo();
-            InitFirebaseAuth();
+            //InitFirebaseAuth();
         }
 
         private void InitFirebaseAuth()
@@ -82,7 +82,9 @@ namespace SaleNotes.Droid
 
         private void Login(string name, string pass)
         {
-            auth.SignInWithEmailAndPassword(name, pass).AddOnCompleteListener(this);
+            //auth.SignInWithEmailAndPassword(name, pass).AddOnCompleteListener(this);
+            StartActivity(new Android.Content.Intent(this, typeof(Home)));
+            Finish();
         }
 
         public void OnComplete(Task task)

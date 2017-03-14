@@ -10,7 +10,7 @@
     android:gravity="center_vertical">
     <RelativeLayout
         android:layout_width="20dp"
-        android:layout_height="match_parent">
+        android:layout_height="50dp">
         <ImageView
             android:id="@+id/iconHeader"
             android:layout_width="0.5dp"
@@ -20,7 +20,7 @@
             android:src="@drawable/EllipseLine"
             android:layout_centerInParent="true" />
         <ImageView
-            android:id="@+id/iconHeader"
+            android:id="@+id/imgViewHeader"
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:background="@android:color/transparent"
@@ -36,7 +36,7 @@
         android:paddingRight="10dp">
         <TextView
             android:id="@+id/textName"
-            android:text="Nguyễn Văn A"
+            android:text="Chị A"
             android:textColor="@color/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
