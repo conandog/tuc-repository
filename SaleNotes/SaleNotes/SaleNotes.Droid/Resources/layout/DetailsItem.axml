@@ -15,67 +15,151 @@
         android:scaleType="center"
         android:src="@drawable/DetailsItemRectangleOdd" />
     <RelativeLayout
+        android:id="@+id/relativeLayoutDetailsItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:padding="10dp">
-        <TextView
-            android:id="@+id/textNameDetailsItem"
-            android:text="Tên sản phẩm: "
-            android:textColor="@color/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/textNameDetailsItemValue"
-            android:text="Áo sơ mi"
-            android:textColor="@color/text"
+        android:layout_weight="1">
+        <RelativeLayout
+            android:id="@+id/relativeLayoutDetailsItemView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/textNameDetailsItem" />
-        <TextView
-            android:id="@+id/textCodeDetailsItem"
-            android:text="Mã sản phẩm: "
-            android:textColor="@color/text"
+            android:padding="10dp">
+            <TextView
+                android:id="@+id/textNameDetailsItem"
+                android:text="Tên sản phẩm: "
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/textNameValueDetailsItem"
+                android:text="Áo sơ mi"
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/textNameDetailsItem" />
+            <TextView
+                android:id="@+id/textCodeDetailsItem"
+                android:text="Mã sản phẩm: "
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textNameValueDetailsItem" />
+            <TextView
+                android:id="@+id/textCodeValueDetailsItem"
+                android:text="ASM-1"
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textNameValueDetailsItem"
+                android:layout_toRightOf="@id/textCodeDetailsItem" />
+            <TextView
+                android:id="@+id/textQuantityDetailsItem"
+                android:text="Số lượng: "
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textCodeValueDetailsItem" />
+            <TextView
+                android:id="@+id/textQuantityValueDetailsItem"
+                android:text="5"
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textCodeValueDetailsItem"
+                android:layout_toRightOf="@id/textQuantityDetailsItem" />
+            <TextView
+                android:id="@+id/textPriceDetailsItem"
+                android:text="Đơn giá: "
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textQuantityValueDetailsItem" />
+            <TextView
+                android:id="@+id/textPriceValueDetailsItem"
+                android:text="150.000 VND/cái"
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textQuantityValueDetailsItem"
+                android:layout_toRightOf="@id/textPriceDetailsItem" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/relativeLayoutDetailsItemEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textNameDetailsItem" />
-        <TextView
-            android:id="@+id/textCodeDetailsItemValue"
-            android:text="ASM-1"
-            android:textColor="@color/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textNameDetailsItem"
-            android:layout_toRightOf="@id/textCodeDetailsItem" />
-        <TextView
-            android:id="@+id/textQuantityDetailsItem"
-            android:text="Số lượng: "
-            android:textColor="@color/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textCodeDetailsItem" />
-        <TextView
-            android:id="@+id/textQuantityDetailsItemItemValue"
-            android:text="5"
-            android:textColor="@color/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textCodeDetailsItem"
-            android:layout_toRightOf="@id/textQuantityDetailsItem" />
-        <TextView
-            android:id="@+id/textPriceDetailsItem"
-            android:text="Đơn giá: "
-            android:textColor="@color/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textQuantityDetailsItem" />
-        <TextView
-            android:id="@+id/textPriceDetailsItemValue"
-            android:text="150.000 VND/cái"
-            android:textColor="@color/text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/textQuantityDetailsItem"
-            android:layout_toRightOf="@id/textPriceDetailsItem" />
+            android:padding="10dp">
+            <TextView
+                android:id="@+id/textNameDetailsItemEdit"
+                android:text="Tên sản phẩm: "
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/editTextNameValueDetailsItemEdit"
+                android:text="Áo sơ mi"
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/textNameDetailsItemEdit" />
+            <TextView
+                android:id="@+id/textCodeDetailsItemEdit"
+                android:text="Mã sản phẩm: "
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextNameValueDetailsItemEdit" />
+            <EditText
+                android:id="@+id/editTextCodeValueDetailsItemEdit"
+                android:text="ASM-1"
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextNameValueDetailsItemEdit"
+                android:layout_toRightOf="@id/textCodeDetailsItemEdit" />
+            <TextView
+                android:id="@+id/textQuantityDetailsItemEdit"
+                android:text="Số lượng: "
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextCodeValueDetailsItemEdit" />
+            <EditText
+                android:id="@+id/editTextQuantityValueDetailsItemEdit"
+                android:text="5"
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextCodeValueDetailsItemEdit"
+                android:layout_toRightOf="@id/textQuantityDetailsItemEdit" />
+            <TextView
+                android:id="@+id/textPriceDetailsItemEdit"
+                android:text="Đơn giá: "
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextQuantityValueDetailsItemEdit" />
+            <EditText
+                android:id="@+id/editTextPriceValueDetailsItemEdit"
+                android:text="150.000 VND/cái"
+                android:textColor="@color/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editTextQuantityValueDetailsItemEdit"
+                android:layout_toRightOf="@id/textPriceDetailsItemEdit" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relativeLayoutBinDetailsItemEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="bottom">
+        <ImageButton
+            android:id="@+id/btBinDetailsItemEdit"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@android:color/transparent"
+            android:scaleType="centerInside"
+            android:src="@drawable/Bin" />
     </RelativeLayout>
 </LinearLayout>

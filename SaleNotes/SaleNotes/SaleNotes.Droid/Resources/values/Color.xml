@@ -16,4 +16,6 @@
   <color name="border_detail_layout">#0072bc</color>
   <color name="button_deliver">#0072bc</color>
   <color name="button_edit">#f26522</color>
+  <color name="border_finish">#0072bc</color>
+  <color name="border_cancel">#f26522</color>
 </resources>
