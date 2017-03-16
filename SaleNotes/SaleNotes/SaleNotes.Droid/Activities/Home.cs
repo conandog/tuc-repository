@@ -15,7 +15,7 @@ namespace SaleNotes.Droid
     [Activity(Label = "Home", Theme = "@android:style/Theme.NoTitleBar", Icon = "@drawable/LogoND")]
     public class Home : Activity
     {
-        private Button btAddNewOrder;
+        private ImageButton btAddNewOrder;
         private Button btWaiting;
         private Button btUrgent;
         private Button btToday;
@@ -30,7 +30,7 @@ namespace SaleNotes.Droid
             SetContentView(Resource.Layout.Home);
             Init();
 
-            btAddNewOrder = FindViewById<Button>(Resource.Id.btAddNewOrder);
+            btAddNewOrder = FindViewById<ImageButton>(Resource.Id.btAddNewOrder);
             btAddNewOrder.Click += notImplemented_Click;
 
             btWaiting = FindViewById<Button>(Resource.Id.btWaiting);

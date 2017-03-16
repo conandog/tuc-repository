@@ -8,12 +8,12 @@
     android:layout_marginTop="10dp"
     android:background="@drawable/BorderDetailLayout">
     <ImageView
-        android:id="@+id/iconHeader"
+        android:id="@+id/iconHeaderDetailsItem"
         android:layout_width="5dp"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
         android:scaleType="center"
-        android:src="@drawable/DetailsItemRectangleEven" />
+        android:src="@drawable/DetailsItemRectangleOdd" />
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

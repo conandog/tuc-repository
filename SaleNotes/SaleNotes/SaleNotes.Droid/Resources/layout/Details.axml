@@ -147,23 +147,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp" />
-            <LinearLayout
-                android:id="@+id/linearLayoutItemDetailsItem"
-                android:minWidth="25px"
-                android:minHeight="25px"
+                android:layout_marginTop="20dp"
+          android:layout_marginBottom="10dp"/>
+            <ListView
+                android:id="@+id/listViewDetailsItem"
+                android:divider="@null"
+                android:dividerHeight="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/BorderDetailLayout">
-                <ListView
-                    android:id="@+id/listViewDetailsItem"
-                    android:divider="@null"
-                    android:dividerHeight="0dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </LinearLayout>
+                android:layout_height="match_parent" />
             <TextView
                 android:text="TỔNG CỘNG"
                 android:textColor="@color/text"

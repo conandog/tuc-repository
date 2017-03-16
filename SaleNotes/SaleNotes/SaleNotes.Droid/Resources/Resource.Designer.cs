@@ -2884,35 +2884,35 @@ namespace SaleNotes.Droid
 			// aapt resource value: 0x7f0a002c
 			public const int bottom = 2131361836;
 			
-			// aapt resource value: 0x7f0a00ac
-			public const int btAddNewOrder = 2131361964;
+			// aapt resource value: 0x7f0a00ab
+			public const int btAddNewOrder = 2131361963;
 			
 			// aapt resource value: 0x7f0a007f
 			public const int btBack = 2131361919;
 			
-			// aapt resource value: 0x7f0a009c
-			public const int btDelete = 2131361948;
+			// aapt resource value: 0x7f0a009b
+			public const int btDelete = 2131361947;
+			
+			// aapt resource value: 0x7f0a0099
+			public const int btDeliver = 2131361945;
 			
 			// aapt resource value: 0x7f0a009a
-			public const int btDeliver = 2131361946;
-			
-			// aapt resource value: 0x7f0a009b
-			public const int btEdit = 2131361947;
+			public const int btEdit = 2131361946;
 			
 			// aapt resource value: 0x7f0a00ba
 			public const int btLogin = 2131361978;
 			
-			// aapt resource value: 0x7f0a00a8
-			public const int btPopupMenu = 2131361960;
+			// aapt resource value: 0x7f0a00a7
+			public const int btPopupMenu = 2131361959;
 			
-			// aapt resource value: 0x7f0a00ad
-			public const int btToday = 2131361965;
-			
-			// aapt resource value: 0x7f0a00ab
-			public const int btUrgent = 2131361963;
+			// aapt resource value: 0x7f0a00ac
+			public const int btToday = 2131361964;
 			
 			// aapt resource value: 0x7f0a00aa
-			public const int btWaiting = 2131361962;
+			public const int btUrgent = 2131361962;
+			
+			// aapt resource value: 0x7f0a00a9
+			public const int btWaiting = 2131361961;
 			
 			// aapt resource value: 0x7f0a004e
 			public const int buttonPanel = 2131361870;
@@ -3025,8 +3025,11 @@ namespace SaleNotes.Droid
 			// aapt resource value: 0x7f0a004c
 			public const int icon = 2131361868;
 			
-			// aapt resource value: 0x7f0a009e
-			public const int iconHeader = 2131361950;
+			// aapt resource value: 0x7f0a00b0
+			public const int iconHeader = 2131361968;
+			
+			// aapt resource value: 0x7f0a009d
+			public const int iconHeaderDetailsItem = 2131361949;
 			
 			// aapt resource value: 0x7f0a000e
 			public const int icon_only = 2131361806;
@@ -3037,8 +3040,8 @@ namespace SaleNotes.Droid
 			// aapt resource value: 0x7f0a0049
 			public const int image = 2131361865;
 			
-			// aapt resource value: 0x7f0a00a9
-			public const int imgLogo = 2131361961;
+			// aapt resource value: 0x7f0a00a8
+			public const int imgLogo = 2131361960;
 			
 			// aapt resource value: 0x7f0a00b1
 			public const int imgViewHeader = 2131361969;
@@ -3049,8 +3052,8 @@ namespace SaleNotes.Droid
 			// aapt resource value: 0x7f0a0000
 			public const int item_touch_helper_previous_elevation = 2131361792;
 			
-			// aapt resource value: 0x7f0a00b0
-			public const int layoutHomeItem = 2131361968;
+			// aapt resource value: 0x7f0a00af
+			public const int layoutHomeItem = 2131361967;
 			
 			// aapt resource value: 0x7f0a0037
 			public const int left = 2131361847;
@@ -3067,23 +3070,20 @@ namespace SaleNotes.Droid
 			// aapt resource value: 0x7f0a0081
 			public const int linearLayout1 = 2131361921;
 			
-			// aapt resource value: 0x7f0a009d
-			public const int linearLayoutDetailsItem = 2131361949;
+			// aapt resource value: 0x7f0a009c
+			public const int linearLayoutDetailsItem = 2131361948;
 			
-			// aapt resource value: 0x7f0a00ae
-			public const int linearLayoutHomeItemHome = 2131361966;
-			
-			// aapt resource value: 0x7f0a008c
-			public const int linearLayoutItemDetailsItem = 2131361932;
+			// aapt resource value: 0x7f0a00ad
+			public const int linearLayoutHomeItemHome = 2131361965;
 			
 			// aapt resource value: 0x7f0a0014
 			public const int listMode = 2131361812;
 			
-			// aapt resource value: 0x7f0a008d
-			public const int listViewDetailsItem = 2131361933;
+			// aapt resource value: 0x7f0a008c
+			public const int listViewDetailsItem = 2131361932;
 			
-			// aapt resource value: 0x7f0a00af
-			public const int listViewHomeItem = 2131361967;
+			// aapt resource value: 0x7f0a00ae
+			public const int listViewHomeItem = 2131361966;
 			
 			// aapt resource value: 0x7f0a004b
 			public const int list_item = 2131361867;
@@ -3214,8 +3214,8 @@ namespace SaleNotes.Droid
 			// aapt resource value: 0x7f0a00b5
 			public const int relativeLayout4 = 2131361973;
 			
-			// aapt resource value: 0x7f0a00a7
-			public const int relativeLayoutHeaderHome = 2131361959;
+			// aapt resource value: 0x7f0a00a6
+			public const int relativeLayoutHeaderHome = 2131361958;
 			
 			// aapt resource value: 0x7f0a00b4
 			public const int relativeLayoutLogo = 2131361972;
@@ -3352,11 +3352,11 @@ namespace SaleNotes.Droid
 			// aapt resource value: 0x7f0a0087
 			public const int textAddressValue = 2131361927;
 			
-			// aapt resource value: 0x7f0a00a1
-			public const int textCodeDetailsItem = 2131361953;
+			// aapt resource value: 0x7f0a00a0
+			public const int textCodeDetailsItem = 2131361952;
 			
-			// aapt resource value: 0x7f0a00a2
-			public const int textCodeDetailsItemValue = 2131361954;
+			// aapt resource value: 0x7f0a00a1
+			public const int textCodeDetailsItemValue = 2131361953;
 			
 			// aapt resource value: 0x7f0a0088
 			public const int textCount = 2131361928;
@@ -3364,35 +3364,35 @@ namespace SaleNotes.Droid
 			// aapt resource value: 0x7f0a0089
 			public const int textCountValue = 2131361929;
 			
-			// aapt resource value: 0x7f0a0090
-			public const int textDateCreate = 2131361936;
+			// aapt resource value: 0x7f0a008f
+			public const int textDateCreate = 2131361935;
+			
+			// aapt resource value: 0x7f0a0093
+			public const int textDateDeliver = 2131361939;
 			
 			// aapt resource value: 0x7f0a0094
-			public const int textDateDeliver = 2131361940;
+			public const int textDateDeliverValue = 2131361940;
 			
-			// aapt resource value: 0x7f0a0095
-			public const int textDateDeliverValue = 2131361941;
-			
-			// aapt resource value: 0x7f0a0091
-			public const int textDateValue = 2131361937;
+			// aapt resource value: 0x7f0a0090
+			public const int textDateValue = 2131361936;
 			
 			// aapt resource value: 0x7f0a00b2
 			public const int textDelimiter = 2131361970;
 			
-			// aapt resource value: 0x7f0a0096
-			public const int textDeliverMan = 2131361942;
+			// aapt resource value: 0x7f0a0095
+			public const int textDeliverMan = 2131361941;
 			
-			// aapt resource value: 0x7f0a0097
-			public const int textDeliverManValue = 2131361943;
+			// aapt resource value: 0x7f0a0096
+			public const int textDeliverManValue = 2131361942;
 			
 			// aapt resource value: 0x7f0a0082
 			public const int textName = 2131361922;
 			
-			// aapt resource value: 0x7f0a009f
-			public const int textNameDetailsItem = 2131361951;
+			// aapt resource value: 0x7f0a009e
+			public const int textNameDetailsItem = 2131361950;
 			
-			// aapt resource value: 0x7f0a00a0
-			public const int textNameDetailsItemValue = 2131361952;
+			// aapt resource value: 0x7f0a009f
+			public const int textNameDetailsItemValue = 2131361951;
 			
 			// aapt resource value: 0x7f0a0083
 			public const int textNameValue = 2131361923;
@@ -3409,38 +3409,38 @@ namespace SaleNotes.Droid
 			// aapt resource value: 0x7f0a0085
 			public const int textPhoneValue = 2131361925;
 			
-			// aapt resource value: 0x7f0a00a5
-			public const int textPriceDetailsItem = 2131361957;
+			// aapt resource value: 0x7f0a00a4
+			public const int textPriceDetailsItem = 2131361956;
 			
-			// aapt resource value: 0x7f0a00a6
-			public const int textPriceDetailsItemValue = 2131361958;
+			// aapt resource value: 0x7f0a00a5
+			public const int textPriceDetailsItemValue = 2131361957;
+			
+			// aapt resource value: 0x7f0a00a2
+			public const int textQuantityDetailsItem = 2131361954;
 			
 			// aapt resource value: 0x7f0a00a3
-			public const int textQuantityDetailsItem = 2131361955;
-			
-			// aapt resource value: 0x7f0a00a4
-			public const int textQuantityDetailsItemItemValue = 2131361956;
+			public const int textQuantityDetailsItemItemValue = 2131361955;
 			
 			// aapt resource value: 0x7f0a0057
 			public const int textSpacerNoButtons = 2131361879;
 			
-			// aapt resource value: 0x7f0a0092
-			public const int textStatus = 2131361938;
+			// aapt resource value: 0x7f0a0091
+			public const int textStatus = 2131361937;
 			
-			// aapt resource value: 0x7f0a0093
-			public const int textStatusValue = 2131361939;
+			// aapt resource value: 0x7f0a0092
+			public const int textStatusValue = 2131361938;
+			
+			// aapt resource value: 0x7f0a008d
+			public const int textTotal = 2131361933;
 			
 			// aapt resource value: 0x7f0a008e
-			public const int textTotal = 2131361934;
+			public const int textTotalValue = 2131361934;
 			
-			// aapt resource value: 0x7f0a008f
-			public const int textTotalValue = 2131361935;
+			// aapt resource value: 0x7f0a0097
+			public const int textUserConfirm = 2131361943;
 			
 			// aapt resource value: 0x7f0a0098
-			public const int textUserConfirm = 2131361944;
-			
-			// aapt resource value: 0x7f0a0099
-			public const int textUserConfirmValue = 2131361945;
+			public const int textUserConfirmValue = 2131361944;
 			
 			// aapt resource value: 0x7f0a00bb
 			public const int textView2 = 2131361979;
