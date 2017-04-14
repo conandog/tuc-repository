@@ -1,100 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:fitsSystemWindows="true">
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        android:background="@color/sm_item_background"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu"
+        app:itemTextColor="@android:color/white"
+        app:itemIconTint="@color/sm_item"/>
     <LinearLayout
-        android:id="@+id/relativeLayoutHeaderHome"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_weight=".6">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-            <ImageButton
-                android:id="@+id/btPopupMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:background="@android:color/transparent"
-                android:scaleType="centerInside"
-                android:src="@drawable/MenuIcon" />
-            <ImageView
-                android:src="@android:drawable/ic_menu_gallery"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:id="@+id/imgLogo"
-                android:scaleType="centerInside"
-                android:layout_centerInParent="true" />
-        </RelativeLayout>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
         <LinearLayout
+            android:id="@+id/relativeLayoutHeaderHome"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight=".6">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:id="@+id/linearLayout1"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <ImageButton
+                    android:id="@+id/btPopupMenu"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="30dp">
-                    <Button
-                        android:id="@+id/btWaiting"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:text="Đơn hàng chưa xử lý"
-                        android:background="@color/button_waiting_notes"
-                        android:textColor="@android:color/white" />
-                    <Button
-                        android:id="@+id/btUrgent"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:text="Đơn hàng cần xử lý gấp"
-                        android:background="@color/button_urgent_notes"
-                        android:textColor="@android:color/white" />
-                </LinearLayout>
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@android:color/transparent"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/MenuIcon" />
+                <ImageView
+                    android:src="@android:drawable/ic_menu_gallery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:id="@+id/imgLogo"
+                    android:scaleType="centerInside"
+                    android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <ImageButton
-                        android:id="@+id/btAddNewOrder"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:background="@android:color/transparent"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/ImgButtonAddNewOrder"
-                        android:layout_centerInParent="true" />
+                    <LinearLayout
+                        android:id="@+id/linearLayout1"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="30dp">
+                        <Button
+                            android:id="@+id/btWaiting"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:text="Đơn hàng chưa xử lý"
+                            android:background="@color/button_waiting_notes"
+                            android:textColor="@android:color/white" />
+                        <Button
+                            android:id="@+id/btUrgent"
+                            android:layout_height="100dp"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:text="Đơn hàng cần xử lý gấp"
+                            android:background="@color/button_urgent_notes"
+                            android:textColor="@android:color/white" />
+                    </LinearLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageButton
+                            android:id="@+id/btAddNewOrder"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:background="@android:color/transparent"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/ImgButtonAddNewOrder"
+                            android:layout_centerInParent="true" />
+                    </RelativeLayout>
                 </RelativeLayout>
-            </RelativeLayout>
-            <Button
-                android:id="@+id/btToday"
+                <Button
+                    android:id="@+id/btToday"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:text="Đơn hàng trong ngày"
+                    android:background="#dbdbdb"
+                    android:textColor="@color/button_today_notes" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/linearLayoutHomeItemHome"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_weight=".4"
+            android:orientation="vertical">
+            <ListView
+                android:id="@+id/listViewHomeItem"
+                android:divider="@null"
+                android:dividerHeight="0dp"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:text="Đơn hàng trong ngày"
-                android:background="#dbdbdb"
-                android:textColor="@color/button_today_notes" />
+                android:layout_height="match_parent" />
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/linearLayoutHomeItemHome"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_weight=".4"
-        android:orientation="vertical">
-      <ListView
-        android:id="@+id/listViewHomeItem"
-            android:divider="@null"
-            android:dividerHeight="0dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
-</LinearLayout>
+</android.support.v4.widget.DrawerLayout>

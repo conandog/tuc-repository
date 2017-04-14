@@ -9,11 +9,14 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Support.V4.Widget;
+using Android.Support.Design.Widget;
+using Android.Support.V7.App;
 
 namespace SaleNotes.Droid
 {
-    [Activity(Label = "Home", Theme = "@android:style/Theme.NoTitleBar", Icon = "@drawable/LogoND")]
-    public class Home : Activity
+    [Activity(Label = "Home", Icon = "@drawable/LogoND")]
+    public class Home : AppCompatActivity
     {
         private ImageButton btAddNewOrder;
         private Button btWaiting;
@@ -21,6 +24,8 @@ namespace SaleNotes.Droid
         private Button btToday;
         private ImageButton btPopupMenu;
         private List<HomeItem> items = new List<HomeItem>();
+        DrawerLayout drawerLayout;
+        NavigationView navigationView;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -28,6 +33,24 @@ namespace SaleNotes.Droid
 
             // Create your application here
             SetContentView(Resource.Layout.Home);
+
+            //var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            //SetSupportActionBar(toolbar);
+
+            //Enable support action bar to display hamburger
+            //SupportActionBar.SetHomeAsUpIndicator(Resource.Drawable.MenuIcon);
+            //SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+
+            navigationView.NavigationItemSelected += (sender, e) =>
+            {
+                e.MenuItem.SetChecked(true);
+                //react to click here and swap fragments or navigate
+                drawerLayout.CloseDrawers();
+            };
+
             Init();
 
             btAddNewOrder = FindViewById<ImageButton>(Resource.Id.btAddNewOrder);
@@ -115,20 +138,26 @@ namespace SaleNotes.Droid
             btPopupMenu = FindViewById<ImageButton>(Resource.Id.btPopupMenu);
             btPopupMenu.LayoutParameters.Width = (int)(widthInDp * 0.1);
             btPopupMenu.LayoutParameters.Height = (int)(heightInDp * 0.1);
+            btPopupMenu.Click += btPopupMenu_Click;
+        }
+
+        private void btPopupMenu_Click(object sender, EventArgs e)
+        {
+            drawerLayout.OpenDrawer(Android.Support.V4.View.GravityCompat.Start);
         }
 
         private void notImplemented_Click(object sender, EventArgs e)
         {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.SetTitle("Thông báo");
-            builder.SetMessage("Chức năng này sẽ được cập nhật sau");
-            builder.SetPositiveButton("OK", (senderAlert, args) =>
-            {
-                //close dialog automatically
-            });
+            //AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            //builder.SetTitle("Thông báo");
+            //builder.SetMessage("Chức năng này sẽ được cập nhật sau");
+            //builder.SetPositiveButton("OK", (senderAlert, args) =>
+            //{
+            //    //close dialog automatically
+            //});
 
-            AlertDialog alert = builder.Create();
-            alert.Show();
+            //AlertDialog alert = builder.Create();
+            //alert.Show();
         }
 
         private int ConvertPixelsToDp(float pixelValue)

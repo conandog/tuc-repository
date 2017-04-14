@@ -1,0 +1,26 @@
+﻿<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <group android:checkableBehavior="single">
+    <item
+            android:id="@+id/smSearch"
+            android:icon="@drawable/SlidingMenuSearch"
+            android:title="Search" />
+        <item
+            android:id="@+id/smOrder"
+            android:icon="@drawable/SlidingMenuOrder"
+            android:title="Danh sách đơn hàng" />
+        <item
+            android:id="@+id/smWaiting"
+            android:icon="@drawable/SlidingMenuWaiting"
+            android:title="Đơn hàng chưa xử lý" />
+ 
+        <item
+            android:id="@+id/smAbout"
+            android:icon="@drawable/SlidingMenuAbout"
+            android:title="Giới thiệu" />
+ 
+        <item
+            android:id="@+id/smLogout"
+            android:icon="@drawable/SlidingMenuLogout"
+            android:title="Đăng xuất" />
+    </group>
+</menu>
