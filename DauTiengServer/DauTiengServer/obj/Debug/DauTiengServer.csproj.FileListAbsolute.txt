@@ -1,0 +1,1 @@
+D:\Tuc\Projects\GitDesktopApp\DauTiengServer\DauTiengServer\bin\Debug\DauTiengServer.exe.config
