@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,11 @@ namespace DemoApp
 
         private void Page3_Load(object sender, EventArgs e)
         {
-
+            FileBrowser.Browser newBrowser = new FileBrowser.Browser();
+            newBrowser.StartUpDirectory = FileBrowser.SpecialFolders.Other;
+            newBrowser.StartUpDirectoryOther = @"C:\Program Files";
+            newBrowser.Dock = DockStyle.Fill;
+            this.Controls.Add(newBrowser);
         }
 
         protected override void OnLoad(EventArgs e)

@@ -51,27 +51,27 @@ namespace DemoApp
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            try
-            {
-                System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
-                clientSocket.Connect("127.0.0.1", 1234);
-                clientSocket.ReceiveBufferSize = 8192;
-                clientSocket.SendBufferSize = 8192;
+            //try
+            //{
+            //    System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
+            //    clientSocket.Connect("127.0.0.1", 1234);
+            //    clientSocket.ReceiveBufferSize = 8192;
+            //    clientSocket.SendBufferSize = 8192;
 
-                NetworkStream serverStream = clientSocket.GetStream();
-                byte[] outStream = System.Text.Encoding.ASCII.GetBytes("Tuc.Nguyen (sent from client)$");
-                serverStream.Write(outStream, 0, outStream.Length);
-                serverStream.Flush();
+            //    NetworkStream serverStream = clientSocket.GetStream();
+            //    byte[] outStream = System.Text.Encoding.ASCII.GetBytes("Tuc.Nguyen (sent from client)$");
+            //    serverStream.Write(outStream, 0, outStream.Length);
+            //    serverStream.Flush();
 
-                byte[] inStream = new byte[8192];
-                serverStream.Read(inStream, 0, (int)clientSocket.ReceiveBufferSize);
-                string returndata = System.Text.Encoding.ASCII.GetString(inStream);
-                MessageBox.Show("Data from Server : " + returndata);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //    byte[] inStream = new byte[8192];
+            //    serverStream.Read(inStream, 0, (int)clientSocket.ReceiveBufferSize);
+            //    string returndata = System.Text.Encoding.ASCII.GetString(inStream);
+            //    MessageBox.Show("Data from Server : " + returndata);
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
 
             this.Visible = false;
             FormLogin form = new FormLogin();
