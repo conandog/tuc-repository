@@ -74,6 +74,43 @@ namespace SaleNotes.Droid.Activities
             });
 
             LoadItems(list);
+            InitReadonly();
+        }
+
+        private void InitReadonly()
+        {
+            EditText control = FindViewById<EditText>(Resource.Id.editTextNameValueDetails);
+            control.InputType = Android.Text.InputTypes.Null;
+
+            control = FindViewById<EditText>(Resource.Id.editTextPhoneValueDetails);
+            control.InputType = Android.Text.InputTypes.Null;
+
+            control = FindViewById<EditText>(Resource.Id.editTextAddressValueDetails);
+            control.InputType = Android.Text.InputTypes.Null;
+
+            control = FindViewById<EditText>(Resource.Id.editTextCountValueDetails);
+            control.InputType = Android.Text.InputTypes.Null;
+
+            control = FindViewById<EditText>(Resource.Id.editTextNotesValueDetails);
+            control.InputType = Android.Text.InputTypes.Null;
+
+            control = FindViewById<EditText>(Resource.Id.editTextTotalValueDetails);
+            control.InputType = Android.Text.InputTypes.Null;
+
+            control = FindViewById<EditText>(Resource.Id.editTextDateValueDetails);
+            control.InputType = Android.Text.InputTypes.Null;
+
+            control = FindViewById<EditText>(Resource.Id.editTextStatusValueDetails);
+            control.InputType = Android.Text.InputTypes.Null;
+
+            control = FindViewById<EditText>(Resource.Id.editTextDateDeliverValueDetails);
+            control.InputType = Android.Text.InputTypes.Null;
+
+            control = FindViewById<EditText>(Resource.Id.editTextDeliverManValueDetails);
+            control.InputType = Android.Text.InputTypes.Null;
+
+            control = FindViewById<EditText>(Resource.Id.editTextUserConfirmValueDetails);
+            control.InputType = Android.Text.InputTypes.Null;
         }
 
         private void NotImplemented_Click(object sender, EventArgs e)
@@ -159,12 +196,23 @@ namespace SaleNotes.Droid.Activities
             View view = convertView;
             if (view == null) // no view to re-use, create new
                 view = context.LayoutInflater.Inflate(Resource.Layout.DetailsItem, null);
-            view.FindViewById<RelativeLayout>(Resource.Id.relativeLayoutDetailsItemEdit).Visibility = ViewStates.Gone;
+            //view.FindViewById<RelativeLayout>(Resource.Id.relativeLayoutDetailsItemEdit).Visibility = ViewStates.Gone;
             view.FindViewById<RelativeLayout>(Resource.Id.relativeLayoutBinDetailsItemEdit).Visibility = ViewStates.Gone;
-            view.FindViewById<TextView>(Resource.Id.textNameValueDetailsItem).Text = item.Name;
-            view.FindViewById<TextView>(Resource.Id.textCodeValueDetailsItem).Text = item.Code;
-            view.FindViewById<TextView>(Resource.Id.textQuantityValueDetailsItem).Text = item.Quantity.ToString();
-            view.FindViewById<TextView>(Resource.Id.textPriceValueDetailsItem).Text = item.Price.ToString(DEFAULT_FORMAT_MONEY) + " VND/[đơn vị]";
+            EditText control = view.FindViewById<EditText>(Resource.Id.editTextNameValueDetailsItemEdit);
+            control.Text = item.Name;
+            control.InputType = Android.Text.InputTypes.Null;
+
+            control = view.FindViewById<EditText>(Resource.Id.editTextCodeValueDetailsItemEdit);
+            control.Text = item.Code;
+            control.InputType = Android.Text.InputTypes.Null;
+
+            control = view.FindViewById<EditText>(Resource.Id.editTextQuantityValueDetailsItemEdit);
+            control.Text = item.Quantity.ToString();
+            control.InputType = Android.Text.InputTypes.Null;
+
+            control = view.FindViewById<EditText>(Resource.Id.editTextPriceValueDetailsItemEdit);
+            control.Text = item.Price.ToString(DEFAULT_FORMAT_MONEY) + " VND/[đơn vị]";
+            control.InputType = Android.Text.InputTypes.Null;
 
             if ((position % 2) == 0)
             {

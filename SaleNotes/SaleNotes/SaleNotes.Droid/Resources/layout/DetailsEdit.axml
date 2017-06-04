@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:textSize="20dp" />
+                android:textAppearance="?android:attr/textAppearanceLarge" />
         </RelativeLayout>
     </RelativeLayout>
     <ScrollView
@@ -52,7 +52,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
             <RelativeLayout
                 android:minWidth="25px"
                 android:minHeight="25px"
@@ -61,84 +62,112 @@
                 android:padding="5dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/BorderDetailLayout">
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="15dp">
-                    <TextView
-                        android:id="@+id/textNameDetailsEdit"
-                        android:text="Tên: "
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <EditText
-                        android:id="@+id/editTextNameValueDetailsEdit"
-                        android:text="Chị A"
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/textNameDetailsEdit" />
-                    <TextView
-                        android:id="@+id/textPhoneDetailsEdit"
-                        android:text="SĐT: "
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextNameValueDetailsEdit" />
-                    <EditText
-                        android:id="@+id/editTextPhoneValueDetailsEdit"
-                        android:text="0912345678"
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextNameValueDetailsEdit"
-                        android:layout_toRightOf="@id/textPhoneDetailsEdit" />
-                    <TextView
-                        android:id="@+id/textAddressDetailsEdit"
-                        android:text="Địa chỉ: "
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextPhoneValueDetailsEdit" />
-                    <EditText
-                        android:id="@+id/editTextAddressValueDetailsEdit"
-                        android:text="123 Nguyễn Văn B, Phường X, Quận Y"
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextPhoneValueDetailsEdit"
-                        android:layout_toRightOf="@id/textAddressDetailsEdit" />
-                    <TextView
-                        android:id="@+id/textCountDetailsEdit"
-                        android:text="Số lần đặt hàng: "
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextAddressValueDetailsEdit" />
-                    <EditText
-                        android:id="@+id/editTextCountValueDetailsEdit"
-                        android:text="xxx"
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextAddressValueDetailsEdit"
-                        android:layout_toRightOf="@id/textCountDetailsEdit" />
-                    <TextView
-                        android:id="@+id/textNotesDetailsEdit"
-                        android:text="Ghi chú: "
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextCountValueDetailsEdit" />
-                    <EditText
-                        android:id="@+id/editTextNotesValueDetailsEdit"
-                        android:text="Giao hàng trước dd/mm"
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextCountValueDetailsEdit"
-                        android:layout_toRightOf="@id/textNotesDetailsEdit" />
-                </RelativeLayout>
+                    android:layout_gravity="center"
+                    android:paddingLeft="15dp"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/textNameDetailsEdit"
+                            android:text="Tên: "
+                            android:textColor="@color/text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                        <EditText
+                            android:id="@+id/editTextNameValueDetailsEdit"
+                            android:background="@android:color/transparent"
+                            android:text="Chị A"
+                            android:textColor="@color/text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/textPhoneDetailsEdit"
+                            android:text="SĐT: "
+                            android:textColor="@color/text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                        <EditText
+                            android:id="@+id/editTextPhoneValueDetailsEdit"
+                            android:background="@android:color/transparent"
+                            android:text="0912345678"
+                            android:textColor="@color/text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/textAddressDetailsEdit"
+                            android:text="Địa chỉ: "
+                            android:textColor="@color/text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                        <EditText
+                            android:id="@+id/editTextAddressValueDetailsEdit"
+                            android:background="@android:color/transparent"
+                            android:text="123 Nguyễn Văn B, Phường X, Quận Y"
+                            android:textColor="@color/text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/textCountDetailsEdit"
+                            android:text="Số lần đặt hàng: "
+                            android:textColor="@color/text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                        <EditText
+                            android:id="@+id/editTextCountValueDetailsEdit"
+                            android:background="@android:color/transparent"
+                            android:text="xxx"
+                            android:textColor="@color/text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/textNotesDetailsEdit"
+                            android:text="Ghi chú: "
+                            android:textColor="@color/text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                        <EditText
+                            android:id="@+id/editTextNotesValueDetailsEdit"
+                            android:background="@android:color/transparent"
+                            android:text="Giao hàng trước dd/mm"
+                            android:textColor="@color/text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </LinearLayout>
+                </LinearLayout>
             </RelativeLayout>
             <TextView
                 android:text="CHI TIẾT ĐƠN HÀNG"
@@ -147,7 +176,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="10dp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
             <ListView
                 android:id="@+id/listViewDetailsItemEdit"
                 android:divider="@null"
@@ -160,7 +190,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
             <RelativeLayout
                 android:minWidth="25px"
                 android:minHeight="25px"
@@ -169,99 +200,135 @@
                 android:padding="5dp"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/BorderDetailLayout">
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="15dp">
-                    <TextView
-                        android:id="@+id/textTotalDetailsEdit"
-                        android:text="Tổng giá trị: "
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:id="@+id/textTotalValueDetailsEdit"
-                        android:text="2.060.000 VND"
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/textTotalDetailsEdit" />
-                    <TextView
-                        android:id="@+id/textDateCreateDetailsEdit"
-                        android:text="Ngày tạo: "
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/textTotalDetailsEdit" />
-                    <TextView
-                        android:id="@+id/textDateValueDetailsEdit"
-                        android:text="8/3/2017"
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/textTotalDetailsEdit"
-                        android:layout_toRightOf="@id/textDateCreateDetailsEdit" />
-                    <TextView
-                        android:id="@+id/textStatusDetailsEdit"
-                        android:text="Trạng thái: "
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/textDateCreateDetailsEdit" />
-                    <EditText
-                        android:id="@+id/editTextStatusValueDetailsEdit"
-                        android:text="Đang chuẩn bị (3 ngày)"
-                        android:textColor="@android:color/holo_red_dark"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/textDateCreateDetailsEdit"
-                        android:layout_toRightOf="@id/textStatusDetailsEdit" />
-                    <TextView
-                        android:id="@+id/textDateDeliverDetailsEdit"
-                        android:text="Ngày giao: "
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextStatusValueDetailsEdit" />
-                    <TextView
-                        android:id="@+id/textDateDeliverValueDetailsEdit"
-                        android:text=""
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextStatusValueDetailsEdit"
-                        android:layout_toRightOf="@id/textDateDeliverDetailsEdit" />
-                    <TextView
-                        android:id="@+id/textDeliverManDetailsEdit"
-                        android:text="Người giao: "
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/textDateDeliverDetailsEdit" />
-                    <EditText
-                        android:id="@+id/editTextDeliverManValueDetailsEdit"
-                        android:text="Nguyen Van C"
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/textDateDeliverDetailsEdit"
-                        android:layout_toRightOf="@id/textDeliverManDetailsEdit" />
-                    <TextView
-                        android:id="@+id/textUserConfirmDetailsEdit"
-                        android:text="Người xác nhận: "
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextDeliverManValueDetailsEdit" />
-                    <EditText
-                        android:id="@+id/editTextUserConfirmValueDetailsEdit"
-                        android:text=""
-                        android:textColor="@color/text"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/editTextDeliverManValueDetailsEdit"
-                        android:layout_toRightOf="@id/textUserConfirmDetailsEdit" />
-                </RelativeLayout>
+                    android:layout_gravity="center"
+                    android:paddingLeft="15dp"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/textTotalDetailsEdit"
+                            android:text="Tổng giá trị: "
+                            android:textColor="@color/text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                        <EditText
+                            android:id="@+id/editTextTotalValueDetailsEdit"
+                            android:background="@android:color/transparent"
+                            android:text="2.060.000 VND"
+                            android:textColor="@color/text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:editable="false" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/textDateCreateDetailsEdit"
+                            android:text="Ngày tạo: "
+                            android:textColor="@color/text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                        <EditText
+                            android:id="@+id/editTextDateValueDetailsEdit"
+                            android:background="@android:color/transparent"
+                            android:text="8/3/2017"
+                            android:textColor="@color/text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:editable="false" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/textStatusDetailsEdit"
+                            android:text="Trạng thái: "
+                            android:textColor="@color/text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                        <EditText
+                            android:id="@+id/editTextStatusValueDetailsEdit"
+                            android:background="@android:color/transparent"
+                            android:text="Đang chuẩn bị (3 ngày)"
+                            android:textColor="@android:color/holo_red_dark"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/textDateDeliverDetailsEdit"
+                            android:text="Ngày giao: "
+                            android:textColor="@color/text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                        <EditText
+                            android:id="@+id/editTextDateDeliverValueDetailsEdit"
+                            android:background="@android:color/transparent"
+                            android:text="Chưa xác định"
+                            android:textColor="@color/text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/textDeliverManDetailsEdit"
+                            android:text="Người giao: "
+                            android:textColor="@color/text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                        <EditText
+                            android:id="@+id/editTextDeliverManValueDetailsEdit"
+                            android:background="@android:color/transparent"
+                            android:text="Nguyen Van C"
+                            android:textColor="@color/text"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/textUserConfirmDetailsEdit"
+                            android:text="Người xác nhận: "
+                            android:textColor="@color/text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?android:attr/textAppearanceMedium"/>
+                        <EditText
+                            android:id="@+id/editTextUserConfirmValueDetailsEdit"
+                            android:background="@android:color/transparent"
+                            android:text=""
+                            android:textColor="@color/text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:textAppearance="?android:attr/textAppearanceMedium"/>
+                    </LinearLayout>
+                </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>

@@ -158,11 +158,11 @@ namespace SaleNotes.Droid.Activities
             View view = convertView;
             if (view == null) // no view to re-use, create new
                 view = context.LayoutInflater.Inflate(Resource.Layout.DetailsItem, null);
-            view.FindViewById<RelativeLayout>(Resource.Id.relativeLayoutDetailsItemView).Visibility = ViewStates.Gone;
-            view.FindViewById<TextView>(Resource.Id.editTextNameValueDetailsItemEdit).Text = item.Name;
-            view.FindViewById<TextView>(Resource.Id.editTextCodeValueDetailsItemEdit).Text = item.Code;
-            view.FindViewById<TextView>(Resource.Id.editTextQuantityValueDetailsItemEdit).Text = item.Quantity.ToString();
-            view.FindViewById<TextView>(Resource.Id.editTextPriceValueDetailsItemEdit).Text = item.Price.ToString(DEFAULT_FORMAT_MONEY) + " VND/[đơn vị]";
+            //view.FindViewById<RelativeLayout>(Resource.Id.relativeLayoutDetailsItemView).Visibility = ViewStates.Gone;
+            view.FindViewById<EditText>(Resource.Id.editTextNameValueDetailsItemEdit).Text = item.Name;
+            view.FindViewById<EditText>(Resource.Id.editTextCodeValueDetailsItemEdit).Text = item.Code;
+            view.FindViewById<EditText>(Resource.Id.editTextQuantityValueDetailsItemEdit).Text = item.Quantity.ToString();
+            view.FindViewById<EditText>(Resource.Id.editTextPriceValueDetailsItemEdit).Text = item.Price.ToString(DEFAULT_FORMAT_MONEY) + " VND/[đơn vị]";
             view.FindViewById<ImageButton>(Resource.Id.btBinDetailsItemEdit).Click += (object sender, EventArgs args) =>
             {
                 AlertDialog.Builder builder = new AlertDialog.Builder(convertView.Context);
