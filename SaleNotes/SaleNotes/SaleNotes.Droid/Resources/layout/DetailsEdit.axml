@@ -184,6 +184,19 @@
                 android:dividerHeight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+          <LinearLayout
+        android:layout_height="60dp"
+        android:layout_width="fill_parent"
+        android:orientation="horizontal">
+            <Button
+                android:id="@+id/btNewItemDetailsEdit"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:text="+ Thêm sản phẩm"
+                android:background="#dbdbdb"
+                android:textColor="@android:color/white" />
+          </LinearLayout>
             <TextView
                 android:text="TỔNG CỘNG"
                 android:textColor="@color/text"

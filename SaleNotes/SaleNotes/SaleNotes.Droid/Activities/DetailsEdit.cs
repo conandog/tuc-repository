@@ -19,7 +19,8 @@ namespace SaleNotes.Droid.Activities
         private ImageButton btBack;
         private Button btFinish;
         private Button btCancel;
-        private List<DetailsItemEdit> items = new List<DetailsItemEdit>();
+        private Button btNewItem;
+        public List<DetailsItemEdit> items = new List<DetailsItemEdit>();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -46,8 +47,19 @@ namespace SaleNotes.Droid.Activities
                 this.Finish();
             };
 
-            List<DetailsItemEdit> list = new List<DetailsItemEdit>();
-            list.Add(new DetailsItemEdit()
+            btNewItem = FindViewById<Button>(Resource.Id.btNewItemDetailsEdit);
+            btNewItem.Click += (object sender, EventArgs args) =>
+            {
+                items.Add(new DetailsItemEdit()
+                {
+                    Id = -1,
+                });
+                LoadItems();
+            };
+            
+
+            items = new List<DetailsItemEdit>();
+            items.Add(new DetailsItemEdit()
             {
                 Id = 1,
                 Name = "Áo sơ mi ABC",
@@ -55,7 +67,7 @@ namespace SaleNotes.Droid.Activities
                 Quantity = 5,
                 Price = 150000
             });
-            list.Add(new DetailsItemEdit()
+            items.Add(new DetailsItemEdit()
             {
                 Id = 2,
                 Name = "Quần kaki DEF",
@@ -63,7 +75,7 @@ namespace SaleNotes.Droid.Activities
                 Quantity = 3,
                 Price = 200000
             });
-            list.Add(new DetailsItemEdit()
+            items.Add(new DetailsItemEdit()
             {
                 Id = 3,
                 Name = "Giày XYZ",
@@ -72,7 +84,9 @@ namespace SaleNotes.Droid.Activities
                 Price = 120000
             });
 
-            LoadItems(list);
+            LoadItems();
+            var scrollViewMain = FindViewById<ScrollView>(Resource.Id.scrollViewAllDetailsEdit);
+            scrollViewMain.SmoothScrollTo(0, 0);
         }
 
         private void NotImplemented_Click(object sender, EventArgs e)
@@ -89,17 +103,15 @@ namespace SaleNotes.Droid.Activities
             alert.Show();
         }
 
-        private void LoadItems(List<DetailsItemEdit> list)
+        public void LoadItems()
         {
-            items.Clear();
-            items.AddRange(list);
+            //items.Clear();
+            //items.AddRange(list);
 
             var listView = FindViewById<ListView>(Resource.Id.listViewDetailsItemEdit);
-            listView.Adapter = new DetailsEditAdapter(this, list);
+            listView.Adapter = new DetailsEditAdapter(this, items);
             SetListViewHeightBasedOnChildren(listView);
             //listView.Focusable = false;
-            var scrollViewMain = FindViewById<ScrollView>(Resource.Id.scrollViewAllDetailsEdit);
-            scrollViewMain.SmoothScrollTo(0, 0);
         }
 
         public void SetListViewHeightBasedOnChildren(ListView listView)
@@ -163,18 +175,17 @@ namespace SaleNotes.Droid.Activities
             view.FindViewById<EditText>(Resource.Id.editTextCodeValueDetailsItemEdit).Text = item.Code;
             view.FindViewById<EditText>(Resource.Id.editTextQuantityValueDetailsItemEdit).Text = item.Quantity.ToString();
             view.FindViewById<EditText>(Resource.Id.editTextPriceValueDetailsItemEdit).Text = item.Price.ToString(DEFAULT_FORMAT_MONEY) + " VND/[đơn vị]";
-            view.FindViewById<ImageButton>(Resource.Id.btBinDetailsItemEdit).Click += (object sender, EventArgs args) =>
+            var bin = view.FindViewById<ImageButton>(Resource.Id.btBinDetailsItemEdit);
+            bin.SetTag(Resource.Id.btBinDetailsItemEdit, position);
+            bin.Click += (object sender, EventArgs args) =>
             {
-                AlertDialog.Builder builder = new AlertDialog.Builder(convertView.Context);
-                builder.SetTitle("Thông báo");
-                builder.SetMessage("Chức năng này sẽ được cập nhật sau");
-                builder.SetPositiveButton("OK", (senderAlert, e) =>
-                {
-                    //close dialog automatically
-                });
+                int pos = (int)(((ImageButton)sender).GetTag(Resource.Id.btBinDetailsItemEdit));
+                var mainContext = ((DetailsEdit)context);
+                mainContext.items.RemoveAt(pos);
+                mainContext.LoadItems();
 
-                AlertDialog alert = builder.Create();
-                alert.Show();
+                //items.RemoveAt(pos);
+                //context.RunOnUiThread(() => this.NotifyDataSetChanged());
             };
 
             if ((position % 2) == 0)
