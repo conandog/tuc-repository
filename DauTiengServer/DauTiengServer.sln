@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DauTiengClient", "DauTiengC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBrowser", "FileBrowser\FileBrowser.csproj", "{FC8064DF-B0BC-4D03-B1AE-077F3387412C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyDuLieu", "QuanLyDuLieu\QuanLyDuLieu.csproj", "{C75C28AC-7974-49AF-8C90-8ACC4DF1260F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{FC8064DF-B0BC-4D03-B1AE-077F3387412C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC8064DF-B0BC-4D03-B1AE-077F3387412C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC8064DF-B0BC-4D03-B1AE-077F3387412C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C75C28AC-7974-49AF-8C90-8ACC4DF1260F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C75C28AC-7974-49AF-8C90-8ACC4DF1260F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C75C28AC-7974-49AF-8C90-8ACC4DF1260F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C75C28AC-7974-49AF-8C90-8ACC4DF1260F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
