@@ -63,6 +63,12 @@
     <Compile Include="FormQLDL.Designer.cs">
       <DependentUpon>FormQLDL.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\QLDL\UcQLDL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QLDL\UcQLDL.Designer.cs">
+      <DependentUpon>UcQLDL.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ThemDL\FormDestination.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,10 +87,19 @@
     <Compile Include="GUI\ThemDL\UcThemDL.Designer.cs">
       <DependentUpon>UcThemDL.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\TrangChu\UcTrangChu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\TrangChu\UcTrangChu.Designer.cs">
+      <DependentUpon>UcTrangChu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormQLDL.resx">
       <DependentUpon>FormQLDL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QLDL\UcQLDL.resx">
+      <DependentUpon>UcQLDL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThemDL\FormDestination.resx">
       <DependentUpon>FormDestination.cs</DependentUpon>
@@ -94,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThemDL\UcThemDL.resx">
       <DependentUpon>UcThemDL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TrangChu\UcTrangChu.resx">
+      <DependentUpon>UcTrangChu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -517,10 +535,7 @@
     <Content Include="GUI_Resources\png\64\volume_up.png" />
     <Content Include="GUI_Resources\png\64\warning.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GUI\QLDL\" />
-    <Folder Include="GUI\TrangChu\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

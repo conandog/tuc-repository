@@ -13,6 +13,22 @@ namespace QuanLyDuLieu.GUI
 {
     public partial class UcAdd : UserControl
     {
+        public string source
+        {
+            get
+            {
+                return tbSource.Text;
+            }
+        }
+
+        public string destination
+        {
+            get
+            {
+                return tbDestination.Text;
+            }
+        }
+
         public UcAdd()
         {
             InitializeComponent();
@@ -25,7 +41,7 @@ namespace QuanLyDuLieu.GUI
 
         private void btSource_Click(object sender, EventArgs e)
         {
-            string path = File_Function.OpenDialog("Dữ liệu", "*");
+            string path = File_Function.FolderDialog();
 
             if (path != null)
             {
