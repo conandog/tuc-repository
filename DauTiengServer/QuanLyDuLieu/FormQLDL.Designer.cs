@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormQLDL));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btTrangChu = new System.Windows.Forms.Button();
@@ -71,43 +70,37 @@
             // 
             // btTrangChu
             // 
-            this.btTrangChu.Image = ((System.Drawing.Image)(resources.GetObject("btTrangChu.Image")));
-            this.btTrangChu.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btTrangChu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btTrangChu.Location = new System.Drawing.Point(20, 3);
             this.btTrangChu.Margin = new System.Windows.Forms.Padding(20, 3, 20, 3);
             this.btTrangChu.Name = "btTrangChu";
             this.btTrangChu.Size = new System.Drawing.Size(90, 90);
             this.btTrangChu.TabIndex = 0;
             this.btTrangChu.Text = "Trang chủ";
-            this.btTrangChu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btTrangChu.UseVisualStyleBackColor = true;
             this.btTrangChu.Click += new System.EventHandler(this.btTrangChu_Click);
             // 
             // btQuanLyDuLieu
             // 
-            this.btQuanLyDuLieu.Image = ((System.Drawing.Image)(resources.GetObject("btQuanLyDuLieu.Image")));
-            this.btQuanLyDuLieu.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btQuanLyDuLieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btQuanLyDuLieu.Location = new System.Drawing.Point(150, 3);
             this.btQuanLyDuLieu.Margin = new System.Windows.Forms.Padding(20, 3, 20, 3);
             this.btQuanLyDuLieu.Name = "btQuanLyDuLieu";
             this.btQuanLyDuLieu.Size = new System.Drawing.Size(90, 90);
             this.btQuanLyDuLieu.TabIndex = 1;
             this.btQuanLyDuLieu.Text = "Quản lý dữ liệu";
-            this.btQuanLyDuLieu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btQuanLyDuLieu.UseVisualStyleBackColor = true;
             this.btQuanLyDuLieu.Click += new System.EventHandler(this.btQuanLyDuLieu_Click);
             // 
             // btThemDuLieu
             // 
-            this.btThemDuLieu.Image = ((System.Drawing.Image)(resources.GetObject("btThemDuLieu.Image")));
-            this.btThemDuLieu.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btThemDuLieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btThemDuLieu.Location = new System.Drawing.Point(280, 3);
             this.btThemDuLieu.Margin = new System.Windows.Forms.Padding(20, 3, 20, 3);
             this.btThemDuLieu.Name = "btThemDuLieu";
             this.btThemDuLieu.Size = new System.Drawing.Size(90, 90);
             this.btThemDuLieu.TabIndex = 2;
             this.btThemDuLieu.Text = "Thêm dữ liệu";
-            this.btThemDuLieu.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btThemDuLieu.UseVisualStyleBackColor = true;
             this.btThemDuLieu.Click += new System.EventHandler(this.btThemDuLieu_Click);
             // 

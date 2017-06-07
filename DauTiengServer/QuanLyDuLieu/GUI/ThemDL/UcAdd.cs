@@ -25,7 +25,7 @@ namespace QuanLyDuLieu.GUI
 
         private void btSource_Click(object sender, EventArgs e)
         {
-            string path = File_Function.OpenDialog("Dữ liệu", String.Empty);
+            string path = File_Function.OpenDialog("Dữ liệu", "*");
 
             if (path != null)
             {

@@ -126,9 +126,7 @@
             // 
             // flowLayoutAdd
             // 
-            this.flowLayoutAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.flowLayoutAdd.Location = new System.Drawing.Point(3, 83);
             this.flowLayoutAdd.Name = "flowLayoutAdd";
             this.flowLayoutAdd.Size = new System.Drawing.Size(794, 464);
