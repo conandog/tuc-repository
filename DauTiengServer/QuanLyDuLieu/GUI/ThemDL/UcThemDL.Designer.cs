@@ -111,6 +111,7 @@
             this.pbFinish.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbFinish.TabIndex = 3;
             this.pbFinish.TabStop = false;
+            this.pbFinish.Click += new System.EventHandler(this.pbFinish_Click);
             // 
             // pbCancel
             // 
@@ -123,6 +124,7 @@
             this.pbCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCancel.TabIndex = 2;
             this.pbCancel.TabStop = false;
+            this.pbCancel.Click += new System.EventHandler(this.pbCancel_Click);
             // 
             // flowLayoutAdd
             // 

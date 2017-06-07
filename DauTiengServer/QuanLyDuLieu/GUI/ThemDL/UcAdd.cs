@@ -35,7 +35,12 @@ namespace QuanLyDuLieu.GUI
 
         private void btDestination_Click(object sender, EventArgs e)
         {
+            FormDestination form = new FormDestination();
 
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                tbDestination.Text = form.destination;
+            }
         }
 
         private void pbDelete_Click(object sender, EventArgs e)

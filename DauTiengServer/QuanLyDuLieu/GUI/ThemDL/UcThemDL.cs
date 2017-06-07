@@ -52,5 +52,15 @@ namespace QuanLyDuLieu.GUI
                 pbAdd.Enabled = false;
             }
         }
+
+        private void pbCancel_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void pbFinish_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
