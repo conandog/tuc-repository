@@ -16,5 +16,10 @@ namespace QuanLyDuLieu.GUI
         {
             InitializeComponent();
         }
+
+        private void UcTrangChu_Load(object sender, EventArgs e)
+        {
+            this.Dock = DockStyle.Fill;
+        }
     }
 }

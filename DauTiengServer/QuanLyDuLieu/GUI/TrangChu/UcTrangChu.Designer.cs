@@ -85,13 +85,14 @@
             this.flowLayoutAdd.Size = new System.Drawing.Size(794, 464);
             this.flowLayoutAdd.TabIndex = 3;
             // 
-            // TrangChu
+            // UcTrangChu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tbLayoutMain);
-            this.Name = "TrangChu";
+            this.Name = "UcTrangChu";
             this.Size = new System.Drawing.Size(800, 600);
+            this.Load += new System.EventHandler(this.UcTrangChu_Load);
             this.tbLayoutMain.ResumeLayout(false);
             this.tbLayoutMain.PerformLayout();
             this.ResumeLayout(false);

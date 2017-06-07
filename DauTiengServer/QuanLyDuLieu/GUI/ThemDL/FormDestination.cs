@@ -13,7 +13,7 @@ namespace QuanLyDuLieu.GUI
 {
     public partial class FormDestination : Form
     {
-        private string root = @"C:\DuLieuHoDauTieng";
+        private string root = FormQLDL.root;
         private List<Button> listButton = new List<Button>();
         public string destination
         {

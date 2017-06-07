@@ -32,24 +32,20 @@
             this.tbLayoutMain = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.pbAdd = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.pbFinish = new System.Windows.Forms.PictureBox();
-            this.pbCancel = new System.Windows.Forms.PictureBox();
             this.flowLayoutAdd = new System.Windows.Forms.FlowLayoutPanel();
             this.tbLayoutMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAdd)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFinish)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCancel)).BeginInit();
             this.SuspendLayout();
             // 
             // tbLayoutMain
             // 
             this.tbLayoutMain.ColumnCount = 1;
             this.tbLayoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tbLayoutMain.Controls.Add(this.pbFinish, 0, 3);
             this.tbLayoutMain.Controls.Add(this.label1, 0, 0);
             this.tbLayoutMain.Controls.Add(this.pbAdd, 0, 1);
-            this.tbLayoutMain.Controls.Add(this.tableLayoutPanel2, 0, 3);
             this.tbLayoutMain.Controls.Add(this.flowLayoutAdd, 0, 2);
             this.tbLayoutMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbLayoutMain.Location = new System.Drawing.Point(0, 0);
@@ -85,46 +81,18 @@
             this.pbAdd.TabStop = false;
             this.pbAdd.Click += new System.EventHandler(this.pbAdd_Click);
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.pbFinish, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.pbCancel, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 553);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(794, 44);
-            this.tableLayoutPanel2.TabIndex = 2;
-            // 
             // pbFinish
             // 
-            this.pbFinish.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pbFinish.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pbFinish.Image = ((System.Drawing.Image)(resources.GetObject("pbFinish.Image")));
-            this.pbFinish.Location = new System.Drawing.Point(417, 3);
+            this.pbFinish.Location = new System.Drawing.Point(388, 553);
             this.pbFinish.Margin = new System.Windows.Forms.Padding(20, 3, 3, 3);
             this.pbFinish.Name = "pbFinish";
-            this.pbFinish.Size = new System.Drawing.Size(40, 38);
+            this.pbFinish.Size = new System.Drawing.Size(40, 44);
             this.pbFinish.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbFinish.TabIndex = 3;
             this.pbFinish.TabStop = false;
             this.pbFinish.Click += new System.EventHandler(this.pbFinish_Click);
-            // 
-            // pbCancel
-            // 
-            this.pbCancel.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.pbCancel.Image = ((System.Drawing.Image)(resources.GetObject("pbCancel.Image")));
-            this.pbCancel.Location = new System.Drawing.Point(337, 3);
-            this.pbCancel.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
-            this.pbCancel.Name = "pbCancel";
-            this.pbCancel.Size = new System.Drawing.Size(40, 38);
-            this.pbCancel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbCancel.TabIndex = 2;
-            this.pbCancel.TabStop = false;
-            this.pbCancel.Click += new System.EventHandler(this.pbCancel_Click);
             // 
             // flowLayoutAdd
             // 
@@ -145,9 +113,7 @@
             this.tbLayoutMain.ResumeLayout(false);
             this.tbLayoutMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAdd)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbFinish)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCancel)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -157,9 +123,7 @@
         private System.Windows.Forms.TableLayoutPanel tbLayoutMain;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pbAdd;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.PictureBox pbFinish;
-        private System.Windows.Forms.PictureBox pbCancel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutAdd;
     }
 }

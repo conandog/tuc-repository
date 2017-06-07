@@ -14,6 +14,7 @@ namespace QuanLyDuLieu
 {
     public partial class FormQLDL : Form
     {
+        public static string root = @"C:\DuLieuHoDauTieng";
         private UserControl currentUc;
         private static bool isWarningClosing = false;
 
