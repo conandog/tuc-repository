@@ -42,6 +42,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btSearch = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
+            this.btDelete = new System.Windows.Forms.Button();
             this.tbLayoutMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -144,6 +145,7 @@
             this.lvThongTin.View = System.Windows.Forms.View.Details;
             this.lvThongTin.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvThongTin_ColumnClick);
             this.lvThongTin.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.lvThongTin_ColumnWidthChanging);
+            this.lvThongTin.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.lvThongTin_ItemChecked);
             this.lvThongTin.SelectedIndexChanged += new System.EventHandler(this.lvThongTin_SelectedIndexChanged);
             this.lvThongTin.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvThongTin_MouseDoubleClick);
             // 
@@ -181,6 +183,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.Controls.Add(this.btSearch, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tbSearch, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btDelete, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 43);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -209,6 +212,18 @@
             this.tbSearch.Size = new System.Drawing.Size(300, 20);
             this.tbSearch.TabIndex = 1;
             this.tbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSearch_KeyPress);
+            // 
+            // btDelete
+            // 
+            this.btDelete.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btDelete.Enabled = false;
+            this.btDelete.Location = new System.Drawing.Point(716, 5);
+            this.btDelete.Name = "btDelete";
+            this.btDelete.Size = new System.Drawing.Size(75, 23);
+            this.btDelete.TabIndex = 2;
+            this.btDelete.Text = "Xóa dữ liệu";
+            this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
             // UcQLDL
             // 
@@ -246,5 +261,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button btSearch;
         private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.Button btDelete;
     }
 }

@@ -113,9 +113,14 @@ namespace QuanLyDuLieu.GUI
 
         private void treeViewFolder_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            LoadFile(e.Node);
+        }
+
+        private void LoadFile(TreeNode node)
+        {
             lvThongTin.Items.Clear();
-            string[] listFilePath = Directory.GetFiles(e.Node.Name);
-            
+            string[] listFilePath = Directory.GetFiles(node.Name);
+
             if (listFilePath.Length > 0)
             {
                 foreach (string filePath in listFilePath)
@@ -209,6 +214,51 @@ namespace QuanLyDuLieu.GUI
             if (e.KeyChar == (char)Keys.Enter)
             {
                 btSearch_Click(sender, e);
+            }
+        }
+
+        private void lvThongTin_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            CheckListViewItemsIsChecked();
+        }
+
+        private void CheckListViewItemsIsChecked()
+        {
+            if (lvThongTin.CheckedItems.Count > 0)
+            {
+                btDelete.Enabled = true;
+            }
+            else
+            {
+                btDelete.Enabled = false;
+            }
+        }
+
+        private void btDelete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(Constant.MESSAGE_DELETE_CONFIRM, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                foreach (ListViewItem item in lvThongTin.CheckedItems)
+                {
+                    bool isError = false;
+                    string path = item.SubItems[1].Text;
+
+                    try
+                    {
+                        File.Delete(path);
+                    }
+                    catch (Exception ex)
+                    {
+                        isError = true;
+                    }
+
+                    if (isError)
+                    {
+                        MessageBox.Show(Constant.MESSAGE_ERROR);
+                    }
+
+                    LoadFile(treeViewFolder.SelectedNode);
+                }
             }
         }
     }
