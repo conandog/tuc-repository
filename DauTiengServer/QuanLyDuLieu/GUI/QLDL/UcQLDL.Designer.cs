@@ -39,11 +39,15 @@
             this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chUpdateDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btSearch = new System.Windows.Forms.Button();
+            this.tbSearch = new System.Windows.Forms.TextBox();
             this.tbLayoutMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbLayoutMain
@@ -53,6 +57,7 @@
             this.tbLayoutMain.Controls.Add(this.label1, 0, 0);
             this.tbLayoutMain.Controls.Add(this.tableLayoutPanel2, 0, 3);
             this.tbLayoutMain.Controls.Add(this.splitContainer1, 0, 2);
+            this.tbLayoutMain.Controls.Add(this.tableLayoutPanel1, 0, 1);
             this.tbLayoutMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbLayoutMain.Location = new System.Drawing.Point(0, 0);
             this.tbLayoutMain.Name = "tbLayoutMain";
@@ -168,6 +173,43 @@
             this.chUpdateDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chUpdateDate.Width = 100;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.btSearch, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tbSearch, 1, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 43);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(794, 34);
+            this.tableLayoutPanel1.TabIndex = 4;
+            // 
+            // btSearch
+            // 
+            this.btSearch.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btSearch.Location = new System.Drawing.Point(22, 5);
+            this.btSearch.Name = "btSearch";
+            this.btSearch.Size = new System.Drawing.Size(75, 23);
+            this.btSearch.TabIndex = 0;
+            this.btSearch.Text = "Tìm";
+            this.btSearch.UseVisualStyleBackColor = true;
+            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
+            // 
+            // tbSearch
+            // 
+            this.tbSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tbSearch.Location = new System.Drawing.Point(103, 7);
+            this.tbSearch.MaxLength = 200;
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(300, 20);
+            this.tbSearch.TabIndex = 1;
+            this.tbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSearch_KeyPress);
+            // 
             // UcQLDL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,6 +224,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -199,5 +243,8 @@
         private System.Windows.Forms.ColumnHeader chUpdateDate;
         private System.Windows.Forms.ColumnHeader chType;
         private System.Windows.Forms.ColumnHeader chPath;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button btSearch;
+        private System.Windows.Forms.TextBox tbSearch;
     }
 }

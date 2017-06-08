@@ -25,9 +25,17 @@ namespace QuanLyDuLieu.GUI
         private void UcQLDL_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
-            DirectoryInfo info = new DirectoryInfo(root);
-            treeViewFolder.Nodes.Add(info.FullName, info.Name);
+            InitialRoot();
             AddNewFolderNodes(treeViewFolder.TopNode);
+            treeViewFolder.TopNode.Expand();
+            tbSearch.Select();
+        }
+
+        private void InitialRoot()
+        {
+            DirectoryInfo info = new DirectoryInfo(root);
+            treeViewFolder.Nodes.Clear();
+            treeViewFolder.Nodes.Add(info.FullName, info.Name);
         }
 
         private void AddNewFolderNodes(TreeNode currentNode)
@@ -54,6 +62,53 @@ namespace QuanLyDuLieu.GUI
                     }
                 }
             }
+        }
+
+        private void AddNewFolderNodesWithSearch(Dictionary<string, string> listFile)
+        {
+            foreach (KeyValuePair<string, string> file in listFile)
+            {
+                if (!treeViewFolder.Nodes.ContainsKey(file.Value))
+                {
+                    string folderPath = Path.GetDirectoryName(file.Key);
+                    string temp = folderPath.Replace(root, String.Empty);
+                    string[] listFolderName = temp.Split(new char[] { Path.DirectorySeparatorChar }, StringSplitOptions.RemoveEmptyEntries);
+                    TreeNode node = treeViewFolder.TopNode;
+
+                    foreach (string folderName in listFolderName)
+                    {
+                        string fullPath = Path.Combine(node.Name, folderName);
+                        node.Nodes.Add(fullPath, folderName);
+                        node = node.Nodes[fullPath];
+                    }
+                }
+            }
+        }
+
+        private Dictionary<string, string> GetListFilePathWithSearch(string text)
+        {
+            Dictionary<string, string> res = new Dictionary<string, string>();
+
+            try
+            {
+                string[] listFilePath = Directory.GetFiles(treeViewFolder.TopNode.Name, "*.*", SearchOption.AllDirectories);
+
+                foreach (string filePath in listFilePath)
+                {
+                    FileInfo info = new FileInfo(filePath);
+                    
+                    if (info.Name.Contains(text))
+                    {
+                        res.Add(info.FullName, info.Name);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Constant.MESSAGE_ERROR);
+            }
+
+            return res;
         }
 
         private void treeViewFolder_AfterSelect(object sender, TreeViewEventArgs e)
@@ -130,6 +185,30 @@ namespace QuanLyDuLieu.GUI
                 {
                     MessageBox.Show(Constant.MESSAGE_ERROR);
                 }
+            }
+        }
+
+        private void btSearch_Click(object sender, EventArgs e)
+        {
+            InitialRoot();
+
+            if (String.IsNullOrEmpty(tbSearch.Text))
+            {
+                AddNewFolderNodes(treeViewFolder.TopNode);
+                treeViewFolder.TopNode.Expand();
+            }
+            else
+            {
+                AddNewFolderNodesWithSearch(GetListFilePathWithSearch(tbSearch.Text));
+                treeViewFolder.ExpandAll();
+            }
+        }
+
+        private void tbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btSearch_Click(sender, e);
             }
         }
     }
