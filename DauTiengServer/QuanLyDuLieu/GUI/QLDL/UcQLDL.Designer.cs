@@ -32,7 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.treeViewFolder = new System.Windows.Forms.TreeView();
             this.lvThongTin = new System.Windows.Forms.ListView();
             this.chAll = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -43,6 +42,7 @@
             this.btSearch = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.btDelete = new System.Windows.Forms.Button();
+            this.treeViewFolder = new System.Windows.Forms.TreeView();
             this.tbLayoutMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -114,16 +114,6 @@
             this.splitContainer1.SplitterDistance = 200;
             this.splitContainer1.TabIndex = 3;
             // 
-            // treeViewFolder
-            // 
-            this.treeViewFolder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeViewFolder.Location = new System.Drawing.Point(0, 0);
-            this.treeViewFolder.Name = "treeViewFolder";
-            this.treeViewFolder.Size = new System.Drawing.Size(200, 464);
-            this.treeViewFolder.TabIndex = 0;
-            this.treeViewFolder.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewFolder_BeforeExpand);
-            this.treeViewFolder.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewFolder_AfterSelect);
-            // 
             // lvThongTin
             // 
             this.lvThongTin.CheckBoxes = true;
@@ -152,7 +142,7 @@
             // chAll
             // 
             this.chAll.Text = "All";
-            this.chAll.Width = 30;
+            this.chAll.Width = 40;
             // 
             // chPath
             // 
@@ -209,7 +199,7 @@
             this.tbSearch.Location = new System.Drawing.Point(103, 7);
             this.tbSearch.MaxLength = 200;
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(300, 20);
+            this.tbSearch.Size = new System.Drawing.Size(400, 20);
             this.tbSearch.TabIndex = 1;
             this.tbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSearch_KeyPress);
             // 
@@ -224,6 +214,17 @@
             this.btDelete.Text = "Xóa dữ liệu";
             this.btDelete.UseVisualStyleBackColor = true;
             this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
+            // 
+            // treeViewFolder
+            // 
+            this.treeViewFolder.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewFolder.Location = new System.Drawing.Point(0, 0);
+            this.treeViewFolder.Name = "treeViewFolder";
+            this.treeViewFolder.ShowLines = false;
+            this.treeViewFolder.Size = new System.Drawing.Size(200, 464);
+            this.treeViewFolder.TabIndex = 0;
+            this.treeViewFolder.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeViewFolder_BeforeExpand);
+            this.treeViewFolder.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewFolder_AfterSelect);
             // 
             // UcQLDL
             // 

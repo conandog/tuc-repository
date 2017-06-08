@@ -53,11 +53,15 @@
     <Compile Include="Common\Convert_Function.cs" />
     <Compile Include="Common\Fade.cs" />
     <Compile Include="Common\File_Function.cs" />
+    <Compile Include="Common\IconsExplorer.cs" />
     <Compile Include="Common\Image_Function.cs" />
     <Compile Include="Common\ListViewEx.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Common\ListViewSortColumn.cs" />
+    <Compile Include="Common\TreeViewWindowsTheme.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FormQLDL.cs">
       <SubType>Form</SubType>
     </Compile>

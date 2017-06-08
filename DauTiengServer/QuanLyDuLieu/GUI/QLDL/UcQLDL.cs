@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Library;
+using System.Runtime.InteropServices;
 
 namespace QuanLyDuLieu.GUI
 {
@@ -25,6 +26,10 @@ namespace QuanLyDuLieu.GUI
         private void UcQLDL_Load(object sender, EventArgs e)
         {
             this.Dock = DockStyle.Fill;
+
+            IconsExplorer.SetWindowTheme(treeViewFolder.Handle, "Explorer", null);
+            IconsExplorer.SetWindowTheme(lvThongTin.Handle, "Explorer", null);
+
             InitialRoot();
             AddNewFolderNodes(treeViewFolder.TopNode);
             treeViewFolder.TopNode.Expand();
@@ -58,7 +63,7 @@ namespace QuanLyDuLieu.GUI
                     }
                     else
                     {
-                        currentNode.Nodes.Add(info.FullName, info.Name);
+                        currentNode.Nodes.Add(info.FullName, info.Name, GetIcon(info.FullName));
                     }
                 }
             }
@@ -113,12 +118,33 @@ namespace QuanLyDuLieu.GUI
 
         private void treeViewFolder_AfterSelect(object sender, TreeViewEventArgs e)
         {
+            lvThongTin.Items.Clear();
+            LoadFolder(e.Node);
             LoadFile(e.Node);
+        }
+
+        private void LoadFolder(TreeNode node)
+        {
+            string[] listFolderPath = Directory.GetDirectories(node.Name);
+
+            if (listFolderPath.Length > 0)
+            {
+                foreach (string folderPath in listFolderPath)
+                {
+                    DirectoryInfo info = new DirectoryInfo(folderPath);
+                    ListViewItem lvi = new ListViewItem();
+                    lvi.SubItems.Add(info.FullName);
+                    lvi.SubItems.Add(info.Name);
+                    lvi.SubItems.Add(info.Extension);
+                    lvi.SubItems.Add(info.LastWriteTime.ToString(Constant.DEFAULT_DATE_FORMAT));
+                    lvi.ImageIndex = GetIcon(info.FullName);
+                    lvThongTin.Items.Add(lvi);
+                }
+            }
         }
 
         private void LoadFile(TreeNode node)
         {
-            lvThongTin.Items.Clear();
             string[] listFilePath = Directory.GetFiles(node.Name);
 
             if (listFilePath.Length > 0)
@@ -131,9 +157,44 @@ namespace QuanLyDuLieu.GUI
                     lvi.SubItems.Add(info.Name);
                     lvi.SubItems.Add(info.Extension);
                     lvi.SubItems.Add(info.LastWriteTime.ToString(Constant.DEFAULT_DATE_FORMAT));
+                    lvi.ImageIndex = GetIcon(info.FullName);
                     lvThongTin.Items.Add(lvi);
                 }
             }
+        }
+
+        private int GetIcon(string path)
+        {
+            // Obtain a handle to the system image list.
+            IconsExplorer.SHFILEINFO shfi = new IconsExplorer.SHFILEINFO();
+            IntPtr hSysImgList = IconsExplorer.SHGetFileInfo("",
+                                                             0,
+                                                             ref shfi,
+                                                             (uint)Marshal.SizeOf(shfi),
+                                                             IconsExplorer.SHGFI_SYSICONINDEX
+                                                              | IconsExplorer.SHGFI_SMALLICON);
+
+            // Set the ListView control to use that image list.
+            IntPtr hOldImgList = IconsExplorer.SendMessage(lvThongTin.Handle,
+                                                           IconsExplorer.LVM_SETIMAGELIST,
+                                                           IconsExplorer.LVSIL_SMALL,
+                                                           hSysImgList);
+
+            // If the ListView control already had an image list, delete the old one.
+            if (hOldImgList != IntPtr.Zero)
+            {
+                IconsExplorer.ImageList_Destroy(hOldImgList);
+            }
+
+            IntPtr himl = IconsExplorer.SHGetFileInfo(path,
+                                        0,
+                                        ref shfi,
+                                        (uint)Marshal.SizeOf(shfi),
+                                        IconsExplorer.SHGFI_DISPLAYNAME
+                                          | IconsExplorer.SHGFI_SYSICONINDEX
+                                          | IconsExplorer.SHGFI_SMALLICON);
+
+            return shfi.iIcon;
         }
 
         private void treeViewFolder_BeforeExpand(object sender, TreeViewCancelEventArgs e)
@@ -167,7 +228,7 @@ namespace QuanLyDuLieu.GUI
         {
             if (e.ColumnIndex == 0)
             {
-                e.NewWidth = 30;
+                e.NewWidth = 40;
                 e.Cancel = true;
             }
 
@@ -184,7 +245,25 @@ namespace QuanLyDuLieu.GUI
             {
                 try
                 {
-                    System.Diagnostics.Process.Start(lvThongTin.SelectedItems[0].SubItems[1].Text);
+                    string path = lvThongTin.SelectedItems[0].SubItems[1].Text;
+                    FileAttributes attr = File.GetAttributes(path);
+
+                    if (attr.HasFlag(FileAttributes.Directory))
+                    {
+                        if (treeViewFolder.SelectedNode.Nodes[path] == null)
+                        {
+                            treeViewFolder.SelectedNode.Expand();
+                            treeViewFolder.SelectedNode = treeViewFolder.SelectedNode.Nodes[path];
+                        }
+                        else
+                        {
+                            treeViewFolder.SelectedNode = treeViewFolder.SelectedNode.Nodes[path];
+                        }
+                    }
+                    else
+                    {
+                        System.Diagnostics.Process.Start(lvThongTin.SelectedItems[0].SubItems[1].Text);
+                    }
                 }
                 catch (Exception ex)
                 {
