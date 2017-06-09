@@ -30,6 +30,12 @@ namespace QuanLyDuLieu.GUI
             IconsExplorer.SetWindowTheme(treeViewFolder.Handle, "Explorer", null);
             IconsExplorer.SetWindowTheme(lvThongTin.Handle, "Explorer", null);
 
+            Icon ico = IconsExplorer.GetFolderIcon(root, true);
+            ImageList imageList = new ImageList();
+            imageList.ColorDepth = ColorDepth.Depth32Bit;
+            imageList.Images.Add(ico);
+            treeViewFolder.ImageList = imageList;
+
             InitialRoot();
             AddNewFolderNodes(treeViewFolder.TopNode);
             treeViewFolder.TopNode.Expand();
@@ -63,30 +69,36 @@ namespace QuanLyDuLieu.GUI
                     }
                     else
                     {
-                        currentNode.Nodes.Add(info.FullName, info.Name, GetIcon(info.FullName));
+                        currentNode.Nodes.Add(info.FullName, info.Name);
                     }
                 }
             }
         }
 
-        private void AddNewFolderNodesWithSearch(Dictionary<string, string> listFile)
+        private void AddNewFolderNodesWithSearch(TreeNode parentNode, Dictionary<string, string> listFile)
         {
-            foreach (KeyValuePair<string, string> file in listFile)
+            try
             {
-                if (!treeViewFolder.Nodes.ContainsKey(file.Value))
+                foreach (TreeNode node in parentNode.Nodes)
                 {
-                    string folderPath = Path.GetDirectoryName(file.Key);
-                    string temp = folderPath.Replace(root, String.Empty);
-                    string[] listFolderName = temp.Split(new char[] { Path.DirectorySeparatorChar }, StringSplitOptions.RemoveEmptyEntries);
-                    TreeNode node = treeViewFolder.TopNode;
-
-                    foreach (string folderName in listFolderName)
+                    if (listFile.Where(p => Path.GetDirectoryName(p.Key) == node.Name).ToList().Count > 0)
                     {
-                        string fullPath = Path.Combine(node.Name, folderName);
-                        node.Nodes.Add(fullPath, folderName);
-                        node = node.Nodes[fullPath];
+                        node.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        node.ForeColor = Color.Black;
+                    }
+
+                    if (node.Nodes != null)
+                    {
+                        AddNewFolderNodesWithSearch(node, listFile);
                     }
                 }
+            }
+            catch (Exception ec)
+            {
+                MessageBox.Show(Constant.MESSAGE_ERROR);
             }
         }
 
@@ -274,17 +286,27 @@ namespace QuanLyDuLieu.GUI
 
         private void btSearch_Click(object sender, EventArgs e)
         {
-            InitialRoot();
+            var res = GetListFilePathWithSearch(tbSearch.Text);
 
-            if (String.IsNullOrEmpty(tbSearch.Text))
+            if (res.Count == 0 && !String.IsNullOrEmpty(tbSearch.Text))
             {
-                AddNewFolderNodes(treeViewFolder.TopNode);
-                treeViewFolder.TopNode.Expand();
+                MessageBox.Show("Không tìm thấy dữ liệu!");
+                return;
             }
             else
             {
-                AddNewFolderNodesWithSearch(GetListFilePathWithSearch(tbSearch.Text));
                 treeViewFolder.ExpandAll();
+
+                if (String.IsNullOrEmpty(tbSearch.Text))
+                {
+                    InitialRoot();
+                    AddNewFolderNodes(treeViewFolder.TopNode);
+                    treeViewFolder.TopNode.Expand();
+                }
+                else
+                {
+                    AddNewFolderNodesWithSearch(treeViewFolder.TopNode, res);
+                }
             }
         }
 

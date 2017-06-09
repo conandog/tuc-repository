@@ -44,9 +44,9 @@ namespace Library
         public const string SYMBOL_LINK_MONEY = ",";
         public const string SYMBOL_DISCOUNT = "%";
 
-        public const string CAPTION_CONFIRM = "CONFIRM";
-        public const string CAPTION_WARNING = "WARNING";
-        public const string CAPTION_ERROR = "ERROR";
+        public const string CAPTION_CONFIRM = "XÁC NHẬN";
+        public const string CAPTION_WARNING = "CẢNH BÁO";
+        public const string CAPTION_ERROR = "LỖI";
 
         public const string MESSAGE_NEW_LINE = "\r\n";
         public const string MESSAGE_EXIT = "Thoát?";
