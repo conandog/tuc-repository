@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace Library
 {
@@ -91,62 +92,45 @@ namespace Library
             }
         }
 
-        public static string getFinalFolder(List<string> list_Folder)
+        [DllImport("shell32.dll", CharSet = CharSet.Auto)]
+        static extern bool ShellExecuteEx(ref SHELLEXECUTEINFO lpExecInfo);
+
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+        public struct SHELLEXECUTEINFO
         {
-            string sNewFolder = "";
-
-            for (int i = 0; i < list_Folder.Count; i++)
-            {
-                if (i > 0)
-                {
-                    sNewFolder = Path.Combine(list_Folder[i - 1], list_Folder[i]);
-                }
-                else
-                {
-                    sNewFolder = list_Folder[i];
-                }
-                if (!Directory.Exists(sNewFolder))
-                {
-                    Directory.CreateDirectory(sNewFolder);
-                }
-            }
-
-            return sNewFolder;
+            public int cbSize;
+            public uint fMask;
+            public IntPtr hwnd;
+            [MarshalAs(UnmanagedType.LPTStr)]
+            public string lpVerb;
+            [MarshalAs(UnmanagedType.LPTStr)]
+            public string lpFile;
+            [MarshalAs(UnmanagedType.LPTStr)]
+            public string lpParameters;
+            [MarshalAs(UnmanagedType.LPTStr)]
+            public string lpDirectory;
+            public int nShow;
+            public IntPtr hInstApp;
+            public IntPtr lpIDList;
+            [MarshalAs(UnmanagedType.LPTStr)]
+            public string lpClass;
+            public IntPtr hkeyClass;
+            public uint dwHotKey;
+            public IntPtr hIcon;
+            public IntPtr hProcess;
         }
 
-        public static bool savePic(String sFileName, Bitmap img)
+        private const int SW_SHOW = 5;
+        private const uint SEE_MASK_INVOKEIDLIST = 12;
+        public static bool ShowFileProperties(string Filename)
         {
-            try
-            {
-                if (File.Exists(sFileName))
-                {
-                    File.Delete(sFileName);
-                }
-
-                Image_Function.saveJpeg(sFileName, img, 100);
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        public static bool savePic(List<string> list_Folder, String sFileName, Bitmap img)
-        {
-            try
-            {
-                sFileName = Path.Combine(getFinalFolder(list_Folder), sFileName);
-
-                Image_Function.saveJpeg(sFileName, img, 50);
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            SHELLEXECUTEINFO info = new SHELLEXECUTEINFO();
+            info.cbSize = System.Runtime.InteropServices.Marshal.SizeOf(info);
+            info.lpVerb = "properties";
+            info.lpFile = Filename;
+            info.nShow = SW_SHOW;
+            info.fMask = SEE_MASK_INVOKEIDLIST;
+            return ShellExecuteEx(ref info);
         }
     }
 }

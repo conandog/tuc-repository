@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using Library;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace QuanLyDuLieu.GUI
 {
@@ -17,6 +18,7 @@ namespace QuanLyDuLieu.GUI
     {
         private string root = FormQLDL.root;
         private readonly string FAKE_NODE = "empty";
+        private Dictionary<string, string> listSearchResult;
 
         public UcQLDL()
         {
@@ -47,6 +49,7 @@ namespace QuanLyDuLieu.GUI
             DirectoryInfo info = new DirectoryInfo(root);
             treeViewFolder.Nodes.Clear();
             treeViewFolder.Nodes.Add(info.FullName, info.Name);
+            tbGoTo.Text = treeViewFolder.TopNode.Name;
         }
 
         private void AddNewFolderNodes(TreeNode currentNode)
@@ -96,7 +99,7 @@ namespace QuanLyDuLieu.GUI
                     }
                 }
             }
-            catch (Exception ec)
+            catch (Exception ex)
             {
                 MessageBox.Show(Constant.MESSAGE_ERROR);
             }
@@ -130,14 +133,21 @@ namespace QuanLyDuLieu.GUI
 
         private void treeViewFolder_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            lvThongTin.Items.Clear();
-            LoadFolder(e.Node);
-            LoadFile(e.Node);
+            string path = e.Node.Name;
+            RefreshListView(path);
+            tbGoTo.Text = path;
         }
 
-        private void LoadFolder(TreeNode node)
+        private void RefreshListView(string path)
         {
-            string[] listFolderPath = Directory.GetDirectories(node.Name);
+            lvThongTin.Items.Clear();
+            LoadFolder(path);
+            LoadFile(path);
+        }
+
+        private void LoadFolder(string path)
+        {
+            string[] listFolderPath = Directory.GetDirectories(path);
 
             if (listFolderPath.Length > 0)
             {
@@ -155,9 +165,9 @@ namespace QuanLyDuLieu.GUI
             }
         }
 
-        private void LoadFile(TreeNode node)
+        private void LoadFile(string path)
         {
-            string[] listFilePath = Directory.GetFiles(node.Name);
+            string[] listFilePath = Directory.GetFiles(path);
 
             if (listFilePath.Length > 0)
             {
@@ -165,6 +175,15 @@ namespace QuanLyDuLieu.GUI
                 {
                     FileInfo info = new FileInfo(filePath);
                     ListViewItem lvi = new ListViewItem();
+
+                    if (listSearchResult != null)
+                    {
+                        if (listSearchResult.Where(p => p.Key == filePath).ToList().Count > 0)
+                        {
+                            lvi.ForeColor = Color.Red;
+                        }
+                    }
+
                     lvi.SubItems.Add(info.FullName);
                     lvi.SubItems.Add(info.Name);
                     lvi.SubItems.Add(info.Extension);
@@ -253,42 +272,44 @@ namespace QuanLyDuLieu.GUI
 
         private void lvThongTin_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (lvThongTin.SelectedItems.Count > 0)
-            {
-                try
-                {
-                    string path = lvThongTin.SelectedItems[0].SubItems[1].Text;
-                    FileAttributes attr = File.GetAttributes(path);
+            OpenFile();
+        }
 
-                    if (attr.HasFlag(FileAttributes.Directory))
+        private void OpenFile()
+        {
+            try
+            {
+                string path = lvThongTin.FocusedItem.SubItems[1].Text;
+                FileAttributes attr = File.GetAttributes(path);
+
+                if (attr.HasFlag(FileAttributes.Directory))
+                {
+                    if (treeViewFolder.SelectedNode.Nodes[path] == null)
                     {
-                        if (treeViewFolder.SelectedNode.Nodes[path] == null)
-                        {
-                            treeViewFolder.SelectedNode.Expand();
-                            treeViewFolder.SelectedNode = treeViewFolder.SelectedNode.Nodes[path];
-                        }
-                        else
-                        {
-                            treeViewFolder.SelectedNode = treeViewFolder.SelectedNode.Nodes[path];
-                        }
+                        treeViewFolder.SelectedNode.Expand();
+                        treeViewFolder.SelectedNode = treeViewFolder.SelectedNode.Nodes[path];
                     }
                     else
                     {
-                        System.Diagnostics.Process.Start(lvThongTin.SelectedItems[0].SubItems[1].Text);
+                        treeViewFolder.SelectedNode = treeViewFolder.SelectedNode.Nodes[path];
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(Constant.MESSAGE_ERROR);
+                    System.Diagnostics.Process.Start(lvThongTin.FocusedItem.SubItems[1].Text);
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Constant.MESSAGE_ERROR);
             }
         }
 
         private void btSearch_Click(object sender, EventArgs e)
         {
-            var res = GetListFilePathWithSearch(tbSearch.Text);
+            listSearchResult = GetListFilePathWithSearch(tbSearch.Text);
 
-            if (res.Count == 0 && !String.IsNullOrEmpty(tbSearch.Text))
+            if (listSearchResult.Count == 0 && !String.IsNullOrEmpty(tbSearch.Text))
             {
                 MessageBox.Show("Không tìm thấy dữ liệu!");
                 return;
@@ -299,13 +320,17 @@ namespace QuanLyDuLieu.GUI
 
                 if (String.IsNullOrEmpty(tbSearch.Text))
                 {
+                    listSearchResult = null;
                     InitialRoot();
                     AddNewFolderNodes(treeViewFolder.TopNode);
                     treeViewFolder.TopNode.Expand();
+                    treeViewFolder.SelectedNode = treeViewFolder.TopNode;
+                    RefreshListView(treeViewFolder.TopNode.Name);
                 }
                 else
                 {
-                    AddNewFolderNodesWithSearch(treeViewFolder.TopNode, res);
+                    AddNewFolderNodesWithSearch(treeViewFolder.TopNode, listSearchResult);
+                    RefreshListView(treeViewFolder.SelectedNode.Name);
                 }
             }
         }
@@ -320,7 +345,17 @@ namespace QuanLyDuLieu.GUI
 
         private void lvThongTin_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
-            CheckListViewItemsIsChecked();
+            string path = e.Item.SubItems[1].Text;
+            FileAttributes attr = File.GetAttributes(path);
+
+            if (attr.HasFlag(FileAttributes.Directory))
+            {
+                e.Item.Checked = false;
+            }
+            else
+            {
+                CheckListViewItemsIsChecked();
+            }
         }
 
         private void CheckListViewItemsIsChecked()
@@ -357,10 +392,69 @@ namespace QuanLyDuLieu.GUI
                     {
                         MessageBox.Show(Constant.MESSAGE_ERROR);
                     }
+                }
 
-                    LoadFile(treeViewFolder.SelectedNode);
+                RefreshListView(treeViewFolder.SelectedNode.Name);
+            }
+        }
+
+        private void btGoTo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Process.Start(tbGoTo.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Constant.MESSAGE_ERROR);
+            }
+        }
+
+        private void lvThongTin_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                string path = lvThongTin.FocusedItem.SubItems[1].Text;
+                FileAttributes attr = File.GetAttributes(path);
+
+                if (attr.HasFlag(FileAttributes.Directory))
+                {
+                    contextMenuStrip.Items[1].Visible = false;
+                    contextMenuStrip.Show(Cursor.Position);
+                }
+                else if (lvThongTin.FocusedItem.Bounds.Contains(e.Location) == true)
+                {
+                    contextMenuStrip.Items[1].Visible = true;
+                    contextMenuStrip.Show(Cursor.Position);
                 }
             }
+        }
+
+        private void MenuItemOpen_Click(object sender, EventArgs e)
+        {
+            OpenFile();
+        }
+
+        private void MenuItemDelete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show(Constant.MESSAGE_DELETE_CONFIRM, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                try
+                {
+                    string path = lvThongTin.FocusedItem.SubItems[1].Text;
+                    File.Delete(path);
+                    RefreshListView(treeViewFolder.SelectedNode.Name);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(Constant.MESSAGE_ERROR);
+                }
+            }
+        }
+
+        private void MenuItemProperties_Click(object sender, EventArgs e)
+        {
+            File_Function.ShowFileProperties(lvThongTin.FocusedItem.SubItems[1].Text);
         }
     }
 }

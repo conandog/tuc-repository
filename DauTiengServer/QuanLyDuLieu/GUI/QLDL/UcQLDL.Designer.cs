@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tbLayoutMain = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -43,12 +44,19 @@
             this.btSearch = new System.Windows.Forms.Button();
             this.tbSearch = new System.Windows.Forms.TextBox();
             this.btDelete = new System.Windows.Forms.Button();
+            this.btGoTo = new System.Windows.Forms.Button();
+            this.tbGoTo = new System.Windows.Forms.TextBox();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.MenuItemOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.tbLayoutMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbLayoutMain
@@ -152,6 +160,7 @@
             this.lvThongTin.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.lvThongTin_ColumnWidthChanging);
             this.lvThongTin.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.lvThongTin_ItemChecked);
             this.lvThongTin.SelectedIndexChanged += new System.EventHandler(this.lvThongTin_SelectedIndexChanged);
+            this.lvThongTin.MouseClick += new System.Windows.Forms.MouseEventHandler(this.lvThongTin_MouseClick);
             this.lvThongTin.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lvThongTin_MouseDoubleClick);
             // 
             // chAll
@@ -182,13 +191,17 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.btSearch, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tbSearch, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btDelete, 2, 0);
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.btDelete, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tbSearch, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btSearch, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btGoTo, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tbGoTo, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 43);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -200,7 +213,7 @@
             // btSearch
             // 
             this.btSearch.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.btSearch.Location = new System.Drawing.Point(22, 5);
+            this.btSearch.Location = new System.Drawing.Point(369, 5);
             this.btSearch.Name = "btSearch";
             this.btSearch.Size = new System.Drawing.Size(75, 23);
             this.btSearch.TabIndex = 0;
@@ -210,11 +223,11 @@
             // 
             // tbSearch
             // 
-            this.tbSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tbSearch.Location = new System.Drawing.Point(103, 7);
+            this.tbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSearch.Location = new System.Drawing.Point(450, 7);
             this.tbSearch.MaxLength = 200;
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(400, 20);
+            this.tbSearch.Size = new System.Drawing.Size(241, 20);
             this.tbSearch.TabIndex = 1;
             this.tbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSearch_KeyPress);
             // 
@@ -229,6 +242,56 @@
             this.btDelete.Text = "Xóa dữ liệu";
             this.btDelete.UseVisualStyleBackColor = true;
             this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
+            // 
+            // btGoTo
+            // 
+            this.btGoTo.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btGoTo.Location = new System.Drawing.Point(22, 5);
+            this.btGoTo.Name = "btGoTo";
+            this.btGoTo.Size = new System.Drawing.Size(75, 23);
+            this.btGoTo.TabIndex = 3;
+            this.btGoTo.Text = "Đi đến";
+            this.btGoTo.UseVisualStyleBackColor = true;
+            this.btGoTo.Click += new System.EventHandler(this.btGoTo_Click);
+            // 
+            // tbGoTo
+            // 
+            this.tbGoTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbGoTo.Location = new System.Drawing.Point(103, 7);
+            this.tbGoTo.Name = "tbGoTo";
+            this.tbGoTo.ReadOnly = true;
+            this.tbGoTo.Size = new System.Drawing.Size(241, 20);
+            this.tbGoTo.TabIndex = 4;
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItemOpen,
+            this.MenuItemDelete,
+            this.MenuItemProperties});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(153, 92);
+            // 
+            // MenuItemOpen
+            // 
+            this.MenuItemOpen.Name = "MenuItemOpen";
+            this.MenuItemOpen.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemOpen.Text = "Mở";
+            this.MenuItemOpen.Click += new System.EventHandler(this.MenuItemOpen_Click);
+            // 
+            // MenuItemDelete
+            // 
+            this.MenuItemDelete.Name = "MenuItemDelete";
+            this.MenuItemDelete.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemDelete.Text = "Xóa";
+            this.MenuItemDelete.Click += new System.EventHandler(this.MenuItemDelete_Click);
+            // 
+            // MenuItemProperties
+            // 
+            this.MenuItemProperties.Name = "MenuItemProperties";
+            this.MenuItemProperties.Size = new System.Drawing.Size(152, 22);
+            this.MenuItemProperties.Text = "Thông tin";
+            this.MenuItemProperties.Click += new System.EventHandler(this.MenuItemProperties_Click);
             // 
             // UcQLDL
             // 
@@ -246,6 +309,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -267,5 +331,11 @@
         private System.Windows.Forms.Button btSearch;
         private System.Windows.Forms.TextBox tbSearch;
         private System.Windows.Forms.Button btDelete;
+        private System.Windows.Forms.Button btGoTo;
+        private System.Windows.Forms.TextBox tbGoTo;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemOpen;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemDelete;
+        private System.Windows.Forms.ToolStripMenuItem MenuItemProperties;
     }
 }
