@@ -117,4 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="rsz_1user_cards-512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Icon_Resource\rsz_1user_cards-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rsz_project" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Icon_Resource\rsz_project.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rsz_tpdkdesign_net_refresh_cl_windows_view_detail-8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Icon_Resource\rsz_tpdkdesign_net_refresh_cl_windows_view_detail-8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rsz_project-management-options" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Icon_Resource\rsz_project-management-options.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rsz_user_cards-512" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Icon_Resource\rsz_user_cards-512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rsz_ico-maps-3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Icon_Resource\rsz_ico-maps-3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rsz_1unnamed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Icon_Resource\rsz_1unnamed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rsz_accounting-purchase-order-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\Icon_Resource\rsz_accounting-purchase-order-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

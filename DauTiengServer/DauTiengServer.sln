@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileBrowser", "FileBrowser\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyDuLieu", "QuanLyDuLieu\QuanLyDuLieu.csproj", "{C75C28AC-7974-49AF-8C90-8ACC4DF1260F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyDuLieuRibbon", "QuanLyDuLieuRibbon\QuanLyDuLieuRibbon.csproj", "{769D64D5-5BCA-4054-A8DD-4813279EB1F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C75C28AC-7974-49AF-8C90-8ACC4DF1260F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C75C28AC-7974-49AF-8C90-8ACC4DF1260F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C75C28AC-7974-49AF-8C90-8ACC4DF1260F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{769D64D5-5BCA-4054-A8DD-4813279EB1F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{769D64D5-5BCA-4054-A8DD-4813279EB1F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{769D64D5-5BCA-4054-A8DD-4813279EB1F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{769D64D5-5BCA-4054-A8DD-4813279EB1F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

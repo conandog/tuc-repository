@@ -51,7 +51,6 @@
     <Compile Include="Common\Constant.cs" />
     <Compile Include="Common\ConvertUtil.cs" />
     <Compile Include="Common\Convert_Function.cs" />
-    <Compile Include="Common\Fade.cs" />
     <Compile Include="Common\File_Function.cs" />
     <Compile Include="Common\IconsExplorer.cs" />
     <Compile Include="Common\Image_Function.cs" />

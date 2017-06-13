@@ -11,12 +11,13 @@ using System.IO;
 using Library;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using QuanLyDuLieuRibbon;
 
 namespace QuanLyDuLieu.GUI
 {
     public partial class UcQLDL : UserControl
     {
-        private string root = FormQLDL.root;
+        private string root = Form1.root;
         private readonly string FAKE_NODE = "empty";
         private Dictionary<string, string> listSearchResult;
 

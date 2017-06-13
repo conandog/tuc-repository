@@ -1,0 +1,20 @@
+<directorycontrol>
+	<root value="HoDauTieng">
+		<heading1 value="KhiTuong-ThuyVan">
+			<heading2>KhiTuong</heading2>
+			<heading2>ThuyVan</heading2>
+			<heading2>abc</heading2>
+<heading2>aHung</heading2>
+		</heading1>
+		<heading1>DiaHinh-DiaChat</heading1>
+			<heading2>DiaHinh</heading2>
+			<heading2>DiaChat</heading2>
+		<heading1>TucTuc</heading1>
+			<heading2>Ma mai tuc</heading2>
+			<heading2>a1</heading2>
+			<heading2>a2</heading2>
+			<heading2>a3</heading2>
+			<heading2>a4</heading2>
+			<heading2>a5</heading2>
+	</root>
+</directorycontrol>

@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{769D64D5-5BCA-4054-A8DD-4813279EB1F9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QuanLyDuLieuRibbon</RootNamespace>
+    <AssemblyName>QuanLyDuLieuRibbon</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GMap.NET.Core">
+      <HintPath>..\Lib\GMap.NET.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="GMap.NET.WindowsForms">
+      <HintPath>..\Lib\GMap.NET.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\CommonComboBoxItems.cs" />
+    <Compile Include="Common\CommonFunction.cs" />
+    <Compile Include="Common\Constant.cs" />
+    <Compile Include="Common\ConvertUtil.cs" />
+    <Compile Include="Common\Convert_Function.cs" />
+    <Compile Include="Common\File_Function.cs" />
+    <Compile Include="Common\IconsExplorer.cs" />
+    <Compile Include="Common\Image_Function.cs" />
+    <Compile Include="Common\ListViewEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\ListViewSortColumn.cs" />
+    <Compile Include="DataManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataManagement.Designer.cs">
+      <DependentUpon>DataManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataTransfer.Designer.cs">
+      <DependentUpon>DataTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralInformation.Designer.cs">
+      <DependentUpon>GeneralInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QLDL\UcQLDL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\QLDL\UcQLDL.Designer.cs">
+      <DependentUpon>UcQLDL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThemDL\FormDestination.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\ThemDL\FormDestination.Designer.cs">
+      <DependentUpon>FormDestination.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThemDL\UcAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ThemDL\UcAdd.Designer.cs">
+      <DependentUpon>UcAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ThemDL\UcThemDL.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ThemDL\UcThemDL.Designer.cs">
+      <DependentUpon>UcThemDL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InitialRoot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InitialRoot.Designer.cs">
+      <DependentUpon>InitialRoot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MapHoDauTieng_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MapHoDauTieng_Form.Designer.cs">
+      <DependentUpon>MapHoDauTieng_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DataManagement.resx">
+      <DependentUpon>DataManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataTransfer.resx">
+      <DependentUpon>DataTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralInformation.resx">
+      <DependentUpon>GeneralInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\QLDL\UcQLDL.resx">
+      <DependentUpon>UcQLDL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThemDL\FormDestination.resx">
+      <DependentUpon>FormDestination.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThemDL\UcAdd.resx">
+      <DependentUpon>UcAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ThemDL\UcThemDL.resx">
+      <DependentUpon>UcThemDL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InitialRoot.resx">
+      <DependentUpon>InitialRoot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MapHoDauTieng_Form.resx">
+      <DependentUpon>MapHoDauTieng_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\location-map-flat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_location-map-flat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_1location-map-flat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\addons32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\map-marker-48x48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_project.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\Project %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_project-management-options.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_diagram-pro-1-28.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_user_cards-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_1user_cards-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\custom_icon_design_pretty_office_4_open_folder_add_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_1unnamed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_map-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_map1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_map-map-marker-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_ico-maps-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_blueprint_documentation_website_create_drawing_flat_icon-256.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_business-color_books_icon-iconscom_53474.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_tpdkdesign_net_refresh_cl_windows_view_detail-8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\Icon_Resource\rsz_accounting-purchase-order-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\System.Windows.Forms.Ribbon\System.Windows.Forms.Ribbon35.csproj">
+      <Project>{46a18a55-5ae8-49ce-91cd-c7421b642e7e}</Project>
+      <Name>System.Windows.Forms.Ribbon35</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
