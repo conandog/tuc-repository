@@ -1,4 +1,5 @@
-﻿using GMap.NET;
+﻿using DevExpress.Utils.Animation;
+using GMap.NET;
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using System;
@@ -9,6 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,8 +23,9 @@ namespace QuanLyDuLieuRibbon
         {
             InitializeComponent();
             LoadMap();
-            //LoadMarker();
-            LoadPolygon();
+            LoadMarker();
+            //LoadPolygon();
+            
         }
 
         protected override void OnLoad(EventArgs e)
@@ -37,17 +40,17 @@ namespace QuanLyDuLieuRibbon
         {
             gmap.MapProvider = GMap.NET.MapProviders.GoogleMapProvider.Instance;
             gmap.MinZoom = 8;
-            gmap.MaxZoom = 12;
-            gmap.Zoom = 10;
+            gmap.MaxZoom = 13;
+            gmap.Zoom = 11;
             gmap.Manager.Mode = AccessMode.ServerAndCache;
-            gmap.Position = new PointLatLng(11.448744, 106.2518546);
-
+            gmap.Position = new PointLatLng(11.467074, 106.325630);
+            gmap.DragButton = MouseButtons.Left;
         }
 
         void LoadMarker()
         {
             GMapOverlay markersOverlay = new GMapOverlay("markers");
-            GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(11.448744, 106.2518546), GMarkerGoogleType.red_dot);
+            GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(11.467074, 106.325630), GMarkerGoogleType.red_dot);
             markersOverlay.Markers.Add(marker);
             gmap.Overlays.Add(markersOverlay);
         }
@@ -68,23 +71,65 @@ namespace QuanLyDuLieuRibbon
 
 
             GMapPolygon polygon = new GMapPolygon(points, "Hồ Dầu Tiếng");
+            
+
+            polygon.Fill = new SolidBrush(Color.FromArgb(15, Color.Red));
+            polygon.IsHitTestVisible = true;
+            polygon.Stroke = new Pen(Color.Red, 2);
             polygons.Polygons.Add(polygon);
             gmap.Overlays.Add(polygons);
 
-            polygon.Fill = new SolidBrush(Color.FromArgb(20, Color.Red));
-            polygon.IsHitTestVisible = true;
-            polygon.Stroke = new Pen(Color.Red, 2);
         }
 
         private void gmap_OnPolygonClick(GMapPolygon item, MouseEventArgs e)
         {
-            MessageBox.Show(String.Format("Polygon {0} with tag {1} was clicked",item.Name, item.Tag));
+            //MessageBox.Show(String.Format("Polygon {0} with tag {1} was clicked",item.Name, item.Tag));
+            gmap.Position = new PointLatLng(11.481878, 106.117576);
+            gmap.Zoom = 11;
 
+            
+            //Fade Label
+            if (transitionManager1.IsTransition)
+            {
+                transitionManager1.EndTransition();
+            }
+
+            transitionManager1.StartTransition(labelControl1);
+            try
+            {
+                labelControl1.Visible = !labelControl1.Visible;
+            }
+            finally
+            {
+                transitionManager1.EndTransition();
+            }
         }
 
         private void gmap_OnMarkerClick(GMapMarker item, MouseEventArgs e)
-        {
-            
+        {   
+            //gmap.Overlays.Remove(item.Overlay);
+            //gmap.MarkersEnabled = false;
+            LoadPolygon();
+            gmap.Position = new PointLatLng(11.467074, 106.325630);
+            item.Overlay.IsVisibile = false;
         }
+
+        private void btn_MapZoomIn_Click(object sender, EventArgs e)
+        {
+            gmap.Zoom++;
+        }
+
+        private void btn_MapZoomOut_Click(object sender, EventArgs e)
+        {
+            gmap.Zoom--;
+        }
+
+        private void btn_MapCenter_Click(object sender, EventArgs e)
+        {
+            gmap.Position = new PointLatLng(11.467074, 106.325630);
+            gmap.Zoom = 11;
+        }
+
+
     }
 }
