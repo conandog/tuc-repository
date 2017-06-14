@@ -17,7 +17,6 @@ namespace QuanLyDuLieu.GUI
 {
     public partial class UcQLDL : UserControl
     {
-        private string root = Form1.root;
         private readonly string FAKE_NODE = "empty";
         private Dictionary<string, string> listSearchResult;
 
@@ -33,7 +32,7 @@ namespace QuanLyDuLieu.GUI
             IconsExplorer.SetWindowTheme(treeViewFolder.Handle, "Explorer", null);
             IconsExplorer.SetWindowTheme(lvThongTin.Handle, "Explorer", null);
 
-            Icon ico = IconsExplorer.GetFolderIcon(root, true);
+            Icon ico = IconsExplorer.GetFolderIcon(Form1.root, true);
             ImageList imageList = new ImageList();
             imageList.ColorDepth = ColorDepth.Depth32Bit;
             imageList.Images.Add(ico);
@@ -47,7 +46,7 @@ namespace QuanLyDuLieu.GUI
 
         private void InitialRoot()
         {
-            DirectoryInfo info = new DirectoryInfo(root);
+            DirectoryInfo info = new DirectoryInfo(Form1.root);
             treeViewFolder.Nodes.Clear();
             treeViewFolder.Nodes.Add(info.FullName, info.Name);
             tbGoTo.Text = treeViewFolder.TopNode.Name;

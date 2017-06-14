@@ -1,18 +1,25 @@
-﻿using System;
+﻿using Library;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace QuanLyDuLieuRibbon
 {
     public partial class Form1 : RibbonForm
     {
-        public static string root = @"C:\DuLieuHoDauTieng";
+        public static string root = "DuLieuHoDauTieng";
+        public const string xmlPath = "DauTieng_RootTree.xml";
+        public const string XML_DEFAULT_CONTENT = "directorycontrol";
+        public const string XML_PATH = "path";
+        public const string XML_ROOT = "root";
 
         Form _MapHoDauTieng = new MapHoDauTieng_Form();
         Form _InitialRoot = new InitialRoot();
@@ -93,6 +100,29 @@ namespace QuanLyDuLieuRibbon
             else
             {
                 _DataTransfer.Activate();
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ReadXmlAndGetRootPath();
+        }
+
+        private void ReadXmlAndGetRootPath()
+        {
+            try
+            {
+                if (File.Exists(xmlPath))
+                {
+                    XmlDocument doc = new XmlDocument();
+                    doc.Load(xmlPath);
+                    XmlNode rootNode = doc.GetElementsByTagName(XML_ROOT)[0];
+                    root = rootNode.Attributes[XML_PATH].Value;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Constant.MESSAGE_ERROR);
             }
         }
     }

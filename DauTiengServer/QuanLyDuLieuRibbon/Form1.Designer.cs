@@ -189,10 +189,12 @@
             this.ClientSize = new System.Drawing.Size(944, 661);
             this.Controls.Add(this.ribbon1);
             this.IsMdiContainer = true;
+            this.MinimumSize = new System.Drawing.Size(960, 700);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QUẢN LÝ DỮ LIỆU";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }

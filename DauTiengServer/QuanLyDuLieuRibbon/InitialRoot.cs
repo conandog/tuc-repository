@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Library;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,19 +15,11 @@ namespace QuanLyDuLieuRibbon
 {
     public partial class InitialRoot : Form
     {
-        
         public InitialRoot()
         {
             InitializeComponent();
-            //if (File.Exists("DauTieng_RootTree.xml") == true)
-            //{
-            //    XmlDocument doc = new XmlDocument();
-            //    doc.Load("DauTieng_RootTree.xml");
-            //    LoadTreeFromXmlDocument();
-            //}
-            
-            //CreateDirectoryTREE("D:\\");
         }
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -35,112 +28,114 @@ namespace QuanLyDuLieuRibbon
             this.BringToFront();
         }
 
-        private void CreateDirectoryTREE(string path)
+        private void CreateDirectoryFromXml()
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load("DauTieng_RootTree.xml");
-
-            string root = string.Empty;
-            string h1 = string.Empty;
-            string h2 = string.Empty;
-            string h3 = string.Empty;
-            string h4 = string.Empty;
-
-            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            try
             {
-                string element = node.Name;
-                string text = node.InnerText;
-                Console.WriteLine(element + "\n");
-                Console.WriteLine(text + "\n");
-                switch (element)
-                {
-                    case "root":
-                        root = text;
-                        Directory.CreateDirectory(path + text);
-                        break;
-                    case "heading1":
-                        h1 = text;
-                        Directory.CreateDirectory(path + root + "\\" + text);
-                        break;
-                    case "heading2":
-                        Directory.CreateDirectory(path + root + "\\" + h1 + "\\" + text);
-                        h2 = text;
-                        break;
-                    case "heading3":
-                        Directory.CreateDirectory(path + root + "\\" + h1 + "\\" + h2 + "\\" + text);
-                        h3 = text;
-                        break;
-                    case "heading4":
-                        Directory.CreateDirectory(path + root + "\\" + h1 + "\\" + h2 + "\\" + h3 + "\\" + text);
-                        h4 = text;
-                        break;
+                XmlDocument doc = new XmlDocument();
+                doc.Load(Form1.xmlPath);
+                XmlNode root = doc.GetElementsByTagName(Form1.XML_ROOT)[0];
+                string rootDirPath = root.Attributes[Form1.XML_PATH].Value;
+                rootDirPath = Path.Combine(rootDirPath, root.FirstChild.Value);
 
-                    default:
-                        return;
-                }
+                //if (Directory.Exists(rootDirPath))
+                //{
+                //    MessageBox.Show("Thư mục đã tồn tại!");
+                //    return;
+                //}
 
+                DirectoryInfo rootDir = Directory.CreateDirectory(rootDirPath);
+                CreateNewDirectory(root, rootDir);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Constant.MESSAGE_ERROR);
             }
         }
 
-
-        public void LoadTreeFromXmlDocument()
+        private void CreateNewDirectory(XmlNode node, DirectoryInfo parent)
         {
-            XmlDocument doc = new XmlDocument();
-            doc.Load("DauTieng_RootTree.xml");
-            int r = 0;
-            int h1 = 0;
-            int h2 = 0;
-            int h3 = 0;
-            int h4 = 0;
-
-            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            try
             {
-                string element = node.Name;
-                string text = node.InnerText;
-               
-                
-                switch (element)
+                foreach (XmlNode childNode in node.ChildNodes)
                 {
-                    case "root":
-                        treeView_Directory.Nodes.Add(text);
-                        //r = r + 1;
-                        break;
-                    case "heading1":
-                        
-                        treeView_Directory.Nodes[r].Nodes.Add(text);
-                        r = r + 1;
-                        break;
-                    case "heading2":
-                        treeView_Directory.Nodes[r-1].Nodes[h1].Nodes.Add(text);
-                        h1 = h1 + 1;
-                        break;
-                    case "heading3":
-                        treeView_Directory.Nodes[r-1].Nodes[h1-1].Nodes[h2].Nodes.Add(text);
-                        h2 = h2 + 1;
-                        break;
-                    case "heading4":
-                        
-                        treeView_Directory.Nodes[r-1].Nodes[h1-1].Nodes[h2-1].Nodes[h3].Nodes.Add(text);
-                        h3 = h3 + 1;
-                        break;
+                    if (childNode.NodeType == XmlNodeType.Element)
+                    {
+                        DirectoryInfo dir = Directory.CreateDirectory(Path.Combine(parent.FullName, childNode.FirstChild.Value));
 
-                    default:
-                        return;
+                        if (childNode.HasChildNodes)
+                        {
+                            CreateNewDirectory(childNode, dir);
+                        }
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
+        public void LoadTreeFromXmlDocument(string path)
+        {
+            try
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load(path);
+                XmlNode root = doc.GetElementsByTagName(Form1.XML_ROOT)[0];
+                tbRootPath.Text = root.Attributes[Form1.XML_PATH].Value;
+                string rootName = root.FirstChild.Value;
+
+                treeView_Directory.Nodes.Clear();
+                treeView_Directory.Nodes.Add(rootName);
+                LoadTreeFromXml(root, treeView_Directory.TopNode);
+                treeView_Directory.Enabled = true;
+                treeView_Directory.ExpandAll();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Constant.MESSAGE_ERROR);
+            }
+        }
+
+        private void LoadTreeFromXml(XmlNode xmlNode, TreeNode treeNode)
+        {
+            try
+            {
+                foreach (XmlNode childXmlNode in xmlNode.ChildNodes)
+                {
+                    if (childXmlNode.NodeType == XmlNodeType.Element)
+                    {
+                        TreeNode childTreeNode = new TreeNode(childXmlNode.FirstChild.Value);
+                        treeNode.Nodes.Add(childTreeNode);
+
+                        if (childXmlNode.HasChildNodes)
+                        {
+                            LoadTreeFromXml(childXmlNode, childTreeNode);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void btnShowDialog_Click(object sender, EventArgs e)
         {
-
             string path = FolderDialog();
 
             if (path != null)
             {
                 tbRootPath.Text = path;
                 treeView_Directory.Enabled = true;
-                treeView_Directory.Nodes.Add("DuLieuHoDauTieng");
+
+                if (treeView_Directory.GetNodeCount(false) == 0)
+                {
+                    treeView_Directory.Nodes.Add("DuLieuHoDauTieng");
+                    treeView_Directory.SelectedNode = treeView_Directory.TopNode;
+                }
             }
         }
 
@@ -149,7 +144,6 @@ namespace QuanLyDuLieuRibbon
             try
             {
                 FolderBrowserDialog fbd = new FolderBrowserDialog();
-                fbd.ShowNewFolderButton = false;
                 DialogResult result = fbd.ShowDialog();
 
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
@@ -171,7 +165,7 @@ namespace QuanLyDuLieuRibbon
         {
             if (treeView_Directory.SelectedNode != null)
             {
-                TreeNode newNode = treeView_Directory.SelectedNode.Nodes.Add("Thư mục mới");
+                TreeNode newNode = treeView_Directory.SelectedNode.Nodes.Add("Thu muc moi");
                 treeView_Directory.SelectedNode = newNode;
                 treeView_Directory.LabelEdit = true;
                 if (!treeView_Directory.SelectedNode.IsEditing)
@@ -209,5 +203,98 @@ namespace QuanLyDuLieuRibbon
             }
         }
 
+        private void InitialRoot_Load(object sender, EventArgs e)
+        {
+            IconsExplorer.SetWindowTheme(treeView_Directory.Handle, "Explorer", null);
+
+            if (File.Exists(Form1.xmlPath) == true)
+            {
+                LoadTreeFromXmlDocument(Form1.xmlPath);
+            }
+        }
+
+        private void btSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                XmlNode docNode = xmlDoc.CreateXmlDeclaration("1.0", "UTF-8", null);
+                xmlDoc.AppendChild(docNode);
+
+                XmlElement defaultContent = xmlDoc.CreateElement(Form1.XML_DEFAULT_CONTENT);
+                defaultContent.SetAttribute("version", System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString());
+
+                XmlElement rootElement = xmlDoc.CreateElement(Form1.XML_ROOT);
+                rootElement.SetAttribute(Form1.XML_PATH, tbRootPath.Text);
+                rootElement.InnerText = treeView_Directory.TopNode.Text;
+                defaultContent.AppendChild(rootElement);
+
+                SaveTreeToXml(treeView_Directory.TopNode, ref rootElement);
+
+                xmlDoc.AppendChild(defaultContent);
+                xmlDoc.Save(Form1.xmlPath);
+
+                CreateDirectoryFromXml();
+                MessageBox.Show("Lưu thành công");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Constant.MESSAGE_ERROR);
+            }
+        }
+
+        private void SaveTreeToXml(TreeNode node, ref XmlElement element)
+        {
+            try
+            {
+                foreach (TreeNode childNode in node.Nodes)
+                {
+                    XmlElement childElement = element.OwnerDocument.CreateElement("heading" + childNode.Level);
+                    childElement.InnerText = childNode.Text;
+
+                    if (childNode.GetNodeCount(false) > 0)
+                    {
+                        SaveTreeToXml(childNode, ref childElement);
+                    }
+
+                    element.AppendChild(childElement);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btn_DeleteNode_Click(object sender, EventArgs e)
+        {
+            treeView_Directory.Nodes.Remove(treeView_Directory.SelectedNode);
+        }
+
+        private void treeView_Directory_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (treeView_Directory.SelectedNode != null)
+            {
+                btn_AddChildNode.Enabled = true;
+                btn_DeleteNode.Enabled = true;
+            }
+            else
+            {
+                btn_AddChildNode.Enabled = false;
+                btn_DeleteNode.Enabled = false;
+            }
+        }
+
+        private void tbRootPath_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(tbRootPath.Text))
+            {
+                btSave.Enabled = false;
+            }
+            else
+            {
+                btSave.Enabled = true;
+            }
+        }
     }
 }

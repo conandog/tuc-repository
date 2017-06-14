@@ -206,7 +206,7 @@ namespace QuanLyDuLieu.GUI
                 tbDestination.Text = form.destination;
                 CheckListViewItemsIsChecked();
 
-                lvThongTin.Items.Clear();
+                lvDestination.Items.Clear();
                 LoadListViewDestinationFolder(tbDestination.Text);
                 LoadListViewDestinationFile(tbDestination.Text);
             }
