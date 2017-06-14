@@ -42,8 +42,11 @@
             this.chPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btAdd = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
+            this.btAdd = new System.Windows.Forms.Button();
+            this.lvDestination = new System.Windows.Forms.ListView();
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tbLayoutMain.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -157,6 +160,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 6F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.lvDestination, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lvThongTin, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.splitter1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -164,6 +168,8 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(794, 454);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
@@ -208,6 +214,15 @@
             this.chType.Text = "Loại";
             this.chType.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // splitter1
+            // 
+            this.splitter1.BackColor = System.Drawing.Color.Black;
+            this.splitter1.Location = new System.Drawing.Point(397, 3);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(1, 448);
+            this.splitter1.TabIndex = 2;
+            this.splitter1.TabStop = false;
+            // 
             // btAdd
             // 
             this.btAdd.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -221,14 +236,32 @@
             this.btAdd.UseVisualStyleBackColor = true;
             this.btAdd.Click += new System.EventHandler(this.btAdd_Click);
             // 
-            // splitter1
+            // lvDestination
             // 
-            this.splitter1.BackColor = System.Drawing.Color.Black;
-            this.splitter1.Location = new System.Drawing.Point(397, 3);
-            this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(1, 448);
-            this.splitter1.TabIndex = 2;
-            this.splitter1.TabStop = false;
+            this.lvDestination.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader4});
+            this.lvDestination.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvDestination.Enabled = false;
+            this.lvDestination.FullRowSelect = true;
+            this.lvDestination.GridLines = true;
+            this.lvDestination.Location = new System.Drawing.Point(403, 3);
+            this.lvDestination.MultiSelect = false;
+            this.lvDestination.Name = "lvDestination";
+            this.lvDestination.Size = new System.Drawing.Size(388, 448);
+            this.lvDestination.TabIndex = 3;
+            this.lvDestination.UseCompatibleStateImageBehavior = false;
+            this.lvDestination.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Tên dữ liệu";
+            this.columnHeader3.Width = 310;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Loại";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // UcThemDL
             // 
@@ -265,5 +298,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btAdd;
         private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.ListView lvDestination;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }

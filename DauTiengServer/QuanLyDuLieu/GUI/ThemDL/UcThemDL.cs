@@ -39,7 +39,6 @@ namespace QuanLyDuLieu.GUI
                     lvi.SubItems.Add(info.FullName);
                     lvi.SubItems.Add(info.Name);
                     lvi.SubItems.Add(info.Extension);
-                    lvi.SubItems.Add(info.LastWriteTime.ToString(Constant.DEFAULT_DATE_FORMAT));
                     lvi.ImageIndex = IconsExplorer.GetIconIndexOfListView(info.FullName, lvThongTin.Handle);
                     lvThongTin.Items.Add(lvi);
                 }
@@ -59,9 +58,44 @@ namespace QuanLyDuLieu.GUI
                     lvi.SubItems.Add(info.FullName);
                     lvi.SubItems.Add(info.Name);
                     lvi.SubItems.Add(info.Extension);
-                    lvi.SubItems.Add(info.LastWriteTime.ToString(Constant.DEFAULT_DATE_FORMAT));
                     lvi.ImageIndex = IconsExplorer.GetIconIndexOfListView(info.FullName, lvThongTin.Handle);
                     lvThongTin.Items.Add(lvi);
+                }
+            }
+        }
+
+        private void LoadListViewDestinationFolder(string path)
+        {
+            string[] listFolderPath = Directory.GetDirectories(path);
+
+            if (listFolderPath.Length > 0)
+            {
+                foreach (string folderPath in listFolderPath)
+                {
+                    DirectoryInfo info = new DirectoryInfo(folderPath);
+                    ListViewItem lvi = new ListViewItem();
+                    lvi.Text = info.Name;
+                    lvi.SubItems.Add(info.Extension);
+                    lvi.ImageIndex = IconsExplorer.GetIconIndexOfListView(info.FullName, lvDestination.Handle);
+                    lvDestination.Items.Add(lvi);
+                }
+            }
+        }
+
+        private void LoadListViewDestinationFile(string folderPath)
+        {
+            string[] listFilePath = Directory.GetFiles(folderPath);
+
+            if (listFilePath.Length > 0)
+            {
+                foreach (string filePath in listFilePath)
+                {
+                    FileInfo info = new FileInfo(filePath);
+                    ListViewItem lvi = new ListViewItem();
+                    lvi.Text = info.Name;
+                    lvi.SubItems.Add(info.Extension);
+                    lvi.ImageIndex = IconsExplorer.GetIconIndexOfListView(info.FullName, lvDestination.Handle);
+                    lvDestination.Items.Add(lvi);
                 }
             }
         }
@@ -171,6 +205,14 @@ namespace QuanLyDuLieu.GUI
             {
                 tbDestination.Text = form.destination;
                 CheckListViewItemsIsChecked();
+
+                lvThongTin.Items.Clear();
+                LoadListViewDestinationFolder(tbDestination.Text);
+                LoadListViewDestinationFile(tbDestination.Text);
+            }
+            else if (String.IsNullOrEmpty(tbDestination.Text))
+            {
+                lvDestination.Items.Clear();
             }
         }
 
