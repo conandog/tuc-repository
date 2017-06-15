@@ -77,6 +77,19 @@ namespace QuanLyDuLieuRibbon
             }
         }
 
+        public void LoadInitialRoot()
+        {
+            if (_InitialRoot.IsMdiChild == false)
+            {
+                _InitialRoot.MdiParent = this;
+                _InitialRoot.Show();
+            }
+            else
+            {
+                _InitialRoot.Activate();
+            }
+        }
+
         private void ribbonButton_FileData_Click(object sender, EventArgs e)
         {
             if (_DataManagement.IsMdiChild == false)
@@ -112,12 +125,18 @@ namespace QuanLyDuLieuRibbon
         {
             try
             {
+                
                 if (File.Exists(xmlPath))
                 {
                     XmlDocument doc = new XmlDocument();
                     doc.Load(xmlPath);
                     XmlNode rootNode = doc.GetElementsByTagName(XML_ROOT)[0];
-                    root = rootNode.Attributes[XML_PATH].Value;
+                    root = rootNode.Attributes[XML_PATH].Value + rootNode.FirstChild.Value;
+                    
+                }
+                else
+                {
+                    
                 }
             }
             catch (Exception ex)

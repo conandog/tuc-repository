@@ -27,6 +27,12 @@ namespace QuanLyDuLieu.GUI
 
         private void UcQLDL_Load(object sender, EventArgs e)
         {
+            if (File.Exists(Form1.root) == false)
+            {
+                MessageBox.Show("Thư mục gốc không tồn tại. Hãy tạo lại cây thư mục hoặc liên hệ với lập trình viên", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             this.Dock = DockStyle.Fill;
 
             IconsExplorer.SetWindowTheme(treeViewFolder.Handle, "Explorer", null);
