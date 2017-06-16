@@ -77,29 +77,24 @@ namespace QuanLyDuLieuRibbon
             }
         }
 
-        public void LoadInitialRoot()
-        {
-            if (_InitialRoot.IsMdiChild == false)
-            {
-                _InitialRoot.MdiParent = this;
-                _InitialRoot.Show();
-            }
-            else
-            {
-                _InitialRoot.Activate();
-            }
-        }
-
         private void ribbonButton_FileData_Click(object sender, EventArgs e)
         {
-            if (_DataManagement.IsMdiChild == false)
+            if (Directory.Exists(Form1.root) == false)
             {
-                _DataManagement.MdiParent = this;
-                _DataManagement.Show();
+                MessageBox.Show("Thư mục gốc không tồn tại. Hãy tạo lại cây thư mục hoặc liên hệ với lập trình viên", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ribbonButton_InitRoot_Click(null, null);
             }
             else
             {
-                _DataManagement.Activate();
+                if (_DataManagement.IsMdiChild == false)
+                {
+                    _DataManagement.MdiParent = this;
+                    _DataManagement.Show();
+                }
+                else
+                {
+                    _DataManagement.Activate();
+                }
             }
         }
 
@@ -125,14 +120,12 @@ namespace QuanLyDuLieuRibbon
         {
             try
             {
-                
                 if (File.Exists(xmlPath))
                 {
                     XmlDocument doc = new XmlDocument();
                     doc.Load(xmlPath);
                     XmlNode rootNode = doc.GetElementsByTagName(XML_ROOT)[0];
                     root = rootNode.Attributes[XML_PATH].Value + rootNode.FirstChild.Value;
-                    
                 }
                 else
                 {

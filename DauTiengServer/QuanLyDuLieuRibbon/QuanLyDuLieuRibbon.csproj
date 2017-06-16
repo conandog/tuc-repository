@@ -94,12 +94,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\QLDL\UcQLDL.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\QLDL\UcQLDL.Designer.cs">
-      <DependentUpon>UcQLDL.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\ThemDL\FormDestination.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,9 +137,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\QLDL\UcQLDL.resx">
-      <DependentUpon>UcQLDL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\ThemDL\FormDestination.resx">
       <DependentUpon>FormDestination.cs</DependentUpon>

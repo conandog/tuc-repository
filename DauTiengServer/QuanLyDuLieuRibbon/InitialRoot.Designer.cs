@@ -78,7 +78,7 @@
             this.btSave.Name = "btSave";
             this.btSave.Size = new System.Drawing.Size(116, 23);
             this.btSave.TabIndex = 5;
-            this.btSave.Text = "Lưu";
+            this.btSave.Text = "Cập nhật";
             this.btSave.UseVisualStyleBackColor = true;
             this.btSave.Click += new System.EventHandler(this.btSave_Click);
             // 
