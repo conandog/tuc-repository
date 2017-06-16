@@ -37,9 +37,6 @@ namespace QuanLyKinhDoanh
         public FormMain()
         {
             InitializeComponent();
-
-            this.SetStyle(ControlStyles.DoubleBuffer | ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint, true);
-            this.UpdateStyles();
         }
 
         private void LoadResource()
@@ -80,7 +77,9 @@ namespace QuanLyKinhDoanh
 
             pnMain.BackColor = Color.White;
             pnMain.Visible = true;
-            pnMain.Dock = DockStyle.Fill;
+            //pnMain.Dock = DockStyle.Fill;
+            pnMain.Width = 1006;
+            pnMain.Height = 730;
 
             pnHeaderAndMainMenu.Location = CommonFunc.SetWidthCenter(pnMain.Size, pnHeaderAndMainMenu.Size, 30);
 
@@ -221,37 +220,6 @@ namespace QuanLyKinhDoanh
             return true;
         }
 
-        private void ScaleMaximizedControls()
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                float ratioWidth = this.Width / 1014f;
-                float ratioHeight = this.Height / 764f;
-
-                for (int i = 0; i < this.Controls.Count; i++)
-                {
-                    this.Controls[i].Scale(new SizeF(ratioWidth, ratioHeight));
-                }
-            }
-        }
-
-        private void ScaleNormalControls()
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                if (this.Width >= 1014 || this.Height >= 764)
-                {
-                    float ratioWidth = 1014f / this.Width;
-                    float ratioHeight = 764f / this.Height;
-
-                    for (int i = 0; i < this.Controls.Count; i++)
-                    {
-                        this.Controls[i].Scale(new SizeF(ratioWidth, ratioHeight));
-                    }
-                }
-            }
-        }
-
         private void Exit()
         {
             this.Visible = false;
@@ -277,8 +245,6 @@ namespace QuanLyKinhDoanh
         {
             if (WarningEditingDialog())
             {
-                ScaleNormalControls();
-
                 CommonFunc.NewControl(pnBody.Controls, ref uc, new UcUser());
 
                 Init();
@@ -286,8 +252,6 @@ namespace QuanLyKinhDoanh
 
                 pbUser.Image = Image.FromFile(ConstantResource.USER_ICON_USER_MOUSEOVER);
                 lbUser.ForeColor = Constant.COLOR_IN_USE;
-
-                ScaleMaximizedControls();
             }
         }
 
@@ -317,8 +281,6 @@ namespace QuanLyKinhDoanh
         {
             if (WarningEditingDialog())
             {
-                ScaleNormalControls();
-
                 CommonFunc.NewControl(pnBody.Controls, ref uc, new UcKhachHangIndex());
 
                 Init();
@@ -326,8 +288,6 @@ namespace QuanLyKinhDoanh
 
                 pbKhachHang.Image = Image.FromFile(ConstantResource.KHACHHANG_ICON_KHACHHANG_MOUSEOVER);
                 lbKhachHang.ForeColor = Constant.COLOR_IN_USE;
-
-                ScaleMaximizedControls();
             }
         }
 
@@ -357,8 +317,6 @@ namespace QuanLyKinhDoanh
         {
             if (WarningEditingDialog())
             {
-                ScaleNormalControls();
-
                 CommonFunc.NewControl(pnBody.Controls, ref uc, new UcSanPhamIndex());
 
                 Init();
@@ -366,8 +324,6 @@ namespace QuanLyKinhDoanh
 
                 pbSanPham.Image = Image.FromFile(ConstantResource.SANPHAM_ICON_SANPHAM_MOUSEOVER);
                 lbSanPham.ForeColor = Constant.COLOR_IN_USE;
-
-                ScaleMaximizedControls();
             }
         }
 
@@ -397,8 +353,6 @@ namespace QuanLyKinhDoanh
         {
             if (WarningEditingDialog())
             {
-                ScaleNormalControls();
-
                 CommonFunc.NewControl(pnBody.Controls, ref uc, new UcKhoHangIndex());
 
                 Init();
@@ -406,8 +360,6 @@ namespace QuanLyKinhDoanh
 
                 pbKhoHang.Image = Image.FromFile(ConstantResource.KHOHANG_ICON_KHOHANG_MOUSEOVER);
                 lbKhoHang.ForeColor = Constant.COLOR_IN_USE;
-
-                ScaleMaximizedControls();
             }
         }
 
@@ -437,8 +389,6 @@ namespace QuanLyKinhDoanh
         {
             if (WarningEditingDialog())
             {
-                ScaleNormalControls();
-
                 CommonFunc.NewControl(pnBody.Controls, ref uc, new UcThuChiIndex());
 
                 Init();
@@ -446,8 +396,6 @@ namespace QuanLyKinhDoanh
 
                 pbThuChi.Image = Image.FromFile(ConstantResource.THUCHI_ICON_THUCHI_MOUSEOVER);
                 lbThuChi.ForeColor = Constant.COLOR_IN_USE;
-
-                ScaleMaximizedControls();
             }
         }
 
@@ -477,8 +425,6 @@ namespace QuanLyKinhDoanh
         {
             if (WarningEditingDialog())
             {
-                ScaleNormalControls();
-
                 Init();
                 isMainMenuClickThanhToan = true;
 
@@ -486,8 +432,6 @@ namespace QuanLyKinhDoanh
                 lbThanhToan.ForeColor = Constant.COLOR_IN_USE;
 
                 CommonFunc.NewControl(pnBody.Controls, ref uc, new QuanLyKinhDoanh.GiaoDich.UcThanhToan());
-
-                ScaleMaximizedControls();
             }
         }
 
@@ -517,8 +461,6 @@ namespace QuanLyKinhDoanh
         {
             if (WarningEditingDialog())
             {
-                ScaleNormalControls();
-
                 Init();
                 isMainMenuClickTool = true;
 
@@ -526,8 +468,6 @@ namespace QuanLyKinhDoanh
                 lbTool.ForeColor = Constant.COLOR_IN_USE;
 
                 CommonFunc.NewControl(pnBody.Controls, ref uc, new UcToolIndex());
-
-                ScaleMaximizedControls();
             }
         }
 
@@ -555,23 +495,6 @@ namespace QuanLyKinhDoanh
         #endregion
 
 
-
-        private void FormMain_SizeChanged(object sender, EventArgs e)
-        {
-            if (this.Width >= 1014 || this.Height >= 764)
-            {
-                float ratioWidth = this.Width / oldWidth;
-                float ratioHeight = this.Height / oldHeght;
-
-                oldWidth = this.Width;
-                oldHeght = this.Height;
-
-                for (int i = 0; i < this.Controls.Count; i++)
-                {
-                    this.Controls[i].Scale(new SizeF(ratioWidth, ratioHeight));
-                }
-            }
-        }
 
         private void lbExit_MouseEnter(object sender, EventArgs e)
         {
@@ -621,13 +544,9 @@ namespace QuanLyKinhDoanh
         {
             if (WarningEditingDialog())
             {
-                ScaleNormalControls();
-
                 CommonFunc.NewControl(pnBody.Controls, ref uc, new User.UcInfo(user));
 
                 Init();
-
-                ScaleMaximizedControls();
             }
         }
 
