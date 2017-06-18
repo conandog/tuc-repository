@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
@@ -42,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChietKhauDao.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="HoaDonDao.cs" />
     <Compile Include="HoaDonDetailDao.cs" />
     <Compile Include="HoaDonStatusDao.cs" />
@@ -50,6 +55,7 @@
     <Compile Include="Library\CommonDao.cs" />
     <Compile Include="Library\DynamicLinq.cs" />
     <Compile Include="KhachHangDao.cs" />
+    <Compile Include="OrderDetails.cs" />
     <Compile Include="SanPhamDao.cs" />
     <Compile Include="SanPhamGroupDao.cs" />
     <Compile Include="SQLConnection.cs" />
@@ -63,6 +69,9 @@
       <Project>{2C4D3ED8-16CD-46F1-A599-E121F5B0F7C6}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -205,6 +205,18 @@
     <Compile Include="Main\BaoCao\Thu\UcInfo.Designer.cs">
       <DependentUpon>UcInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\DonHang\DonHang\UcOrder.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\DonHang\DonHang\UcOrder.Designer.cs">
+      <DependentUpon>UcOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\DonHang\UcOrderIndex.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\DonHang\UcOrderIndex.Designer.cs">
+      <DependentUpon>UcOrderIndex.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\KhachHang\KhachHangGroup\UcDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -507,6 +519,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\BaoCao\Thu\UcInfo.resx">
       <DependentUpon>UcInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\DonHang\DonHang\UcOrder.resx">
+      <DependentUpon>UcOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\DonHang\UcOrderIndex.resx">
+      <DependentUpon>UcOrderIndex.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\KhachHang\KhachHangGroup\UcDetail.resx">
       <DependentUpon>UcDetail.cs</DependentUpon>
