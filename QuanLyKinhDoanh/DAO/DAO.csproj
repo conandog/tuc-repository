@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChietKhauDao.cs" />
-    <Compile Include="Order.cs" />
+    <Compile Include="OrderDao.cs" />
     <Compile Include="HoaDonDao.cs" />
     <Compile Include="HoaDonDetailDao.cs" />
     <Compile Include="HoaDonStatusDao.cs" />
@@ -55,9 +55,10 @@
     <Compile Include="Library\CommonDao.cs" />
     <Compile Include="Library\DynamicLinq.cs" />
     <Compile Include="KhachHangDao.cs" />
-    <Compile Include="OrderDetails.cs" />
+    <Compile Include="OrderDetailsDao.cs" />
     <Compile Include="SanPhamDao.cs" />
     <Compile Include="SanPhamGroupDao.cs" />
+    <Compile Include="JsonConnection.cs" />
     <Compile Include="SQLConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserDao.cs" />

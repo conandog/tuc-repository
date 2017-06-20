@@ -6,19 +6,19 @@ using Newtonsoft.Json;
 
 namespace DAO
 {
-    public class OrderDetails
+    public class OrderDetailsDao
     {
         public string name;
         public string id;
         public int quantity;
         public long price;
 
-        public OrderDetails()
+        public OrderDetailsDao()
         {
             //Default constructor
         }
 
-        public OrderDetails(string name, string id, int quantity, long price)
+        public OrderDetailsDao(string name, string id, int quantity, long price)
         {
             this.name = name;
             this.id = id;
@@ -33,7 +33,7 @@ namespace DAO
 
         public void DeserializeFromJson(string input)
         {
-            OrderDetails data = JsonConvert.DeserializeObject<OrderDetails>(input);
+            OrderDetailsDao data = JsonConvert.DeserializeObject<OrderDetailsDao>(input);
             this.name = data.name;
             this.id = data.id;
             this.quantity = data.quantity;
