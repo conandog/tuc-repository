@@ -12,7 +12,6 @@ namespace DTO
         public string Name;
         public string Phone;
         public string Address;
-        public int OrderCount;
         public string Notes;
 
         public long TotalBill;
@@ -34,7 +33,7 @@ namespace DTO
             //Default constructor
         }
 
-        public Order(int id, string name, string phone, string address, int orderCount, string notes,
+        public Order(int id, string name, string phone, string address, string notes,
             long totalBill, string status, string codCode, string codWeight, string codBill,
             DateTime createdDate, string createdBy, DateTime updatedDate, string updatedBy,
             List<OrderDetails> details, bool deleteFlag = false)
@@ -43,7 +42,6 @@ namespace DTO
             this.Name = name;
             this.Phone = phone;
             this.Address = address;
-            this.OrderCount = orderCount;
             this.Notes = notes;
 
             this.TotalBill = totalBill;
@@ -73,7 +71,6 @@ namespace DTO
             this.Name = data.Name;
             this.Phone = data.Phone;
             this.Address = data.Address;
-            this.OrderCount = data.OrderCount;
             this.Notes = data.Notes;
 
             this.TotalBill = data.TotalBill;
