@@ -13,22 +13,44 @@ namespace DAO
         private static readonly string datasourcePath = @"ngocdang.json";
 
         // Data Context
-        protected static JToken dbContext = JToken.Parse(File.ReadAllText(datasourcePath));
+        private static JToken dbContext;
 
         public JsonConnection()
         {
-            dbContext = JToken.Parse(File.ReadAllText(datasourcePath));
+            CreateJsonConnection();
         }
 
-        public static void CreateSQlConnection()
+        protected static JToken DbContext
+        {
+            get
+            {
+                if (dbContext == null)
+                {
+                    CreateJsonConnection();
+                }
+
+                return dbContext;
+            }
+        }
+
+        public static void CreateJsonConnection()
         {
             try
             {
+                if (dbContext == null)
+                {
+                    if (!File.Exists(datasourcePath))
+                    {
+                        FileStream file = File.Create(datasourcePath);
+                        file.Close();
+                    }
+                }
+
                 dbContext = JToken.Parse(File.ReadAllText(datasourcePath));
             }
-            catch
+            catch (Exception ex)
             {
-                return;
+                throw ex;
             }
         }
     }

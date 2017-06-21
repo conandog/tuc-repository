@@ -18,7 +18,7 @@ namespace DAO
 
         public static IEnumerable<JToken> GetQuery(string text, bool deleteFlag = false)
         {
-            var res = from p in dbContext[DATA_KEY]
+            var res = from p in DbContext[DATA_KEY]
                       select p;
 
             if (!string.IsNullOrEmpty(text))
@@ -73,7 +73,19 @@ namespace DAO
 
         public static Order GetById(int id)
         {
-            var res = dbContext.Where(p => p[DATA_ID_KEY].Equals(id)).FirstOrDefault();
+            var res = DbContext.Where(p => p[DATA_ID_KEY].Equals(id)).FirstOrDefault();
+
+            if (res != null)
+            {
+                return res.ToObject<Order>();
+            }
+
+            return null;
+        }
+
+        public static Order GetLastData()
+        {
+            var res = DbContext[DATA_KEY].LastOrDefault();
 
             if (res != null)
             {
@@ -91,7 +103,7 @@ namespace DAO
                 data.CreatedDate = data.UpdatedDate = DateTime.Now;
 
                 JObject newData = JObject.FromObject(data);
-                JObject parent = dbContext[DATA_KEY] as JObject;
+                JObject parent = DbContext[DATA_KEY] as JObject;
                 parent.Add(newData);
 
                 return true;

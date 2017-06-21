@@ -10,7 +10,6 @@ using Library;
 using BUS;
 using System.Diagnostics;
 using System.IO;
-using QuanLyKinhDoanh.Library.Common;
 
 namespace QuanLyKinhDoanh
 {
@@ -156,9 +155,6 @@ namespace QuanLyKinhDoanh
                     }
 
                     ExportExcel.SaveExcel(path);
-
-                    var service = Drive.AuthenticateServiceAccount("giatuc2003@gmail.com", "D:\\client_id.json");
-                    Drive.UploadFile(service, path, "0B9pihpBQ9TVHdzdRTFI2WW5nMnM");
 
                     if (MessageBox.Show(Constant.MESSAGE_SUCCESS_EXPORT_EXCEL + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_SUCCESS_EXPORT_EXCEL_OPEN,
                         Constant.CAPTION_WARNING, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.Yes)

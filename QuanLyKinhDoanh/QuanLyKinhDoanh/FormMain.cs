@@ -27,6 +27,7 @@ namespace QuanLyKinhDoanh
         private bool isMainMenuClickThuChi;
         private bool isMainMenuClickThanhToan;
         private bool isMainMenuClickTool;
+        private bool isMainMenuClickDonHang;
 
         UserControl uc;
 
@@ -146,6 +147,7 @@ namespace QuanLyKinhDoanh
             lbThuChi.ForeColor = Constant.COLOR_NORMAL;
             lbThanhToan.ForeColor = Constant.COLOR_NORMAL;
             lbTool.ForeColor = Constant.COLOR_NORMAL;
+            lbDonHang.ForeColor = Constant.COLOR_NORMAL;
 
             pbUser.Image = Image.FromFile(ConstantResource.USER_ICON_USER);
             pbKhachHang.Image = Image.FromFile(ConstantResource.KHACHHANG_ICON_KHACHHANG);
@@ -154,6 +156,7 @@ namespace QuanLyKinhDoanh
             pbThuChi.Image = Image.FromFile(ConstantResource.THUCHI_ICON_THUCHI);
             pbThanhToan.Image = Image.FromFile(ConstantResource.GIAODICH_ICON_THANHTOAN);
             pbTool.Image = Image.FromFile(ConstantResource.TOOL_ICON_TOOL);
+            //pbDonHang.Image = Image.FromFile(ConstantResource.TOOL_ICON_TOOL);
 
             pbUser.Enabled = true;
             pbKhachHang.Enabled = true;
@@ -162,6 +165,7 @@ namespace QuanLyKinhDoanh
             pbThuChi.Enabled = true;
             pbThanhToan.Enabled = true;
             pbTool.Enabled = true;
+            pbDonHang.Enabled = true;
 
             isMainMenuClickUser = false;
             isMainMenuClickKhachHang = false;
@@ -170,6 +174,7 @@ namespace QuanLyKinhDoanh
             isMainMenuClickThuChi = false;
             isMainMenuClickThanhToan = false;
             isMainMenuClickTool = false;
+            isMainMenuClickDonHang = false;
         }
 
         private string GetDayOfWeek()
@@ -588,6 +593,20 @@ namespace QuanLyKinhDoanh
         private void lbAboutCD_MouseLeave(object sender, EventArgs e)
         {
             lbAboutCD.ForeColor = Color.Gray;
+        }
+
+        private void pbDonHang_Click(object sender, EventArgs e)
+        {
+            if (WarningEditingDialog())
+            {
+                CommonFunc.NewControl(pnBody.Controls, ref uc, new UcOrderIndex());
+
+                Init();
+                isMainMenuClickDonHang = true;
+
+                //pbDonHang.Image = Image.FromFile(ConstantResource.USER_ICON_USER_MOUSEOVER);
+                lbDonHang.ForeColor = Constant.COLOR_IN_USE;
+            }
         }
     }
 }

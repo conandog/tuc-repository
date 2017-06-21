@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Library;
-using QuanLyKinhDoanh.User;
+using QuanLyKinhDoanh.Order;
 using DTO;
 using BUS;
 
@@ -320,15 +320,15 @@ namespace QuanLyKinhDoanh
 
         private void pbSua_Click(object sender, EventArgs e)
         {
-            int id = ConvertUtil.ConvertToInt(lvThongTin.CheckedItems[0].SubItems[1].Text);
-            DTO.User dataEdit = UserBus.GetById(id);
+            //int id = ConvertUtil.ConvertToInt(lvThongTin.CheckedItems[0].SubItems[1].Text);
+            //DTO.User dataEdit = UserBus.GetById(id);
 
-            if (ValidateEditPermission(dataEdit))
-            {
-                uc = new UcInfo(dataEdit);
-                uc.Disposed += new EventHandler(uc_Disposed);
-                this.Controls.Add(uc);
-            }
+            //if (ValidateEditPermission(dataEdit))
+            //{
+            //    uc = new UcInfo(dataEdit);
+            //    uc.Disposed += new EventHandler(uc_Disposed);
+            //    this.Controls.Add(uc);
+            //}
         }
 
         private void pbSua_MouseEnter(object sender, EventArgs e)

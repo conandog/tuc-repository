@@ -220,11 +220,21 @@ namespace Library
             ws.Cell("B4").Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;
 
             ws.Cell("G2").Value = "Ngày:";
-            ws.Cell("G3").Value = "Tổng CK:";
+
+            if (tongCK != "-1")
+            {
+                ws.Cell("G3").Value = "Tổng CK:";
+            }
+
             ws.Cell("G4").Value = "Tổng HĐ:";
 
             ws.Cell("H2").Value = ngay.ToString(Constant.DEFAULT_DATE_TIME_FORMAT);
-            ws.Cell("H3").Value = tongCK;
+
+            if (tongCK != "-1")
+            {
+                ws.Cell("H3").Value = tongCK;
+            }
+
             ws.Cell("H4").Value = tongHD;
 
             ws.Cell("G2").Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right;
