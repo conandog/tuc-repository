@@ -43,6 +43,15 @@ namespace DAO
                     {
                         FileStream file = File.Create(datasourcePath);
                         file.Close();
+
+                        JObject content = new JObject();
+                        Information infor = new Information("Ngọc Đăng", "5.0.0.0", "1.0.0.0", DateTime.Now);
+                        string jInfor = Newtonsoft.Json.JsonConvert.SerializeObject(new { Information = infor });
+                        //content.Add(jInfor);
+                        //JObject order = new JObject();
+                        //order["Order"] = String.Empty;
+                        //content.Add(order);
+                        File.WriteAllText(datasourcePath, jInfor);
                     }
                 }
 
