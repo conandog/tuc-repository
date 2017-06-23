@@ -23,8 +23,8 @@ namespace QuanLyKinhDoanh
         {
             try
             {
-                pbOrder.Image = Image.FromFile(ConstantResource.KHACHHANG_ICON_KHACHHANG_INDEX);
-                pbStatistics.Image = Image.FromFile(ConstantResource.KHACHHANG_ICON_KHACHHANG_GROUP_INDEX);
+                pbOrder.Image = Image.FromFile(ConstantResource.DONHANG_ICON_DONHANG_INDEX);
+                //pbStatistics.Image = Image.FromFile(ConstantResource.KHACHHANG_ICON_KHACHHANG_GROUP_INDEX);
             }
             catch
             {
@@ -62,13 +62,13 @@ namespace QuanLyKinhDoanh
 
         private void pbOrder_MouseEnter(object sender, EventArgs e)
         {
-            pbOrder.Image = Image.FromFile(ConstantResource.KHACHHANG_ICON_KHACHHANG_INDEX_MOUSEOVER);
+            //pbOrder.Image = Image.FromFile(ConstantResource.KHACHHANG_ICON_KHACHHANG_INDEX_MOUSEOVER);
             lbSanPham.ForeColor = Constant.COLOR_MOUSEOVER;
         }
 
         private void pbOrder_MouseLeave(object sender, EventArgs e)
         {
-            pbOrder.Image = Image.FromFile(ConstantResource.KHACHHANG_ICON_KHACHHANG_INDEX);
+            //pbOrder.Image = Image.FromFile(ConstantResource.KHACHHANG_ICON_KHACHHANG_INDEX);
             lbSanPham.ForeColor = Constant.COLOR_NORMAL;
         }
     }

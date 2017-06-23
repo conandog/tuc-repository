@@ -51,7 +51,7 @@ namespace DAO
                         content.Add("Information", jInfor);
                         //JObject order = new JObject();
                         //order["Order"] = String.Empty;
-                        content.Add("Order", null);
+                        content.Add("Order", new JArray());
                         File.WriteAllText(datasourcePath, content.ToString(Newtonsoft.Json.Formatting.Indented));
                     }
                 }
@@ -61,6 +61,24 @@ namespace DAO
             catch (Exception ex)
             {
                 throw ex;
+            }
+        }
+
+        public static bool UpdateData()
+        {
+            try
+            {
+                if (dbContext != null && File.Exists(datasourcePath))
+                {
+                    File.WriteAllText(datasourcePath, dbContext.ToString(Newtonsoft.Json.Formatting.Indented));
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
     }

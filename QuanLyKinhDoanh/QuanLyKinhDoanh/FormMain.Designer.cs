@@ -48,6 +48,8 @@
             this.lbAccount = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnHeaderAndMainMenu = new System.Windows.Forms.Panel();
+            this.lbDonHang = new System.Windows.Forms.Label();
+            this.pbDonHang = new System.Windows.Forms.PictureBox();
             this.lbTool = new System.Windows.Forms.Label();
             this.pbTool = new System.Windows.Forms.PictureBox();
             this.lbKhoHang = new System.Windows.Forms.Label();
@@ -65,8 +67,6 @@
             this.pbUser = new System.Windows.Forms.PictureBox();
             this.pbKhachHang = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.lbDonHang = new System.Windows.Forms.Label();
-            this.pbDonHang = new System.Windows.Forms.PictureBox();
             this.pnMain.SuspendLayout();
             this.pnBottom.SuspendLayout();
             this.pnGeneralInfo.SuspendLayout();
@@ -75,6 +75,7 @@
             this.pnTopBar.SuspendLayout();
             this.pnHello.SuspendLayout();
             this.pnHeaderAndMainMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDonHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTool)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbKhoHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbThuChi)).BeginInit();
@@ -85,7 +86,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbUser)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbKhachHang)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbDonHang)).BeginInit();
             this.SuspendLayout();
             // 
             // pnMain
@@ -321,6 +321,28 @@
             this.pnHeaderAndMainMenu.Size = new System.Drawing.Size(958, 118);
             this.pnHeaderAndMainMenu.TabIndex = 6;
             // 
+            // lbDonHang
+            // 
+            this.lbDonHang.AutoSize = true;
+            this.lbDonHang.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDonHang.ForeColor = System.Drawing.Color.Gray;
+            this.lbDonHang.Location = new System.Drawing.Point(641, 68);
+            this.lbDonHang.Name = "lbDonHang";
+            this.lbDonHang.Size = new System.Drawing.Size(55, 14);
+            this.lbDonHang.TabIndex = 30;
+            this.lbDonHang.Text = "Đơn hàng";
+            // 
+            // pbDonHang
+            // 
+            this.pbDonHang.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbDonHang.Location = new System.Drawing.Point(635, 0);
+            this.pbDonHang.Name = "pbDonHang";
+            this.pbDonHang.Size = new System.Drawing.Size(65, 67);
+            this.pbDonHang.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbDonHang.TabIndex = 29;
+            this.pbDonHang.TabStop = false;
+            this.pbDonHang.Click += new System.EventHandler(this.pbDonHang_Click);
+            // 
             // lbTool
             // 
             this.lbTool.AutoSize = true;
@@ -529,28 +551,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1008, 732);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
-            // lbDonHang
-            // 
-            this.lbDonHang.AutoSize = true;
-            this.lbDonHang.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDonHang.ForeColor = System.Drawing.Color.Gray;
-            this.lbDonHang.Location = new System.Drawing.Point(641, 68);
-            this.lbDonHang.Name = "lbDonHang";
-            this.lbDonHang.Size = new System.Drawing.Size(55, 14);
-            this.lbDonHang.TabIndex = 30;
-            this.lbDonHang.Text = "Đơn hàng";
-            // 
-            // pbDonHang
-            // 
-            this.pbDonHang.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbDonHang.Location = new System.Drawing.Point(635, 0);
-            this.pbDonHang.Name = "pbDonHang";
-            this.pbDonHang.Size = new System.Drawing.Size(65, 67);
-            this.pbDonHang.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbDonHang.TabIndex = 29;
-            this.pbDonHang.TabStop = false;
-            this.pbDonHang.Click += new System.EventHandler(this.pbDonHang_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -578,6 +578,7 @@
             this.pnHello.PerformLayout();
             this.pnHeaderAndMainMenu.ResumeLayout(false);
             this.pnHeaderAndMainMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDonHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTool)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbKhoHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbThuChi)).EndInit();
@@ -588,7 +589,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbUser)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbKhachHang)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbDonHang)).EndInit();
             this.ResumeLayout(false);
 
         }

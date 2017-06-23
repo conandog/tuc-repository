@@ -86,6 +86,7 @@
             // 
             // pbStatistics
             // 
+            this.pbStatistics.BackColor = System.Drawing.Color.Blue;
             this.pbStatistics.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbStatistics.Location = new System.Drawing.Point(390, 10);
             this.pbStatistics.Name = "pbStatistics";

@@ -88,15 +88,11 @@ namespace QuanLyKinhDoanh.Order
             dtpNgayGio.CustomFormat = Constant.DEFAULT_DATE_TIME_FORMAT;
             lbNgayGio.Text = dtpNgayGio.Value.ToString(Constant.DEFAULT_DATE_TIME_FORMAT);
 
-            tbTenSP.Text = String.Empty;
-            tbMaSP.Text = String.Empty;
+            tbTenSP.Text = "Testing 123";
+            tbMaSP.Text = "ABC";
             tbSoLuong.Text = "1";
-            tbDonGia.Text = String.Empty;
+            tbDonGia.Text = "150000";
             tbThanhTien.Text = String.Empty;
-
-            tbTenKH.Text = string.Empty;
-            tbDienThoai.Text = string.Empty;
-            tbDiaChi.Text = string.Empty;
 
             tbMaCOD.Text = string.Empty;
             cbLoaiCOD.Text = string.Empty;
@@ -104,6 +100,10 @@ namespace QuanLyKinhDoanh.Order
             tbTongHoaDon.Text = string.Empty;
             cbTinhTrang.SelectedIndex = 0;
             tbGhiChu.Text = String.Empty;
+
+            tbTenKH.Text = "Túc";
+            tbDienThoai.Text = string.Empty;
+            tbDiaChi.Text = string.Empty;
 
             pbXoa.Enabled = false;
             pbXoa.Image = Image.FromFile(ConstantResource.CHUC_NANG_ICON_DELETE_DISABLE);
@@ -281,9 +281,9 @@ namespace QuanLyKinhDoanh.Order
         private void InsertDataOrder()
         {
             int idHD = ConvertUtil.ConvertToInt(tbMaHD.Text);
-            long totalBill = ConvertUtil.ConvertToLong(tbTongHoaDon.Text);
-            long codBill = ConvertUtil.ConvertToLong(tbGiaCOD.Text);
-            double codWeight = ConvertUtil.ConvertToDouble(tbTongHoaDon.Text);
+            long totalBill = ConvertUtil.ConvertToLong(tbTongHoaDon.Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
+            long codBill = ConvertUtil.ConvertToLong(tbGiaCOD.Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
+            double codWeight = ConvertUtil.ConvertToDouble(tbTrongLuong.Text);
 
             DTO.Order order = new DTO.Order(idHD, tbTenKH.Text, tbDienThoai.Text, tbDiaChi.Text,
                 totalBill, cbTinhTrang.Text, tbMaCOD.Text, codWeight, codBill, tbGhiChu.Text,
@@ -300,7 +300,22 @@ namespace QuanLyKinhDoanh.Order
             }
             else
             {
-                MessageBox.Show(Constant.MESSAGE_INSERT_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_EXIT, Constant.CAPTION_ERROR, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                if (MessageBox.Show(Constant.MESSAGE_INSERT_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_TRY_AGAIN, Constant.CAPTION_ERROR, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    if (OrderBus.Insert(order, FormMain.user))
+                    {
+                        if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Đơn hàng " + order.Id) + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_CONFIRM_EXPORT, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        {
+                            ExportBill();
+                        }
+
+                        RefreshData();
+                    }
+                    else
+                    {
+                        MessageBox.Show(Constant.MESSAGE_INSERT_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_EXIT, Constant.CAPTION_ERROR, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
             }
         }
 
@@ -311,46 +326,13 @@ namespace QuanLyKinhDoanh.Order
             foreach (ListViewItem lvi in lvThongTin.Items)
             {
                 int quantity = ConvertUtil.ConvertToInt(lvi.SubItems[4].Text);
-                long price = ConvertUtil.ConvertToLong(lvi.SubItems[5].Text);
-                long total = ConvertUtil.ConvertToLong(lvi.SubItems[6].Text);
-
+                long price = ConvertUtil.ConvertToLong(lvi.SubItems[5].Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
+                long total = ConvertUtil.ConvertToLong(lvi.SubItems[6].Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
                 OrderDetails detail = new OrderDetails(lvi.SubItems[2].Text, lvi.SubItems[3].Text, quantity, price, total);
+                res.Add(detail);
             }
 
             return res;
-        }
-
-        private void InsertDataHoaDonDetail(int idHoaDon)
-        {
-            //foreach (ListViewItem lvi in lvThongTin.Items)
-            //{
-            //    dataHoaDonDetail = new HoaDonDetail();
-
-            //    dataHoaDonDetail.IdHoaDon = idHoaDon;
-            //    dataHoaDonDetail.IdSanPham = ConvertUtil.ConvertToInt(lvi.SubItems[1].Text);
-            //    dataHoaDonDetail.ChietKhau = ConvertUtil.ConvertToInt(lvi.SubItems[4].Text.Replace(Constant.SYMBOL_DISCOUNT, ""));
-            //    dataHoaDonDetail.SoLuong = ConvertUtil.ConvertToInt(lvi.SubItems[6].Text);
-            //    dataHoaDonDetail.DonGia = ConvertUtil.ConvertToLong(lvi.SubItems[8].Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
-            //    dataHoaDonDetail.ThanhTien = ConvertUtil.ConvertToLong(lvi.SubItems[9].Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
-
-            //    if (HoaDonDetailBus.Insert(dataHoaDonDetail))
-            //    {
-            //        UpdateDataSP(dataHoaDonDetail.SanPham, dataHoaDonDetail.SoLuong);
-            //    }
-            //    else
-            //    {
-            //        try
-            //        {
-            //            HoaDonDetailBus.Delete(dataHoaDonDetail);
-            //        }
-            //        catch
-            //        {
-            //            //
-            //        }
-
-            //        MessageBox.Show(Constant.MESSAGE_INSERT_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_EXIT, Constant.CAPTION_ERROR, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            //    }
-            //}
         }
 
         private void UpdateDataSP(DTO.SanPham dataUpdate, int soLuong)
@@ -556,6 +538,11 @@ namespace QuanLyKinhDoanh.Order
             {
                 e.Handled = true;
             }
+        }
+
+        private void tbTenKH_TextChanged(object sender, EventArgs e)
+        {
+            ValidateHoanTat();
         }
     }
 }

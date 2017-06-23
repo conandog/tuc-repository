@@ -197,6 +197,7 @@ namespace Library
         public const string MESSAGE_EXIT = "Thoát?";
         public const string MESSAGE_EXIT_APP = "Thoát chương trình?";
         public const string MESSAGE_CONTINUE = "Bạn có muốn tiếp tục?";
+        public const string MESSAGE_TRY_AGAIN = "Thử lại?";
 
         public const string MESSAGE_SEND_BACK_NOTE = "Trả SP: {0}";
         public const string MESSAGE_SEND_BACK_CONFIRM = "Hoàn trả sản phẩm?";

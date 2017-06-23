@@ -103,12 +103,12 @@ namespace DAO
                 data.CreatedDate = data.UpdatedDate = DateTime.Now;
 
                 JObject newData = JObject.FromObject(data);
-                JObject parent = DbContext[DATA_KEY] as JObject;
+                JArray parent = DbContext[DATA_KEY] as JArray;
                 parent.Add(newData);
 
-                return true;
+                return UpdateData();
             }
-            catch
+            catch (Exception ex)
             {
                 return false;
             }

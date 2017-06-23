@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.pnInfo = new System.Windows.Forms.Panel();
             this.lvThongTin = new System.Windows.Forms.ListView();
             this.chCheckBox = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -88,7 +87,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbSoLuong = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.ttDetail = new System.Windows.Forms.ToolTip(this.components);
             this.pnInfo.SuspendLayout();
             this.gbInfo.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -187,7 +185,7 @@
             this.gbInfo.Controls.Add(this.tbTenKH);
             this.gbInfo.Controls.Add(this.lbTen);
             this.gbInfo.ForeColor = System.Drawing.Color.Orange;
-            this.gbInfo.Location = new System.Drawing.Point(27, 420);
+            this.gbInfo.Location = new System.Drawing.Point(27, 393);
             this.gbInfo.Name = "gbInfo";
             this.gbInfo.Size = new System.Drawing.Size(940, 110);
             this.gbInfo.TabIndex = 199;
@@ -237,6 +235,7 @@
             this.tbTenKH.Name = "tbTenKH";
             this.tbTenKH.Size = new System.Drawing.Size(287, 23);
             this.tbTenKH.TabIndex = 200;
+            this.tbTenKH.TextChanged += new System.EventHandler(this.tbTenKH_TextChanged);
             // 
             // lbTen
             // 
@@ -301,7 +300,7 @@
             // 
             this.panel12.Controls.Add(this.label47);
             this.panel12.Controls.Add(this.pbHoanTat);
-            this.panel12.Location = new System.Drawing.Point(465, 537);
+            this.panel12.Location = new System.Drawing.Point(465, 500);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(70, 60);
             this.panel12.TabIndex = 128;
@@ -389,7 +388,7 @@
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.ForeColor = System.Drawing.Color.Orange;
-            this.groupBox2.Location = new System.Drawing.Point(27, 290);
+            this.groupBox2.Location = new System.Drawing.Point(27, 277);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(940, 110);
             this.groupBox2.TabIndex = 99;
@@ -725,12 +724,6 @@
             this.label14.TabIndex = 4;
             this.label14.Text = "Mã SP:";
             // 
-            // ttDetail
-            // 
-            this.ttDetail.AutoPopDelay = 10000;
-            this.ttDetail.InitialDelay = 500;
-            this.ttDetail.ReshowDelay = 100;
-            // 
             // UcInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -810,7 +803,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ColumnHeader chThanhTien;
         private System.Windows.Forms.Label lbNgayGio;
-        private System.Windows.Forms.ToolTip ttDetail;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cbLoaiCOD;
         private System.Windows.Forms.Label label15;

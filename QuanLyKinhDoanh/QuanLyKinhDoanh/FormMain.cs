@@ -57,6 +57,7 @@ namespace QuanLyKinhDoanh
                 pbThuChi.Image = Image.FromFile(ConstantResource.THUCHI_ICON_THUCHI);
                 pbThanhToan.Image = Image.FromFile(ConstantResource.GIAODICH_ICON_THANHTOAN);
                 pbTool.Image = Image.FromFile(ConstantResource.TOOL_ICON_TOOL);
+                pbDonHang.Image = Image.FromFile(ConstantResource.DONHANG_ICON_DONHANG);
 
                 pnBottom.BackgroundImage = Image.FromFile(ConstantResource.MAIN_BOTTOM_HORIZONLINE);
 

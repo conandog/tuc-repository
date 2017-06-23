@@ -162,5 +162,8 @@ namespace Library
         public const string TOOL_ICON_DB_RESTORE = @"Resources\Tool\icon_db_restore.png";
         public const string TOOL_ICON_DB_RESTORE_MOUSEOVER = @"Resources\Tool\icon_db_restore_mouseover.png";
         public const string TOOL_ICON_DB_RESTORE_DISABLE = @"Resources\Tool\icon_db_restore_disable.png";
+
+        public const string DONHANG_ICON_DONHANG = @"Resources\DonHang\icon_donhang.png";
+        public const string DONHANG_ICON_DONHANG_INDEX = @"Resources\DonHang\icon_donhang_index.png";
     }
 }
