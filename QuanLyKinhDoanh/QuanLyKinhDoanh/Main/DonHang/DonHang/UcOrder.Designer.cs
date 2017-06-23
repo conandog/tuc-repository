@@ -46,13 +46,10 @@
             this.chCheckBox = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chMa = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chSTT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chGroup = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chHoTen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chUserName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chDOB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chTen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chOrderDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDienThoai = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chDTDD = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chTotalBill = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnTraCuu = new System.Windows.Forms.Panel();
             this.tbPage = new System.Windows.Forms.TextBox();
             this.lbTotalPage = new System.Windows.Forms.Label();
@@ -64,6 +61,8 @@
             this.pbTraCuu = new System.Windows.Forms.PictureBox();
             this.pnPage = new System.Windows.Forms.Panel();
             this.lbPage = new System.Windows.Forms.Label();
+            this.chStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chNotes = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTitle)).BeginInit();
             this.pnSelect.SuspendLayout();
@@ -234,13 +233,12 @@
             this.chCheckBox,
             this.chMa,
             this.chSTT,
-            this.chGroup,
-            this.chHoTen,
-            this.chUserName,
-            this.chDOB,
+            this.chTen,
             this.chDienThoai,
-            this.chDTDD,
-            this.chEmail});
+            this.chOrderDate,
+            this.chStatus,
+            this.chNotes,
+            this.chTotalBill});
             this.lvThongTin.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvThongTin.FullRowSelect = true;
             this.lvThongTin.GridLines = true;
@@ -274,26 +272,16 @@
             this.chSTT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chSTT.Width = 39;
             // 
-            // chGroup
+            // chTen
             // 
-            this.chGroup.Text = "Nhóm";
-            this.chGroup.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chGroup.Width = 96;
+            this.chTen.Text = "Tên khách";
+            this.chTen.Width = 160;
             // 
-            // chHoTen
+            // chOrderDate
             // 
-            this.chHoTen.Text = "Họ và tên";
-            this.chHoTen.Width = 156;
-            // 
-            // chUserName
-            // 
-            this.chUserName.Text = "Tên đăng nhập";
-            this.chUserName.Width = 144;
-            // 
-            // chDOB
-            // 
-            this.chDOB.Text = "Ngày sinh";
-            this.chDOB.Width = 76;
+            this.chOrderDate.Text = "Ngày đặt hàng";
+            this.chOrderDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.chOrderDate.Width = 150;
             // 
             // chDienThoai
             // 
@@ -301,16 +289,11 @@
             this.chDienThoai.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chDienThoai.Width = 100;
             // 
-            // chDTDD
+            // chTotalBill
             // 
-            this.chDTDD.Text = "ĐTDĐ";
-            this.chDTDD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chDTDD.Width = 100;
-            // 
-            // chEmail
-            // 
-            this.chEmail.Text = "Email";
-            this.chEmail.Width = 143;
+            this.chTotalBill.Text = "Tổng HĐ";
+            this.chTotalBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.chTotalBill.Width = 100;
             // 
             // pnTraCuu
             // 
@@ -438,6 +421,17 @@
             this.lbPage.TextChanged += new System.EventHandler(this.lbPage_TextChanged);
             this.lbPage.Click += new System.EventHandler(this.lbPage_Click);
             // 
+            // chStatus
+            // 
+            this.chStatus.Text = "Trạng thái";
+            this.chStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.chStatus.Width = 100;
+            // 
+            // chNotes
+            // 
+            this.chNotes.Text = "Ghi chú";
+            this.chNotes.Width = 200;
+            // 
             // UcOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -506,13 +500,12 @@
         private System.Windows.Forms.ListView lvThongTin;
         private System.Windows.Forms.ColumnHeader chMa;
         private System.Windows.Forms.ColumnHeader chSTT;
-        private System.Windows.Forms.ColumnHeader chHoTen;
-        private System.Windows.Forms.ColumnHeader chGroup;
+        private System.Windows.Forms.ColumnHeader chTen;
         private System.Windows.Forms.ColumnHeader chDienThoai;
-        private System.Windows.Forms.ColumnHeader chEmail;
         private System.Windows.Forms.ColumnHeader chCheckBox;
-        private System.Windows.Forms.ColumnHeader chUserName;
-        private System.Windows.Forms.ColumnHeader chDTDD;
-        private System.Windows.Forms.ColumnHeader chDOB;
+        private System.Windows.Forms.ColumnHeader chOrderDate;
+        private System.Windows.Forms.ColumnHeader chTotalBill;
+        private System.Windows.Forms.ColumnHeader chStatus;
+        private System.Windows.Forms.ColumnHeader chNotes;
     }
 }

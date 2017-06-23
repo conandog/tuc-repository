@@ -68,7 +68,7 @@ namespace QuanLyKinhDoanh
             sortColumn = string.Empty;
             sortOrder = Constant.SORT_ASCENDING;
 
-            tbSearch.Text = Constant.SEARCH_USER_TIP;
+            tbSearch.Text = Constant.SEARCH_DONHANG_TIP;
 
             RefreshListView(tbSearch.Text,
                 sortColumn, sortOrder, 1);
@@ -93,7 +93,7 @@ namespace QuanLyKinhDoanh
 
         private void uc_Disposed(object sender, EventArgs e)
         {
-            tbSearch.Text = Constant.SEARCH_USER_TIP;
+            tbSearch.Text = Constant.SEARCH_DONHANG_TIP;
 
             RefreshListView(tbSearch.Text,
                 sortColumn, sortOrder, ConvertUtil.ConvertToInt(lbPage.Text));
@@ -122,7 +122,7 @@ namespace QuanLyKinhDoanh
         private void RefreshListView(string text,
             string sortColumn, string sortOrder, int page)
         {
-            if (text == Constant.SEARCH_USER_TIP)
+            if (text == Constant.SEARCH_DONHANG_TIP)
             {
                 text = string.Empty;
             }
@@ -138,24 +138,23 @@ namespace QuanLyKinhDoanh
                 return;
             }
 
-            List<DTO.User> list = UserBus.GetList(text,
+            List<DTO.Order> list = OrderBus.GetList(text,
                 sortColumn, sortOrder, row * (page - 1), row);
 
             CommonFunc.ClearlvItem(lvThongTin);
 
-            foreach (DTO.User data in list)
+            foreach (DTO.Order data in list)
             {
                 ListViewItem lvi = new ListViewItem();
 
                 lvi.SubItems.Add(data.Id.ToString());
                 lvi.SubItems.Add((row * (page - 1) + lvThongTin.Items.Count + 1).ToString());
-                lvi.SubItems.Add(data.UserGroup.Ten);
-                lvi.SubItems.Add(data.Ten);
-                lvi.SubItems.Add(data.UserName);
-                lvi.SubItems.Add(data.DOB.Value.ToString(Constant.DEFAULT_DATE_FORMAT));
-                lvi.SubItems.Add(data.DienThoai);
-                lvi.SubItems.Add(data.DTDD);
-                lvi.SubItems.Add(data.Email);
+                lvi.SubItems.Add(data.Name);
+                lvi.SubItems.Add(data.Phone);
+                lvi.SubItems.Add(data.CreatedDate.ToString(Constant.DEFAULT_DATE_TIME_FORMAT));
+                lvi.SubItems.Add(data.Status);
+                lvi.SubItems.Add(data.Notes);
+                lvi.SubItems.Add(data.TotalBill.ToString(Constant.DEFAULT_FORMAT_MONEY));
 
                 lvThongTin.Items.Add(lvi);
             }
@@ -282,30 +281,30 @@ namespace QuanLyKinhDoanh
 
         private void pbXoa_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(Constant.MESSAGE_DELETE_CONFIRM, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            {
-                string ids = string.Empty;
+            //if (MessageBox.Show(Constant.MESSAGE_DELETE_CONFIRM, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            //{
+            //    string ids = string.Empty;
 
-                foreach (ListViewItem item in lvThongTin.CheckedItems)
-                {
-                    int id = ConvertUtil.ConvertToInt(item.SubItems[1].Text);
-                    DTO.User data = UserBus.GetById(id);
+            //    foreach (ListViewItem item in lvThongTin.CheckedItems)
+            //    {
+            //        int id = ConvertUtil.ConvertToInt(item.SubItems[1].Text);
+            //        DTO.User data = UserBus.GetById(id);
 
-                    if (!ValidateDeletePermission(data))
-                    {
-                        return;
-                    }
+            //        if (!ValidateDeletePermission(data))
+            //        {
+            //            return;
+            //        }
 
-                    ids += (item.SubItems[1].Text + Constant.SEPERATE_STRING);
-                }
+            //        ids += (item.SubItems[1].Text + Constant.SEPERATE_STRING);
+            //    }
 
-                if (UserBus.DeleteList(ids, FormMain.user))
-                {
-                    RefreshListView(tbSearch.Text,
-                        sortColumn, sortOrder, ConvertUtil.ConvertToInt(lbPage.Text));
-                    SetStatusButtonPage(ConvertUtil.ConvertToInt(lbPage.Text));
-                }
-            }
+            //    if (UserBus.DeleteList(ids, FormMain.user))
+            //    {
+            //        RefreshListView(tbSearch.Text,
+            //            sortColumn, sortOrder, ConvertUtil.ConvertToInt(lbPage.Text));
+            //        SetStatusButtonPage(ConvertUtil.ConvertToInt(lbPage.Text));
+            //    }
+            //}
         }
 
         private void pbXoa_MouseEnter(object sender, EventArgs e)
@@ -485,7 +484,7 @@ namespace QuanLyKinhDoanh
 
         private void tbSearch_Enter(object sender, EventArgs e)
         {
-            if (tbSearch.Text == Constant.SEARCH_USER_TIP)
+            if (tbSearch.Text == Constant.SEARCH_DONHANG_TIP)
             {
                 tbSearch.Text = string.Empty;
             }
@@ -495,7 +494,7 @@ namespace QuanLyKinhDoanh
         {
             if (tbSearch.Text == string.Empty)
             {
-                tbSearch.Text = Constant.SEARCH_USER_TIP;
+                tbSearch.Text = Constant.SEARCH_DONHANG_TIP;
             }
         }
 
@@ -509,7 +508,7 @@ namespace QuanLyKinhDoanh
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
-            if (tbSearch.Text == Constant.SEARCH_USER_TIP)
+            if (tbSearch.Text == Constant.SEARCH_DONHANG_TIP)
             {
                 pbOk.Enabled = false;
                 pbOk.Image = Image.FromFile(ConstantResource.CHUC_NANG_BUTTON_OK_PAGE_DISABLE);

@@ -279,5 +279,6 @@ namespace Library
         public const string SEARCH_CHI_TIP = "Mã HĐ - Tên User - Mã KH - Ghi chú";
         public const string SEARCH_CONGNO_TIP = "Mã HĐ - Tên User - Tên KH - Ghi chú";
         public const string SEARCH_XUATXU_HISTORY_TIP = "Mã HĐ - Tên User - Ghi chú";
+        public const string SEARCH_DONHANG_TIP = "Tên KH - Điện thoại - Ghi chú";
     }
 }
