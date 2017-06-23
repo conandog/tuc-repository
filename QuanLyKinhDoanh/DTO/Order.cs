@@ -12,13 +12,13 @@ namespace DTO
         public string Name;
         public string Phone;
         public string Address;
-        public string Notes;
 
         public long TotalBill;
         public string Status;
         public string CodCode;
-        public string CodWeight;
-        public string CodBill;
+        public double CodWeight;
+        public long CodBill;
+        public string Notes;
 
         public DateTime CreatedDate;
         public string CreatedBy;
@@ -26,37 +26,31 @@ namespace DTO
         public string UpdatedBy;
         public bool DeleteFlag;
 
-        public List<OrderDetails> details;
+        public List<OrderDetails> ListDetail;
 
         public Order()
         {
             //Default constructor
         }
 
-        public Order(int id, string name, string phone, string address, string notes,
-            long totalBill, string status, string codCode, string codWeight, string codBill,
-            DateTime createdDate, string createdBy, DateTime updatedDate, string updatedBy,
-            List<OrderDetails> details, bool deleteFlag = false)
+        public Order(int id, string name, string phone, string address, 
+            long totalBill, string status, string codCode, double codWeight, long codBill, string notes,
+            List<OrderDetails> listDetail, bool deleteFlag = false)
         {
             this.Id = id;
             this.Name = name;
             this.Phone = phone;
             this.Address = address;
-            this.Notes = notes;
 
             this.TotalBill = totalBill;
             this.Status = status;
             this.CodCode = codCode;
             this.CodWeight = codWeight;
             this.CodBill = codBill;
+            this.Notes = notes;
 
-            this.CreatedDate = createdDate;
-            this.CreatedBy = createdBy;
-            this.UpdatedDate = updatedDate;
-            this.UpdatedBy = updatedBy;
+            this.ListDetail = listDetail;
             this.DeleteFlag = deleteFlag;
-
-            this.details = details;
         }
 
         public string SerializeToJson()
@@ -71,21 +65,16 @@ namespace DTO
             this.Name = data.Name;
             this.Phone = data.Phone;
             this.Address = data.Address;
-            this.Notes = data.Notes;
 
             this.TotalBill = data.TotalBill;
             this.Status = data.Status;
             this.CodCode = data.CodCode;
             this.CodWeight = data.CodWeight;
             this.CodBill = data.CodBill;
+            this.Notes = data.Notes;
 
-            this.CreatedDate = data.CreatedDate;
-            this.CreatedBy = data.CreatedBy;
-            this.UpdatedDate = data.UpdatedDate;
-            this.UpdatedBy = data.UpdatedBy;
+            this.ListDetail = data.ListDetail;
             this.DeleteFlag = data.DeleteFlag;
-
-            this.details = data.details;
         }
     }
 }

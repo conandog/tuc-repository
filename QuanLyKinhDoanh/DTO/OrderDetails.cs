@@ -8,22 +8,24 @@ namespace DTO
 {
     public class OrderDetails
     {
-        public string name;
-        public string id;
-        public int quantity;
-        public long price;
+        public string Name;
+        public string Id;
+        public int Quantity;
+        public long Price;
+        public long Total;
 
         public OrderDetails()
         {
             //Default constructor
         }
 
-        public OrderDetails(string name, string id, int quantity, long price)
+        public OrderDetails(string name, string id, int quantity, long price, long total)
         {
-            this.name = name;
-            this.id = id;
-            this.quantity = quantity;
-            this.price = price;
+            this.Name = name;
+            this.Id = id;
+            this.Quantity = quantity;
+            this.Price = price;
+            this.Total = total;
         }
 
         public string SerializeToJson()
@@ -34,10 +36,11 @@ namespace DTO
         public void DeserializeFromJson(string input)
         {
             OrderDetails data = JsonConvert.DeserializeObject<OrderDetails>(input);
-            this.name = data.name;
-            this.id = data.id;
-            this.quantity = data.quantity;
-            this.price = data.price;
+            this.Name = data.Name;
+            this.Id = data.Id;
+            this.Quantity = data.Quantity;
+            this.Price = data.Price;
+            this.Total = data.Total;
         }
     }
 }

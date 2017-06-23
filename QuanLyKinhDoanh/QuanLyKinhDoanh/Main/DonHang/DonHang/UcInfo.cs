@@ -275,54 +275,49 @@ namespace QuanLyKinhDoanh.Order
 
         private void InsertData()
         {
-            InsertDataHoaDon();
+            InsertDataOrder();
         }
 
-        private void InsertDataHoaDon()
+        private void InsertDataOrder()
         {
-            //dataHoaDon = new HoaDon();
+            int idHD = ConvertUtil.ConvertToInt(tbMaHD.Text);
+            long totalBill = ConvertUtil.ConvertToLong(tbTongHoaDon.Text);
+            long codBill = ConvertUtil.ConvertToLong(tbGiaCOD.Text);
+            double codWeight = ConvertUtil.ConvertToDouble(tbTongHoaDon.Text);
 
-            //dataHoaDon.MaHoaDon = tbMaHD.Text;
-            //dataHoaDon.IdUser = FormMain.user.Id;
-            //dataHoaDon.IdKhachHang = dataKH.Id;
-            //dataHoaDon.IdType = Constant.ID_TYPE_BAN;
-            //dataHoaDon.IdStatus = ConvertUtil.ConvertToInt(((CommonComboBoxItems)cbStatus.SelectedItem).Value);
+            DTO.Order order = new DTO.Order(idHD, tbTenKH.Text, tbDienThoai.Text, tbDiaChi.Text,
+                totalBill, cbTinhTrang.Text, tbMaCOD.Text, codWeight, codBill, tbGhiChu.Text,
+                GetListDetail());
 
-            //dataHoaDon.IsCKTichLuy = rbTichLuy.Checked;
-            //dataHoaDon.IsCKTongHD = chbCKTongHD.Checked;
+            if (OrderBus.Insert(order, FormMain.user))
+            {
+                if (MessageBox.Show(Constant.MESSAGE_CONFIRM_EXPORT, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    ExportBill();
+                }
 
-            //if (dataHoaDon.IsCKTongHD)
-            //{
-            //    dataHoaDon.TienChietKhau = ConvertUtil.ConvertToInt(tbTongCK.Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
-            //}
+                RefreshData();
+            }
+            else
+            {
+                MessageBox.Show(Constant.MESSAGE_INSERT_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_EXIT, Constant.CAPTION_ERROR, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            }
+        }
 
-            //dataHoaDon.SuDung = ConvertUtil.ConvertToInt(tbTienSuDung.Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
+        private List<OrderDetails> GetListDetail()
+        {
+            List<OrderDetails> res = new List<OrderDetails>();
 
-            //if (dataHoaDon.IdStatus == Constant.ID_STATUS_DEBT)
-            //{ 
-            //    dataHoaDon.ConLai = ConvertUtil.ConvertToLong(tbTienHoiLai.Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
-            //}
+            foreach (ListViewItem lvi in lvThongTin.Items)
+            {
+                int quantity = ConvertUtil.ConvertToInt(lvi.SubItems[4].Text);
+                long price = ConvertUtil.ConvertToLong(lvi.SubItems[5].Text);
+                long total = ConvertUtil.ConvertToLong(lvi.SubItems[6].Text);
 
-            //dataHoaDon.ThanhTien = ConvertUtil.ConvertToInt(tbTongHoaDon.Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
-            //dataHoaDon.GhiChu = tbGhiChu.Text;
+                OrderDetails detail = new OrderDetails(lvi.SubItems[2].Text, lvi.SubItems[3].Text, quantity, price, total);
+            }
 
-            //if (HoaDonBus.Insert(dataHoaDon, FormMain.user))
-            //{
-            //    InsertDataHoaDonDetail(dataHoaDon.Id);
-            //}
-            //else
-            //{
-            //    try
-            //    {
-            //        HoaDonBus.Delete(dataHoaDon, FormMain.user);
-            //    }
-            //    catch
-            //    {
-            //        //
-            //    }
-
-            //    MessageBox.Show(Constant.MESSAGE_INSERT_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_EXIT, Constant.CAPTION_ERROR, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            //}
+            return res;
         }
 
         private void InsertDataHoaDonDetail(int idHoaDon)
@@ -406,13 +401,6 @@ namespace QuanLyKinhDoanh.Order
             if (MessageBox.Show(Constant.MESSAGE_CONFIRM, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 InsertData();
-
-                if (MessageBox.Show(Constant.MESSAGE_CONFIRM_EXPORT, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                {
-                    ExportBill();
-                }
-
-                RefreshData();
             }
         }
 
@@ -554,6 +542,20 @@ namespace QuanLyKinhDoanh.Order
             tbGiaCOD.Select(tbGiaCOD.Text.Length, 0);
 
             tbTongHoaDon.Text = (totalMoney + money).ToString(Constant.DEFAULT_FORMAT_MONEY);
+        }
+
+        private void tbTrongLuong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+
+            if (ch == 46 && tbTrongLuong.Text.IndexOf('.') != -1)
+            {
+                e.Handled = true;
+            }
+            else if (!Char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
         }
     }
 }

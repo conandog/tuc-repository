@@ -58,6 +58,8 @@
             this.lbTitle = new System.Windows.Forms.Label();
             this.pbTitle = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tbTrongLuong = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.tbMaHD = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.tbMaCOD = new System.Windows.Forms.TextBox();
@@ -188,16 +190,16 @@
             this.gbInfo.Location = new System.Drawing.Point(27, 420);
             this.gbInfo.Name = "gbInfo";
             this.gbInfo.Size = new System.Drawing.Size(940, 110);
-            this.gbInfo.TabIndex = 20;
+            this.gbInfo.TabIndex = 199;
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Thông tin khách hàng";
             // 
             // tbDienThoai
             // 
             this.tbDienThoai.Location = new System.Drawing.Point(503, 30);
-            this.tbDienThoai.MaxLength = 11;
+            this.tbDienThoai.MaxLength = 15;
             this.tbDienThoai.Name = "tbDienThoai";
-            this.tbDienThoai.Size = new System.Drawing.Size(100, 23);
+            this.tbDienThoai.Size = new System.Drawing.Size(150, 23);
             this.tbDienThoai.TabIndex = 205;
             // 
             // label6
@@ -248,17 +250,17 @@
             // 
             // tbGhiChu
             // 
-            this.tbGhiChu.Location = new System.Drawing.Point(502, 70);
+            this.tbGhiChu.Location = new System.Drawing.Point(476, 70);
             this.tbGhiChu.MaxLength = 200;
             this.tbGhiChu.Name = "tbGhiChu";
-            this.tbGhiChu.Size = new System.Drawing.Size(426, 23);
+            this.tbGhiChu.Size = new System.Drawing.Size(452, 23);
             this.tbGhiChu.TabIndex = 125;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(435, 73);
+            this.label4.Location = new System.Drawing.Point(409, 73);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 16);
             this.label4.TabIndex = 97;
@@ -370,6 +372,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.tbTrongLuong);
+            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.tbMaHD);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.tbMaCOD);
@@ -388,9 +392,29 @@
             this.groupBox2.Location = new System.Drawing.Point(27, 290);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(940, 110);
-            this.groupBox2.TabIndex = 130;
+            this.groupBox2.TabIndex = 99;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin đơn hàng";
+            // 
+            // tbTrongLuong
+            // 
+            this.tbTrongLuong.Location = new System.Drawing.Point(294, 30);
+            this.tbTrongLuong.MaxLength = 5;
+            this.tbTrongLuong.Name = "tbTrongLuong";
+            this.tbTrongLuong.Size = new System.Drawing.Size(100, 23);
+            this.tbTrongLuong.TabIndex = 102;
+            this.tbTrongLuong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbTrongLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTrongLuong_KeyPress);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(198, 33);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(90, 16);
+            this.label10.TabIndex = 137;
+            this.label10.Text = "Trọng lượng:";
             // 
             // tbMaHD
             // 
@@ -400,6 +424,7 @@
             this.tbMaHD.ReadOnly = true;
             this.tbMaHD.Size = new System.Drawing.Size(100, 23);
             this.tbMaHD.TabIndex = 130;
+            this.tbMaHD.TabStop = false;
             this.tbMaHD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
@@ -439,6 +464,7 @@
             this.tbTongHoaDon.ReadOnly = true;
             this.tbTongHoaDon.Size = new System.Drawing.Size(100, 26);
             this.tbTongHoaDon.TabIndex = 135;
+            this.tbTongHoaDon.TabStop = false;
             this.tbTongHoaDon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label12
@@ -453,7 +479,7 @@
             // 
             // tbGiaCOD
             // 
-            this.tbGiaCOD.Location = new System.Drawing.Point(294, 30);
+            this.tbGiaCOD.Location = new System.Drawing.Point(476, 30);
             this.tbGiaCOD.MaxLength = 11;
             this.tbGiaCOD.Name = "tbGiaCOD";
             this.tbGiaCOD.Size = new System.Drawing.Size(100, 23);
@@ -466,7 +492,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(219, 33);
+            this.label9.Location = new System.Drawing.Point(401, 33);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 16);
             this.label9.TabIndex = 127;
@@ -804,5 +830,7 @@
         private System.Windows.Forms.TextBox tbMaSP;
         private System.Windows.Forms.TextBox tbMaHD;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox tbTrongLuong;
+        private System.Windows.Forms.Label label10;
     }
 }
