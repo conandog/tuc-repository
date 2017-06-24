@@ -35,19 +35,19 @@ namespace BUS
             return OrderDao.Insert(data, user);
         }
 
-        //public static bool Delete(UserGroup data)
-        //{
-        //    return OrderDao.Delete(data);
-        //}
+        public static bool Delete(int id, User user)
+        {
+            return OrderDao.Delete(id, user);
+        }
 
-        //public static bool DeleteList(string ids)
-        //{
-        //    return OrderDao.DeleteList(ids);
-        //}
+        public static bool DeleteList(string ids, User user)
+        {
+            return OrderDao.DeleteList(ids, user);
+        }
 
-        //public static bool Update(UserGroup data)
-        //{
-        //    return OrderDao.Update(data);
-        //}
+        public static bool Update(Order data, User user)
+        {
+            return OrderDao.Update(data, user);
+        }
     }
 }

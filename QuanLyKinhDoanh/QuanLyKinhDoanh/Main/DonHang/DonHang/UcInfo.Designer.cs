@@ -87,6 +87,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbSoLuong = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label39 = new System.Windows.Forms.Label();
+            this.pbHuy = new System.Windows.Forms.PictureBox();
             this.pnInfo.SuspendLayout();
             this.gbInfo.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -99,6 +102,8 @@
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAdd)).BeginInit();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHuy)).BeginInit();
             this.SuspendLayout();
             // 
             // pnInfo
@@ -300,7 +305,7 @@
             // 
             this.panel12.Controls.Add(this.label47);
             this.panel12.Controls.Add(this.pbHoanTat);
-            this.panel12.Location = new System.Drawing.Point(465, 500);
+            this.panel12.Location = new System.Drawing.Point(690, 500);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(70, 60);
             this.panel12.TabIndex = 128;
@@ -343,9 +348,9 @@
             this.lbSelect.ForeColor = System.Drawing.Color.Orange;
             this.lbSelect.Location = new System.Drawing.Point(50, 8);
             this.lbSelect.Name = "lbSelect";
-            this.lbSelect.Size = new System.Drawing.Size(112, 22);
+            this.lbSelect.Size = new System.Drawing.Size(66, 22);
             this.lbSelect.TabIndex = 1;
-            this.lbSelect.Text = "ĐƠN HÀNG";
+            this.lbSelect.Text = "THÊM";
             // 
             // lbTitle
             // 
@@ -354,11 +359,10 @@
             this.lbTitle.ForeColor = System.Drawing.Color.Gray;
             this.lbTitle.Location = new System.Drawing.Point(118, 8);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Size = new System.Drawing.Size(111, 22);
+            this.lbTitle.Size = new System.Drawing.Size(112, 22);
             this.lbTitle.TabIndex = 2;
-            this.lbTitle.Text = "KHO HÀNG";
+            this.lbTitle.Text = "ĐƠN HÀNG";
             this.lbTitle.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.lbTitle.Visible = false;
             // 
             // pbTitle
             // 
@@ -724,6 +728,35 @@
             this.label14.TabIndex = 4;
             this.label14.Text = "Mã SP:";
             // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.label39);
+            this.panel8.Controls.Add(this.pbHuy);
+            this.panel8.Location = new System.Drawing.Point(245, 500);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(70, 60);
+            this.panel8.TabIndex = 200;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(7, 68);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(0, 16);
+            this.label39.TabIndex = 2;
+            // 
+            // pbHuy
+            // 
+            this.pbHuy.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbHuy.Location = new System.Drawing.Point(10, 10);
+            this.pbHuy.Name = "pbHuy";
+            this.pbHuy.Size = new System.Drawing.Size(50, 39);
+            this.pbHuy.TabIndex = 1;
+            this.pbHuy.TabStop = false;
+            this.pbHuy.Click += new System.EventHandler(this.pbHuy_Click);
+            this.pbHuy.MouseEnter += new System.EventHandler(this.pbHuy_MouseEnter);
+            this.pbHuy.MouseLeave += new System.EventHandler(this.pbHuy_MouseLeave);
+            // 
             // UcInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -736,6 +769,7 @@
             this.Controls.Add(this.lbNgayGio);
             this.Controls.Add(this.dtpNgayGio);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel8);
             this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "UcInfo";
             this.Size = new System.Drawing.Size(1000, 600);
@@ -758,6 +792,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAdd)).EndInit();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHuy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -824,5 +861,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tbTrongLuong;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.PictureBox pbHuy;
     }
 }

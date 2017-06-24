@@ -47,8 +47,10 @@
             this.chMa = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chSTT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chOrderDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDienThoai = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chOrderDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chNotes = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTotalBill = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnTraCuu = new System.Windows.Forms.Panel();
             this.tbPage = new System.Windows.Forms.TextBox();
@@ -61,8 +63,6 @@
             this.pbTraCuu = new System.Windows.Forms.PictureBox();
             this.pnPage = new System.Windows.Forms.Panel();
             this.lbPage = new System.Windows.Forms.Label();
-            this.chStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chNotes = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTitle)).BeginInit();
             this.pnSelect.SuspendLayout();
@@ -231,8 +231,8 @@
             this.lvThongTin.CheckBoxes = true;
             this.lvThongTin.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.chCheckBox,
-            this.chMa,
             this.chSTT,
+            this.chMa,
             this.chTen,
             this.chDienThoai,
             this.chOrderDate,
@@ -262,32 +262,43 @@
             // 
             // chMa
             // 
-            this.chMa.Text = "Mã";
+            this.chMa.Text = "Mã HĐ";
             this.chMa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chMa.Width = 0;
+            this.chMa.Width = 55;
             // 
             // chSTT
             // 
             this.chSTT.Text = "STT";
             this.chSTT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chSTT.Width = 39;
+            this.chSTT.Width = 40;
             // 
             // chTen
             // 
             this.chTen.Text = "Tên khách";
-            this.chTen.Width = 160;
-            // 
-            // chOrderDate
-            // 
-            this.chOrderDate.Text = "Ngày đặt hàng";
-            this.chOrderDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chOrderDate.Width = 150;
+            this.chTen.Width = 150;
             // 
             // chDienThoai
             // 
             this.chDienThoai.Text = "Điện thoại";
             this.chDienThoai.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chDienThoai.Width = 100;
+            // 
+            // chOrderDate
+            // 
+            this.chOrderDate.Text = "Ngày đặt hàng";
+            this.chOrderDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.chOrderDate.Width = 130;
+            // 
+            // chStatus
+            // 
+            this.chStatus.Text = "Trạng thái";
+            this.chStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.chStatus.Width = 100;
+            // 
+            // chNotes
+            // 
+            this.chNotes.Text = "Ghi chú";
+            this.chNotes.Width = 180;
             // 
             // chTotalBill
             // 
@@ -420,17 +431,6 @@
             this.lbPage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbPage.TextChanged += new System.EventHandler(this.lbPage_TextChanged);
             this.lbPage.Click += new System.EventHandler(this.lbPage_Click);
-            // 
-            // chStatus
-            // 
-            this.chStatus.Text = "Trạng thái";
-            this.chStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chStatus.Width = 100;
-            // 
-            // chNotes
-            // 
-            this.chNotes.Text = "Ghi chú";
-            this.chNotes.Width = 200;
             // 
             // UcOrder
             // 

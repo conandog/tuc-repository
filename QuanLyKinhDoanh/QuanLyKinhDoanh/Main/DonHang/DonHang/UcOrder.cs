@@ -65,8 +65,8 @@ namespace QuanLyKinhDoanh
 
             FormMain.isEditing = false;
 
-            sortColumn = string.Empty;
-            sortOrder = Constant.SORT_ASCENDING;
+            sortColumn = "Ngày đặt hàng";
+            sortOrder = Constant.SORT_DESCENDING;
 
             tbSearch.Text = Constant.SEARCH_DONHANG_TIP;
 
@@ -146,16 +146,14 @@ namespace QuanLyKinhDoanh
             foreach (DTO.Order data in list)
             {
                 ListViewItem lvi = new ListViewItem();
-
-                lvi.SubItems.Add(data.Id.ToString());
                 lvi.SubItems.Add((row * (page - 1) + lvThongTin.Items.Count + 1).ToString());
+                lvi.SubItems.Add(data.Id.ToString());
                 lvi.SubItems.Add(data.Name);
                 lvi.SubItems.Add(data.Phone);
                 lvi.SubItems.Add(data.CreatedDate.ToString(Constant.DEFAULT_DATE_TIME_FORMAT));
                 lvi.SubItems.Add(data.Status);
                 lvi.SubItems.Add(data.Notes);
                 lvi.SubItems.Add(data.TotalBill.ToString(Constant.DEFAULT_FORMAT_MONEY));
-
                 lvThongTin.Items.Add(lvi);
             }
 
@@ -281,30 +279,23 @@ namespace QuanLyKinhDoanh
 
         private void pbXoa_Click(object sender, EventArgs e)
         {
-            //if (MessageBox.Show(Constant.MESSAGE_DELETE_CONFIRM, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            //{
-            //    string ids = string.Empty;
+            if (MessageBox.Show(Constant.MESSAGE_DELETE_CONFIRM, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                string ids = string.Empty;
 
-            //    foreach (ListViewItem item in lvThongTin.CheckedItems)
-            //    {
-            //        int id = ConvertUtil.ConvertToInt(item.SubItems[1].Text);
-            //        DTO.User data = UserBus.GetById(id);
+                foreach (ListViewItem item in lvThongTin.CheckedItems)
+                {
+                    int id = ConvertUtil.ConvertToInt(item.SubItems[2].Text);
+                    ids += (item.SubItems[2].Text + Constant.SEPERATE_STRING);
+                }
 
-            //        if (!ValidateDeletePermission(data))
-            //        {
-            //            return;
-            //        }
-
-            //        ids += (item.SubItems[1].Text + Constant.SEPERATE_STRING);
-            //    }
-
-            //    if (UserBus.DeleteList(ids, FormMain.user))
-            //    {
-            //        RefreshListView(tbSearch.Text,
-            //            sortColumn, sortOrder, ConvertUtil.ConvertToInt(lbPage.Text));
-            //        SetStatusButtonPage(ConvertUtil.ConvertToInt(lbPage.Text));
-            //    }
-            //}
+                if (OrderBus.DeleteList(ids, FormMain.user))
+                {
+                    RefreshListView(tbSearch.Text,
+                        sortColumn, sortOrder, ConvertUtil.ConvertToInt(lbPage.Text));
+                    SetStatusButtonPage(ConvertUtil.ConvertToInt(lbPage.Text));
+                }
+            }
         }
 
         private void pbXoa_MouseEnter(object sender, EventArgs e)
@@ -319,15 +310,10 @@ namespace QuanLyKinhDoanh
 
         private void pbSua_Click(object sender, EventArgs e)
         {
-            //int id = ConvertUtil.ConvertToInt(lvThongTin.CheckedItems[0].SubItems[1].Text);
-            //DTO.User dataEdit = UserBus.GetById(id);
-
-            //if (ValidateEditPermission(dataEdit))
-            //{
-            //    uc = new UcInfo(dataEdit);
-            //    uc.Disposed += new EventHandler(uc_Disposed);
-            //    this.Controls.Add(uc);
-            //}
+            int id = ConvertUtil.ConvertToInt(lvThongTin.CheckedItems[0].SubItems[2].Text);
+            uc = new UcInfo(OrderBus.GetById(id));
+            uc.Disposed += new EventHandler(uc_Disposed);
+            this.Controls.Add(uc);
         }
 
         private void pbSua_MouseEnter(object sender, EventArgs e)
@@ -357,9 +343,15 @@ namespace QuanLyKinhDoanh
                 e.Cancel = true;
             }
 
-            if (e.ColumnIndex == 1)
+            if (e.ColumnIndex == 2)
             {
-                e.NewWidth = 0;
+                e.NewWidth = 40;
+                e.Cancel = true;
+            }
+
+            if (e.ColumnIndex == 2)
+            {
+                e.NewWidth = 55;
                 e.Cancel = true;
             }
         }
@@ -398,7 +390,7 @@ namespace QuanLyKinhDoanh
             {
                 if (lvThongTin.SelectedItems.Count > 0)
                 {
-                    int id = ConvertUtil.ConvertToInt(lvThongTin.SelectedItems[0].SubItems[1].Text);
+                    int id = ConvertUtil.ConvertToInt(lvThongTin.SelectedItems[0].SubItems[2].Text);
 
                     UserControl uc = new UcDetail(UserBus.GetById(id));
                     this.Controls.Add(uc);
