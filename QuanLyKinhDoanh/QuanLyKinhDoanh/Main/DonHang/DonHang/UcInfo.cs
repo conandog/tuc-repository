@@ -52,14 +52,16 @@ namespace QuanLyKinhDoanh.Order
                     lvThongTin.Items.Add(lvi);
                 }
 
-                tbMaHD.Text = data.Id.ToString();
                 tbMaCOD.Text = data.CodCode;
+                tbTrongLuong.Text = data.CodWeight == 0 ? String.Empty : data.CodWeight.ToString();
                 cbLoaiCOD.Text = data.CodType;
                 codMoney = data.CodBill;
                 tbGiaCOD.Text = codMoney.ToString(Constant.DEFAULT_FORMAT_MONEY);
-                totalMoney = data.TotalBill;
-                tbTongHoaDon.Text = totalMoney.ToString(Constant.DEFAULT_FORMAT_MONEY);
                 cbTinhTrang.Text = data.Status;
+
+                tbMaHD.Text = data.Id.ToString();
+                totalMoney = data.TotalBill;
+                tbTongHoaDon.Text = (totalMoney + codMoney).ToString(Constant.DEFAULT_FORMAT_MONEY);
                 tbGhiChu.Text = data.Notes;
 
                 tbTenKH.Text = data.Name;
@@ -130,10 +132,13 @@ namespace QuanLyKinhDoanh.Order
             tbThanhTien.Text = String.Empty;
 
             tbMaCOD.Text = String.Empty;
+            tbTrongLuong.Text = String.Empty;
             cbLoaiCOD.Text = String.Empty;
             tbGiaCOD.Text = String.Empty;
-            tbTongHoaDon.Text = String.Empty;
             cbTinhTrang.SelectedIndex = 0;
+
+            tbMaHD.Text = CreateNewId().ToString();
+            tbTongHoaDon.Text = String.Empty;
             tbGhiChu.Text = String.Empty;
 
             tbTenKH.Text = String.Empty;
@@ -143,7 +148,7 @@ namespace QuanLyKinhDoanh.Order
             pbXoa.Enabled = false;
             pbXoa.Image = Image.FromFile(ConstantResource.CHUC_NANG_ICON_DELETE_DISABLE);
 
-            tbMaHD.Text = CreateNewId().ToString();
+            
             ValidateHoanTat();
         }
 

@@ -19,12 +19,11 @@ namespace QuanLyKinhDoanh.Order
             InitializeComponent();
         }
 
-        public UcDetail(DTO.User data)
+        public UcDetail(DTO.Order data)
         {
             InitializeComponent();
 
             Init();
-
             LoadData(data);
         }
 
@@ -45,44 +44,63 @@ namespace QuanLyKinhDoanh.Order
         private void UcDetail_Load(object sender, EventArgs e)
         {
             LoadResource();
-
-            pnInfo.Location = CommonFunc.SetCenterLocation(this.Size, pnInfo.Size);
-
             pnTitle.Location = CommonFunc.SetWidthCenter(this.Size, pnTitle.Size, pnTitle.Top);
-
             this.BringToFront();
         }
 
         private void Init()
         {
-            lbGroup.Text = string.Empty;
-            lbTen.Text = string.Empty;
-            lbGioiTinh.Text = string.Empty;
-            lbTenDangNhap.Text = string.Empty;
-            lbDienThoai.Text = string.Empty;
-            lbDTDD.Text = string.Empty;
-            lbEmail.Text = string.Empty;
-            lbDOB.Text = string.Empty;
-            lbCMND.Text = string.Empty;
-            lbNoiCap.Text = string.Empty;
-            lbNgayCap.Text = string.Empty;
-            lbGhiChu.Text = string.Empty;
+            lvThongTin.Items.Clear();
+            lbNgayGio.Text = DateTime.Now.ToString(Constant.DEFAULT_DATE_TIME_FORMAT);
+
+            lbMaCOD.Text = String.Empty;
+            lbTrongLuong.Text = String.Empty;
+            lbLoaiCOD.Text = String.Empty;
+            lbGiaCOD.Text = String.Empty;
+            lbTinhTrang.Text = String.Empty;
+
+            lbMaHD.Text = String.Empty;
+            lbTongHD.Text = String.Empty;
+            lbGhiChu.Text = String.Empty;
+
+            lbKhachHang.Text = String.Empty;
+            lbDienThoai.Text = String.Empty;
+            lbDiaChi.Text = String.Empty;
+            
         }
 
-        private void LoadData(DTO.User data)
+        private void LoadData(DTO.Order data)
         {
-            lbGroup.Text = data.UserGroup.Ten;
-            lbTen.Text = data.Ten;
-            lbGioiTinh.Text = data.GioiTinh;
-            lbTenDangNhap.Text = data.UserName;
-            lbDienThoai.Text = data.DienThoai;
-            lbDTDD.Text = data.DTDD;
-            lbEmail.Text = data.Email;
-            lbDOB.Text = data.DOB.Value.ToString(Constant.DEFAULT_DATE_FORMAT);
-            lbCMND.Text = data.CMND;
-            lbNoiCap.Text = data.NoiCap;
-            lbNgayCap.Text = data.NgayCap.Value.ToString(Constant.DEFAULT_DATE_FORMAT);
-            lbGhiChu.Text = data.GhiChu;
+            lbNgayGio.Text = data.CreatedDate.ToString(Constant.DEFAULT_DATE_TIME_FORMAT);
+
+            foreach (var detail in data.ListDetail)
+            {
+                ListViewItem lvi = new ListViewItem();
+                lvi.SubItems.Add((lvThongTin.Items.Count + 1).ToString());
+                lvi.SubItems.Add(detail.Name);
+                lvi.SubItems.Add(detail.Id);
+                lvi.SubItems.Add(detail.Quantity.ToString());
+                lvi.SubItems.Add(detail.Price.ToString(Constant.DEFAULT_FORMAT_MONEY));
+                lvi.SubItems.Add(detail.Total.ToString(Constant.DEFAULT_FORMAT_MONEY));
+                lvThongTin.Items.Add(lvi);
+            }
+
+            
+            lbMaCOD.Text = data.CodCode;
+            lbTrongLuong.Text = data.CodWeight == 0 ? String.Empty : data.CodWeight.ToString();
+            lbLoaiCOD.Text = data.CodType;
+            long codMoney = data.CodBill;
+            lbGiaCOD.Text = codMoney.ToString(Constant.DEFAULT_FORMAT_MONEY);
+            lbTinhTrang.Text = data.Status;
+
+            lbMaHD.Text = data.Id.ToString();
+            long totalMoney = data.TotalBill;
+            lbTongHD.Text = (totalMoney + codMoney).ToString(Constant.DEFAULT_FORMAT_MONEY);
+            lbGhiChu.Text = data.Notes;
+
+            lbKhachHang.Text = data.Name;
+            lbDienThoai.Text = data.Phone;
+            lbDiaChi.Text = data.Address;
         }
 
         private void pbHoanTat_Click(object sender, EventArgs e)

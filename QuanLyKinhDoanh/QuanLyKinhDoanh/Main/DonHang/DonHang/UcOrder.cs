@@ -392,7 +392,7 @@ namespace QuanLyKinhDoanh
                 {
                     int id = ConvertUtil.ConvertToInt(lvThongTin.SelectedItems[0].SubItems[2].Text);
 
-                    UserControl uc = new UcDetail(UserBus.GetById(id));
+                    UserControl uc = new UcDetail(OrderBus.GetById(id));
                     this.Controls.Add(uc);
                 }
             }
