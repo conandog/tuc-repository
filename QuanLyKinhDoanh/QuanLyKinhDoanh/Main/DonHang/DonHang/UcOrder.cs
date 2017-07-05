@@ -10,6 +10,7 @@ using Library;
 using QuanLyKinhDoanh.Order;
 using DTO;
 using BUS;
+using System.Configuration;
 
 namespace QuanLyKinhDoanh
 {
@@ -54,6 +55,8 @@ namespace QuanLyKinhDoanh
         {
             this.Visible = false;
             LoadResource();
+
+            DAO.JsonConnection.datasourcePath = ConfigurationManager.AppSettings["datapath"];
 
             //pnQuanLy.Size = new System.Drawing.Size(710, 480);
             pnQuanLy.Location = CommonFunc.SetWidthCenter(this.Size, pnQuanLy.Size, pnSelect.Bottom);

@@ -75,6 +75,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Xml.Linq" />
@@ -658,6 +659,10 @@
     <ProjectReference Include="..\BUS\BUS.csproj">
       <Project>{43D5ACE3-32A3-4E07-A04A-25AD681BF2CE}</Project>
       <Name>BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{512a643b-c83e-4ec6-9769-eb20179259e7}</Project>
+      <Name>DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{2C4D3ED8-16CD-46F1-A599-E121F5B0F7C6}</Project>
