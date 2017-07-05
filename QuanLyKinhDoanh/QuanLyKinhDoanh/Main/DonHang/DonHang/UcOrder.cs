@@ -97,16 +97,10 @@ namespace QuanLyKinhDoanh
         private void uc_Disposed(object sender, EventArgs e)
         {
             tbSearch.Text = Constant.SEARCH_DONHANG_TIP;
-
             RefreshListView(tbSearch.Text,
                 sortColumn, sortOrder, ConvertUtil.ConvertToInt(lbPage.Text));
             SetStatusButtonPage(ConvertUtil.ConvertToInt(lbPage.Text));
-
-            if (tbSearch.Focused)
-            {
-                tbSearch.Text = string.Empty;
-            }
-
+            lvThongTin.Focus();
             FormMain.isEditing = false;
         }
 
@@ -156,7 +150,7 @@ namespace QuanLyKinhDoanh
                 lvi.SubItems.Add(data.CreatedDate.ToString(Constant.DEFAULT_DATE_TIME_FORMAT));
                 lvi.SubItems.Add(data.Status);
                 lvi.SubItems.Add(data.Notes);
-                lvi.SubItems.Add(data.TotalBill.ToString(Constant.DEFAULT_FORMAT_MONEY));
+                lvi.SubItems.Add(data.GetTotalBillWithCod().ToString(Constant.DEFAULT_FORMAT_MONEY));
                 lvThongTin.Items.Add(lvi);
             }
 

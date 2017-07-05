@@ -11,6 +11,7 @@ namespace DTO
         public int Id;
         public string Name;
         public string Phone;
+        public string Contact;
         public string Address;
 
         public long TotalBill;
@@ -34,13 +35,14 @@ namespace DTO
             //Default constructor
         }
 
-        public Order(int id, string name, string phone, string address, 
+        public Order(int id, string name, string phone, string contact, string address, 
             long totalBill, string status, string codCode, string codType, double codWeight, long codBill, string notes,
             List<OrderDetails> listDetail, bool deleteFlag = false)
         {
             this.Id = id;
             this.Name = name;
             this.Phone = phone;
+            this.Contact = contact;
             this.Address = address;
 
             this.TotalBill = totalBill;
@@ -55,6 +57,11 @@ namespace DTO
             this.DeleteFlag = deleteFlag;
         }
 
+        public long GetTotalBillWithCod()
+        {
+            return TotalBill + CodBill;
+        }
+
         public string SerializeToJson()
         {
             return JsonConvert.SerializeObject(this);
@@ -66,6 +73,7 @@ namespace DTO
             this.Id = data.Id;
             this.Name = data.Name;
             this.Phone = data.Phone;
+            this.Contact = data.Contact;
             this.Address = data.Address;
 
             this.TotalBill = data.TotalBill;

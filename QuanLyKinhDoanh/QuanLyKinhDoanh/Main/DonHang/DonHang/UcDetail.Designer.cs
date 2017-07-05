@@ -73,6 +73,8 @@
             this.panel12 = new System.Windows.Forms.Panel();
             this.label47 = new System.Windows.Forms.Label();
             this.pbHoanTat = new System.Windows.Forms.PictureBox();
+            this.lbContact = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.pnTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTitle)).BeginInit();
             this.gbInfo.SuspendLayout();
@@ -127,6 +129,8 @@
             // 
             // gbInfo
             // 
+            this.gbInfo.Controls.Add(this.lbContact);
+            this.gbInfo.Controls.Add(this.label5);
             this.gbInfo.Controls.Add(this.lbDienThoai);
             this.gbInfo.Controls.Add(this.lbDiaChi);
             this.gbInfo.Controls.Add(this.lbKhachHang);
@@ -518,6 +522,26 @@
             this.pbHoanTat.MouseEnter += new System.EventHandler(this.pbHoanTat_MouseEnter);
             this.pbHoanTat.MouseLeave += new System.EventHandler(this.pbHoanTat_MouseLeave);
             // 
+            // lbContact
+            // 
+            this.lbContact.AutoSize = true;
+            this.lbContact.ForeColor = System.Drawing.Color.Black;
+            this.lbContact.Location = new System.Drawing.Point(704, 33);
+            this.lbContact.Name = "lbContact";
+            this.lbContact.Size = new System.Drawing.Size(35, 18);
+            this.lbContact.TabIndex = 143;
+            this.lbContact.Text = "Text";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(631, 33);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(67, 18);
+            this.label5.TabIndex = 142;
+            this.label5.Text = "Zalo/FB:";
+            // 
             // UcDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -596,5 +620,7 @@
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.PictureBox pbHoanTat;
+        private System.Windows.Forms.Label lbContact;
+        private System.Windows.Forms.Label label5;
     }
 }

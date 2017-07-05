@@ -10,7 +10,7 @@ namespace DAO
 {
     public class JsonConnection
     {
-        private static readonly string datasourcePath = @"ngocdang.json";
+        public static string datasourcePath = @"ngocdang.json";
 
         // Data Context
         private static JToken dbContext;
@@ -45,7 +45,7 @@ namespace DAO
                         file.Close();
 
                         JObject content = new JObject();
-                        Information infor = new Information("Ngọc Đăng", "5.0.0.0", "1.0.0.0", DateTime.Now);
+                        Information infor = new Information("Ngọc Đăng", "5.1.0.0", "1.1.0.0", DateTime.Now);
                         //string jInfor = Newtonsoft.Json.JsonConvert.SerializeObject(new { Information = infor });
                         string jInfor = Newtonsoft.Json.JsonConvert.SerializeObject(infor);
                         content.Add("Information", jInfor);

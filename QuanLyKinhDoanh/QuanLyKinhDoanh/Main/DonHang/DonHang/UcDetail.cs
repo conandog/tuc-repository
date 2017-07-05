@@ -89,17 +89,16 @@ namespace QuanLyKinhDoanh.Order
             lbMaCOD.Text = data.CodCode;
             lbTrongLuong.Text = data.CodWeight == 0 ? String.Empty : data.CodWeight.ToString();
             lbLoaiCOD.Text = data.CodType;
-            long codMoney = data.CodBill;
-            lbGiaCOD.Text = codMoney.ToString(Constant.DEFAULT_FORMAT_MONEY);
+            lbGiaCOD.Text = data.CodBill.ToString(Constant.DEFAULT_FORMAT_MONEY);
             lbTinhTrang.Text = data.Status;
 
             lbMaHD.Text = data.Id.ToString();
-            long totalMoney = data.TotalBill;
-            lbTongHD.Text = (totalMoney + codMoney).ToString(Constant.DEFAULT_FORMAT_MONEY);
+            lbTongHD.Text = data.GetTotalBillWithCod().ToString(Constant.DEFAULT_FORMAT_MONEY);
             lbGhiChu.Text = data.Notes;
 
             lbKhachHang.Text = data.Name;
             lbDienThoai.Text = data.Phone;
+            lbContact.Text = data.Contact;
             lbDiaChi.Text = data.Address;
         }
 

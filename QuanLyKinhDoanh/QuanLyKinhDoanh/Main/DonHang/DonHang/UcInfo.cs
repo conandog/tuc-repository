@@ -66,6 +66,7 @@ namespace QuanLyKinhDoanh.Order
 
                 tbTenKH.Text = data.Name;
                 tbDienThoai.Text = data.Phone;
+                tbContact.Text = data.Contact;
                 tbDiaChi.Text = data.Address;
             }
             else
@@ -214,21 +215,21 @@ namespace QuanLyKinhDoanh.Order
 
         private void AddToBill()
         {
-            int soLuong = 0;
+            //int soLuong = 0;
             bool isDuplicated = false;
 
-            foreach (ListViewItem item in lvThongTin.Items)
-            {
-                if (item.SubItems[3].Text == tbMaSP.Text)
-                {
-                    soLuong = ConvertUtil.ConvertToInt(item.SubItems[4].Text) + ConvertUtil.ConvertToInt(tbSoLuong.Text);
-                    item.SubItems[4].Text = soLuong.ToString();
-                    item.SubItems[6].Text = (ConvertUtil.ConvertToInt(tbThanhTien.Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty)) +
-                        ConvertUtil.ConvertToInt(item.SubItems[6].Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty))).ToString(Constant.DEFAULT_FORMAT_MONEY);
-                    isDuplicated = true;
-                    break;
-                }
-            }
+            //foreach (ListViewItem item in lvThongTin.Items)
+            //{
+            //    if (item.SubItems[3].Text == tbMaSP.Text)
+            //    {
+            //        soLuong = ConvertUtil.ConvertToInt(item.SubItems[4].Text) + ConvertUtil.ConvertToInt(tbSoLuong.Text);
+            //        item.SubItems[4].Text = soLuong.ToString();
+            //        item.SubItems[6].Text = (ConvertUtil.ConvertToInt(tbThanhTien.Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty)) +
+            //            ConvertUtil.ConvertToInt(item.SubItems[6].Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty))).ToString(Constant.DEFAULT_FORMAT_MONEY);
+            //        isDuplicated = true;
+            //        break;
+            //    }
+            //}
 
             totalMoney += ConvertUtil.ConvertToLong(tbThanhTien.Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
             tbTongHoaDon.Text = (totalMoney + codMoney).ToString(Constant.DEFAULT_FORMAT_MONEY);
@@ -323,17 +324,18 @@ namespace QuanLyKinhDoanh.Order
             int idHD = ConvertUtil.ConvertToInt(tbMaHD.Text);
             double codWeight = ConvertUtil.ConvertToDouble(tbTrongLuong.Text);
 
-            DTO.Order order = new DTO.Order(idHD, tbTenKH.Text, tbDienThoai.Text, tbDiaChi.Text,
+            DTO.Order order = new DTO.Order(idHD, tbTenKH.Text, tbDienThoai.Text, tbContact.Text, tbDiaChi.Text,
                 totalMoney, cbTinhTrang.Text, tbMaCOD.Text, cbLoaiCOD.Text, codWeight, codMoney, tbGhiChu.Text,
                 GetListDetail());
 
             if (OrderBus.Insert(order, FormMain.user))
             {
-                if (MessageBox.Show(Constant.MESSAGE_CONFIRM_EXPORT, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                {
-                    ExportBill();
-                }
+                //if (MessageBox.Show(Constant.MESSAGE_CONFIRM_EXPORT, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                //{
+                //    ExportBill();
+                //}
 
+                MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + order.Id), Constant.CAPTION_CONFIRM, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RefreshData();
             }
             else
@@ -342,11 +344,12 @@ namespace QuanLyKinhDoanh.Order
                 {
                     if (OrderBus.Insert(order, FormMain.user))
                     {
-                        if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Đơn hàng " + order.Id) + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_CONFIRM_EXPORT, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                        {
-                            ExportBill();
-                        }
+                        //if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Đơn hàng " + order.Id) + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_CONFIRM_EXPORT, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        //{
+                        //    ExportBill();
+                        //}
 
+                        MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + order.Id), Constant.CAPTION_CONFIRM, MessageBoxButtons.OK, MessageBoxIcon.Information);
                         RefreshData();
                     }
                     else
@@ -376,12 +379,10 @@ namespace QuanLyKinhDoanh.Order
         private void UpdateData()
         {
             int idHD = ConvertUtil.ConvertToInt(tbMaHD.Text);
-            long totalBill = ConvertUtil.ConvertToLong(tbTongHoaDon.Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
-            long codBill = ConvertUtil.ConvertToLong(tbGiaCOD.Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
             double codWeight = ConvertUtil.ConvertToDouble(tbTrongLuong.Text);
 
-            DTO.Order order = new DTO.Order(idHD, tbTenKH.Text, tbDienThoai.Text, tbDiaChi.Text,
-                totalBill, cbTinhTrang.Text, tbMaCOD.Text, cbLoaiCOD.Text, codWeight, codBill, tbGhiChu.Text,
+            DTO.Order order = new DTO.Order(idHD, tbTenKH.Text, tbDienThoai.Text, tbContact.Text, tbDiaChi.Text,
+                totalMoney, cbTinhTrang.Text, tbMaCOD.Text, cbLoaiCOD.Text, codWeight, codMoney, tbGhiChu.Text,
                 GetListDetail());
 
             if (OrderBus.Update(order, FormMain.user))

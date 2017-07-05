@@ -70,9 +70,9 @@
             this.lbARR.Location = new System.Drawing.Point(9, 122);
             this.lbARR.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbARR.Name = "lbARR";
-            this.lbARR.Size = new System.Drawing.Size(221, 16);
+            this.lbARR.Size = new System.Drawing.Size(211, 16);
             this.lbARR.TabIndex = 4;
-            this.lbARR.Text = "*Viết ứng dụng Windows, Website\r\n";
+            this.lbARR.Text = "*Viết ứng dụng Windows, Mobile";
             // 
             // lbProductName
             // 
@@ -90,7 +90,7 @@
             this.lbVersion.Location = new System.Drawing.Point(9, 58);
             this.lbVersion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbVersion.Name = "lbVersion";
-            this.lbVersion.Size = new System.Drawing.Size(198, 16);
+            this.lbVersion.Size = new System.Drawing.Size(196, 16);
             this.lbVersion.TabIndex = 2;
             this.lbVersion.Text = "Địa chỉ: Bình Thạnh - TP.HCM";
             // 
@@ -100,9 +100,9 @@
             this.lbCopyright.Location = new System.Drawing.Point(9, 90);
             this.lbCopyright.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbCopyright.Name = "lbCopyright";
-            this.lbCopyright.Size = new System.Drawing.Size(195, 16);
+            this.lbCopyright.Size = new System.Drawing.Size(203, 16);
             this.lbCopyright.TabIndex = 3;
-            this.lbCopyright.Text = "Email: giatuc200@yahoo.com";
+            this.lbCopyright.Text = "Email: giatuc2003@yahoo.com";
             // 
             // AboutCD
             // 
@@ -113,7 +113,7 @@
             this.Controls.Add(this.gbAbout);
             this.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AboutCD";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "About CD";

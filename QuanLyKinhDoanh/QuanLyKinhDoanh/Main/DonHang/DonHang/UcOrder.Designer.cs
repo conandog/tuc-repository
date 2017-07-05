@@ -44,8 +44,8 @@
             this.pnQuanLy = new System.Windows.Forms.Panel();
             this.lvThongTin = new System.Windows.Forms.ListView();
             this.chCheckBox = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chMa = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chSTT = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chMa = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chTen = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chDienThoai = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chOrderDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -260,17 +260,17 @@
             this.chCheckBox.Text = "All";
             this.chCheckBox.Width = 30;
             // 
-            // chMa
-            // 
-            this.chMa.Text = "Mã HĐ";
-            this.chMa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chMa.Width = 55;
-            // 
             // chSTT
             // 
             this.chSTT.Text = "STT";
             this.chSTT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chSTT.Width = 40;
+            // 
+            // chMa
+            // 
+            this.chMa.Text = "Mã HĐ";
+            this.chMa.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.chMa.Width = 55;
             // 
             // chTen
             // 
@@ -293,7 +293,7 @@
             // 
             this.chStatus.Text = "Trạng thái";
             this.chStatus.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.chStatus.Width = 100;
+            this.chStatus.Width = 110;
             // 
             // chNotes
             // 
@@ -304,7 +304,7 @@
             // 
             this.chTotalBill.Text = "Tổng HĐ";
             this.chTotalBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.chTotalBill.Width = 100;
+            this.chTotalBill.Width = 90;
             // 
             // pnTraCuu
             // 
