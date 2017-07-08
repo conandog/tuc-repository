@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Library;
 using DTO;
 using BUS;
+using System.Configuration;
 
 namespace QuanLyKinhDoanh.Order
 {
@@ -36,10 +37,19 @@ namespace QuanLyKinhDoanh.Order
         {
             InitializeComponent();
             isUpdate = true;
+            RefreshData();
             lbSelect.Text = Constant.DEFAULT_TITLE_EDIT;
 
             if (Init())
             {
+                tbTenSP.Enabled = false;
+                tbMaSP.Enabled = false;
+                tbSoLuong.Enabled = false;
+                tbDonGia.Enabled = false;
+                tbThanhTien.Enabled = false;
+                pbXoa.Visible = false;
+                pbAdd.Visible = false;
+
                 foreach (var detail in data.ListDetail)
                 {
                     ListViewItem lvi = new ListViewItem();
@@ -52,10 +62,14 @@ namespace QuanLyKinhDoanh.Order
                     lvThongTin.Items.Add(lvi);
                 }
 
+                tbMaCOD.ReadOnly = true;
                 tbMaCOD.Text = data.CodCode;
+                tbTrongLuong.ReadOnly = true;
                 tbTrongLuong.Text = data.CodWeight == 0 ? String.Empty : data.CodWeight.ToString();
+                cbLoaiCOD.Enabled = false;
                 cbLoaiCOD.Text = data.CodType;
                 codMoney = data.CodBill;
+                tbGiaCOD.ReadOnly = true;
                 tbGiaCOD.Text = codMoney.ToString(Constant.DEFAULT_FORMAT_MONEY);
                 cbTinhTrang.Text = data.Status;
 
@@ -64,10 +78,16 @@ namespace QuanLyKinhDoanh.Order
                 tbTongHoaDon.Text = (totalMoney + codMoney).ToString(Constant.DEFAULT_FORMAT_MONEY);
                 tbGhiChu.Text = data.Notes;
 
+                tbTenKH.ReadOnly = true;
                 tbTenKH.Text = data.Name;
                 tbDienThoai.Text = data.Phone;
                 tbContact.Text = data.Contact;
                 tbDiaChi.Text = data.Address;
+
+                if (data.Status != DTO.Order.ListStatus[0])
+                {
+                    cbTinhTrang.Enabled = false;
+                }
             }
             else
             {
@@ -136,6 +156,12 @@ namespace QuanLyKinhDoanh.Order
             tbTrongLuong.Text = String.Empty;
             cbLoaiCOD.Text = String.Empty;
             tbGiaCOD.Text = String.Empty;
+
+            if (cbTinhTrang.Items.Count == 0)
+            {
+                cbTinhTrang.Items.AddRange(DTO.Order.ListStatus.ToArray());
+            }
+
             cbTinhTrang.SelectedIndex = 0;
 
             tbMaHD.Text = CreateNewId().ToString();
@@ -247,6 +273,7 @@ namespace QuanLyKinhDoanh.Order
             }
 
             tbSoLuong.Text = "1";
+            CheckItemsToSetCodBill();
             tbGiaCOD_TextChanged(null, null);
         }
 
@@ -270,7 +297,34 @@ namespace QuanLyKinhDoanh.Order
                 }
             }
 
+            CheckItemsToSetCodBill();
             tbGiaCOD_TextChanged(null, null);
+        }
+
+        private void CheckItemsToSetCodBill()
+        {
+            int defaultItemsForFreeCod = ConvertUtil.ConvertToInt(ConfigurationManager.AppSettings["soluongspmienphigh"]);
+            string defaultCodBill = ConfigurationManager.AppSettings["giacuoc"] == null ? "30000" : ConfigurationManager.AppSettings["giacuoc"];
+
+            //set default to 3 if there is no setting
+            if (defaultItemsForFreeCod == 0)
+            {
+                defaultItemsForFreeCod = 3;
+            }
+
+            string currentCodBill = tbGiaCOD.Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty);
+
+            if (String.IsNullOrEmpty(tbGiaCOD.Text) || currentCodBill == defaultCodBill)
+            {
+                if (lvThongTin.Items.Count < defaultItemsForFreeCod)
+                {
+                    tbGiaCOD.Text = defaultCodBill;
+                }
+                else
+                {
+                    tbGiaCOD.Text = String.Empty;
+                }
+            }
         }
 
         private int CreateNewId()
@@ -613,6 +667,26 @@ namespace QuanLyKinhDoanh.Order
         private void tbTenKH_TextChanged(object sender, EventArgs e)
         {
             ValidateHoanTat();
+        }
+
+        private void tbSoLuong_Enter(object sender, EventArgs e)
+        {
+            tbSoLuong.SelectAll();
+        }
+
+        private void tbDonGia_Enter(object sender, EventArgs e)
+        {
+            tbDonGia.SelectAll();
+        }
+
+        private void tbTrongLuong_Enter(object sender, EventArgs e)
+        {
+            tbTrongLuong.SelectAll();
+        }
+
+        private void tbGiaCOD_Enter(object sender, EventArgs e)
+        {
+            tbGiaCOD.SelectAll();
         }
     }
 }

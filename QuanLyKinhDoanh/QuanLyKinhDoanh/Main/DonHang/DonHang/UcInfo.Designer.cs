@@ -38,6 +38,8 @@
             this.chDonGia = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chThanhTien = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gbInfo = new System.Windows.Forms.GroupBox();
+            this.tbContact = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.tbDienThoai = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tbDiaChi = new System.Windows.Forms.TextBox();
@@ -90,8 +92,6 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.label39 = new System.Windows.Forms.Label();
             this.pbHuy = new System.Windows.Forms.PictureBox();
-            this.tbContact = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.pnInfo.SuspendLayout();
             this.gbInfo.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -200,6 +200,24 @@
             this.gbInfo.TabIndex = 199;
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Thông tin khách hàng";
+            // 
+            // tbContact
+            // 
+            this.tbContact.Location = new System.Drawing.Point(695, 30);
+            this.tbContact.MaxLength = 50;
+            this.tbContact.Name = "tbContact";
+            this.tbContact.Size = new System.Drawing.Size(233, 23);
+            this.tbContact.TabIndex = 208;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.ForeColor = System.Drawing.Color.Black;
+            this.label17.Location = new System.Drawing.Point(628, 33);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(61, 16);
+            this.label17.TabIndex = 211;
+            this.label17.Text = "Zalo/FB:";
             // 
             // tbDienThoai
             // 
@@ -411,6 +429,7 @@
             this.tbTrongLuong.Size = new System.Drawing.Size(60, 23);
             this.tbTrongLuong.TabIndex = 115;
             this.tbTrongLuong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbTrongLuong.Enter += new System.EventHandler(this.tbTrongLuong_Enter);
             this.tbTrongLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTrongLuong_KeyPress);
             // 
             // label10
@@ -493,6 +512,7 @@
             this.tbGiaCOD.TabIndex = 120;
             this.tbGiaCOD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbGiaCOD.TextChanged += new System.EventHandler(this.tbGiaCOD_TextChanged);
+            this.tbGiaCOD.Enter += new System.EventHandler(this.tbGiaCOD_Enter);
             this.tbGiaCOD.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbGiaCOD_KeyPress);
             // 
             // label9
@@ -523,10 +543,6 @@
             // 
             this.cbTinhTrang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTinhTrang.FormattingEnabled = true;
-            this.cbTinhTrang.Items.AddRange(new object[] {
-            "Đã gửi",
-            "Phát thành công",
-            "Từ chối nhận"});
             this.cbTinhTrang.Location = new System.Drawing.Point(88, 70);
             this.cbTinhTrang.Name = "cbTinhTrang";
             this.cbTinhTrang.Size = new System.Drawing.Size(100, 24);
@@ -688,6 +704,7 @@
             this.tbDonGia.TabIndex = 15;
             this.tbDonGia.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.tbDonGia.TextChanged += new System.EventHandler(this.tbGiaBan_TextChanged);
+            this.tbDonGia.Enter += new System.EventHandler(this.tbDonGia_Enter);
             this.tbDonGia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbGiaBan_KeyPress);
             // 
             // label5
@@ -719,6 +736,7 @@
             this.tbSoLuong.TabIndex = 10;
             this.tbSoLuong.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tbSoLuong.TextChanged += new System.EventHandler(this.tbSoLuong_TextChanged);
+            this.tbSoLuong.Enter += new System.EventHandler(this.tbSoLuong_Enter);
             this.tbSoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSoLuong_KeyPress);
             // 
             // label14
@@ -759,24 +777,6 @@
             this.pbHuy.Click += new System.EventHandler(this.pbHuy_Click);
             this.pbHuy.MouseEnter += new System.EventHandler(this.pbHuy_MouseEnter);
             this.pbHuy.MouseLeave += new System.EventHandler(this.pbHuy_MouseLeave);
-            // 
-            // tbContact
-            // 
-            this.tbContact.Location = new System.Drawing.Point(695, 30);
-            this.tbContact.MaxLength = 50;
-            this.tbContact.Name = "tbContact";
-            this.tbContact.Size = new System.Drawing.Size(233, 23);
-            this.tbContact.TabIndex = 208;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(628, 33);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(61, 16);
-            this.label17.TabIndex = 211;
-            this.label17.Text = "Zalo/FB:";
             // 
             // UcInfo
             // 

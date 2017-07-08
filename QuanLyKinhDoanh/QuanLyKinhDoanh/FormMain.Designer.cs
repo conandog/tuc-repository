@@ -564,7 +564,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "QUAN LY KINH DOANH 5.1";
+            this.Text = "QUAN LY KINH DOANH 5.2";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.Form_Main_Load);
             this.pnMain.ResumeLayout(false);

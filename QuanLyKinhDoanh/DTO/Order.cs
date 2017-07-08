@@ -30,6 +30,14 @@ namespace DTO
 
         public List<OrderDetails> ListDetail;
 
+        public static List<string> ListStatus
+        {
+            get
+            {
+                return new List<string>() { "Đã gửi", "Phát thành công", "Từ chối nhận" };
+            }
+        }
+
         public Order()
         {
             //Default constructor
