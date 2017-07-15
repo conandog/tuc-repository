@@ -173,6 +173,12 @@
     <Compile Include="Main\BaoCao\Thu\UcInfo.Designer.cs">
       <DependentUpon>UcInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Main\DonHang\DonHang\FormPrintPreview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\DonHang\DonHang\FormPrintPreview.Designer.cs">
+      <DependentUpon>FormPrintPreview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\DonHang\DonHang\UcDetail.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -190,6 +196,12 @@
     </Compile>
     <Compile Include="Main\DonHang\DonHang\UcInfo.Designer.cs">
       <DependentUpon>UcInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\DonHang\DonHang\UcPrint.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Main\DonHang\DonHang\UcPrint.Designer.cs">
+      <DependentUpon>UcPrint.cs</DependentUpon>
     </Compile>
     <Compile Include="Main\DonHang\UcOrderIndex.cs">
       <SubType>UserControl</SubType>
@@ -500,6 +512,9 @@
     <EmbeddedResource Include="Main\BaoCao\Thu\UcInfo.resx">
       <DependentUpon>UcInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main\DonHang\DonHang\FormPrintPreview.resx">
+      <DependentUpon>FormPrintPreview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main\DonHang\DonHang\UcDetail.resx">
       <DependentUpon>UcDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -508,6 +523,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\DonHang\DonHang\UcInfo.resx">
       <DependentUpon>UcInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\DonHang\DonHang\UcPrint.resx">
+      <DependentUpon>UcPrint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\DonHang\UcOrderIndex.resx">
       <DependentUpon>UcOrderIndex.cs</DependentUpon>

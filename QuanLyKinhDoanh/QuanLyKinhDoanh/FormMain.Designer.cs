@@ -342,6 +342,8 @@
             this.pbDonHang.TabIndex = 29;
             this.pbDonHang.TabStop = false;
             this.pbDonHang.Click += new System.EventHandler(this.pbDonHang_Click);
+            this.pbDonHang.MouseEnter += new System.EventHandler(this.pbDonHang_MouseEnter);
+            this.pbDonHang.MouseLeave += new System.EventHandler(this.pbDonHang_MouseLeave);
             // 
             // lbTool
             // 

@@ -10,6 +10,7 @@ using Library;
 using DTO;
 using BUS;
 using System.Configuration;
+using System.Drawing.Printing;
 
 namespace QuanLyKinhDoanh.Order
 {
@@ -18,6 +19,12 @@ namespace QuanLyKinhDoanh.Order
         private long totalMoney;
         private long codMoney;
         private bool isUpdate;
+
+        private PageSetupDialog pgSetupDialog;
+        private PageSettings pgSettings;
+        private PrinterSettings prtSettings;
+        private PrintPreviewDialog dlg;
+        private DTO.Order printData;
 
         public UcInfo()
         {
@@ -179,6 +186,35 @@ namespace QuanLyKinhDoanh.Order
             ValidateHoanTat();
         }
 
+        private void InitPrintDefault()
+        {
+            pgSetupDialog = new PageSetupDialog();
+            pgSettings = new PageSettings();
+            prtSettings = new PrinterSettings();
+            dlg = new PrintPreviewDialog();
+
+            IEnumerable<PaperSize> paperSizes = printDocumentBill.PrinterSettings.PaperSizes.Cast<PaperSize>();
+            PaperSize sizeA5 = null;
+
+            if (paperSizes.Any(size => size.Kind == PaperKind.A5))
+            {
+                sizeA5 = paperSizes.First<PaperSize>(size => size.Kind == PaperKind.A5);
+            }
+            else
+            {
+                sizeA5 = new PaperSize("Custom", 583, 827);
+            }
+
+            pgSettings.PaperSize = sizeA5;
+            pgSettings.Margins = new Margins(0, 0, 0, 0);
+            pgSetupDialog.PageSettings = pgSettings;
+            pgSetupDialog.PageSettings.PaperSize = pgSettings.PaperSize;
+            pgSetupDialog.PageSettings.Landscape = true;
+            pgSetupDialog.PrinterSettings = prtSettings;
+            pgSetupDialog.AllowOrientation = true;
+            pgSetupDialog.AllowMargins = false;
+        }
+
         private void ValidateInput()
         {
             if (!string.IsNullOrEmpty(tbTenSP.Text) &&
@@ -303,8 +339,8 @@ namespace QuanLyKinhDoanh.Order
 
         private void CheckItemsToSetCodBill()
         {
-            int defaultItemsForFreeCod = ConvertUtil.ConvertToInt(ConfigurationManager.AppSettings["soluongspmienphigh"]);
-            string defaultCodBill = ConfigurationManager.AppSettings["giacuoc"] == null ? "30000" : ConfigurationManager.AppSettings["giacuoc"];
+            int defaultItemsForFreeCod = ConvertUtil.ConvertToInt(ConfigurationManager.AppSettings["so_luong_sp_mien_phi_gh"]);
+            string defaultCodBill = ConfigurationManager.AppSettings["gia_cuoc"] == null ? "30000" : ConfigurationManager.AppSettings["gia_cuoc"];
 
             //set default to 3 if there is no setting
             if (defaultItemsForFreeCod == 0)
@@ -384,12 +420,29 @@ namespace QuanLyKinhDoanh.Order
 
             if (OrderBus.Insert(order, FormMain.user))
             {
-                //if (MessageBox.Show(Constant.MESSAGE_CONFIRM_EXPORT, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                //{
-                //    ExportBill();
-                //}
+                if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + order.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
+                        Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    printData = order;
+                    InitPrintDefault();
 
-                MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + order.Id), Constant.CAPTION_CONFIRM, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (pgSetupDialog.PageSettings != null)
+                    {
+                        pgSettings = pgSetupDialog.PageSettings;
+                    }
+                    else
+                    {
+                        pgSettings.Landscape = true;
+                    }
+
+                    printDocumentBill.DefaultPageSettings = pgSettings;
+                    dlg.Document = printDocumentBill;
+
+                    ((Form)dlg).WindowState = FormWindowState.Maximized;
+                    dlg.ShowDialog();
+                    printData = null;
+                }
+
                 RefreshData();
             }
             else
@@ -398,12 +451,29 @@ namespace QuanLyKinhDoanh.Order
                 {
                     if (OrderBus.Insert(order, FormMain.user))
                     {
-                        //if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Đơn hàng " + order.Id) + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_CONFIRM_EXPORT, Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                        //{
-                        //    ExportBill();
-                        //}
+                        if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + order.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
+                                Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        {
+                            printData = order;
+                            InitPrintDefault();
 
-                        MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + order.Id), Constant.CAPTION_CONFIRM, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (pgSetupDialog.PageSettings != null)
+                            {
+                                pgSettings = pgSetupDialog.PageSettings;
+                            }
+                            else
+                            {
+                                pgSettings.Landscape = true;
+                            }
+
+                            printDocumentBill.DefaultPageSettings = pgSettings;
+                            dlg.Document = printDocumentBill;
+
+                            ((Form)dlg).WindowState = FormWindowState.Maximized;
+                            dlg.ShowDialog();
+                            printData = null;
+                        }
+
                         RefreshData();
                     }
                     else
@@ -687,6 +757,14 @@ namespace QuanLyKinhDoanh.Order
         private void tbGiaCOD_Enter(object sender, EventArgs e)
         {
             tbGiaCOD.SelectAll();
+        }
+
+        private void printDocumentBill_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            UcPrint ucPrint = new UcPrint(printData);
+            var bitmap = new Bitmap(ucPrint.Width, ucPrint.Height);
+            ucPrint.DrawToBitmap(bitmap, new Rectangle(0, 0, ucPrint.Width, ucPrint.Height));
+            e.Graphics.DrawImage(bitmap, 0, 0);
         }
     }
 }

@@ -92,6 +92,7 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.label39 = new System.Windows.Forms.Label();
             this.pbHuy = new System.Windows.Forms.PictureBox();
+            this.printDocumentBill = new System.Drawing.Printing.PrintDocument();
             this.pnInfo.SuspendLayout();
             this.gbInfo.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -778,6 +779,10 @@
             this.pbHuy.MouseEnter += new System.EventHandler(this.pbHuy_MouseEnter);
             this.pbHuy.MouseLeave += new System.EventHandler(this.pbHuy_MouseLeave);
             // 
+            // printDocumentBill
+            // 
+            this.printDocumentBill.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentBill_PrintPage);
+            // 
             // UcInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -887,5 +892,6 @@
         private System.Windows.Forms.PictureBox pbHuy;
         private System.Windows.Forms.TextBox tbContact;
         private System.Windows.Forms.Label label17;
+        private System.Drawing.Printing.PrintDocument printDocumentBill;
     }
 }

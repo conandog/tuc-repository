@@ -157,7 +157,7 @@ namespace QuanLyKinhDoanh
             pbThuChi.Image = Image.FromFile(ConstantResource.THUCHI_ICON_THUCHI);
             pbThanhToan.Image = Image.FromFile(ConstantResource.GIAODICH_ICON_THANHTOAN);
             pbTool.Image = Image.FromFile(ConstantResource.TOOL_ICON_TOOL);
-            //pbDonHang.Image = Image.FromFile(ConstantResource.TOOL_ICON_TOOL);
+            pbDonHang.Image = Image.FromFile(ConstantResource.DONHANG_ICON_DONHANG);
 
             pbUser.Enabled = true;
             pbKhachHang.Enabled = true;
@@ -605,7 +605,29 @@ namespace QuanLyKinhDoanh
                 Init();
                 isMainMenuClickDonHang = true;
 
-                //pbDonHang.Image = Image.FromFile(ConstantResource.USER_ICON_USER_MOUSEOVER);
+                pbDonHang.Image = Image.FromFile(ConstantResource.DONHANG_ICON_DONHANG_MOUSEOVER);
+                lbDonHang.ForeColor = Constant.COLOR_IN_USE;
+            }
+        }
+
+        private void pbDonHang_MouseEnter(object sender, EventArgs e)
+        {
+            pbDonHang.Image = Image.FromFile(ConstantResource.DONHANG_ICON_DONHANG_MOUSEOVER);
+            lbDonHang.ForeColor = Constant.COLOR_MOUSEOVER;
+
+            ttDetail.SetToolTip(pbDonHang, Constant.TOOLTIP_DONHANG);
+        }
+
+        private void pbDonHang_MouseLeave(object sender, EventArgs e)
+        {
+            if (!isMainMenuClickDonHang)
+            {
+                pbDonHang.Image = Image.FromFile(ConstantResource.DONHANG_ICON_DONHANG);
+                lbDonHang.ForeColor = Constant.COLOR_NORMAL;
+            }
+            else
+            {
+                pbDonHang.Image = Image.FromFile(ConstantResource.DONHANG_ICON_DONHANG_MOUSEOVER);
                 lbDonHang.ForeColor = Constant.COLOR_IN_USE;
             }
         }

@@ -97,6 +97,7 @@ namespace Library
         public const string TOOLTIP_THUCHI = "Quản lý Thu - Chi";
         public const string TOOLTIP_THANHTOAN = "Thanh toán hóa đơn bán hàng";
         public const string TOOLTIP_TOOL = "Công cụ hỗ trợ khác";
+        public const string TOOLTIP_DONHANG = "Quản lý đơn hàng";
         public const string TOOLTIP_LISTVIEW_RIGHTCLICK = "Chuột phải để xem chi tiết";
 
         /// <summary>

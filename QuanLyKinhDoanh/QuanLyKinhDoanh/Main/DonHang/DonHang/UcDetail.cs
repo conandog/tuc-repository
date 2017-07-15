@@ -85,7 +85,6 @@ namespace QuanLyKinhDoanh.Order
                 lvThongTin.Items.Add(lvi);
             }
 
-            
             lbMaCOD.Text = data.CodCode;
             lbTrongLuong.Text = data.CodWeight == 0 ? String.Empty : data.CodWeight.ToString();
             lbLoaiCOD.Text = data.CodType;

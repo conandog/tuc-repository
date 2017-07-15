@@ -62,13 +62,13 @@ namespace QuanLyKinhDoanh
 
         private void pbOrder_MouseEnter(object sender, EventArgs e)
         {
-            //pbOrder.Image = Image.FromFile(ConstantResource.KHACHHANG_ICON_KHACHHANG_INDEX_MOUSEOVER);
+            pbOrder.Image = Image.FromFile(ConstantResource.DONHANG_ICON_DONHANG_INDEX_MOUSEOVER);
             lbSanPham.ForeColor = Constant.COLOR_MOUSEOVER;
         }
 
         private void pbOrder_MouseLeave(object sender, EventArgs e)
         {
-            //pbOrder.Image = Image.FromFile(ConstantResource.KHACHHANG_ICON_KHACHHANG_INDEX);
+            pbOrder.Image = Image.FromFile(ConstantResource.DONHANG_ICON_DONHANG_INDEX);
             lbSanPham.ForeColor = Constant.COLOR_NORMAL;
         }
     }
