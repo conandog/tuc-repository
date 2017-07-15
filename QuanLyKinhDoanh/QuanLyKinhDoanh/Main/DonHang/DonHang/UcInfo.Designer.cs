@@ -92,7 +92,6 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.label39 = new System.Windows.Forms.Label();
             this.pbHuy = new System.Windows.Forms.PictureBox();
-            this.printDocumentBill = new System.Drawing.Printing.PrintDocument();
             this.pnInfo.SuspendLayout();
             this.gbInfo.SuspendLayout();
             this.panel12.SuspendLayout();
@@ -195,7 +194,7 @@
             this.gbInfo.Controls.Add(this.tbTenKH);
             this.gbInfo.Controls.Add(this.lbTen);
             this.gbInfo.ForeColor = System.Drawing.Color.Orange;
-            this.gbInfo.Location = new System.Drawing.Point(27, 393);
+            this.gbInfo.Location = new System.Drawing.Point(27, 383);
             this.gbInfo.Name = "gbInfo";
             this.gbInfo.Size = new System.Drawing.Size(940, 110);
             this.gbInfo.TabIndex = 199;
@@ -297,21 +296,23 @@
             // 
             this.lbNgayGio.AutoSize = true;
             this.lbNgayGio.ForeColor = System.Drawing.Color.Black;
-            this.lbNgayGio.Location = new System.Drawing.Point(102, 18);
+            this.lbNgayGio.Location = new System.Drawing.Point(101, 16);
             this.lbNgayGio.Name = "lbNgayGio";
             this.lbNgayGio.Size = new System.Drawing.Size(149, 16);
             this.lbNgayGio.TabIndex = 140;
             this.lbNgayGio.Text = "dd/MM/yyyy - hh:mm tt";
+            this.lbNgayGio.Visible = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(36, 18);
+            this.label1.Location = new System.Drawing.Point(35, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 16);
             this.label1.TabIndex = 122;
             this.label1.Text = "Ngày giờ:";
+            this.label1.Visible = false;
             // 
             // dtpNgayGio
             // 
@@ -328,7 +329,7 @@
             // 
             this.panel12.Controls.Add(this.label47);
             this.panel12.Controls.Add(this.pbHoanTat);
-            this.panel12.Location = new System.Drawing.Point(690, 500);
+            this.panel12.Location = new System.Drawing.Point(690, 490);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(70, 60);
             this.panel12.TabIndex = 128;
@@ -415,7 +416,7 @@
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.ForeColor = System.Drawing.Color.Orange;
-            this.groupBox2.Location = new System.Drawing.Point(27, 277);
+            this.groupBox2.Location = new System.Drawing.Point(27, 267);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(940, 110);
             this.groupBox2.TabIndex = 99;
@@ -606,7 +607,7 @@
             this.groupBox1.Controls.Add(this.tbSoLuong);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.ForeColor = System.Drawing.Color.Orange;
-            this.groupBox1.Location = new System.Drawing.Point(27, 45);
+            this.groupBox1.Location = new System.Drawing.Point(27, 35);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(940, 226);
             this.groupBox1.TabIndex = 1;
@@ -754,7 +755,7 @@
             // 
             this.panel8.Controls.Add(this.label39);
             this.panel8.Controls.Add(this.pbHuy);
-            this.panel8.Location = new System.Drawing.Point(245, 500);
+            this.panel8.Location = new System.Drawing.Point(245, 490);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(70, 60);
             this.panel8.TabIndex = 200;
@@ -778,10 +779,6 @@
             this.pbHuy.Click += new System.EventHandler(this.pbHuy_Click);
             this.pbHuy.MouseEnter += new System.EventHandler(this.pbHuy_MouseEnter);
             this.pbHuy.MouseLeave += new System.EventHandler(this.pbHuy_MouseLeave);
-            // 
-            // printDocumentBill
-            // 
-            this.printDocumentBill.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentBill_PrintPage);
             // 
             // UcInfo
             // 
@@ -892,6 +889,5 @@
         private System.Windows.Forms.PictureBox pbHuy;
         private System.Windows.Forms.TextBox tbContact;
         private System.Windows.Forms.Label label17;
-        private System.Drawing.Printing.PrintDocument printDocumentBill;
     }
 }

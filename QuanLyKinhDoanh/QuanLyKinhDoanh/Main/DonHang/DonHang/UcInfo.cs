@@ -10,7 +10,6 @@ using Library;
 using DTO;
 using BUS;
 using System.Configuration;
-using System.Drawing.Printing;
 
 namespace QuanLyKinhDoanh.Order
 {
@@ -19,12 +18,6 @@ namespace QuanLyKinhDoanh.Order
         private long totalMoney;
         private long codMoney;
         private bool isUpdate;
-
-        private PageSetupDialog pgSetupDialog;
-        private PageSettings pgSettings;
-        private PrinterSettings prtSettings;
-        private PrintPreviewDialog dlg;
-        private DTO.Order printData;
 
         public UcInfo()
         {
@@ -169,6 +162,11 @@ namespace QuanLyKinhDoanh.Order
                 cbTinhTrang.Items.AddRange(DTO.Order.ListStatus.ToArray());
             }
 
+            if (!isUpdate)
+            {
+                cbTinhTrang.Enabled = false;
+            }
+
             cbTinhTrang.SelectedIndex = 0;
 
             tbMaHD.Text = CreateNewId().ToString();
@@ -182,37 +180,7 @@ namespace QuanLyKinhDoanh.Order
             pbXoa.Enabled = false;
             pbXoa.Image = Image.FromFile(ConstantResource.CHUC_NANG_ICON_DELETE_DISABLE);
 
-            
             ValidateHoanTat();
-        }
-
-        private void InitPrintDefault()
-        {
-            pgSetupDialog = new PageSetupDialog();
-            pgSettings = new PageSettings();
-            prtSettings = new PrinterSettings();
-            dlg = new PrintPreviewDialog();
-
-            IEnumerable<PaperSize> paperSizes = printDocumentBill.PrinterSettings.PaperSizes.Cast<PaperSize>();
-            PaperSize sizeA5 = null;
-
-            if (paperSizes.Any(size => size.Kind == PaperKind.A5))
-            {
-                sizeA5 = paperSizes.First<PaperSize>(size => size.Kind == PaperKind.A5);
-            }
-            else
-            {
-                sizeA5 = new PaperSize("Custom", 583, 827);
-            }
-
-            pgSettings.PaperSize = sizeA5;
-            pgSettings.Margins = new Margins(0, 0, 0, 0);
-            pgSetupDialog.PageSettings = pgSettings;
-            pgSetupDialog.PageSettings.PaperSize = pgSettings.PaperSize;
-            pgSetupDialog.PageSettings.Landscape = true;
-            pgSetupDialog.PrinterSettings = prtSettings;
-            pgSetupDialog.AllowOrientation = true;
-            pgSetupDialog.AllowMargins = false;
         }
 
         private void ValidateInput()
@@ -279,20 +247,6 @@ namespace QuanLyKinhDoanh.Order
         {
             //int soLuong = 0;
             bool isDuplicated = false;
-
-            //foreach (ListViewItem item in lvThongTin.Items)
-            //{
-            //    if (item.SubItems[3].Text == tbMaSP.Text)
-            //    {
-            //        soLuong = ConvertUtil.ConvertToInt(item.SubItems[4].Text) + ConvertUtil.ConvertToInt(tbSoLuong.Text);
-            //        item.SubItems[4].Text = soLuong.ToString();
-            //        item.SubItems[6].Text = (ConvertUtil.ConvertToInt(tbThanhTien.Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty)) +
-            //            ConvertUtil.ConvertToInt(item.SubItems[6].Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty))).ToString(Constant.DEFAULT_FORMAT_MONEY);
-            //        isDuplicated = true;
-            //        break;
-            //    }
-            //}
-
             totalMoney += ConvertUtil.ConvertToLong(tbThanhTien.Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
             tbTongHoaDon.Text = (totalMoney + codMoney).ToString(Constant.DEFAULT_FORMAT_MONEY);
 
@@ -423,24 +377,7 @@ namespace QuanLyKinhDoanh.Order
                 if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + order.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
                         Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
-                    printData = order;
-                    InitPrintDefault();
-
-                    if (pgSetupDialog.PageSettings != null)
-                    {
-                        pgSettings = pgSetupDialog.PageSettings;
-                    }
-                    else
-                    {
-                        pgSettings.Landscape = true;
-                    }
-
-                    printDocumentBill.DefaultPageSettings = pgSettings;
-                    dlg.Document = printDocumentBill;
-
-                    ((Form)dlg).WindowState = FormWindowState.Maximized;
-                    dlg.ShowDialog();
-                    printData = null;
+                    UcPrint ucPrint = new UcPrint(order);
                 }
 
                 RefreshData();
@@ -454,24 +391,7 @@ namespace QuanLyKinhDoanh.Order
                         if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + order.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
                                 Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
-                            printData = order;
-                            InitPrintDefault();
-
-                            if (pgSetupDialog.PageSettings != null)
-                            {
-                                pgSettings = pgSetupDialog.PageSettings;
-                            }
-                            else
-                            {
-                                pgSettings.Landscape = true;
-                            }
-
-                            printDocumentBill.DefaultPageSettings = pgSettings;
-                            dlg.Document = printDocumentBill;
-
-                            ((Form)dlg).WindowState = FormWindowState.Maximized;
-                            dlg.ShowDialog();
-                            printData = null;
+                            UcPrint ucPrint = new UcPrint(order);
                         }
 
                         RefreshData();
@@ -511,6 +431,12 @@ namespace QuanLyKinhDoanh.Order
 
             if (OrderBus.Update(order, FormMain.user))
             {
+                if (MessageBox.Show(String.Format(Constant.MESSAGE_UPDATE_SUCCESS, "Hóa đơn " + order.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
+                        Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    UcPrint ucPrint = new UcPrint(order);
+                }
+
                 this.Dispose();
             }
             else
@@ -757,14 +683,6 @@ namespace QuanLyKinhDoanh.Order
         private void tbGiaCOD_Enter(object sender, EventArgs e)
         {
             tbGiaCOD.SelectAll();
-        }
-
-        private void printDocumentBill_PrintPage(object sender, PrintPageEventArgs e)
-        {
-            UcPrint ucPrint = new UcPrint(printData);
-            var bitmap = new Bitmap(ucPrint.Width, ucPrint.Height);
-            ucPrint.DrawToBitmap(bitmap, new Rectangle(0, 0, ucPrint.Width, ucPrint.Height));
-            e.Graphics.DrawImage(bitmap, 0, 0);
         }
     }
 }

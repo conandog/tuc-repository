@@ -285,7 +285,7 @@
             // 
             // chOrderDate
             // 
-            this.chOrderDate.Text = "Ngày đặt hàng";
+            this.chOrderDate.Text = "Ngày cập nhật";
             this.chOrderDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.chOrderDate.Width = 130;
             // 

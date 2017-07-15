@@ -1,0 +1,262 @@
+{
+  "Information": "{\"Name\":\"Ngọc Đăng\",\"AppVersion\":\"5.0.0.0\",\"DataVersion\":\"1.0.0.0\",\"CreatedDate\":\"2017-07-05T22:11:39.4309013+07:00\"}",
+  "Order": [
+    {
+      "Id": 1,
+      "Name": "Túc Nguyễn",
+      "Phone": "0907496225",
+      "Address": "123",
+      "TotalBill": 520000,
+      "Status": "Phát thành công",
+      "CodCode": "Test",
+      "CodType": "Viettel",
+      "CodWeight": 12.0,
+      "CodBill": 20000,
+      "Notes": "",
+      "CreatedDate": "2017-07-05T22:56:41.6411511+07:00",
+      "CreatedBy": "admin",
+      "UpdatedDate": "2017-07-05T23:33:23.3127488+07:00",
+      "UpdatedBy": "admin",
+      "DeleteFlag": false,
+      "ListDetail": [
+        {
+          "Name": "Áo thêu",
+          "Id": "",
+          "Quantity": 2,
+          "Price": 150000,
+          "Total": 300000
+        },
+        {
+          "Name": "Áo thêu",
+          "Id": "",
+          "Quantity": 1,
+          "Price": 150000,
+          "Total": 150000
+        },
+        {
+          "Name": "vải thêu",
+          "Id": "",
+          "Quantity": 4,
+          "Price": 12500,
+          "Total": 50000
+        }
+      ]
+    },
+    {
+      "Id": 2,
+      "Name": "Test",
+      "Phone": "01268",
+      "Address": "",
+      "TotalBill": 620000,
+      "Status": "Từ chối nhận",
+      "CodCode": "",
+      "CodType": "Viettel",
+      "CodWeight": 0.0,
+      "CodBill": 10000,
+      "Notes": "",
+      "CreatedDate": "2017-07-05T22:57:20.2062618+07:00",
+      "CreatedBy": "admin",
+      "UpdatedDate": "2017-07-06T00:15:35.7033992+07:00",
+      "UpdatedBy": "admin",
+      "DeleteFlag": false,
+      "ListDetail": [
+        {
+          "Name": "Áo XYZ",
+          "Id": "123",
+          "Quantity": 2,
+          "Price": 300000,
+          "Total": 600000
+        },
+        {
+          "Name": "test 2",
+          "Id": "",
+          "Quantity": 1,
+          "Price": 20000,
+          "Total": 20000
+        }
+      ],
+      "Contact": "Tuc Nguyen"
+    },
+    {
+      "Id": 3,
+      "Name": "Khanh",
+      "Phone": "089456",
+      "Address": "",
+      "TotalBill": 246800,
+      "Status": "Đã gửi",
+      "CodCode": "",
+      "CodType": "",
+      "CodWeight": 2.0,
+      "CodBill": 14800,
+      "Notes": "TEST 123",
+      "CreatedDate": "2017-07-05T23:38:54.8368004+07:00",
+      "CreatedBy": "admin",
+      "UpdatedDate": "2017-07-05T23:38:54.8368004+07:00",
+      "UpdatedBy": "admin",
+      "DeleteFlag": false,
+      "ListDetail": [
+        {
+          "Name": "Test 123",
+          "Id": "",
+          "Quantity": 2,
+          "Price": 123400,
+          "Total": 246800
+        }
+      ]
+    },
+    {
+      "Id": 4,
+      "Name": "Nhi",
+      "Phone": "",
+      "Contact": "zalo",
+      "Address": "",
+      "TotalBill": 24000,
+      "Status": "Đã gửi",
+      "CodCode": "",
+      "CodType": "",
+      "CodWeight": 0.0,
+      "CodBill": 0,
+      "Notes": "",
+      "CreatedDate": "2017-07-06T00:16:14.3840275+07:00",
+      "CreatedBy": "admin",
+      "UpdatedDate": "2017-07-06T00:16:14.3840275+07:00",
+      "UpdatedBy": "admin",
+      "DeleteFlag": false,
+      "ListDetail": [
+        {
+          "Name": "Test 111",
+          "Id": "",
+          "Quantity": 2,
+          "Price": 12000,
+          "Total": 24000
+        }
+      ]
+    },
+    {
+      "Id": 5,
+      "Name": "Nguyễn Gia Túc",
+      "Phone": "0907496225",
+      "Contact": "",
+      "Address": "Bình Thạnh",
+      "TotalBill": 170000,
+      "Status": "Đã gửi",
+      "CodCode": "",
+      "CodType": "",
+      "CodWeight": 0.0,
+      "CodBill": 30000,
+      "Notes": "",
+      "CreatedDate": "2017-07-11T01:53:31.1730255+07:00",
+      "CreatedBy": "admin",
+      "UpdatedDate": "2017-07-11T01:53:31.1730255+07:00",
+      "UpdatedBy": "admin",
+      "DeleteFlag": false,
+      "ListDetail": [
+        {
+          "Name": "SP 1",
+          "Id": "",
+          "Quantity": 2,
+          "Price": 10000,
+          "Total": 20000
+        },
+        {
+          "Name": "SP 2",
+          "Id": "",
+          "Quantity": 3,
+          "Price": 50000,
+          "Total": 150000
+        }
+      ]
+    },
+    {
+      "Id": 6,
+      "Name": "TEST",
+      "Phone": "123456789",
+      "Contact": "",
+      "Address": "123 abc",
+      "TotalBill": 420000,
+      "Status": "Từ chối nhận",
+      "CodCode": "",
+      "CodType": "",
+      "CodWeight": 0.0,
+      "CodBill": 30000,
+      "Notes": "",
+      "CreatedDate": "2017-07-11T01:54:34.9140524+07:00",
+      "CreatedBy": "admin",
+      "UpdatedDate": "2017-07-15T22:38:31.8953908+07:00",
+      "UpdatedBy": "admin",
+      "DeleteFlag": false,
+      "ListDetail": [
+        {
+          "Name": "SP1",
+          "Id": "",
+          "Quantity": 3,
+          "Price": 120000,
+          "Total": 360000
+        },
+        {
+          "Name": "SP2",
+          "Id": "",
+          "Quantity": 3,
+          "Price": 20000,
+          "Total": 60000
+        }
+      ]
+    },
+    {
+      "Id": 7,
+      "Name": "Testing",
+      "Phone": "0907496225",
+      "Contact": "",
+      "Address": "31/19 Tran Quy Cap, P12, Q.Binh Thanh, Tp.Ho Chi Minh",
+      "TotalBill": 222222,
+      "Status": "Phát thành công",
+      "CodCode": "",
+      "CodType": "",
+      "CodWeight": 0.0,
+      "CodBill": 30000,
+      "Notes": "",
+      "CreatedDate": "2017-07-15T21:30:20.5424094+07:00",
+      "CreatedBy": "admin",
+      "UpdatedDate": "2017-07-15T22:35:42.746613+07:00",
+      "UpdatedBy": "admin",
+      "DeleteFlag": false,
+      "ListDetail": [
+        {
+          "Name": "admin",
+          "Id": "",
+          "Quantity": 1,
+          "Price": 222222,
+          "Total": 222222
+        }
+      ]
+    },
+    {
+      "Id": 8,
+      "Name": "Test 1",
+      "Phone": "0907496225",
+      "Contact": "",
+      "Address": "31/19 Tran Quy Cap, P12, Q.Binh Thanh, Tp.Ho Chi Minh",
+      "TotalBill": 400000,
+      "Status": "Đã gửi",
+      "CodCode": "",
+      "CodType": "",
+      "CodWeight": 0.0,
+      "CodBill": 30000,
+      "Notes": "",
+      "CreatedDate": "2017-07-15T21:43:10.9341956+07:00",
+      "CreatedBy": "admin",
+      "UpdatedDate": "2017-07-15T21:43:10.9341956+07:00",
+      "UpdatedBy": "admin",
+      "DeleteFlag": false,
+      "ListDetail": [
+        {
+          "Name": "Testing",
+          "Id": "",
+          "Quantity": 2,
+          "Price": 200000,
+          "Total": 400000
+        }
+      ]
+    }
+  ]
+}

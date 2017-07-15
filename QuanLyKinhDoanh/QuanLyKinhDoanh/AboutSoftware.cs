@@ -34,6 +34,8 @@ namespace QuanLyKinhDoanh
         private void AboutSoftware_Load(object sender, EventArgs e)
         {
             LoadResource();
+            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            lbVersion.Text = "Version: " + version;
         }
 
         private void btOK_Click(object sender, EventArgs e)

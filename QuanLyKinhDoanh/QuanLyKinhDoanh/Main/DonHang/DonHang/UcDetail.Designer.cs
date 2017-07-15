@@ -72,17 +72,16 @@
             this.chThanhTien = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lbNgayGio = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.label47 = new System.Windows.Forms.Label();
             this.pbHoanTat = new System.Windows.Forms.PictureBox();
+            this.pbPrint = new System.Windows.Forms.PictureBox();
             this.pnTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTitle)).BeginInit();
             this.gbInfo.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.pnInfo.SuspendLayout();
-            this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbHoanTat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPrint)).BeginInit();
             this.SuspendLayout();
             // 
             // pnTitle
@@ -138,7 +137,7 @@
             this.gbInfo.Controls.Add(this.label2);
             this.gbInfo.Controls.Add(this.lbTen);
             this.gbInfo.ForeColor = System.Drawing.Color.Orange;
-            this.gbInfo.Location = new System.Drawing.Point(30, 403);
+            this.gbInfo.Location = new System.Drawing.Point(30, 393);
             this.gbInfo.Name = "gbInfo";
             this.gbInfo.Size = new System.Drawing.Size(940, 110);
             this.gbInfo.TabIndex = 204;
@@ -244,7 +243,7 @@
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.ForeColor = System.Drawing.Color.Orange;
-            this.groupBox2.Location = new System.Drawing.Point(30, 287);
+            this.groupBox2.Location = new System.Drawing.Point(30, 277);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(940, 110);
             this.groupBox2.TabIndex = 201;
@@ -415,7 +414,7 @@
             // 
             this.groupBox1.Controls.Add(this.pnInfo);
             this.groupBox1.ForeColor = System.Drawing.Color.Orange;
-            this.groupBox1.Location = new System.Drawing.Point(30, 55);
+            this.groupBox1.Location = new System.Drawing.Point(30, 45);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(940, 226);
             this.groupBox1.TabIndex = 200;
@@ -497,7 +496,7 @@
             // 
             this.lbNgayGio.AutoSize = true;
             this.lbNgayGio.ForeColor = System.Drawing.Color.Black;
-            this.lbNgayGio.Location = new System.Drawing.Point(121, 28);
+            this.lbNgayGio.Location = new System.Drawing.Point(120, 15);
             this.lbNgayGio.Name = "lbNgayGio";
             this.lbNgayGio.Size = new System.Drawing.Size(159, 18);
             this.lbNgayGio.TabIndex = 203;
@@ -507,33 +506,16 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(39, 28);
+            this.label1.Location = new System.Drawing.Point(38, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 18);
             this.label1.TabIndex = 202;
             this.label1.Text = "Ngày giờ:";
             // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.label47);
-            this.panel12.Controls.Add(this.pbHoanTat);
-            this.panel12.Location = new System.Drawing.Point(464, 510);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(70, 60);
-            this.panel12.TabIndex = 205;
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(7, 68);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(0, 18);
-            this.label47.TabIndex = 2;
-            // 
             // pbHoanTat
             // 
             this.pbHoanTat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbHoanTat.Location = new System.Drawing.Point(10, 10);
+            this.pbHoanTat.Location = new System.Drawing.Point(559, 509);
             this.pbHoanTat.Name = "pbHoanTat";
             this.pbHoanTat.Size = new System.Drawing.Size(50, 39);
             this.pbHoanTat.TabIndex = 1;
@@ -542,17 +524,31 @@
             this.pbHoanTat.MouseEnter += new System.EventHandler(this.pbHoanTat_MouseEnter);
             this.pbHoanTat.MouseLeave += new System.EventHandler(this.pbHoanTat_MouseLeave);
             // 
+            // pbPrint
+            // 
+            this.pbPrint.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbPrint.Location = new System.Drawing.Point(404, 509);
+            this.pbPrint.Name = "pbPrint";
+            this.pbPrint.Size = new System.Drawing.Size(50, 50);
+            this.pbPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPrint.TabIndex = 206;
+            this.pbPrint.TabStop = false;
+            this.pbPrint.Click += new System.EventHandler(this.pbPrint_Click);
+            this.pbPrint.MouseEnter += new System.EventHandler(this.pbPrint_MouseEnter);
+            this.pbPrint.MouseLeave += new System.EventHandler(this.pbPrint_MouseLeave);
+            // 
             // UcDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pbPrint);
+            this.Controls.Add(this.pbHoanTat);
             this.Controls.Add(this.gbInfo);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lbNgayGio);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnTitle);
-            this.Controls.Add(this.panel12);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "UcDetail";
@@ -567,9 +563,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.pnInfo.ResumeLayout(false);
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbHoanTat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPrint)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -617,10 +612,9 @@
         private System.Windows.Forms.Label lbDienThoai;
         private System.Windows.Forms.Label lbDiaChi;
         private System.Windows.Forms.Label lbKhachHang;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Label label47;
         private System.Windows.Forms.PictureBox pbHoanTat;
         private System.Windows.Forms.Label lbContact;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pbPrint;
     }
 }

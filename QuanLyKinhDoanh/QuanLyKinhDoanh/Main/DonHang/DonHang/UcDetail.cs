@@ -14,6 +14,8 @@ namespace QuanLyKinhDoanh.Order
 {
     public partial class UcDetail : UserControl
     {
+        private DTO.Order data;
+
         public UcDetail()
         {
             InitializeComponent();
@@ -22,7 +24,7 @@ namespace QuanLyKinhDoanh.Order
         public UcDetail(DTO.Order data)
         {
             InitializeComponent();
-
+            this.data = data;
             Init();
             LoadData(data);
         }
@@ -31,6 +33,7 @@ namespace QuanLyKinhDoanh.Order
         {
             try
             {
+                pbPrint.Image = Image.FromFile(ConstantResource.ICON_PRINT);
                 pbHoanTat.Image = Image.FromFile(ConstantResource.CHUC_NANG_ICON_OK);
             }
             catch
@@ -71,7 +74,7 @@ namespace QuanLyKinhDoanh.Order
 
         private void LoadData(DTO.Order data)
         {
-            lbNgayGio.Text = data.CreatedDate.ToString(Constant.DEFAULT_DATE_TIME_FORMAT);
+            lbNgayGio.Text = data.UpdatedDate.ToString(Constant.DEFAULT_DATE_TIME_FORMAT);
 
             foreach (var detail in data.ListDetail)
             {
@@ -114,6 +117,21 @@ namespace QuanLyKinhDoanh.Order
         private void pbHoanTat_MouseLeave(object sender, EventArgs e)
         {
             pbHoanTat.Image = Image.FromFile(ConstantResource.CHUC_NANG_ICON_OK);
+        }
+
+        private void pbPrint_Click(object sender, EventArgs e)
+        {
+            UcPrint ucPrint = new UcPrint(this.data);
+        }
+
+        private void pbPrint_MouseEnter(object sender, EventArgs e)
+        {
+            pbPrint.Image = Image.FromFile(ConstantResource.ICON_PRINT_MOUSEOVER);
+        }
+
+        private void pbPrint_MouseLeave(object sender, EventArgs e)
+        {
+            pbPrint.Image = Image.FromFile(ConstantResource.ICON_PRINT);
         }
     }
 }

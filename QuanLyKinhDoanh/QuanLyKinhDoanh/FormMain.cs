@@ -30,9 +30,6 @@ namespace QuanLyKinhDoanh
         private bool isMainMenuClickDonHang;
 
         UserControl uc;
-
-        private float oldWidth = 1014f;
-        private float oldHeght = 764f;
         #endregion
 
         public FormMain()
