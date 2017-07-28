@@ -169,7 +169,7 @@ namespace QuanLyKinhDoanh.Order
 
             cbTinhTrang.SelectedIndex = 0;
 
-            tbMaHD.Text = CreateNewId().ToString();
+            tbMaHD.Text = CreateNewIdOrder().ToString();
             tbTongHoaDon.Text = String.Empty;
             tbGhiChu.Text = String.Empty;
 
@@ -317,9 +317,15 @@ namespace QuanLyKinhDoanh.Order
             }
         }
 
-        private int CreateNewId()
+        private int CreateNewIdOrder()
         {
             DTO.Order dataTemp = OrderBus.GetLastData();
+            return dataTemp == null ? 1 : dataTemp.Id + 1;
+        }
+
+        private int CreateNewIdCustomer()
+        {
+            DTO.Customer dataTemp = CustomerBus.GetLastData();
             return dataTemp == null ? 1 : dataTemp.Id + 1;
         }
 
@@ -361,6 +367,47 @@ namespace QuanLyKinhDoanh.Order
         private void InsertData()
         {
             InsertDataOrder();
+        }
+
+        private void InsertDataCustomer()
+        {
+            int id = CreateNewIdCustomer();
+            double codWeight = ConvertUtil.ConvertToDouble(tbTrongLuong.Text);
+
+            DTO.Order order = new DTO.Order(id, tbTenKH.Text, tbDienThoai.Text, tbContact.Text, tbDiaChi.Text,
+                totalMoney, cbTinhTrang.Text, tbMaCOD.Text, cbLoaiCOD.Text, codWeight, codMoney, tbGhiChu.Text,
+                GetListDetail());
+
+            if (OrderBus.Insert(order, FormMain.user))
+            {
+                if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + order.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
+                        Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    UcPrint ucPrint = new UcPrint(order);
+                }
+
+                RefreshData();
+            }
+            else
+            {
+                if (MessageBox.Show(Constant.MESSAGE_INSERT_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_TRY_AGAIN, Constant.CAPTION_ERROR, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    if (OrderBus.Insert(order, FormMain.user))
+                    {
+                        if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + order.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
+                                Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                        {
+                            UcPrint ucPrint = new UcPrint(order);
+                        }
+
+                        RefreshData();
+                    }
+                    else
+                    {
+                        MessageBox.Show(Constant.MESSAGE_INSERT_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_EXIT, Constant.CAPTION_ERROR, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
         }
 
         private void InsertDataOrder()
