@@ -45,13 +45,11 @@ namespace DAO
                         file.Close();
 
                         JObject content = new JObject();
-                        Information infor = new Information("Ngọc Đăng", "5.2.0.0", "1.1.0.0", DateTime.Now);
-                        //string jInfor = Newtonsoft.Json.JsonConvert.SerializeObject(new { Information = infor });
+                        Information infor = new Information("Ngọc Đăng", "5.3.0.0", "3.2.0.0", DateTime.Now);
                         string jInfor = Newtonsoft.Json.JsonConvert.SerializeObject(infor);
                         content.Add("Information", jInfor);
-                        //JObject order = new JObject();
-                        //order["Order"] = String.Empty;
                         content.Add("Order", new JArray());
+                        content.Add("Customer", new JArray());
                         File.WriteAllText(datasourcePath, content.ToString(Newtonsoft.Json.Formatting.Indented));
                     }
                 }

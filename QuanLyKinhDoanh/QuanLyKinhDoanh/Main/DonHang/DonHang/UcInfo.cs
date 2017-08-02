@@ -81,8 +81,9 @@ namespace QuanLyKinhDoanh.Order
                 tbTenKH.ReadOnly = true;
                 tbTenKH.Text = data.Name;
                 tbDienThoai.Text = data.Phone;
-                tbContact.Text = data.Contact;
                 tbDiaChi.Text = data.Address;
+
+                dgvContact.Rows.Clear();
 
                 if (data.Status != DTO.Order.ListStatus[0])
                 {
@@ -366,48 +367,15 @@ namespace QuanLyKinhDoanh.Order
 
         private void InsertData()
         {
-            InsertDataOrder();
+            InsertDataCustomer();
+            //InsertDataOrder();
         }
 
         private void InsertDataCustomer()
         {
             int id = CreateNewIdCustomer();
-            double codWeight = ConvertUtil.ConvertToDouble(tbTrongLuong.Text);
-
-            DTO.Order order = new DTO.Order(id, tbTenKH.Text, tbDienThoai.Text, tbContact.Text, tbDiaChi.Text,
-                totalMoney, cbTinhTrang.Text, tbMaCOD.Text, cbLoaiCOD.Text, codWeight, codMoney, tbGhiChu.Text,
-                GetListDetail());
-
-            if (OrderBus.Insert(order, FormMain.user))
-            {
-                if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + order.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
-                        Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                {
-                    UcPrint ucPrint = new UcPrint(order);
-                }
-
-                RefreshData();
-            }
-            else
-            {
-                if (MessageBox.Show(Constant.MESSAGE_INSERT_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_TRY_AGAIN, Constant.CAPTION_ERROR, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    if (OrderBus.Insert(order, FormMain.user))
-                    {
-                        if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + order.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
-                                Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                        {
-                            UcPrint ucPrint = new UcPrint(order);
-                        }
-
-                        RefreshData();
-                    }
-                    else
-                    {
-                        MessageBox.Show(Constant.MESSAGE_INSERT_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_EXIT, Constant.CAPTION_ERROR, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-            }
+            DTO.Customer data = new DTO.Customer(id, tbTenKH.Text, tbDienThoai.Text, tbDiaChi.Text, GetListDetailCustomer());
+            CustomerBus.Insert(data, FormMain.user);
         }
 
         private void InsertDataOrder()
@@ -415,16 +383,16 @@ namespace QuanLyKinhDoanh.Order
             int idHD = ConvertUtil.ConvertToInt(tbMaHD.Text);
             double codWeight = ConvertUtil.ConvertToDouble(tbTrongLuong.Text);
 
-            DTO.Order order = new DTO.Order(idHD, tbTenKH.Text, tbDienThoai.Text, tbContact.Text, tbDiaChi.Text,
+            DTO.Order data = new DTO.Order(idHD, tbTenKH.Text, tbDienThoai.Text, String.Empty, tbDiaChi.Text,
                 totalMoney, cbTinhTrang.Text, tbMaCOD.Text, cbLoaiCOD.Text, codWeight, codMoney, tbGhiChu.Text,
                 GetListDetail());
 
-            if (OrderBus.Insert(order, FormMain.user))
+            if (OrderBus.Insert(data, FormMain.user))
             {
-                if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + order.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
+                if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + data.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
                         Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
-                    UcPrint ucPrint = new UcPrint(order);
+                    UcPrint ucPrint = new UcPrint(data);
                 }
 
                 RefreshData();
@@ -433,12 +401,12 @@ namespace QuanLyKinhDoanh.Order
             {
                 if (MessageBox.Show(Constant.MESSAGE_INSERT_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_TRY_AGAIN, Constant.CAPTION_ERROR, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    if (OrderBus.Insert(order, FormMain.user))
+                    if (OrderBus.Insert(data, FormMain.user))
                     {
-                        if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + order.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
+                        if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + data.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
                                 Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
-                            UcPrint ucPrint = new UcPrint(order);
+                            UcPrint ucPrint = new UcPrint(data);
                         }
 
                         RefreshData();
@@ -460,8 +428,26 @@ namespace QuanLyKinhDoanh.Order
                 int quantity = ConvertUtil.ConvertToInt(lvi.SubItems[4].Text);
                 long price = ConvertUtil.ConvertToLong(lvi.SubItems[5].Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
                 long total = ConvertUtil.ConvertToLong(lvi.SubItems[6].Text.Replace(Constant.SYMBOL_LINK_MONEY, string.Empty));
-                OrderDetails detail = new OrderDetails(lvi.SubItems[2].Text, lvi.SubItems[3].Text, quantity, price, total);
-                res.Add(detail);
+                OrderDetails data = new OrderDetails(lvi.SubItems[2].Text, lvi.SubItems[3].Text, quantity, price, total);
+                res.Add(data);
+            }
+
+            return res;
+        }
+
+        private List<CustomerContact> GetListDetailCustomer()
+        {
+            List<CustomerContact> res = new List<CustomerContact>();
+
+            foreach (DataGridViewRow row in dgvContact.Rows)
+            {
+                if (row.Cells[colName.Name].Value != null && row.Cells[colContact.Name].Value != null)
+                {
+                    string name = row.Cells[colName.Name].Value.ToString();
+                    string contact = row.Cells[colContact.Name].Value.ToString();
+                    CustomerContact data = new CustomerContact(name, contact);
+                    res.Add(data);
+                }
             }
 
             return res;
@@ -472,7 +458,7 @@ namespace QuanLyKinhDoanh.Order
             int idHD = ConvertUtil.ConvertToInt(tbMaHD.Text);
             double codWeight = ConvertUtil.ConvertToDouble(tbTrongLuong.Text);
 
-            DTO.Order order = new DTO.Order(idHD, tbTenKH.Text, tbDienThoai.Text, tbContact.Text, tbDiaChi.Text,
+            DTO.Order order = new DTO.Order(idHD, tbTenKH.Text, tbDienThoai.Text, String.Empty, tbDiaChi.Text,
                 totalMoney, cbTinhTrang.Text, tbMaCOD.Text, cbLoaiCOD.Text, codWeight, codMoney, tbGhiChu.Text,
                 GetListDetail());
 

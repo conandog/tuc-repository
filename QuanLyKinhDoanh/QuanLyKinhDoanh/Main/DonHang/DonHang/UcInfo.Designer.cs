@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnInfo = new System.Windows.Forms.Panel();
             this.lvThongTin = new System.Windows.Forms.ListView();
             this.chCheckBox = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -38,8 +39,9 @@
             this.chDonGia = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chThanhTien = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gbInfo = new System.Windows.Forms.GroupBox();
-            this.tbContact = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.dgvContact = new System.Windows.Forms.DataGridView();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbDienThoai = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tbDiaChi = new System.Windows.Forms.TextBox();
@@ -94,6 +96,7 @@
             this.pbHuy = new System.Windows.Forms.PictureBox();
             this.pnInfo.SuspendLayout();
             this.gbInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).BeginInit();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbHoanTat)).BeginInit();
             this.pnTitle.SuspendLayout();
@@ -185,8 +188,7 @@
             // 
             // gbInfo
             // 
-            this.gbInfo.Controls.Add(this.tbContact);
-            this.gbInfo.Controls.Add(this.label17);
+            this.gbInfo.Controls.Add(this.dgvContact);
             this.gbInfo.Controls.Add(this.tbDienThoai);
             this.gbInfo.Controls.Add(this.label6);
             this.gbInfo.Controls.Add(this.tbDiaChi);
@@ -201,23 +203,37 @@
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Thông tin khách hàng";
             // 
-            // tbContact
+            // dgvContact
             // 
-            this.tbContact.Location = new System.Drawing.Point(695, 30);
-            this.tbContact.MaxLength = 50;
-            this.tbContact.Name = "tbContact";
-            this.tbContact.Size = new System.Drawing.Size(233, 23);
-            this.tbContact.TabIndex = 208;
+            this.dgvContact.AllowUserToResizeRows = false;
+            this.dgvContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvContact.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colName,
+            this.colContact});
+            this.dgvContact.Location = new System.Drawing.Point(631, 22);
+            this.dgvContact.Name = "dgvContact";
+            this.dgvContact.RowHeadersVisible = false;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvContact.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvContact.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvContact.Size = new System.Drawing.Size(297, 79);
+            this.dgvContact.TabIndex = 220;
             // 
-            // label17
+            // colName
             // 
-            this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(628, 33);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(61, 16);
-            this.label17.TabIndex = 211;
-            this.label17.Text = "Zalo/FB:";
+            this.colName.HeaderText = "Liên lạc";
+            this.colName.MaxInputLength = 20;
+            this.colName.MinimumWidth = 80;
+            this.colName.Name = "colName";
+            this.colName.Width = 80;
+            // 
+            // colContact
+            // 
+            this.colContact.HeaderText = "Địa chỉ trực tuyến";
+            this.colContact.MaxInputLength = 100;
+            this.colContact.MinimumWidth = 100;
+            this.colContact.Name = "colContact";
+            this.colContact.Width = 195;
             // 
             // tbDienThoai
             // 
@@ -242,7 +258,7 @@
             this.tbDiaChi.Location = new System.Drawing.Point(107, 70);
             this.tbDiaChi.MaxLength = 200;
             this.tbDiaChi.Name = "tbDiaChi";
-            this.tbDiaChi.Size = new System.Drawing.Size(821, 23);
+            this.tbDiaChi.Size = new System.Drawing.Size(496, 23);
             this.tbDiaChi.TabIndex = 210;
             // 
             // label2
@@ -344,7 +360,6 @@
             // 
             // pbHoanTat
             // 
-            this.pbHoanTat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbHoanTat.Enabled = false;
             this.pbHoanTat.Location = new System.Drawing.Point(10, 10);
             this.pbHoanTat.Name = "pbHoanTat";
@@ -390,7 +405,6 @@
             // 
             // pbTitle
             // 
-            this.pbTitle.Cursor = System.Windows.Forms.Cursors.Default;
             this.pbTitle.Location = new System.Drawing.Point(10, 0);
             this.pbTitle.Name = "pbTitle";
             this.pbTitle.Size = new System.Drawing.Size(36, 36);
@@ -580,7 +594,6 @@
             // 
             // pbXoa
             // 
-            this.pbXoa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbXoa.Enabled = false;
             this.pbXoa.Location = new System.Drawing.Point(10, 0);
             this.pbXoa.Name = "pbXoa";
@@ -665,7 +678,6 @@
             // 
             // pbAdd
             // 
-            this.pbAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbAdd.Location = new System.Drawing.Point(10, 0);
             this.pbAdd.Name = "pbAdd";
             this.pbAdd.Size = new System.Drawing.Size(50, 50);
@@ -770,7 +782,6 @@
             // 
             // pbHuy
             // 
-            this.pbHuy.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbHuy.Location = new System.Drawing.Point(10, 10);
             this.pbHuy.Name = "pbHuy";
             this.pbHuy.Size = new System.Drawing.Size(50, 39);
@@ -800,6 +811,7 @@
             this.pnInfo.ResumeLayout(false);
             this.gbInfo.ResumeLayout(false);
             this.gbInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).EndInit();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbHoanTat)).EndInit();
@@ -887,7 +899,8 @@
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.PictureBox pbHuy;
-        private System.Windows.Forms.TextBox tbContact;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DataGridView dgvContact;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colContact;
     }
 }
