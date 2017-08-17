@@ -9,10 +9,7 @@ namespace DTO
     public class Order
     {
         public int Id;
-        public string Name;
-        public string Phone;
-        public string Contact;
-        public string Address;
+        public int IdCustomer;
 
         public long TotalBill;
         public string Status;
@@ -43,15 +40,12 @@ namespace DTO
             //Default constructor
         }
 
-        public Order(int id, string name, string phone, string contact, string address, 
+        public Order(int id, int idCustomer, 
             long totalBill, string status, string codCode, string codType, double codWeight, long codBill, string notes,
             List<OrderDetails> listDetail, bool deleteFlag = false)
         {
             this.Id = id;
-            this.Name = name;
-            this.Phone = phone;
-            this.Contact = contact;
-            this.Address = address;
+            this.IdCustomer = idCustomer;
 
             this.TotalBill = totalBill;
             this.Status = status;
@@ -79,10 +73,7 @@ namespace DTO
         {
             Order data = JsonConvert.DeserializeObject<Order>(input);
             this.Id = data.Id;
-            this.Name = data.Name;
-            this.Phone = data.Phone;
-            this.Contact = data.Contact;
-            this.Address = data.Address;
+            this.IdCustomer = data.IdCustomer;
 
             this.TotalBill = data.TotalBill;
             this.Status = data.Status;

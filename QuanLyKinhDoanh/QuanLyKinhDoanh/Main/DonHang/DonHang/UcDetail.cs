@@ -98,10 +98,10 @@ namespace QuanLyKinhDoanh.Order
             lbTongHD.Text = data.GetTotalBillWithCod().ToString(Constant.DEFAULT_FORMAT_MONEY);
             lbGhiChu.Text = data.Notes;
 
-            lbKhachHang.Text = data.Name;
-            lbDienThoai.Text = data.Phone;
-            lbContact.Text = data.Contact;
-            lbDiaChi.Text = data.Address;
+            //lbKhachHang.Text = data.Name;
+            //lbDienThoai.Text = data.Phone;
+            //lbContact.Text = data.Contact;
+            //lbDiaChi.Text = data.Address;
         }
 
         private void pbHoanTat_Click(object sender, EventArgs e)

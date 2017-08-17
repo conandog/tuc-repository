@@ -142,11 +142,12 @@ namespace QuanLyKinhDoanh
 
             foreach (DTO.Order data in list)
             {
+                Customer customer = CustomerBus.GetById(data.IdCustomer);
                 ListViewItem lvi = new ListViewItem();
                 lvi.SubItems.Add((row * (page - 1) + lvThongTin.Items.Count + 1).ToString());
                 lvi.SubItems.Add(data.Id.ToString());
-                lvi.SubItems.Add(data.Name);
-                lvi.SubItems.Add(data.Phone);
+                lvi.SubItems.Add(customer.Name);
+                lvi.SubItems.Add(customer.Phone);
                 lvi.SubItems.Add(data.CreatedDate.ToString(Constant.DEFAULT_DATE_TIME_FORMAT));
                 lvi.SubItems.Add(data.Status);
                 lvi.SubItems.Add(data.Notes);

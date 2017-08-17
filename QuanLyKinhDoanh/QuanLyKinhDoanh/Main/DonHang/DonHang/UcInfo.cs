@@ -79,9 +79,9 @@ namespace QuanLyKinhDoanh.Order
                 tbGhiChu.Text = data.Notes;
 
                 tbTenKH.ReadOnly = true;
-                tbTenKH.Text = data.Name;
-                tbDienThoai.Text = data.Phone;
-                tbDiaChi.Text = data.Address;
+                //tbTenKH.Text = data.Name;
+                //tbDienThoai.Text = data.Phone;
+                //tbDiaChi.Text = data.Address;
 
                 dgvContact.Rows.Clear();
 
@@ -367,56 +367,80 @@ namespace QuanLyKinhDoanh.Order
 
         private void InsertData()
         {
-            InsertDataCustomer();
+            UpdateDataCustomer();
             //InsertDataOrder();
         }
 
-        private void InsertDataCustomer()
+        private Customer UpdateDataCustomer()
         {
-            int id = CreateNewIdCustomer();
-            DTO.Customer data = new DTO.Customer(id, tbTenKH.Text, tbDienThoai.Text, tbDiaChi.Text, GetListDetailCustomer());
-            CustomerBus.Insert(data, FormMain.user);
+            Customer res = null;
+
+            if (cbKhachHang.SelectedItem == null)
+            {
+                int id = CreateNewIdCustomer();
+                res = new Customer(id, tbTenKH.Text, tbDienThoai.Text, tbDiaChi.Text, GetListDetailCustomer());
+
+                if (!CustomerBus.Insert(res, FormMain.user))
+                {
+                    res = null;
+                }
+            }
+            else
+            {
+                res = new Customer(res.Id, tbTenKH.Text, tbDienThoai.Text, tbDiaChi.Text, GetListDetailCustomer());
+
+                if (!CustomerBus.Update(res, FormMain.user))
+                {
+                    res = null;
+                }
+            }
+
+            return res;
         }
 
         private void InsertDataOrder()
         {
-            int idHD = ConvertUtil.ConvertToInt(tbMaHD.Text);
-            double codWeight = ConvertUtil.ConvertToDouble(tbTrongLuong.Text);
+            //int id = CreateNewIdCustomer();
+            //Customer data = new Customer(id, tbTenKH.Text, tbDienThoai.Text, tbDiaChi.Text, GetListDetailCustomer());
+            //CustomerBus.Insert(data, FormMain.user);
 
-            DTO.Order data = new DTO.Order(idHD, tbTenKH.Text, tbDienThoai.Text, String.Empty, tbDiaChi.Text,
-                totalMoney, cbTinhTrang.Text, tbMaCOD.Text, cbLoaiCOD.Text, codWeight, codMoney, tbGhiChu.Text,
-                GetListDetail());
+            //int idHD = ConvertUtil.ConvertToInt(tbMaHD.Text);
+            //double codWeight = ConvertUtil.ConvertToDouble(tbTrongLuong.Text);
 
-            if (OrderBus.Insert(data, FormMain.user))
-            {
-                if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + data.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
-                        Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                {
-                    UcPrint ucPrint = new UcPrint(data);
-                }
+            //DTO.Order data = new DTO.Order(idHD, tbTenKH.Text, tbDienThoai.Text, String.Empty, tbDiaChi.Text,
+            //    totalMoney, cbTinhTrang.Text, tbMaCOD.Text, cbLoaiCOD.Text, codWeight, codMoney, tbGhiChu.Text,
+            //    GetListDetail());
 
-                RefreshData();
-            }
-            else
-            {
-                if (MessageBox.Show(Constant.MESSAGE_INSERT_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_TRY_AGAIN, Constant.CAPTION_ERROR, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-                {
-                    if (OrderBus.Insert(data, FormMain.user))
-                    {
-                        if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + data.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
-                                Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                        {
-                            UcPrint ucPrint = new UcPrint(data);
-                        }
+            //if (OrderBus.Insert(data, FormMain.user))
+            //{
+            //    if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + data.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
+            //            Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            //    {
+            //        UcPrint ucPrint = new UcPrint(data);
+            //    }
 
-                        RefreshData();
-                    }
-                    else
-                    {
-                        MessageBox.Show(Constant.MESSAGE_INSERT_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_EXIT, Constant.CAPTION_ERROR, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-            }
+            //    RefreshData();
+            //}
+            //else
+            //{
+            //    if (MessageBox.Show(Constant.MESSAGE_INSERT_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_TRY_AGAIN, Constant.CAPTION_ERROR, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            //    {
+            //        if (OrderBus.Insert(data, FormMain.user))
+            //        {
+            //            if (MessageBox.Show(String.Format(Constant.MESSAGE_INSERT_SUCCESS, "Hóa đơn " + data.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
+            //                    Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            //            {
+            //                UcPrint ucPrint = new UcPrint(data);
+            //            }
+
+            //            RefreshData();
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show(Constant.MESSAGE_INSERT_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_EXIT, Constant.CAPTION_ERROR, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //        }
+            //    }
+            //}
         }
 
         private List<OrderDetails> GetListDetail()
@@ -455,30 +479,30 @@ namespace QuanLyKinhDoanh.Order
 
         private void UpdateData()
         {
-            int idHD = ConvertUtil.ConvertToInt(tbMaHD.Text);
-            double codWeight = ConvertUtil.ConvertToDouble(tbTrongLuong.Text);
+            //int idHD = ConvertUtil.ConvertToInt(tbMaHD.Text);
+            //double codWeight = ConvertUtil.ConvertToDouble(tbTrongLuong.Text);
 
-            DTO.Order order = new DTO.Order(idHD, tbTenKH.Text, tbDienThoai.Text, String.Empty, tbDiaChi.Text,
-                totalMoney, cbTinhTrang.Text, tbMaCOD.Text, cbLoaiCOD.Text, codWeight, codMoney, tbGhiChu.Text,
-                GetListDetail());
+            //DTO.Order order = new DTO.Order(idHD, tbTenKH.Text, tbDienThoai.Text, String.Empty, tbDiaChi.Text,
+            //    totalMoney, cbTinhTrang.Text, tbMaCOD.Text, cbLoaiCOD.Text, codWeight, codMoney, tbGhiChu.Text,
+            //    GetListDetail());
 
-            if (OrderBus.Update(order, FormMain.user))
-            {
-                if (MessageBox.Show(String.Format(Constant.MESSAGE_UPDATE_SUCCESS, "Hóa đơn " + order.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
-                        Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                {
-                    UcPrint ucPrint = new UcPrint(order);
-                }
+            //if (OrderBus.Update(order, FormMain.user))
+            //{
+            //    if (MessageBox.Show(String.Format(Constant.MESSAGE_UPDATE_SUCCESS, "Hóa đơn " + order.Id) + Constant.MESSAGE_NEW_LINE + "In hóa đơn?",
+            //            Constant.CAPTION_CONFIRM, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            //    {
+            //        UcPrint ucPrint = new UcPrint(order);
+            //    }
 
-                this.Dispose();
-            }
-            else
-            {
-                if (MessageBox.Show(Constant.MESSAGE_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_EXIT, Constant.CAPTION_ERROR, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
-                {
-                    this.Dispose();
-                }
-            }
+            //    this.Dispose();
+            //}
+            //else
+            //{
+            //    if (MessageBox.Show(Constant.MESSAGE_ERROR + Constant.MESSAGE_NEW_LINE + Constant.MESSAGE_EXIT, Constant.CAPTION_ERROR, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+            //    {
+            //        this.Dispose();
+            //    }
+            //}
         }
         #endregion
 
@@ -716,6 +740,48 @@ namespace QuanLyKinhDoanh.Order
         private void tbGiaCOD_Enter(object sender, EventArgs e)
         {
             tbGiaCOD.SelectAll();
+        }
+
+        private void cbKhachHang_DropDown(object sender, EventArgs e)
+        {
+            cbKhachHang.Items.Clear();
+            List<Customer> listData = CustomerBus.GetList(cbKhachHang.Text, "Name", Constant.SORT_ASCENDING, 0, 10);
+
+            foreach (Customer data in listData)
+            {
+                cbKhachHang.Items.Add(new CommonComboBoxItems(data.Name, data.Id));
+            }
+        }
+
+        private void cbKhachHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Customer data = CustomerBus.GetById(ConvertUtil.ConvertToInt(((CommonComboBoxItems)cbKhachHang.SelectedItem).Value));
+            tbTenKH.Text = data.Name == null ? string.Empty : data.Name;
+        }
+
+        private void cbKhachHang_Leave(object sender, EventArgs e)
+        {
+            if (cbKhachHang.SelectedItem != null)
+            {
+                Customer data = CustomerBus.GetById(ConvertUtil.ConvertToInt(((CommonComboBoxItems)cbKhachHang.SelectedItem).Value));
+
+                if (data != null)
+                {
+                    tbTenKH.Text = data.Name;
+                }
+            }
+            else
+            {
+                tbTenKH.Text = string.Empty;
+            }
+        }
+
+        private void cbKhachHang_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(cbKhachHang.Text))
+            {
+                cbKhachHang.SelectedItem = null;
+            }
         }
     }
 }

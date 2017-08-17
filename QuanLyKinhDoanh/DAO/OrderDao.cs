@@ -12,11 +12,11 @@ namespace DAO
     public class OrderDao : JsonConnection
     {
         private static readonly string DATA_KEY = "Order";
+        private static readonly string DATA_CUSTOMER_KEY = "Customer";
         private static readonly string DATA_ID_KEY = "Id";
+        private static readonly string DATA_ID_CUSTOMER_KEY = "IdCustomer";
         private static readonly string DATA_NAME_KEY = "Name";
         private static readonly string DATA_PHONE_KEY = "Phone";
-        private static readonly string DATA_CONTACT_KEY = "Contact";
-        private static readonly string DATA_ADDRESS_KEY = "Address";
 
         private static readonly string DATA_TOTALBILL_KEY = "TotalBill";
         private static readonly string DATA_STATUS_KEY = "Status";
@@ -38,12 +38,16 @@ namespace DAO
         {
             var res = from p in DbContext[DATA_KEY]
                       select p;
+
+            var customer = from p in DbContext[DATA_CUSTOMER_KEY]
+                      select p;
+
             text = text.ToLower();
 
             if (!string.IsNullOrEmpty(text))
             {
-                res = res.Where(p => ((string)p[DATA_NAME_KEY]).ToLower().Contains(text)
-                    || ((string)p[DATA_PHONE_KEY]).ToLower().Contains(text)
+                res = res.Where(p => customer.Any(q => ((string)q[DATA_ID_KEY][DATA_NAME_KEY]).ToLower().Contains(text))
+                    //|| ((string)p[DATA_PHONE_KEY]).ToLower().Contains(text)
                     || ((string)p[DATA_NOTES_KEY]).ToLower().Contains(text));
             }
 
@@ -235,10 +239,7 @@ namespace DAO
                 if (data != null)
                 {
                     var res = DbContext[DATA_KEY].Where(p => ((int)p[DATA_ID_KEY]).Equals(data.Id)).FirstOrDefault();
-                    res[DATA_NAME_KEY] = data.Name;
-                    res[DATA_PHONE_KEY] = data.Phone;
-                    res[DATA_CONTACT_KEY] = data.Contact;
-                    res[DATA_ADDRESS_KEY] = data.Address;
+                    res[DATA_ID_CUSTOMER_KEY] = data.IdCustomer;
 
                     res[DATA_TOTALBILL_KEY] = data.TotalBill;
                     res[DATA_STATUS_KEY] = data.Status;

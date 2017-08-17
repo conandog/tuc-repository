@@ -73,9 +73,9 @@ namespace QuanLyKinhDoanh.Order
             lvThongTin.Items.Add(cod);
 
             lbTongHD.Text = lbTongHD.Text + data.GetTotalBillWithCod().ToString(Constant.DEFAULT_FORMAT_MONEY) + Constant.DEFAULT_MONEY_SUBFIX;
-            lbKhachHang.Text = data.Name;
-            lbDiaChi.Text = data.Address;
-            lbDT.Text = data.Phone;
+            //lbKhachHang.Text = data.Name;
+            //lbDiaChi.Text = data.Address;
+            //lbDT.Text = data.Phone;
         }
 
         private void UcPrint_Load(object sender, EventArgs e)

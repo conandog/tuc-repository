@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnInfo = new System.Windows.Forms.Panel();
             this.lvThongTin = new System.Windows.Forms.ListView();
             this.chCheckBox = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -39,6 +39,7 @@
             this.chDonGia = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chThanhTien = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gbInfo = new System.Windows.Forms.GroupBox();
+            this.cbKhachHang = new System.Windows.Forms.ComboBox();
             this.dgvContact = new System.Windows.Forms.DataGridView();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -188,6 +189,7 @@
             // 
             // gbInfo
             // 
+            this.gbInfo.Controls.Add(this.cbKhachHang);
             this.gbInfo.Controls.Add(this.dgvContact);
             this.gbInfo.Controls.Add(this.tbDienThoai);
             this.gbInfo.Controls.Add(this.label6);
@@ -203,6 +205,18 @@
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Thông tin khách hàng";
             // 
+            // cbKhachHang
+            // 
+            this.cbKhachHang.FormattingEnabled = true;
+            this.cbKhachHang.Location = new System.Drawing.Point(107, 40);
+            this.cbKhachHang.Name = "cbKhachHang";
+            this.cbKhachHang.Size = new System.Drawing.Size(121, 24);
+            this.cbKhachHang.TabIndex = 221;
+            this.cbKhachHang.DropDown += new System.EventHandler(this.cbKhachHang_DropDown);
+            this.cbKhachHang.SelectedIndexChanged += new System.EventHandler(this.cbKhachHang_SelectedIndexChanged);
+            this.cbKhachHang.TextChanged += new System.EventHandler(this.cbKhachHang_TextChanged);
+            this.cbKhachHang.Leave += new System.EventHandler(this.cbKhachHang_Leave);
+            // 
             // dgvContact
             // 
             this.dgvContact.AllowUserToResizeRows = false;
@@ -213,8 +227,8 @@
             this.dgvContact.Location = new System.Drawing.Point(631, 22);
             this.dgvContact.Name = "dgvContact";
             this.dgvContact.RowHeadersVisible = false;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgvContact.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvContact.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvContact.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvContact.Size = new System.Drawing.Size(297, 79);
             this.dgvContact.TabIndex = 220;
@@ -902,5 +916,6 @@
         private System.Windows.Forms.DataGridView dgvContact;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colContact;
+        private System.Windows.Forms.ComboBox cbKhachHang;
     }
 }
