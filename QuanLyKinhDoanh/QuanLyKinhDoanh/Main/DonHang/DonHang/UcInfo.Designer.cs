@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnInfo = new System.Windows.Forms.Panel();
             this.lvThongTin = new System.Windows.Forms.ListView();
             this.chCheckBox = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,7 +47,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.tbDiaChi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tbTenKH = new System.Windows.Forms.TextBox();
             this.lbTen = new System.Windows.Forms.Label();
             this.tbGhiChu = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -195,7 +194,6 @@
             this.gbInfo.Controls.Add(this.label6);
             this.gbInfo.Controls.Add(this.tbDiaChi);
             this.gbInfo.Controls.Add(this.label2);
-            this.gbInfo.Controls.Add(this.tbTenKH);
             this.gbInfo.Controls.Add(this.lbTen);
             this.gbInfo.ForeColor = System.Drawing.Color.Orange;
             this.gbInfo.Location = new System.Drawing.Point(27, 383);
@@ -208,10 +206,10 @@
             // cbKhachHang
             // 
             this.cbKhachHang.FormattingEnabled = true;
-            this.cbKhachHang.Location = new System.Drawing.Point(107, 40);
+            this.cbKhachHang.Location = new System.Drawing.Point(107, 30);
             this.cbKhachHang.Name = "cbKhachHang";
-            this.cbKhachHang.Size = new System.Drawing.Size(121, 24);
-            this.cbKhachHang.TabIndex = 221;
+            this.cbKhachHang.Size = new System.Drawing.Size(250, 24);
+            this.cbKhachHang.TabIndex = 200;
             this.cbKhachHang.DropDown += new System.EventHandler(this.cbKhachHang_DropDown);
             this.cbKhachHang.SelectedIndexChanged += new System.EventHandler(this.cbKhachHang_SelectedIndexChanged);
             this.cbKhachHang.TextChanged += new System.EventHandler(this.cbKhachHang_TextChanged);
@@ -227,8 +225,8 @@
             this.dgvContact.Location = new System.Drawing.Point(631, 22);
             this.dgvContact.Name = "dgvContact";
             this.dgvContact.RowHeadersVisible = false;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgvContact.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvContact.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvContact.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvContact.Size = new System.Drawing.Size(297, 79);
             this.dgvContact.TabIndex = 220;
@@ -284,15 +282,6 @@
             this.label2.Size = new System.Drawing.Size(55, 16);
             this.label2.TabIndex = 129;
             this.label2.Text = "Địa chỉ:";
-            // 
-            // tbTenKH
-            // 
-            this.tbTenKH.Location = new System.Drawing.Point(107, 30);
-            this.tbTenKH.MaxLength = 50;
-            this.tbTenKH.Name = "tbTenKH";
-            this.tbTenKH.Size = new System.Drawing.Size(250, 23);
-            this.tbTenKH.TabIndex = 200;
-            this.tbTenKH.TextChanged += new System.EventHandler(this.tbTenKH_TextChanged);
             // 
             // lbTen
             // 
@@ -900,7 +889,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tbMaCOD;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox tbTenKH;
         private System.Windows.Forms.TextBox tbDienThoai;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox tbDiaChi;

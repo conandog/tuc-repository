@@ -48,8 +48,8 @@ namespace DAO
                         Information infor = new Information("Ngọc Đăng", "5.3.0.0", "3.2.0.0", DateTime.Now);
                         string jInfor = Newtonsoft.Json.JsonConvert.SerializeObject(infor);
                         content.Add("Information", jInfor);
-                        content.Add("Order", new JArray());
                         content.Add("Customer", new JArray());
+                        content.Add("Order", new JArray());
                         File.WriteAllText(datasourcePath, content.ToString(Newtonsoft.Json.Formatting.Indented));
                     }
                 }

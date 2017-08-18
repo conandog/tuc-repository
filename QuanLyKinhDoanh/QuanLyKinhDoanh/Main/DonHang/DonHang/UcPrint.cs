@@ -69,13 +69,15 @@ namespace QuanLyKinhDoanh.Order
             cod.SubItems.Add(String.Empty);
             cod.SubItems.Add(String.Empty);
             cod.SubItems.Add(String.Empty);
-            cod.SubItems.Add(ConvertUtil.ConvertToLong(data.CodBill) == 0 ? "Miễn phí" : data.CodBill.ToString(Constant.DEFAULT_FORMAT_MONEY));
+            cod.SubItems.Add(ConvertUtil.ConvertToLong(data.CodBill) == 0 ? "Free ship" : data.CodBill.ToString(Constant.DEFAULT_FORMAT_MONEY));
             lvThongTin.Items.Add(cod);
 
             lbTongHD.Text = lbTongHD.Text + data.GetTotalBillWithCod().ToString(Constant.DEFAULT_FORMAT_MONEY) + Constant.DEFAULT_MONEY_SUBFIX;
-            //lbKhachHang.Text = data.Name;
-            //lbDiaChi.Text = data.Address;
-            //lbDT.Text = data.Phone;
+
+            DTO.Customer customer = BUS.CustomerBus.GetById(data.IdCustomer);
+            lbKhachHang.Text = customer.Name;
+            lbDiaChi.Text = customer.Address;
+            lbDT.Text = customer.Phone;
         }
 
         private void UcPrint_Load(object sender, EventArgs e)

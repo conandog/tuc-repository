@@ -69,7 +69,7 @@ namespace QuanLyKinhDoanh.Order
             lbKhachHang.Text = String.Empty;
             lbDienThoai.Text = String.Empty;
             lbDiaChi.Text = String.Empty;
-            
+            dgvContact.Rows.Clear();
         }
 
         private void LoadData(DTO.Order data)
@@ -98,10 +98,16 @@ namespace QuanLyKinhDoanh.Order
             lbTongHD.Text = data.GetTotalBillWithCod().ToString(Constant.DEFAULT_FORMAT_MONEY);
             lbGhiChu.Text = data.Notes;
 
-            //lbKhachHang.Text = data.Name;
-            //lbDienThoai.Text = data.Phone;
-            //lbContact.Text = data.Contact;
-            //lbDiaChi.Text = data.Address;
+            Customer customer = CustomerBus.GetById(data.IdCustomer);
+            lbKhachHang.Text = customer.Name;
+            lbDienThoai.Text = customer.Phone;
+            lbDiaChi.Text = customer.Address;
+            dgvContact.Rows.Clear();
+
+            foreach (CustomerContact contact in customer.ListContact)
+            {
+                dgvContact.Rows.Add(contact.Name, contact.Contact);
+            }
         }
 
         private void pbHoanTat_Click(object sender, EventArgs e)

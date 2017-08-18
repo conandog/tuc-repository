@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnTitle = new System.Windows.Forms.Panel();
             this.lbSelect = new System.Windows.Forms.Label();
             this.lbTitle = new System.Windows.Forms.Label();
             this.pbTitle = new System.Windows.Forms.PictureBox();
             this.ttDetail = new System.Windows.Forms.ToolTip(this.components);
             this.gbInfo = new System.Windows.Forms.GroupBox();
-            this.lbContact = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.lbDienThoai = new System.Windows.Forms.Label();
             this.lbDiaChi = new System.Windows.Forms.Label();
             this.lbKhachHang = new System.Windows.Forms.Label();
@@ -74,6 +74,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pbHoanTat = new System.Windows.Forms.PictureBox();
             this.pbPrint = new System.Windows.Forms.PictureBox();
+            this.dgvContact = new System.Windows.Forms.DataGridView();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTitle)).BeginInit();
             this.gbInfo.SuspendLayout();
@@ -82,6 +85,7 @@
             this.pnInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbHoanTat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPrint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).BeginInit();
             this.SuspendLayout();
             // 
             // pnTitle
@@ -128,8 +132,7 @@
             // 
             // gbInfo
             // 
-            this.gbInfo.Controls.Add(this.lbContact);
-            this.gbInfo.Controls.Add(this.label5);
+            this.gbInfo.Controls.Add(this.dgvContact);
             this.gbInfo.Controls.Add(this.lbDienThoai);
             this.gbInfo.Controls.Add(this.lbDiaChi);
             this.gbInfo.Controls.Add(this.lbKhachHang);
@@ -143,26 +146,6 @@
             this.gbInfo.TabIndex = 204;
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Thông tin khách hàng";
-            // 
-            // lbContact
-            // 
-            this.lbContact.AutoSize = true;
-            this.lbContact.ForeColor = System.Drawing.Color.Black;
-            this.lbContact.Location = new System.Drawing.Point(704, 33);
-            this.lbContact.Name = "lbContact";
-            this.lbContact.Size = new System.Drawing.Size(35, 18);
-            this.lbContact.TabIndex = 143;
-            this.lbContact.Text = "Text";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(631, 33);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 18);
-            this.label5.TabIndex = 142;
-            this.label5.Text = "Zalo/FB:";
             // 
             // lbDienThoai
             // 
@@ -537,6 +520,52 @@
             this.pbPrint.MouseEnter += new System.EventHandler(this.pbPrint_MouseEnter);
             this.pbPrint.MouseLeave += new System.EventHandler(this.pbPrint_MouseLeave);
             // 
+            // dgvContact
+            // 
+            this.dgvContact.AllowUserToAddRows = false;
+            this.dgvContact.AllowUserToDeleteRows = false;
+            this.dgvContact.AllowUserToResizeColumns = false;
+            this.dgvContact.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvContact.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvContact.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colName,
+            this.colContact});
+            this.dgvContact.Location = new System.Drawing.Point(631, 22);
+            this.dgvContact.Name = "dgvContact";
+            this.dgvContact.ReadOnly = true;
+            this.dgvContact.RowHeadersVisible = false;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvContact.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvContact.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvContact.Size = new System.Drawing.Size(297, 79);
+            this.dgvContact.TabIndex = 221;
+            // 
+            // colName
+            // 
+            this.colName.HeaderText = "Liên lạc";
+            this.colName.MaxInputLength = 20;
+            this.colName.MinimumWidth = 80;
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            this.colName.Width = 80;
+            // 
+            // colContact
+            // 
+            this.colContact.HeaderText = "Địa chỉ trực tuyến";
+            this.colContact.MaxInputLength = 100;
+            this.colContact.MinimumWidth = 100;
+            this.colContact.Name = "colContact";
+            this.colContact.ReadOnly = true;
+            this.colContact.Width = 195;
+            // 
             // UcDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -565,6 +594,7 @@
             this.pnInfo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbHoanTat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPrint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -613,8 +643,9 @@
         private System.Windows.Forms.Label lbDiaChi;
         private System.Windows.Forms.Label lbKhachHang;
         private System.Windows.Forms.PictureBox pbHoanTat;
-        private System.Windows.Forms.Label lbContact;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pbPrint;
+        private System.Windows.Forms.DataGridView dgvContact;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colContact;
     }
 }
