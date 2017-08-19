@@ -46,8 +46,8 @@ namespace DAO
 
             if (!string.IsNullOrEmpty(text))
             {
-                res = res.Where(p => customer.Any(q => ((string)q[DATA_ID_KEY][DATA_NAME_KEY]).ToLower().Contains(text))
-                    //|| ((string)p[DATA_PHONE_KEY]).ToLower().Contains(text)
+                res = res.Where(p => customer.Any(q => ((string)q[DATA_ID_KEY]) == ((string)p[DATA_ID_CUSTOMER_KEY]) && ((string)q[DATA_NAME_KEY]).ToLower().Contains(text))
+                    || customer.Any(q => ((string)q[DATA_ID_KEY]) == ((string)p[DATA_ID_CUSTOMER_KEY]) && ((string)q[DATA_PHONE_KEY]).ToLower().Contains(text))
                     || ((string)p[DATA_NOTES_KEY]).ToLower().Contains(text));
             }
 

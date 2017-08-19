@@ -45,7 +45,7 @@ namespace DAO
                         file.Close();
 
                         JObject content = new JObject();
-                        Information infor = new Information("Ngọc Đăng", "5.3.0.0", "3.2.0.0", DateTime.Now);
+                        Information infor = new Information("Ngọc Đăng", "5.4.0.0", "3.2.0.0", DateTime.Now);
                         string jInfor = Newtonsoft.Json.JsonConvert.SerializeObject(infor);
                         content.Add("Information", jInfor);
                         content.Add("Customer", new JArray());

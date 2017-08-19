@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnInfo = new System.Windows.Forms.Panel();
             this.lvThongTin = new System.Windows.Forms.ListView();
             this.chCheckBox = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -225,8 +225,8 @@
             this.dgvContact.Location = new System.Drawing.Point(631, 22);
             this.dgvContact.Name = "dgvContact";
             this.dgvContact.RowHeadersVisible = false;
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.dgvContact.RowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvContact.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvContact.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvContact.Size = new System.Drawing.Size(297, 79);
             this.dgvContact.TabIndex = 220;
@@ -550,8 +550,9 @@
             this.cbLoaiCOD.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbLoaiCOD.FormattingEnabled = true;
             this.cbLoaiCOD.Items.AddRange(new object[] {
-            "Viettel",
-            "VNPost"});
+            "Viettel Post",
+            "VN Post",
+            "247 Post"});
             this.cbLoaiCOD.Location = new System.Drawing.Point(288, 30);
             this.cbLoaiCOD.MaxLength = 10;
             this.cbLoaiCOD.Name = "cbLoaiCOD";

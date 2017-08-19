@@ -63,6 +63,7 @@
             this.pbTraCuu = new System.Windows.Forms.PictureBox();
             this.pnPage = new System.Windows.Forms.Panel();
             this.lbPage = new System.Windows.Forms.Label();
+            this.chCOD = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbTitle)).BeginInit();
             this.pnSelect.SuspendLayout();
@@ -221,9 +222,9 @@
             // 
             this.pnQuanLy.Controls.Add(this.lvThongTin);
             this.pnQuanLy.Controls.Add(this.pnTraCuu);
-            this.pnQuanLy.Location = new System.Drawing.Point(50, 87);
+            this.pnQuanLy.Location = new System.Drawing.Point(20, 87);
             this.pnQuanLy.Name = "pnQuanLy";
-            this.pnQuanLy.Size = new System.Drawing.Size(900, 480);
+            this.pnQuanLy.Size = new System.Drawing.Size(960, 480);
             this.pnQuanLy.TabIndex = 43;
             // 
             // lvThongTin
@@ -236,6 +237,7 @@
             this.chTen,
             this.chDienThoai,
             this.chOrderDate,
+            this.chCOD,
             this.chStatus,
             this.chNotes,
             this.chTotalBill});
@@ -245,7 +247,7 @@
             this.lvThongTin.Location = new System.Drawing.Point(3, 3);
             this.lvThongTin.MultiSelect = false;
             this.lvThongTin.Name = "lvThongTin";
-            this.lvThongTin.Size = new System.Drawing.Size(890, 430);
+            this.lvThongTin.Size = new System.Drawing.Size(950, 430);
             this.lvThongTin.TabIndex = 86;
             this.lvThongTin.UseCompatibleStateImageBehavior = false;
             this.lvThongTin.View = System.Windows.Forms.View.Details;
@@ -298,7 +300,7 @@
             // chNotes
             // 
             this.chNotes.Text = "Ghi chú";
-            this.chNotes.Width = 180;
+            this.chNotes.Width = 160;
             // 
             // chTotalBill
             // 
@@ -319,12 +321,12 @@
             this.pnTraCuu.Controls.Add(this.pnPage);
             this.pnTraCuu.Location = new System.Drawing.Point(3, 439);
             this.pnTraCuu.Name = "pnTraCuu";
-            this.pnTraCuu.Size = new System.Drawing.Size(890, 33);
+            this.pnTraCuu.Size = new System.Drawing.Size(950, 33);
             this.pnTraCuu.TabIndex = 85;
             // 
             // tbPage
             // 
-            this.tbPage.Location = new System.Drawing.Point(611, 6);
+            this.tbPage.Location = new System.Drawing.Point(661, 6);
             this.tbPage.MaxLength = 3;
             this.tbPage.Name = "tbPage";
             this.tbPage.Size = new System.Drawing.Size(40, 23);
@@ -338,7 +340,7 @@
             this.lbTotalPage.AutoSize = true;
             this.lbTotalPage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTotalPage.ForeColor = System.Drawing.Color.Gray;
-            this.lbTotalPage.Location = new System.Drawing.Point(705, 6);
+            this.lbTotalPage.Location = new System.Drawing.Point(755, 6);
             this.lbTotalPage.Name = "lbTotalPage";
             this.lbTotalPage.Size = new System.Drawing.Size(87, 19);
             this.lbTotalPage.TabIndex = 2;
@@ -347,7 +349,7 @@
             // pbNextPage
             // 
             this.pbNextPage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbNextPage.Location = new System.Drawing.Point(865, 0);
+            this.pbNextPage.Location = new System.Drawing.Point(915, 0);
             this.pbNextPage.Name = "pbNextPage";
             this.pbNextPage.Size = new System.Drawing.Size(25, 32);
             this.pbNextPage.TabIndex = 88;
@@ -359,7 +361,7 @@
             // pbBackPage
             // 
             this.pbBackPage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbBackPage.Location = new System.Drawing.Point(800, 0);
+            this.pbBackPage.Location = new System.Drawing.Point(850, 0);
             this.pbBackPage.Name = "pbBackPage";
             this.pbBackPage.Size = new System.Drawing.Size(25, 32);
             this.pbBackPage.TabIndex = 87;
@@ -371,7 +373,7 @@
             // pbTotalPage
             // 
             this.pbTotalPage.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pbTotalPage.Location = new System.Drawing.Point(667, 0);
+            this.pbTotalPage.Location = new System.Drawing.Point(717, 0);
             this.pbTotalPage.Name = "pbTotalPage";
             this.pbTotalPage.Size = new System.Drawing.Size(32, 33);
             this.pbTotalPage.TabIndex = 86;
@@ -413,7 +415,7 @@
             // pnPage
             // 
             this.pnPage.Controls.Add(this.lbPage);
-            this.pnPage.Location = new System.Drawing.Point(823, 5);
+            this.pnPage.Location = new System.Drawing.Point(873, 5);
             this.pnPage.Name = "pnPage";
             this.pnPage.Size = new System.Drawing.Size(45, 22);
             this.pnPage.TabIndex = 86;
@@ -423,7 +425,7 @@
             this.lbPage.AutoSize = true;
             this.lbPage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPage.ForeColor = System.Drawing.Color.Gray;
-            this.lbPage.Location = new System.Drawing.Point(12, 1);
+            this.lbPage.Location = new System.Drawing.Point(62, 1);
             this.lbPage.Name = "lbPage";
             this.lbPage.Size = new System.Drawing.Size(18, 19);
             this.lbPage.TabIndex = 89;
@@ -431,6 +433,12 @@
             this.lbPage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lbPage.TextChanged += new System.EventHandler(this.lbPage_TextChanged);
             this.lbPage.Click += new System.EventHandler(this.lbPage_Click);
+            // 
+            // chCOD
+            // 
+            this.chCOD.Text = "COD";
+            this.chCOD.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.chCOD.Width = 80;
             // 
             // UcOrder
             // 
@@ -507,5 +515,6 @@
         private System.Windows.Forms.ColumnHeader chTotalBill;
         private System.Windows.Forms.ColumnHeader chStatus;
         private System.Windows.Forms.ColumnHeader chNotes;
+        private System.Windows.Forms.ColumnHeader chCOD;
     }
 }

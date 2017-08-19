@@ -149,6 +149,7 @@ namespace QuanLyKinhDoanh
                 lvi.SubItems.Add(customer.Name);
                 lvi.SubItems.Add(customer.Phone);
                 lvi.SubItems.Add(data.CreatedDate.ToString(Constant.DEFAULT_DATE_TIME_FORMAT));
+                lvi.SubItems.Add(data.CodCode);
                 lvi.SubItems.Add(data.Status);
                 lvi.SubItems.Add(data.Notes);
                 lvi.SubItems.Add(data.GetTotalBillWithCod().ToString(Constant.DEFAULT_FORMAT_MONEY));
