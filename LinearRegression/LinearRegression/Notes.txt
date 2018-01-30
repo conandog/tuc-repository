@@ -1,0 +1,2 @@
+﻿- VS 2015 - .Net 4.6.1
+- NuGet: Newtonsoft.Json 10.0.3
