@@ -16,13 +16,34 @@ namespace LinearRegression
 
         static void Main(string[] args)
         {
-            Test();
+            Process();
         }
 
-        static async void Test()
+        private static async void Process()
         {
-            DateTime date = new DateTime(2018, 1, 15);
+            DateTime date = new DateTime(2018, 6, 15);
+            await GetExchangeRate(defaultFromCurrency, "TRY", date);
+        }
+
+        private static async Task<Dictionary<int, float>> GetExchangeRates(string fromCurrency, string toCurrency, DateTime date)
+        {
+            Dictionary<int, float> res = new Dictionary<int, float>();
+
+            for (int previousMonth = -12; previousMonth < 0; previousMonth++)
+            {
+                DateTime previousDate = date.AddMonths(previousMonth);
+                float rate = await GetExchangeRate(fromCurrency, toCurrency, previousDate);
+            }
+
+            return res;
+        }
+
+        private static async Task<float> GetExchangeRate(string fromCurrency, string toCurrency, DateTime date)
+        {
+            float res = -1;
             ExchangeRates exchangeRates = await GetExchangeRates(defaultFromCurrency, date);
+            res = exchangeRates.Rates[toCurrency];
+            return res;
         }
 
         public static async Task<ExchangeRates> GetExchangeRates(string fromCurrency, DateTime date)
@@ -39,9 +60,7 @@ namespace LinearRegression
                     using (HttpResponseMessage response = client.GetAsync(
                        apiLink + "/" + date.ToString("yyyy-MM-dd") + "?base=" + fromCurrency).Result)
                     {
-                        response.EnsureSuccessStatusCode();
                         string responseBody = await response.Content.ReadAsStringAsync();
-                        Console.WriteLine(responseBody);
                         res.DeserializeFromJson(responseBody);
                     }
                 }
