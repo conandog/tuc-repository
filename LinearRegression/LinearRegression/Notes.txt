@@ -1,3 +1,12 @@
 ﻿- VS 2015 - .Net 4.6.1
 - NuGet: Newtonsoft.Json 10.0.3
 - Source control: GitHub
+
+Questions:
+1. How accurate is the predictor?
+-> The predictor is not really accurate. Because it use the month-points to calculate, but exchange rates change every single day.
+And the density of the points is sparse. There are so many missing points between 2 months.
+
+2. How could we make it more accurate?
+-> a. We can get more points to calculate
+b. We can use week-points, day-points to make the predictor more accurate
