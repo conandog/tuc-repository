@@ -30,6 +30,10 @@ namespace LinearRegression
                             res = new ExchangeRates();
                             res.DeserializeFromJson(responseBody);
                         }
+                        else
+                        {
+                            Console.WriteLine(String.Format(Constants.ERROR_MESSAGE_CANNOT_GET_EXCHANGE_RATE_FROM, date.ToShortDateString()));
+                        }
                     }
                 }
             }
@@ -52,7 +56,18 @@ namespace LinearRegression
             try
             {
                 ExchangeRates exchangeRates = await GetExchangeRates(fromCurrency, date);
-                res = exchangeRates.Rates[toCurrency];
+
+                if (exchangeRates != null)
+                {
+                    if (exchangeRates.Rates.ContainsKey(toCurrency))
+                    {
+                        res = exchangeRates.Rates[toCurrency];
+                    }
+                    else
+                    {
+                        Console.WriteLine(String.Format(Constants.ERROR_MESSAGE_CANNOT_GET_EXCHANGE_RATE_TO, date.ToShortDateString()));
+                    }
+                }
             }
             catch (Exception ex)
             {
