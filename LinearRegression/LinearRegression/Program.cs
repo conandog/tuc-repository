@@ -24,6 +24,7 @@ namespace LinearRegression
         {
             if (args.Length != 2)
             {
+                Console.WriteLine(Constants.ERROR_MESSAGE_INPUT_ARGUMENTS); 
                 args = new string[2];
                 Console.Write(Constants.GET_FROM_CURRENCY);
                 args[0] = Console.ReadLine();
