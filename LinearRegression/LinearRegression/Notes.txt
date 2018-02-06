@@ -3,7 +3,6 @@
 - Source control: GitHub
 - cmd: [path LinearRegression.exe] [from currency] [to currency]
 Ex: LinearRegression.exe USD TRY
-- Console: input FROM and TO currencies to calculate the predicted exchange rate
 
 Questions:
 1. How accurate is the predictor?
